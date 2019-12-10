@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BE
 {
@@ -9,13 +11,19 @@ namespace BE
         private string PriavteName;
         private string FamilyName;
         private string MailAddress;
+        private Status Status; //Status enum
         private DateTime RegistrationDate;
         private DateTime EntryDate;
         private DateTime ReleaseDate;
-        //another enum for subArea 
-        //enum Type -type of hotel
+        private Area Area;
+        private string subArea; 
+        private Type Type; //enum Type -type of hotel
         private int Adults;
         private int Children;
+        private choice pool; // pool enum
+        private choice Jacuzzi;//jacuzzi enum
+        private choice Garden;//garden enum
+        private choice ChildrensAttractions;//ChildrensAttractions enum
     
         public override string ToString()
         {
