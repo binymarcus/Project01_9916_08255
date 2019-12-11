@@ -7,23 +7,23 @@ namespace BE
     //need to check about enums
     public  class GuestRequest
     {
-        private long GuestRequestKey;// may need to be static and moved to config
-        private string PriavteName;
-        private string FamilyName;
-        private string MailAddress;
-        private Status Status; //Status enum
-        private DateTime RegistrationDate;
-        private DateTime EntryDate;
-        private DateTime ReleaseDate;
-        private Area Area;
-        private string subArea; 
-        private Type Type; //enum Type -type of hotel
-        private int Adults;
-        private int Children;
-        private choice pool; // pool enum
-        private choice Jacuzzi;//jacuzzi enum
-        private choice Garden;//garden enum
-        private choice ChildrensAttractions;//ChildrensAttractions enum
+         long GuestRequestKey;// may need to be static and moved to config
+         string PriavteName;
+         string FamilyName;
+         string MailAddress;
+         Status Status; //Status enum
+         DateTime RegistrationDate;
+         DateTime EntryDate;
+         DateTime ReleaseDate;
+         Area Area;
+         string subArea; 
+         Type Type; //enum Type -type of hotel
+         int Adults;
+         int Children;
+         choice pool; // pool enum
+         choice Jacuzzi;//jacuzzi enum
+         choice Garden;//garden enum
+         choice ChildrensAttractions;//ChildrensAttractions enum
     
         public override string ToString()
         {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-enum Status{pending, mailSent,closedByClientsLackOfResponse, ClosedByClientResponse};
+enum Status {pending, mailSent,closedByClientsLackOfResponse, ClosedByClientResponse};
 enum Area { All,North,South,Center,Jerusalem}
 //enum NorthSubSArea { /*needs to be filled*/}
 //enum SouthSubArea { /*needs to be filled*/}
