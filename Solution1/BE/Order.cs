@@ -9,13 +9,14 @@ namespace BE
         long HostingUnitKey; // may need to be static and moved to configuration
         long GuestRequestKey; // may need to be static and moved to configuration
         long OrderKey; // may need to be static and moved to configuration
-        Status Status;
-        DateTime CreateDate;
-        DateTime OrderDate;
+        Status Status;//enum that holds the satus of the order
+        DateTime CreateDate;//date order was made
+        DateTime OrderDate;//date the email was sent to client 
 
-        public ToString
-            {
-            //fill in
-            }
+        public override string ToString()
+        {
+            //needs to be done 
+            return base.ToString();
+        }
     }
 }

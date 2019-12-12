@@ -6,6 +6,7 @@ namespace BE
 {
     class BankAccount
     {
+        //all these are set as private by us, can be changed-delete before handing in
         private int BankNumber;// may need to be static and moved to configuration
         private string BankName;
         private int BranchNumbner;
