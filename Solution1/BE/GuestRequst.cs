@@ -8,13 +8,13 @@ namespace BE
     public  class GuestRequest
     {
          long GuestRequestKey;
-        string PriavteName;
+         string PriavteName;
          string FamilyName;
          string MailAddress;
          DateTime RegistrationDate;
          DateTime EntryDate;
          DateTime ReleaseDate;
-         string subArea; 
+         string SubArea; 
          int Adults;
          int Children;
 
@@ -28,7 +28,7 @@ namespace BE
             RegistrationDate = registrationDate;
             EntryDate = entryDate;
             ReleaseDate = releaseDate;
-            this.subArea = subArea;
+            SubArea = subArea;
             Adults = adults;
             Children = children;
         }
