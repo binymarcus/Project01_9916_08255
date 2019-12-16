@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-    class Host
+   public class Host
     {
         long HostKey=++Configuration.HostKey;
         string PrivateName;//the host first name

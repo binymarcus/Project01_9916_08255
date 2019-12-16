@@ -5,7 +5,7 @@ using System.Text;
 namespace BE
 {
     //need to check about enums
-    public  class GuestRequest
+    public class GuestRequest
     {
          long GuestRequestKey=++Configuration.GuestRequestKey;//no idea if this works, cool if it does.
          string PriavteName;
