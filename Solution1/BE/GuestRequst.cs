@@ -17,21 +17,22 @@ namespace BE
          string SubArea; 
          int Adults;
          int Children;
-
-        public GuestRequest( string priavteName, string familyName, string mailAddress, DateTime registrationDate, DateTime entryDate, DateTime releaseDate, string subArea, int adults, int children)
-        {
-            SGuestRequestKey++;
-            GuestRequestKey = SGuestRequestKey;
-            PriavteName = priavteName; 
-            FamilyName = familyName;
-            MailAddress = mailAddress;
-            RegistrationDate = registrationDate;
-            EntryDate = entryDate;
-            ReleaseDate = releaseDate;
-            SubArea = subArea;
-            Adults = adults;
-            Children = children;
-        }
+        /// <summary>
+        /// basic properties for guest request key
+        /// </summary>
+        public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
+        /// <summary>
+        /// basic properties for the clients private name
+        /// </summary>
+        public string PriavteName1 { get => PriavteName; set => PriavteName = value; }
+        public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
+        public string MailAddress1 { get => MailAddress; set => MailAddress = value; }
+        public DateTime RegistrationDate1 { get => RegistrationDate; set => RegistrationDate = value; }
+        public DateTime EntryDate1 { get => EntryDate; set => EntryDate = value; }
+        public DateTime ReleaseDate1 { get => ReleaseDate; set => ReleaseDate = value; }
+        public string SubArea1 { get => SubArea; set => SubArea = value; }
+        public int Adults1 { get => Adults; set => Adults = value; }
+        public int Children1 { get => Children; set => Children = value; }
 
         public override string ToString()
         {
