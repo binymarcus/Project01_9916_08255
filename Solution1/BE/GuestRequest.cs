@@ -7,7 +7,7 @@ namespace BE
     //need to check about enums
     public  class GuestRequest
     {
-         long GuestRequestKey;
+         long GuestRequestKey=++Configuration.GuestRequestKey;//no idea if this works, cool if it does.
          string PriavteName;
          string FamilyName;
          string MailAddress;
@@ -17,13 +17,7 @@ namespace BE
          string SubArea; 
          int Adults;
          int Children;
-        /// <summary>
-        /// basic properties for guest request key
-        /// </summary>
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
-        /// <summary>
-        /// basic properties for the clients private name
-        /// </summary>
         public string PriavteName1 { get => PriavteName; set => PriavteName = value; }
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
         public string MailAddress1 { get => MailAddress; set => MailAddress = value; }

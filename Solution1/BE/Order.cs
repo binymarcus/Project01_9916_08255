@@ -6,9 +6,9 @@ namespace BE
 {
     public class Order
     {
-        long HostingUnitKey; // may need to be static and moved to configuration
-        long GuestRequestKey; // may need to be static and moved to configuration
-        long OrderKey; // may need to be static and moved to configuration
+        long HostingUnitKey=++Configuration.HostingUnitKey;
+        long GuestRequestKey=+Configuration.GuestRequestKey;
+        long OrderKey=++Configuration.OrderKey;
         DateTime CreateDate;//date order was made
         DateTime OrderDate;//date the email was sent to client 
 

@@ -6,7 +6,7 @@ namespace BE
 {
     public class HostingUnit
     {
-        long HostingUnitKey;// may need to be static and moved to configuration
+        long HostingUnitKey=++Configuration.HostingUnitKey;
         Host Owner; // the owner of the hosting unit
         string HostingUnitName; // hosting unit
         bool[,] Diary = new bool[12,31];  //matrix, repersent if occupied or vacant

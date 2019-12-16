@@ -6,7 +6,7 @@ namespace BE
 {
     class Host
     {
-        long HostKey; // may need to be static and moved to configuration
+        long HostKey=++Configuration.HostKey;
         string PrivateName;//the host first name
         string FamilyName;//the hosts last name
         long phoneNumber; //the phone number

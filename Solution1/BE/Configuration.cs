@@ -9,7 +9,10 @@ namespace BE
     /// </summary>
    public  static class Configuration// may want to make this a static class
     {
-      public static long SGuestRequestKey=10000000;
-
+      public static long GuestRequestKey=10000000;
+      public static int BankNumber=0;
+      public static long HostKey=10000000;
+      public static long HostingUnitKey=10000000;
+      public static long OrderKey=10000000;
     }
 }
