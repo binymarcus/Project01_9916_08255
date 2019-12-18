@@ -17,6 +17,7 @@ namespace BE
          string SubArea; 
          int Adults;
          int Children;
+
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
         public string PriavteName1 { get => PriavteName; set => PriavteName = value; }
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
