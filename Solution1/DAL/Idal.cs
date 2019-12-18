@@ -11,21 +11,25 @@ namespace DAL
         /// </summary>
         /// <param name="guestRequest"></param>
       void AddGuestRequest(GuestRequest guestRequest);
+
         /// <summary>
         /// updates a rewuest of a client thats already int the system
         /// </summary>
         /// <param name="guestRequest"></param>
       void UpdateGuestRequest(GuestRequest guestRequest);
+
         /// <summary>
         /// adds a hosting unit to the system
         /// </summary>
         /// <param name="hostingUnit"> the hosting unit from BE</param>
       void AddHostingUnit(HostingUnit hostingUnit);
+
         /// <summary>
         /// removes an existing hosting unit from the system
         /// </summary>
         /// <param name="hostingUnit">hosting unit defined in BE</param>
       void DeleteHostingUnit(HostingUnit hostingUnit);
+
         /// <summary>
         /// updates the information on an existing hosting unit
         /// </summary>
