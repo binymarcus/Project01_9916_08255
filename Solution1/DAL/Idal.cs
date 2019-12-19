@@ -17,6 +17,7 @@ namespace DAL
         /// </summary>
         /// <param name="guestRequest"></param>
       void UpdateGuestRequest(GuestRequest guestRequest);
+      void DeleteGuestRequest(GuestRequest guestRequest);
 
         /// <summary>
         /// adds a hosting unit to the system
@@ -54,7 +55,7 @@ namespace DAL
         /// shows all clients currently in the system
         /// </summary>
         /// <returns>List of the Clients in the system-by request</returns>
-      List<GuestRequest> GetAllClients();//this may need to change from guest request
+      List<GuestRequest> GetAllGuestRequest();//this may need to change from guest request
         /// <summary>
         /// gets all the orders in the system
         /// </summary>

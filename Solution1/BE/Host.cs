@@ -6,7 +6,7 @@ namespace BE
 {
    public class Host
     {
-        long HostKey=++Configuration.HostKey;
+        long HostKey;
         string PrivateName;//the host first name
         string FamilyName;//the hosts last name
         long phoneNumber; //the phone number
@@ -17,7 +17,7 @@ namespace BE
         public long HostKey1 { get => HostKey; set => HostKey = value; }
         public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
-        public long PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
+        public long PhoneNumber1 { get => phoneNumber; set => phoneNumber = value; }
         public string MailAddress1 { get => MailAddress; set => MailAddress = value; }
         public bool CollectionClearance1 { get => CollectionClearance; set => CollectionClearance = value; }
         internal BankAccount BankAccount1 { get => BankAccount; set => BankAccount = value; }

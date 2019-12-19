@@ -5,12 +5,9 @@ namespace DS
 {
     public class DataSource
     {
-        static List<Object> firstList= new List<Object>
-            (new Order(), new HostingUnit(),new Host(),new GuestRequest()) ;
-        static List<Object> secondList= new List<Object>
-            (new Order(), new HostingUnit(),new Host(),new GuestRequest()) ;
-        static List<Object> ThirdList= new List<Object>
-            (new Order(), new HostingUnit(),new Host(),new GuestRequest()) ;
+        public static List<GuestRequest> GuestRequestList = new List<GuestRequest>();
+        public static List<HostingUnit> HostingUnitList = new List<HostingUnit>();
+        public static List<Order> OrderList = new List<Order>();
     }
 }
 

@@ -11,6 +11,7 @@ namespace BE
     {
       public static long GuestRequestKey=10000000;
       public static int BankNumber=0;
+      public static int BankAccountNumber = 0;
       public static long HostKey=10000000;
       public static long HostingUnitKey=10000000;
       public static long OrderKey=10000000;
