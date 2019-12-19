@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Enumerable;
 using System.Linq;
 using BE;
 using DS;
@@ -27,18 +26,26 @@ namespace DAl
                     select item;
 
             if (v.Count() != 0)
-                throw new KeyNotFoundException("GuestRequest key allready exits");
+                throw new Exception("GuestRequest key allready exits");
 
             DataSource.GuestRequestList.Add(guestRequest);
         }
-
         /// <summary>
         /// updates a request of a client thats already int the system|throws an error if doesn't exist
         /// </summary>
         /// <param name="guestRequest"></param>
         void UpdateGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
+            //TODO: need to put try and catch
+            var v = from item in DataSource.GuestRequestList
+                    where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
+                    select item;
 
+            if (v.Count() == 0)
+                throw new KeyNotFoundException("GuestRequest key dose not exits");
+
+            DataSource.GuestRequestList.Remove(guestRequest);
+            DataSource.GuestRequestList.Add(guestRequest);
         }
         /// <summary>
         /// deletes an existing guest request|sends an error if doesnt exist
@@ -61,25 +68,45 @@ namespace DAl
         /// <param name="hostingUnit"> the hosting unit from BE</param>
         void AddHostingUnit(HostingUnit hostingUnit)
         {//TODO: need to put try and catch
+            var v = from item in DataSource.HostingUnitList
+                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
+                    select item;
+
+            if (v.Count() != 0)
+                throw new Exception("hostingUnit key allready exits");
+
             DataSource.HostingUnitList.Add(hostingUnit);
         }
-
         /// <summary>
         /// removes an existing hosting unit from the system|throws error uf unit doesnt exist
         /// </summary>
         /// <param name="hostingUnit">hosting unit defined in BE</param>
         void DeleteHostingUnit(HostingUnit hostingUnit)
         {//TODO: need to put try and catch
+            var v = from item in DataSource.HostingUnitList
+                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
+                    select item;
+
+            if (v.Count() == 0)
+                throw new Exception("GuestRequest key dose not exits");
+
             DataSource.HostingUnitList.Remove(hostingUnit);
         }
-
         /// <summary>
         /// updates the information on an existing hosting unit|throws error if unit doesnt exist
         /// </summary>
         /// <param name="hostingUnit">hosting unit defined in BE</param>
         void UpdateHostingUnit(HostingUnit hostingUnit)
         {//TODO: need to put try and catch
+            var v = from item in DataSource.HostingUnitList
+                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
+                    select item;
 
+            if (v.Count() == 0)
+                throw new Exception("GuestRequest key dose not exits");
+
+            DataSource.HostingUnitList.Remove(hostingUnit);
+            DataSource.HostingUnitList.Add(hostingUnit);
         }
 
         /// <summary>
@@ -88,15 +115,33 @@ namespace DAl
         /// <param name="order">Order defined in BE</param>
         void AddOrder(Order order)
         {
+            {//TODO: need to put try and catch
+                var v = from item in DataSource.OrderList
+                        where item.OrderKey1 == order.OrderKey1
+                        select item;
 
+                if (v.Count() != 0)
+                    throw new Exception("order key allready exits");
+
+                DataSource.OrderList.Add(order);
+
+            }
         }
-
         /// <summary>
         /// updates the terms of an order from a client|throws error if order already exists
         /// </summary>
         /// <param name="order">Order defined in BE</param>
         void UpdateOrder(Order order)
-        {
+        {//TODO: need to put try and catch
+            var v = from item in DataSource.OrderList
+                    where item.OrderKey1 == order.OrderKey1
+                    select item;
+
+            if (v.Count() == 0)
+                throw new Exception("GuestRequest key dose not exits");
+
+            DataSource.OrderList.Remove(order);
+            DataSource.OrderList.Add(order);
 
         }
 
@@ -138,7 +183,7 @@ namespace DAl
         }
 
         /// <summary>
-        /// reutrns all the banks- may be stings, unclear
+        /// reutrns all the banks
         /// </summary>
         /// <returns></returns>
         List<BankBranch> GetAllBanks()
