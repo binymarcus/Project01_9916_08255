@@ -11,7 +11,8 @@ namespace BE
         string FamilyName;//the hosts last name
         long phoneNumber; //the phone number
         string MailAddress;//hosts email addres
-        BankAccount BankAccount; //host bank account
+        BankBranch BankBranchDetails;
+        int BankAccountNumber;
         bool CollectionClearance;// bool to check if we are cleared to take money from bank
 
         public long HostKey1 { get => HostKey; set => HostKey = value; }
@@ -19,6 +20,8 @@ namespace BE
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
         public long PhoneNumber1 { get => phoneNumber; set => phoneNumber = value; }
         public string MailAddress1 { get => MailAddress; set => MailAddress = value; }
+        public BankBranch BankBranchDetails1 { get => BankBranchDetails; set => BankBranchDetails = value; }
+        public int BankAccountNumber1 { get => BankAccountNumber; set => BankAccountNumber = value; }
         public bool CollectionClearance1 { get => CollectionClearance; set => CollectionClearance = value; }
         internal BankAccount BankAccount1 { get => BankAccount; set => BankAccount = value; }
 

@@ -5,12 +5,11 @@ using System.Text;
 namespace BE
 {
     class BankAccount
-    {
-        //all these are set as private by us, can be changed-delete before handing in
-         
-         int BankAccountNumber;//or this needs to be static, probably not
+    {   
+         int BankAccountNumber;
        
         public int BankAccountNumber1 { get => BankAccountNumber; set => BankAccountNumber = value; }
+
         public override string ToString()
         {
             //needs to be done
