@@ -23,7 +23,7 @@ namespace BE
         public BankBranch BankBranchDetails1 { get => BankBranchDetails; set => BankBranchDetails = value; }
         public int BankAccountNumber1 { get => BankAccountNumber; set => BankAccountNumber = value; }
         public bool CollectionClearance1 { get => CollectionClearance; set => CollectionClearance = value; }
-        internal BankAccount BankAccount1 { get => BankAccount; set => BankAccount = value; }
+        internal BankAccount BankAccount1 { get => BankAccount; set => BankAccount = value; }//what is this for???
 
         /*************may need to make more variables-erase at the end of project*************/
 

@@ -4,7 +4,7 @@ using BE;
 
 namespace DAL
 {
-    public interface Idal
+    public interface IDAL
     {
         /// <summary>
         /// adds a request for service from a client to the system

@@ -19,7 +19,7 @@ namespace BE
          int Children;
 
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
-        public string PrivateName1 { get => PriavteName; set => PriavteName = value; }
+        public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
         public string MailAddress1 { get => MailAddress; set => MailAddress = value; }
         public DateTime RegistrationDate1 { get => RegistrationDate; set => RegistrationDate = value; }

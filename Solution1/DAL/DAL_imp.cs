@@ -26,7 +26,7 @@ namespace DAl
                     select item;
 
             if (v.Count() != 0)
-                throw new Exception("GuestRequest key allready exits");
+                throw new Exception("GuestRequest key already exists");
 
             DataSource.GuestRequestList.Add(guestRequest);
         }
@@ -42,7 +42,7 @@ namespace DAl
                     select item;
 
             if (v.Count() == 0)
-                throw new KeyNotFoundException("GuestRequest key dose not exits");
+                throw new KeyNotFoundException("GuestRequest key dose not exist");
 
             DataSource.GuestRequestList.Remove(guestRequest);
             DataSource.GuestRequestList.Add(guestRequest);
@@ -73,7 +73,7 @@ namespace DAl
                     select item;
 
             if (v.Count() != 0)
-                throw new Exception("hostingUnit key allready exits");
+                throw new Exception("hostingUnit key already exists");
 
             DataSource.HostingUnitList.Add(hostingUnit);
         }
@@ -88,7 +88,7 @@ namespace DAl
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("GuestRequest key dose not exits");
+                throw new Exception("GuestRequest key does not exist");
 
             DataSource.HostingUnitList.Remove(hostingUnit);
         }
@@ -103,7 +103,7 @@ namespace DAl
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("GuestRequest key dose not exits");
+                throw new Exception("GuestRequest key does not exist");
 
             DataSource.HostingUnitList.Remove(hostingUnit);
             DataSource.HostingUnitList.Add(hostingUnit);
@@ -121,7 +121,7 @@ namespace DAl
                         select item;
 
                 if (v.Count() != 0)
-                    throw new Exception("order key allready exits");
+                    throw new Exception("order key allready exists");
 
                 DataSource.OrderList.Add(order);
 
@@ -138,7 +138,7 @@ namespace DAl
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("GuestRequest key dose not exits");
+                throw new Exception("GuestRequest key does not exist");
 
             DataSource.OrderList.Remove(order);
             DataSource.OrderList.Add(order);
