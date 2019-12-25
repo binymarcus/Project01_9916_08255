@@ -44,7 +44,7 @@ namespace IBL
            List<GuestRequest> SortedByArea();
         List<GuestRequest> SortedByNumOfGuests();
         List<Host> SortedByNumOfHostingUnits();
-        List<HostingUnit> SortedByArea();
+        List<HostingUnit> UNitsSortedByArea();
 
         }
 }
