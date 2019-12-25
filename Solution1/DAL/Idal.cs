@@ -10,13 +10,13 @@ namespace DAL
         /// adds a request for service from a client to the system
         /// </summary>
         /// <param name="guestRequest"></param>
-      void AddGuestRequest(GuestRequest guestRequest);
+       void AddGuestRequest(GuestRequest guestRequest);
 
         /// <summary>
         /// updates a rewuest of a client thats already int the system
         /// </summary>
         /// <param name="guestRequest"></param>
-      void UpdateGuestRequest(GuestRequest guestRequest);
+       void UpdateGuestRequest(GuestRequest guestRequest);
       void DeleteGuestRequest(GuestRequest guestRequest);
 
         /// <summary>

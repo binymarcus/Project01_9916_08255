@@ -5,14 +5,21 @@ using DAL;
 
 namespace IBL
 {
-    public interface IDAL
+    public interface IBL
         {
+            List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion);
             /// <summary>
         /// the function recieves a guest request and returns the number of orders sent to it.
         /// </summary>
         /// <param name="guest"></param>
         /// <returns>returns the number of orders sent</returns>
             int GuestOrderSuggestions(GuestRequest guest);
+        /// <summary>
+        /// function recieves either two dates and calculates the time betweeen them, or one and calculates from the present 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        int calcNumOfDaysBetween(params DateTime[] num);
             /// <summary>
         /// returns the number of orders sent to guests or orders filled out
         /// </summary>
@@ -41,10 +48,11 @@ namespace IBL
 
         //need to add the second function fro this class. dont know what it is/
         /************the next few functions are using grouping***********/
-           List<GuestRequest> SortedByArea();
+        List<GuestRequest> SortedByArea();
         List<GuestRequest> SortedByNumOfGuests();
-        List<Host> SortedByNumOfHostingUnits();
+        List<Host> SortedByNumOfhostingUnits();
         List<HostingUnit> UNitsSortedByArea();
+        DateTime calEndDate(DateTime start, int num);
 
         }
 }

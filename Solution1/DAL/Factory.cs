@@ -10,7 +10,7 @@ namespace DAL
     {
         public static IDAL getDAL()
         {
-            if(instance == null)
+            if(instence == null)
                 instence = new DAL_imp();
             return instence;
         }
