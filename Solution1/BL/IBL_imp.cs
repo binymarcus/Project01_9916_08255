@@ -19,10 +19,14 @@ namespace IBL
             {//this may have to change according to lenth of the actual months
                 
                     sum += Math.Abs(num[0].Day - num[1].Day);
-                sum += Math.Abs(30 * (num[0].Month - num[1].Month));
-                
+                sum += Math.Abs(30 * (num[0].Month - num[1].Month)); 
             }
-            //still need to do version that calculates compared to present day
+            else //if only one date is sent to func
+            {//this may have to change according to lenth of the actual months
+                DateTime today = DateTime.Today;
+                sum += Math.Abs(today.Day - num[0].Day);
+                sum += Math.Abs(30 * (today.Month - num[0].Month));
+            }
             return sum;
         }
 
