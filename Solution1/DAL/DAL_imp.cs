@@ -22,11 +22,12 @@ namespace DAL
        public  void AddGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
             var v = from item in DataSource.GuestRequestList
-                    where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
-                    select item;
+                    let temp = guestRequest.GuestRequestKey1 //using linq function "let" as required
+                    where item.GuestRequestKey1 == temp
+                    select new {GuestRequest = item}; //using linq function "select new" as required
 
             if (v.Count() != 0)
-                throw new Exception("GuestRequest key already exists");
+                throw new ArgumentException("GuestRequest key already exists");
 
             DataSource.GuestRequestList.Add(guestRequest);
         }
