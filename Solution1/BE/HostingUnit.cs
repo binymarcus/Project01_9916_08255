@@ -21,22 +21,6 @@ namespace BE
             //fill in
             return base.ToString();
         }
-        bool checkDates(DateTime start,DateTime end)
-        {
-            for (int i = start.Month; i <= end.Month; i++)
-            {
-                int j;
-                if (i == start.Month)
-                    j = start.Day;
-                else j = 0;
-                for (; j < end.Day; j++)
-                {
-                    if (Diary[i, j] == true)
-                        return false;
-
-                }
-            }
-            return true;
-        }
+        
     }
 }

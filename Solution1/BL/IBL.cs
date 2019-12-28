@@ -26,13 +26,12 @@ namespace IBL
         /// <param name="hosting"></param>
         /// <returns></returns>
             int HostingunitOrdersFilled(HostingUnit hosting);
-            delegate bool checkOrder(Order order);//dont know why this is errored
             /// <summary>
         /// geta a method of checking the orders and returns all the orders that fit that method
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
-            List<Order> AllOrdersByCriteria(checkOrder check); 
+            List<Order> AllOrdersByCriteria(Delegate check ); 
             /// <summary>
             /// returns all the orders that are equall or older than the number of days received
             /// </summary>
@@ -52,7 +51,6 @@ namespace IBL
         List<GuestRequest> SortedByNumOfGuests();
         List<Host> SortedByNumOfhostingUnits();
         List<HostingUnit> UNitsSortedByArea();
-        DateTime calEndDate(DateTime start, int num);
 
-        }
+    }
 }

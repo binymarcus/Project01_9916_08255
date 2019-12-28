@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BE;
 using DAL;
 
@@ -7,9 +8,21 @@ namespace IBL
 {
     public class IBL_imp : IBL
     {
-        public List<Order> AllOrdersByCriteria(IBL.checkOrder check)
+        DAL_imp dall;
+        public List<Order> AllOrdersByCriteria(Delegate check)
         {
-            throw new NotImplementedException();
+            List<Order> L = new List<Order>();
+            var v = from item in dall.GetAllOrders()
+                    where 
+                    select item;
+
+            if (v.Count() == 0)
+                throw new Exception("There are no orders by this criteria");
+            foreach (var item in v)
+            {
+                L.Add(item);
+            }
+            return L;
         }
 
         public int calcNumOfDaysBetween(params DateTime[] num)
@@ -30,62 +43,129 @@ namespace IBL
             return sum;
         }
 
-        public DateTime calEndDate(DateTime start, int num)
+        private DateTime calEndDate(DateTime start, int num)
         {
             DateTime enedDate = start.AddDays(num);
             return enedDate;
         }
-
         public List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
         {
+            List<HostingUnit> L=new List<HostingUnit>();
             DateTime end = calEndDate(startdate, numOfDaysForVacatrion);
-            var v = from item in DAL_imp.GetAllHostingUnits()
-                    where  item.checkDates(startdate,end)==true
+             var v = from item in dall.GetAllHostingUnits()
+                    where checkDates(startdate,end,item)==true
                              select item;
 
             if (v.Count() == 0)
                 throw new Exception("There are no Free units in these dates");
-
-            return v;
+            foreach (var item in v)
+            {
+                L.Add(item);
+            }
+            return L;
 
         }
+        private bool checkDates(DateTime start, DateTime end, HostingUnit host)
+        {
 
-        public int GuestOrderSuggestions(GuestRequest guest)
+            for (int i = start.Month; i <= end.Month; i++)
+            {
+                int j;
+                if (i == start.Month)
+                    j = start.Day;
+                else j = 0;
+                for (; j < end.Day; j++)
+                {
+                    if (host.Diary1[i, j] == true)
+                        return false;
+
+                }
+            }
+            return true;
+        }
+        public int GuestOrderSuggestions(GuestRequest guest)//dont know how to do this
         {
             throw new NotImplementedException();
         }
-
         public int HostingunitOrdersFilled(HostingUnit hosting)
         {
             throw new NotImplementedException();
         }
-
         public List<Order> OlderOrders(int numOfDays)
         {
-            throw new NotImplementedException();
-        }
+            List<Order> L = new List<Order>();
+            var v = from item in dall.GetAllOrders()
+                    where DateTime.Today.DayOfYear-item.OrderDate1.DayOfYear>=numOfDays
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+            }
+            return L;
 
+        }
         public List<GuestRequest> SortedByArea()
         {
             throw new NotImplementedException();
         }
-
         public List<GuestRequest> SortedByNumOfGuests()
         {
             throw new NotImplementedException();
         }
-
         public List<Host> SortedByNumOfHostingUnits()
         {
             throw new NotImplementedException();
         }
-
         public List<Host> SortedByNumOfhostingUnits()
         {
             throw new NotImplementedException();
         }
-
         public List<HostingUnit> UNitsSortedByArea()
+        {
+            throw new NotImplementedException();
+        }
+        List<Order> IBL.AllOrdersByCriteria(IBL.checkOrder check)
+        {
+            throw new NotImplementedException();
+        }
+        int IBL.calcNumOfDaysBetween(params DateTime[] num)
+        {
+            throw new NotImplementedException();
+        }
+         List<HostingUnit> IBL.FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
+        {
+            throw new NotImplementedException();
+        }
+        int IBL.GuestOrderSuggestions(GuestRequest guest)
+        {
+            throw new NotImplementedException();
+        }
+        int IBL.HostingunitOrdersFilled(HostingUnit hosting)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Order> IBL.OlderOrders(int numOfDays)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<GuestRequest> IBL.SortedByArea()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<GuestRequest> IBL.SortedByNumOfGuests()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Host> IBL.SortedByNumOfhostingUnits()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<HostingUnit> IBL.UNitsSortedByArea()
         {
             throw new NotImplementedException();
         }
