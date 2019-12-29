@@ -9,6 +9,11 @@ namespace IBL
 {
     public class IBL_imp : IBL
     {
+        /// <summary>
+        /// geta a method of checking the orders and returns all the orders that fit that method
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
         public List<Order> AllOrdersByCriteria(Delegate check)
         {
             List<Order> L = new List<Order>();
@@ -24,7 +29,11 @@ namespace IBL
             }
             return L;
         }
-
+        /// <summary>
+        /// function recieves either two dates and calculates the time betweeen them, or one and calculates from the present 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         public int calcNumOfDaysBetween(params DateTime[] num)
         {
             int sum = 0;
@@ -42,17 +51,28 @@ namespace IBL
             }
             return sum;
         }
-
-        private DateTime calEndDate(DateTime start, int num)
+        /// <summary>
+        /// calculates the end date of a stay
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private DateTime calcEndDate(DateTime start, int num)
         {
-            DateTime enedDate = start.AddDays(num);
-            return enedDate;
+            DateTime endDate = start.AddDays(num);
+            return endDate;
         }
+        /// <summary>
+        /// checks for free units a a spacifec time ???(is this correct?)
+        /// </summary>
+        /// <param name="startdate"></param>
+        /// <param name="numOfDaysForVacatrion"></param>
+        /// <returns></returns>
         public List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
         {
             List<HostingUnit> L=new List<HostingUnit>();
             DateTime end = calEndDate(startdate, numOfDaysForVacatrion);
-             var v = from item in dall.GetAllHostingUnits()
+             var v = from item in dal.GetAllHostingUnits()
                     where checkDates(startdate,end,item)==true
                              select item;
 
@@ -65,6 +85,13 @@ namespace IBL
             return L;
 
         }
+        /// <summary>
+        /// checks if dates are occupied or vacent
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="host"></param>
+        /// <returns></returns>
         private bool checkDates(DateTime start, DateTime end, HostingUnit host)
         {
 
@@ -83,14 +110,11 @@ namespace IBL
             }
             return true;
         }
-        public int GuestOrderSuggestions(GuestRequest guest)//dont know how to do this
-        {
-            throw new NotImplementedException();
-        }
-        public int HostingunitOrdersFilled(HostingUnit hosting)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// returns all the orders that are equall or older than the number of days received
+        /// </summary>
+        /// <param name="numOfDays">integer for the number of days</param>
+        /// <returns></returns>
         public List<Order> OlderOrders(int numOfDays)
         {
             List<Order> L = new List<Order>();
@@ -104,84 +128,63 @@ namespace IBL
             return L;
 
         }
-        public List<GuestRequest> SortedByArea()
+        /// <summary>
+        /// the function recieves a guest request and returns the number of orders sent to it.
+        /// </summary>
+        /// <param name="guest"></param>
+        /// <returns>returns the number of orders sent</returns>
+        public int GuestOrderSuggestions(GuestRequest guest) //not implamented
         {
             throw new NotImplementedException();
         }
-        public List<GuestRequest> SortedByNumOfGuests()
+        /// <summary>
+        /// returns the number of orders sent to guests or orders filled out
+        /// </summary>
+        /// <param name="hosting"></param>
+        /// <returns></returns>
+        public int HostingUnitOrdersFilled(HostingUnit hosting)
         {
             throw new NotImplementedException();
-        }
-        public List<Host> SortedByNumOfHostingUnits()
-        {
-            throw new NotImplementedException();
-        }
-        public List<Host> SortedByNumOfhostingUnits()
-        {
-            throw new NotImplementedException();
-        }
-        public List<HostingUnit> UNitsSortedByArea()
-        {
-            throw new NotImplementedException();
-        }
-        List<Order> IBL.AllOrdersByCriteria(IBL.checkOrder check)
-        {
-            throw new NotImplementedException();
-        }
-        int IBL.calcNumOfDaysBetween(params DateTime[] num)
-        {
-            throw new NotImplementedException();
-        }
-         List<HostingUnit> IBL.FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
-        {
-            throw new NotImplementedException();
-        }
-        int IBL.GuestOrderSuggestions(GuestRequest guest)
-        {
-            throw new NotImplementedException();
-        }
-        int IBL.HostingunitOrdersFilled(HostingUnit hosting)
-        {
-            throw new NotImplementedException();
-        }
+        } //not implamented
 
-        List<Order> IBL.OlderOrders(int numOfDays)
+        /************the next few functions are using grouping***********/
+
+        public List<HostingUnit> GroupByAreaOfHostingUnit()//grouping
         {
             throw new NotImplementedException();
         }
-
-        List<GuestRequest> IBL.SortedByArea()//grouping
+        /// <summary>
+        /// returns guestrequests groups by num of guests
+        /// </summary>
+        /// <returns></returns>
+        public List<GuestRequest> GroupedByNumOfGuests()//grouping
         {
-            throw new NotImplementedException();
+            var v = from item in DataSource.GuestRequestList
+                    group item by item.TotalGuests;
+            return v;
         }
-
-        List<GuestRequest> IBL.SortedByNumOfGuests()//grouping
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// returns hosts by number of hosting units they have
         /// </summary>
         /// <returns></returns>
-        List<Host> IBL.groupedByNumOfhostingUnits()//grouping
+        public List<Host> groupedByNumOfhostingUnits()//grouping
         {
             IDAL.calcNumOfHostinUnits(); //call function
             var v = from item in DataSource.HostList
                     group item by item.NumOfHostinUnits;
             return v;
         }
-
         /// <summary>
-        /// returns guestrequests groups by area
+        /// returns guest requests groups by area
         /// </summary>
         /// <returns></returns>
-        List<HostingUnit> IBL.gsgroupedByArea()//grouping
+        public List<GuestRequest> GroupedByAreaOfGuestRequest()//grouping
         {
             var v = from item in DataSource.GuestRequestList
                     group item by item.Area;
-
             return v;
         }
+      
+       
     }
 }

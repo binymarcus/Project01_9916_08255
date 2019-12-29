@@ -17,6 +17,7 @@ namespace BE
          string SubArea; 
          int Adults;
          int Children;
+         int TotalGuests;
 
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
         public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
@@ -28,6 +29,7 @@ namespace BE
         public string SubArea1 { get => SubArea; set => SubArea = value; }
         public int Adults1 { get => Adults; set => Adults = value; }
         public int Children1 { get => Children; set => Children = value; }
+        public int TotalGuests1 { get => (Children+Adults) ; set => TotalGuests = value; }
 
         public override string ToString()
         {
