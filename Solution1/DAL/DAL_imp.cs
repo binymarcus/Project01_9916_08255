@@ -8,13 +8,7 @@ namespace DAL
 {
     public class DAL_imp : IDAL
     {
-        public DAL_imp()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
+        
         /// <summary>
         /// adds a request for service from a client to the system|throws an error if request already exists
         /// </summary>
@@ -109,7 +103,6 @@ namespace DAL
             DataSource.HostingUnitList.Remove(hostingUnit);
             DataSource.HostingUnitList.Add(hostingUnit);
         }
-
         /// <summary>
         /// adds an order from a client to the system|throws error if order already exists
         /// </summary>
@@ -145,7 +138,6 @@ namespace DAL
             DataSource.OrderList.Add(order);
 
         }
-
         /// <summary>
         /// finds and returns a list of all the hosting units in the sytem
         /// </summary>
@@ -157,7 +149,6 @@ namespace DAL
                 L.Add(Cloning.Clone(item));
             return L;
         }
-
         /// <summary>
         /// shows all clients currently in the system
         /// </summary>
@@ -170,7 +161,6 @@ namespace DAL
                 L.Add(Cloning.Clone(item));
             return L;
         }
-
         /// <summary>
         /// gets all the orders in the system
         /// </summary>
@@ -182,7 +172,6 @@ namespace DAL
                 L.Add(Cloning.Clone(item));
             return L;
         }
-
         /// <summary>
         /// reutrns all the banks
         /// </summary>
@@ -200,7 +189,6 @@ namespace DAL
 
             return L;
         }
-
          /// <summary>
         /// sets num of hosting units each host has
         /// </summary>

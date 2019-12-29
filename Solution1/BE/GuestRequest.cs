@@ -27,6 +27,8 @@ namespace BE
         BEEnum.Area area;
         BEEnum.Status status;
 
+        //****properties****//
+
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
         public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
