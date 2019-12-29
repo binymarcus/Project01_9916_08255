@@ -6,7 +6,7 @@ using DS;
 
 namespace DAL
 {
-    public class DAL_imp
+    public class DAL_imp : IDAL
     {
         public DAL_imp()
         {
@@ -201,6 +201,21 @@ namespace DAL
             return L;
         }
 
+         /// <summary>
+        /// sets num of hosting units each host has
+        /// </summary>
+        /// <returns></returns>
+        public void CalcNumOfHostingUnits()
+        {
+              foreach (var item1 in DataSource.HostList)
+              {
+                     foreach (var item2 in DataSource.HostingUnitList)
+                     {
+                           if(item1.Hostkey1 == item2.Owner.HostKey1)
+                               item1.NumOfHostinUnits1++;
+                     }
+              }
+        }
     }
 }
 

@@ -14,6 +14,7 @@ namespace BE
         BankBranch BankBranchDetails;
         int BankAccountNumber;
         bool CollectionClearance;// bool to check if we are cleared to take money from bank
+        int NumOfHostinUnits;
 
         public long HostKey1 { get => HostKey; set => HostKey = value; }
         public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
@@ -23,8 +24,8 @@ namespace BE
         public BankBranch BankBranchDetails1 { get => BankBranchDetails; set => BankBranchDetails = value; }
         public int BankAccountNumber1 { get => BankAccountNumber; set => BankAccountNumber = value; }
         public bool CollectionClearance1 { get => CollectionClearance; set => CollectionClearance = value; }
-        internal BankAccount BankAccount1 { get => BankAccount; set => BankAccount = value; }//what is this for???
-
+        public BankAccount BankAccount1 { get => BankAccount; set => BankAccount = value; }//what is this for???
+        public int NumOfHostinUnits1 { get => NumOfHostinUnits; set => NumOfHostinUnits = value; }
         /*************may need to make more variables-erase at the end of project*************/
 
         public override string ToString()

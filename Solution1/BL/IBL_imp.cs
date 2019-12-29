@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using BE;
 using DAL;
+using DS;
 
 namespace IBL
 {
     public class IBL_imp : IBL
     {
-        DAL_imp dall;
         public List<Order> AllOrdersByCriteria(Delegate check)
         {
             List<Order> L = new List<Order>();
@@ -150,24 +150,38 @@ namespace IBL
             throw new NotImplementedException();
         }
 
-        List<GuestRequest> IBL.SortedByArea()
+        List<GuestRequest> IBL.SortedByArea()//grouping
         {
             throw new NotImplementedException();
         }
 
-        List<GuestRequest> IBL.SortedByNumOfGuests()
+        List<GuestRequest> IBL.SortedByNumOfGuests()//grouping
         {
             throw new NotImplementedException();
         }
 
-        List<Host> IBL.SortedByNumOfhostingUnits()
+        /// <summary>
+        /// returns hosts by number of hosting units they have
+        /// </summary>
+        /// <returns></returns>
+        List<Host> IBL.groupedByNumOfhostingUnits()//grouping
         {
-            throw new NotImplementedException();
+            IDAL.calcNumOfHostinUnits(); //call function
+            var v = from item in DataSource.HostList
+                    group item by item.NumOfHostinUnits;
+            return v;
         }
 
-        List<HostingUnit> IBL.UNitsSortedByArea()
+        /// <summary>
+        /// returns guestrequests groups by area
+        /// </summary>
+        /// <returns></returns>
+        List<HostingUnit> IBL.gsgroupedByArea()//grouping
         {
-            throw new NotImplementedException();
+            var v = from item in DataSource.GuestRequestList
+                    group item by item.Area;
+
+            return v;
         }
     }
 }

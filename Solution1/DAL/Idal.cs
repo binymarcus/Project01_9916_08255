@@ -66,5 +66,11 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
      List<string> GetAllBanks();
+
+          /// <summary>
+        /// reutrns num of hosting units each host has
+        /// </summary>
+        /// <returns></returns>
+        void CalcNumOfHostingUnits();
     }
 }
