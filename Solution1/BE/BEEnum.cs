@@ -6,10 +6,10 @@ namespace BE
 {
     public class BEEnum
     {
-          enum Status {pending, mailSent,closedByClientsLackOfResponse, ClosedByClientResponse};
-          enum Area { All,North,South,Center,Jerusalem}
-          enum Option { Must,Optional,notInterested}
-          enum Type { Zimmer,Hotel,Camping,BAndB }  
+          public enum Status {pending, mailSent,closedByClientsLackOfResponse, ClosedByClientResponse};
+         public enum Area { All,North,South,Center,Jerusalem}
+         public enum Option { Must,Optional,notInterested}
+         public enum Type { Zimmer,Hotel,Camping,BAndB }  
     }
 
 }

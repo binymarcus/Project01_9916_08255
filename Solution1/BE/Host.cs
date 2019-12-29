@@ -24,7 +24,6 @@ namespace BE
         public BankBranch BankBranchDetails1 { get => BankBranchDetails; set => BankBranchDetails = value; }
         public int BankAccountNumber1 { get => BankAccountNumber; set => BankAccountNumber = value; }
         public bool CollectionClearance1 { get => CollectionClearance; set => CollectionClearance = value; }
-        public BankAccount BankAccount1 { get => BankAccount; set => BankAccount = value; }//what is this for???
         public int NumOfHostinUnits1 { get => NumOfHostinUnits; set => NumOfHostinUnits = value; }
         /*************may need to make more variables-erase at the end of project*************/
 

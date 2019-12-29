@@ -7,6 +7,9 @@ namespace BL
 {
     public interface IBL
     {
+
+        bool CanOrder(GuestRequest guestRequest);
+
         /// <summary>
         /// geta a method of checking the orders and returns all the orders that fit that method
         /// </summary>

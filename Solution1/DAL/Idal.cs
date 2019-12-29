@@ -65,7 +65,7 @@ namespace DAL
         /// reutrns all the banks- may be stings, unclear
         /// </summary>
         /// <returns></returns>
-     List<string> GetAllBanks();
+     List<BankBranch> GetAllBanks();
 
      /// <summary>
         /// reutrns num of hosting units each host has

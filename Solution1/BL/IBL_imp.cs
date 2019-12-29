@@ -9,7 +9,17 @@ namespace BL
 {
     public class IBL_imp : IBL
     {
-        /// <summary>
+        #region
+        ///ibl logic///
+        public bool CanOrder(GuestRequest guestRequest)
+        {
+            if (guestRequest.EntryDate1.DayOfYear <= guestRequest.ReleaseDate1.DayOfYear)
+                return false;
+            return true;
+         }
+        #endregion
+
+        ///<summary>
         /// geta a method of checking the orders and returns all the orders that fit that method
         /// </summary>
         /// <param name="check"></param>

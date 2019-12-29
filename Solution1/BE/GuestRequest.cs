@@ -21,7 +21,7 @@ namespace BE
         //*******enums***********//
         BEEnum.Option pool;
         BEEnum.Option Jacuzzi;
-        BEEnum.Opotion Garden;
+        BEEnum.Option Garden;
         BEEnum.Option ChildrensAttractions;
         BEEnum.Type type;
         BEEnum.Area area;
@@ -55,16 +55,16 @@ namespace BE
             toString += "PrivateName: " + PrivateName + "\n";
             toString += "FamilyName: " + FamilyName + "\n";
             toString += "MailAddress: " + MailAddress + "\n";
-            toString += "Status: " + Status.ToString() + "\n";
+            toString += "Status: " + status.ToString() + "\n";
             toString += "RegistrationDate: " + RegistrationDate.ToString() + "\n";
             toString += "EntryDate: " + EntryDate.ToString() + "\n";
             toString += "ReleaseDate: " + ReleaseDate.ToString() + "\n";
-            toString += "Area: " + Area.ToString() + "\n";
-            toString += "Type: " + Type.ToString() + "\n";
+            toString += "Area: " + area.ToString() + "\n";
+            toString += "Type: " + type.ToString() + "\n";
             toString += "Adults: " + Convert.ToString(Adults) + "\n";
             toString += "Children: " + Convert.ToString(Children) + "\n";
             toString += "TotalGuests: " + Convert.ToString(TotalGuests) + "\n";
-            toString += "Pool: " + Pool.ToString() + "\n";
+            toString += "Pool: " + pool.ToString() + "\n";
             toString += "Jacuzzi: " + Jacuzzi.ToString() + "\n";
             toString += "Garden: " + Garden.ToString() + "\n";
             toString += "ChildrensAttractions: " + ChildrensAttractions.ToString() + "\n";

@@ -199,7 +199,7 @@ namespace DAL
               {
                      foreach (var item2 in DataSource.HostingUnitList)
                      {
-                           if(item1.Hostkey1 == item2.Owner.HostKey1)
+                           if(item1.HostKey1 == item2.Owner1.HostKey1)
                                item1.NumOfHostinUnits1++;
                      }
               }
