@@ -151,7 +151,9 @@ namespace IBL
 
         public List<HostingUnit> GroupByAreaOfHostingUnit()//grouping
         {
-            throw new NotImplementedException();
+            var v = from item in DataSource.HostingUnitList
+                    group item by item.areaOfHOstingUnit;
+            return v;
         }
         /// <summary>
         /// returns guestrequests groups by num of guests

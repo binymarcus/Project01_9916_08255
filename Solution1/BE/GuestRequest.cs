@@ -18,6 +18,14 @@ namespace BE
          int Adults;
          int Children;
          int TotalGuests;
+        //*******enums***********//
+        BEEnum.Option pool;
+        BEEnum.Option Jacuzzi;
+        BEEnum.Opotion Garden;
+        BEEnum.Option ChildrensAttractions;
+        BEEnum.Type type;
+        BEEnum.Area area;
+        BEEnum.Status status;
 
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
         public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
@@ -30,11 +38,35 @@ namespace BE
         public int Adults1 { get => Adults; set => Adults = value; }
         public int Children1 { get => Children; set => Children = value; }
         public int TotalGuests1 { get => (Children+Adults) ; set => TotalGuests = value; }
+        public BEEnum.Option pool1 { get => pool; set => pool = value;}
+        public BEEnum.Option Jacuzzi1 { get => Jacuzzi; set => Jacuzzi = value;}
+        public BEEnum.Option Garden1 { get => Garden; set => Garden = value;}
+        public BEEnum.Option ChildrensAttractions1 { get => ChildrensAttractions; set => ChildrensAttractions = value;}
+        public BEEnum.Type type1 { get => type; set => type = value;}
+        public BEEnum.Area area1 { get => area; set => area = value;}
+        public BEEnum.Status status1 { get => status; set => status = value;}
 
         public override string ToString()
         {
-            //need to write once class finished
-            return base.ToString();
+              string toString = "";
+            toString += "GuestRequestKey: " + Convert.ToString(GuestRequestKey) + "\n";
+            toString += "PrivateName: " + PrivateName + "\n";
+            toString += "FamilyName: " + FamilyName + "\n";
+            toString += "MailAddress: " + MailAddress + "\n";
+            toString += "Status: " + Status.ToString() + "\n";
+            toString += "RegistrationDate: " + RegistrationDate.ToString() + "\n";
+            toString += "EntryDate: " + EntryDate.ToString() + "\n";
+            toString += "ReleaseDate: " + ReleaseDate.ToString() + "\n";
+            toString += "Area: " + Area.ToString() + "\n";
+            toString += "Type: " + Type.ToString() + "\n";
+            toString += "Adults: " + Convert.ToString(Adults) + "\n";
+            toString += "Children: " + Convert.ToString(Children) + "\n";
+            toString += "TotalGuests: " + Convert.ToString(TotalGuests) + "\n";
+            toString += "Pool: " + Pool.ToString() + "\n";
+            toString += "Jacuzzi: " + Jacuzzi.ToString() + "\n";
+            toString += "Garden: " + Garden.ToString() + "\n";
+            toString += "ChildrensAttractions: " + ChildrensAttractions.ToString() + "\n";
+            return toString;
         }
         //may need add other things. will do later. erase at end of project
     }
