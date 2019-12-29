@@ -152,10 +152,10 @@ namespace BL
         /// </summary>
         /// <param name="hosting"></param>
         /// <returns></returns>
-        public int HostingUnitOrdersFilled(HostingUnit hosting)
+        public int HostingUnitOrdersFilled(HostingUnit hosting) //not implamented
         {
             throw new NotImplementedException();
-        } //not implamented
+        }
 
         /************the next few functions are using grouping***********/
 
