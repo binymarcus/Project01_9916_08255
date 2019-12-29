@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BE;
 using DAL;
 
-namespace IBL
+namespace BL
 {
     public interface IBL
     {
@@ -25,7 +25,7 @@ namespace IBL
         /// <param name="start"></param>
         /// <param name="num"></param>
         /// <returns></returns>
-        DateTime calcEndDate(DateTime start, int num);
+        DateTime CalcEndDate(DateTime start, int num);
         /// <summary>
         /// checks and returns all the hosting units that are emoty in the specifies days
         /// </summary>

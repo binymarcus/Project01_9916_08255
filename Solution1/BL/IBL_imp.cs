@@ -5,7 +5,7 @@ using BE;
 using DAL;
 using DS;
 
-namespace IBL
+namespace BL
 {
     public class IBL_imp : IBL
     {
@@ -17,7 +17,7 @@ namespace IBL
         public List<Order> AllOrdersByCriteria(Delegate check)
         {
             List<Order> L = new List<Order>();
-            var v = from item in dall.GetAllOrders()
+            var v = from item in dal.GetAllOrders()
                     where 
                     select item;
 
@@ -57,7 +57,7 @@ namespace IBL
         /// <param name="start"></param>
         /// <param name="num"></param>
         /// <returns></returns>
-        private DateTime calcEndDate(DateTime start, int num)
+        public DateTime CalcEndDate(DateTime start, int num)
         {
             DateTime endDate = start.AddDays(num);
             return endDate;
@@ -71,7 +71,7 @@ namespace IBL
         public List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
         {
             List<HostingUnit> L=new List<HostingUnit>();
-            DateTime end = calEndDate(startdate, numOfDaysForVacatrion);
+            DateTime end = CalEndDate(startdate, numOfDaysForVacatrion);
              var v = from item in dal.GetAllHostingUnits()
                     where checkDates(startdate,end,item)==true
                              select item;
@@ -92,7 +92,7 @@ namespace IBL
         /// <param name="end"></param>
         /// <param name="host"></param>
         /// <returns></returns>
-        private bool checkDates(DateTime start, DateTime end, HostingUnit host)
+        public bool checkDates(DateTime start, DateTime end, HostingUnit host)
         {
 
             for (int i = start.Month; i <= end.Month; i++)
@@ -118,7 +118,7 @@ namespace IBL
         public List<Order> OlderOrders(int numOfDays)
         {
             List<Order> L = new List<Order>();
-            var v = from item in dall.GetAllOrders()
+            var v = from item in dal.GetAllOrders()
                     where DateTime.Today.DayOfYear-item.OrderDate1.DayOfYear>=numOfDays
                     select item;
             foreach (var item in v)
@@ -152,7 +152,7 @@ namespace IBL
         public List<HostingUnit> GroupByAreaOfHostingUnit()//grouping
         {
             var v = from item in DataSource.HostingUnitList
-                    group item by item.areaOfHOstingUnit;
+                    group item by item.areaOfHOstingUnit1;
             return v;
         }
         /// <summary>
@@ -162,7 +162,7 @@ namespace IBL
         public List<GuestRequest> GroupedByNumOfGuests()//grouping
         {
             var v = from item in DataSource.GuestRequestList
-                    group item by item.TotalGuests;
+                    group item by item.TotalGuests1;
             return v;
         }
         /// <summary>
@@ -171,9 +171,9 @@ namespace IBL
         /// <returns></returns>
         public List<Host> groupedByNumOfhostingUnits()//grouping
         {
-            IDAL.calcNumOfHostinUnits(); //call function
+            dal.calcNumOfHostinUnits(); //call function
             var v = from item in DataSource.HostList
-                    group item by item.NumOfHostinUnits;
+                    group item by item.NumOfHostinUnits1;
             return v;
         }
         /// <summary>
@@ -183,7 +183,7 @@ namespace IBL
         public List<GuestRequest> GroupedByAreaOfGuestRequest()//grouping
         {
             var v = from item in DataSource.GuestRequestList
-                    group item by item.Area;
+                    group item by item.area1;
             return v;
         }
       
