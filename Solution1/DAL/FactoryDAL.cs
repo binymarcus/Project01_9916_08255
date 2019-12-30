@@ -8,6 +8,9 @@ namespace DAL
 {
     public class FactoryDAL
     {
+        
+        private static IDAL instence = null;
+        
         public static IDAL getDAL()
         {
             if(instence == null)
@@ -17,7 +20,7 @@ namespace DAL
 
         private FactoryDAL() { } //constructur
 
-        private static IDAL instence = null;
+        
     }
 
 
