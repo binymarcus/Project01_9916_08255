@@ -16,7 +16,7 @@ namespace BE
         public string HostingUnitName1 { get => HostingUnitName; set => HostingUnitName = value; }
         public bool[,] Diary1 { get => Diary; set => Diary = value; }
         public Host Owner1 { get => Owner; set => Owner = value; }
-        public BEEnum.Area areaOfHOstingUnit1 { get => areaOfHOstingUnit; set => areaOfHOstingUnit = value;}
+        public BEEnum.Area areaOfHostingUnit { get => areaOfHOstingUnit; set => areaOfHOstingUnit = value;}
 
         public override string ToString()
         {

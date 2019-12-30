@@ -6,7 +6,7 @@ using DS;
 
 namespace DAL
 {
-    public class DAL_imp : IDAL
+    public class DAL_imp : Idal
     {
         
         /// <summary>
@@ -37,7 +37,7 @@ namespace DAL
                     select item;
 
             if (v.Count() == 0)
-                throw new KeyNotFoundException("GuestRequest key dose not exist");
+                throw new KeyNotFoundException("GuestRequest key does not exist");
 
             DataSource.GuestRequestList.Remove(guestRequest);
             DataSource.GuestRequestList.Add(guestRequest);
@@ -98,7 +98,7 @@ namespace DAL
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("GuestRequest key does not exist");
+                throw new Exception("hosting unit  does not exist");
 
             DataSource.HostingUnitList.Remove(hostingUnit);
             DataSource.HostingUnitList.Add(hostingUnit);
@@ -127,12 +127,6 @@ namespace DAL
         /// <param name="order">Order defined in BE</param>
         public void UpdateOrder(Order order)
         {//TODO: need to put try and catch
-            var v = from item in DataSource.OrderList
-                    where item.OrderKey1 == order.OrderKey1
-                    select item;
-
-            if (v.Count() == 0)
-                throw new Exception("GuestRequest key does not exist");
 
             DataSource.OrderList.Remove(order);
             DataSource.OrderList.Add(order);
@@ -204,6 +198,55 @@ namespace DAL
                      }
               }
         }
+
+        public Order GetOrderByKey(long key)
+        {
+            foreach (var item in GetAllOrders())
+            {
+                if (key == item.OrderKey1)
+                    return item;
+            }
+            throw new Exception("The order does not exist!");
+        }
+
+        public GuestRequest GetGuestRequestByKey(long key)
+        {
+            foreach (var item in GetAllGuestRequest())
+            {
+                if (key == item.GuestRequestKey1)
+                    return item;
+            }
+            throw new Exception("the guest request does not exist");
+        }
+        public HostingUnit GetHostingUnitByKey(long key)
+        {
+            foreach (var item in GetAllHostingUnits())
+            {
+                if (key == item.HostingUnitKey1)
+                    return item;
+            }
+            throw new Exception("the hosting unit does not exist");
+
+        }
+
+        public HostingUnit updateDiary(HostingUnit host, GuestRequest guest)
+        {
+          
+            for (int i = guest.EntryDate1.Month; i <= guest.ReleaseDate1.Month; i++)
+            {
+                int j = 0;
+                if (i == guest.EntryDate1.Month)
+                    j = guest.EntryDate1.Day;
+                for (; j < 31; j++)
+                {
+                    
+
+                }
+            }
+
+        }
+      
+
     }
 }
 

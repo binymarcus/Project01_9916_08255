@@ -4,7 +4,7 @@ using BE;
 
 namespace DAL
 {
-    public interface IDAL
+    public interface Idal
     {
      /// <summary>
         /// adds a request for service from a client to the system
@@ -66,11 +66,16 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
      List<BankBranch> GetAllBanks();
+        Order GetOrderByKey(long key);
+        GuestRequest GetGuestRequestByKey(long key);
+        HostingUnit GetHostingUnitByKey(long key);
+        HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
 
      /// <summary>
-        /// reutrns num of hosting units each host has
-        /// </summary>
-        /// <returns></returns>
+     /// reutrns num of hosting units each host has
+     /// </summary>
+     /// <returns></returns>
      void CalcNumOfHostingUnits();
+
     }
 }

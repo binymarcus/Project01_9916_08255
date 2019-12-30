@@ -10,7 +10,7 @@ namespace BL
     {
         public ClassBLAdapter()
         {
-           DAL.IDAL dal = DAL.FactoryDAL.getDAL();
+           DAL.Idal dal = DAL.FactoryDAL.getDAL();
         }
     }
 }

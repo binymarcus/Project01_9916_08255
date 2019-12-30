@@ -16,7 +16,7 @@ namespace BL
             if (guestRequest.EntryDate1.DayOfYear <= guestRequest.ReleaseDate1.DayOfYear)
                 return false;
             return true;
-         }
+        }
         #endregion
 
         ///<summary>
@@ -28,7 +28,7 @@ namespace BL
         {
             List<Order> L = new List<Order>();
             var v = from item in dal.GetAllOrders()
-                    where 
+                    where
                     select item;
 
             if (v.Count() == 0)
@@ -44,23 +44,6 @@ namespace BL
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public int calcNumOfDaysBetween(params DateTime[] num)
-        {
-            int sum = 0;
-            if (num.Length==2)
-            {//this may have to change according to lenth of the actual months
-                
-                    sum += Math.Abs(num[0].Day - num[1].Day);
-                sum += Math.Abs(30 * (num[0].Month - num[1].Month)); 
-            }
-            else //if only one date is sent to func
-            {//this may have to change according to lenth of the actual months
-                DateTime today = DateTime.Today;
-                sum += Math.Abs(today.Day - num[0].Day);
-                sum += Math.Abs(30 * (today.Month - num[0].Month));
-            }
-            return sum;
-        }
         /// <summary>
         /// calculates the end date of a stay
         /// </summary>
@@ -80,11 +63,11 @@ namespace BL
         /// <returns></returns>
         public List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
         {
-            List<HostingUnit> L=new List<HostingUnit>();
+            List<HostingUnit> L = new List<HostingUnit>();
             DateTime end = CalEndDate(startdate, numOfDaysForVacatrion);
-             var v = from item in dal.GetAllHostingUnits()
-                    where checkDates(startdate,end,item)==true
-                             select item;
+            var v = from item in dal.GetAllHostingUnits()
+                    where checkDates(startdate, end, item) == true
+                    select item;
 
             if (v.Count() == 0)
                 throw new Exception("There are no Free units in these dates");
@@ -129,7 +112,7 @@ namespace BL
         {
             List<Order> L = new List<Order>();
             var v = from item in dal.GetAllOrders()
-                    where DateTime.Today.DayOfYear-item.OrderDate1.DayOfYear>=numOfDays
+                    where DateTime.Today.DayOfYear - item.OrderDate1.DayOfYear >= numOfDays
                     select item;
             foreach (var item in v)
             {
@@ -158,45 +141,193 @@ namespace BL
         }
 
         /************the next few functions are using grouping***********/
-
-        public List<HostingUnit> GroupByAreaOfHostingUnit()//grouping
+        public List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest()//grouping
         {
-            var v = from item in DataSource.HostingUnitList
-                    group item by item.areaOfHOstingUnit1;
-            return v;
+            var v = from item in FactoryDAL.getDAL().GetAllGuestRequest()
+                    group item by item.area1;
+
+            return v.ToList();
+        }
+        public List<IGrouping<BEEnum.Area, HostingUnit>> GroupByAreaOfHostingUnit()//grouping
+        {
+            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+                    group item by item.areaOfHostingUnit;
+            return v.ToList();
         }
         /// <summary>
         /// returns guestrequests groups by num of guests
         /// </summary>
         /// <returns></returns>
-        public List<GuestRequest> GroupedByNumOfGuests()//grouping
+        public List<IGrouping<int, GuestRequest>> GroupedByNumOfGuests()//grouping
         {
-            var v = from item in DataSource.GuestRequestList
+            var v = from item in FactoryDAL.getDAL().GetAllGuestRequest()
                     group item by item.TotalGuests1;
-            return v;
+            return v.ToList();
         }
         /// <summary>
         /// returns hosts by number of hosting units they have
         /// </summary>
         /// <returns></returns>
-        public List<Host> groupedByNumOfhostingUnits()//grouping
+        public List<IGrouping<int, Host>> groupedByNumOfhostingUnits()//grouping
         {
-            dal.calcNumOfHostinUnits(); //call function
+            CalcNumOfHostingUnits(); //call function
             var v = from item in DataSource.HostList
                     group item by item.NumOfHostinUnits1;
-            return v;
+            return v.ToList();
         }
-        /// <summary>
-        /// returns guest requests groups by area
-        /// </summary>
-        /// <returns></returns>
-        public List<GuestRequest> GroupedByAreaOfGuestRequest()//grouping
+        /**************end of grouping*************/
+        public void AddGuestRequest(GuestRequest guestRequest)
         {
-            var v = from item in DataSource.GuestRequestList
-                    group item by item.area1;
-            return v;
+            if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
+                throw new UnexceptableDetailsException("Entry date must be at least one day before exit date.");
+            try
+            {
+                FactoryDAL.getDAL().AddGuestRequest(guestRequest);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
-      
-       
+        public void AddOrder(Order order)
+        {
+            if (order.Status==BEEnum.Status.ClosedByClientResponse|| order.Status == BEEnum.Status.closedByClientsLackOfResponse)
+            {
+                throw new UnexceptableDetailsException("order cannot be closed.");
+            }
+            try
+            {
+                FactoryDAL.getDAL().AddOrder(order);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void AddHostingUnit(HostingUnit hostingUnit)
+        {
+            if (hostingUnit.Owner1 == null)
+                throw new UnexceptableDetailsException("All hosting units must have an owner");
+            try
+            {
+                FactoryDAL.getDAL().AddHostingUnit(hostingUnit);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void UpdateGuestRequest(GuestRequest guestRequest)
+        {
+            if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
+                throw new UnexceptableDetailsException("Entry date must be at least one day before exit date.");
+            try
+            {
+                FactoryDAL.getDAL().UpdateGuestRequest(guestRequest);
+            }
+            catch (Exception)
+            {
+              throw;
+            }
+        }
+        public void UpdateOrder(Order order)
+        {          
+            if( FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.mailSent)//may need to change it from mail sent
+            {
+                throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
+            }
+            try
+            {
+
+                if (order.Status == BEEnum.Status.mailSent&& FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status!= BEEnum.Status.mailSent)
+                {
+                   Configuration.commmission+=10* calcNumOfDaysBetween(FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1).EntryDate1, FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1).ReleaseDate1) ;//dont knwo what to do with this
+                   UpdateHostingUnit(FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1).)
+                }
+                FactoryDAL.getDAL().UpdateOrder(order);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void UpdateHostingUnit(HostingUnit hostingUnit)
+        {
+            if (hostingUnit.Owner1==null)//may need to change it from mail sent
+            {
+                throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
+            }
+            try
+            {
+                FactoryDAL.getDAL().UpdateOrder(order);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void DeleteGuestRequest(GuestRequest guestRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteHostingUnit(HostingUnit hostingUnit)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+        public List<HostingUnit> GetAllHostingUnits()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<GuestRequest> GetAllGuestRequest()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<BankBranch> GetAllBanks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CalcNumOfHostingUnits()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int calcNumOfDaysBetween(params DateTime[] num)
+        {
+            int sum = 0;
+            if (num.Length == 2)
+            {//this may have to change according to lenth of the actual months
+
+                sum += Math.Abs(num[0].Day - num[1].Day);
+                sum += Math.Abs(30 * (num[0].Month - num[1].Month));
+            }
+            else //if only one date is sent to func
+            {//this may have to change according to lenth of the actual months
+                DateTime today = DateTime.Today;
+                sum += Math.Abs(today.Day - num[0].Day);
+                sum += Math.Abs(30 * (today.Month - num[0].Month));
+            }
+            return sum;
+        }
+
+
     }
 }
+

@@ -9,9 +9,9 @@ namespace DAL
     public class FactoryDAL
     {
         
-        private static IDAL instence = null;
+        private static Idal instence = null;
         
-        public static IDAL getDAL()
+        public static Idal getDAL()
         {
             if(instence == null)
                 instence = new DAL_imp();
