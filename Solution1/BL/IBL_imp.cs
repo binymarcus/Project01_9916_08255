@@ -9,16 +9,6 @@ namespace BL
 {
     public class IBL_imp : IBL
     {
-        #region
-        ///ibl logic///
-        public bool CanOrder(GuestRequest guestRequest)
-        {
-            if (guestRequest.EntryDate1.DayOfYear <= guestRequest.ReleaseDate1.DayOfYear)
-                return false;
-            return true;
-        }
-        #endregion
-
         ///<summary>
         /// geta a method of checking the orders and returns all the orders that fit that method
         /// </summary>
@@ -245,7 +235,7 @@ namespace BL
                 if (order.Status == BEEnum.Status.mailSent&& FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status!= BEEnum.Status.mailSent)
                 {
                    Configuration.commmission+=10* calcNumOfDaysBetween(FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1).EntryDate1, FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1).ReleaseDate1) ;//dont knwo what to do with this
-                   UpdateHostingUnit(FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1).)
+                    UpdateHostingUnit(FactoryDAL.getDAL().updateDiary(FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1), FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1)));
                 }
                 FactoryDAL.getDAL().UpdateOrder(order);
             }

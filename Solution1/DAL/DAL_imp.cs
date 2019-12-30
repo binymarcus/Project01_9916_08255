@@ -237,13 +237,15 @@ namespace DAL
                 int j = 0;
                 if (i == guest.EntryDate1.Month)
                     j = guest.EntryDate1.Day;
-                for (; j < 31; j++)
+                int stop = 31;
+                if (i == guest.ReleaseDate1.Month)
+                    stop = guest.ReleaseDate1.Day;
+                for (; j < stop; j++)
                 {
-                    
-
+                    host.Diary1[i, j] = true;
                 }
             }
-
+            return host;
         }
       
 

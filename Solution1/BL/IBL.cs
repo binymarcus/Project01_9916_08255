@@ -57,11 +57,12 @@ namespace BL
         /// shows all clients currently in the system
         /// </summary>
         /// <returns>List of the Clients in the system-by request</returns>
-        List<GuestRequest> GetAllGuestRequest();//this may need to change from guest request
-                                                /// <summary>
-                                                /// gets all the orders in the system
-                                                /// </summary>
-                                                /// <returns><list of the Orders/returns>
+        List<GuestRequest> GetAllGuestRequest();
+        //this may need to change from guest request
+        /// <summary>
+       /// gets all the orders in the system
+       /// </summary>
+       /// <returns><list of the Orders/returns>
         List<Order> GetAllOrders();
         /// <summary>
         /// reutrns all the banks- may be stings, unclear
@@ -75,8 +76,6 @@ namespace BL
         /// <returns></returns>
         void CalcNumOfHostingUnits();
         /***************end of functions from idal**********/
-        bool CanOrder(GuestRequest guestRequest);
-
         /// <summary>
         /// geta a method of checking the orders and returns all the orders that fit that method
         /// </summary>
