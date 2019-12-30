@@ -6,6 +6,8 @@ namespace BL
 {
     public class FactoryBL
     {
+       private static IBL instence = null;
+        
         public static IBL getIBL()
         {
             if (instence == null)
@@ -15,6 +17,6 @@ namespace BL
 
         private FactoryIBL() { } //constructur
 
-        private static IBL instence = null;
+      
     }
 }
