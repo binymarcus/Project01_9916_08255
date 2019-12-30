@@ -21,8 +21,13 @@ namespace BE
 
         public override string ToString()
         {
-            //needs to be done 
-            return base.ToString();
+            string to = "Hosting unit key: " + HostingUnitKey;
+            to += "\n guest request key: " + GuestRequestKey;
+            to += "\n order key: " + OrderKey;
+            to += "\n Date the order was made: " + CreateDate.ToString();
+            to += "\n Date email was sent to client: " + OrderDate.ToString();
+            to += "\n status of the order: " + status.ToString();
+            return to;
         }
     }
 }

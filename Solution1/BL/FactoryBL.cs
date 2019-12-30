@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BL
 {
-    public class FactoryBL
+    public static class FactoryBL
     {
        private static IBL instence;
         public static IBL getIBL()
@@ -13,6 +13,5 @@ namespace BL
                 instence = new IBL_imp();
             return instence;
         }
-        private FactoryBL() {} //constructur
     }
 }

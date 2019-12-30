@@ -29,8 +29,16 @@ namespace BE
 
         public override string ToString()
         {
-            //needs to be done
-            return base.ToString();
+            string to = "Host Key: " + Convert.ToString(HostKey);
+            to += "\n Private name: " + PrivateName;
+            to += "\n Last name: " + FamilyName;
+            to += "\n Phone number: " + Convert.ToString(phoneNumber);
+            to += "\n Mailing address: " + MailAddress;
+            to += "\n bank branch details: " + BankBranchDetails.ToString();
+            to += "\n bank account number: " + BankAccountNumber;
+            to += "\n collection clearance: " + CollectionClearance;
+            to += "\n number of hosting units: " + NumOfHostinUnits;
+            return to;
         }
     }
 }

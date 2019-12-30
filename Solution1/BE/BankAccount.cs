@@ -12,8 +12,7 @@ namespace BE
 
         public override string ToString()
         {
-            //needs to be done
-            return base.ToString();
+            return ("bank account number: " + BankAccountNumber);
         }
 
     }
@@ -40,5 +39,16 @@ namespace BE
         public int BranchNumbner1 { get => BranchNumbner; set => BranchNumbner = value; }
         public string BranchAddress1 { get => BranchAddress; set => BranchAddress = value; }
         public string BranchCity1 { get => BranchCity; set => BranchCity = value; }
+
+        public override string ToString()
+        {
+            string to = "Bank name: " + BankName;
+            to += "\n Bank Number: " + BankNumber;
+            to += "\n Branch number: " + BranchNumbner;
+            to += "\n Branch adrress: " + BranchAddress;
+            to += "\n Branch City: " + BranchCity;
+            return to;
+
+        }
     }
 }
