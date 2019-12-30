@@ -116,9 +116,17 @@ namespace BL
         /// </summary>
         /// <param name="guest"></param>
         /// <returns>returns the number of orders sent</returns>
-        public int GuestOrderSuggestions(GuestRequest guest) //not implamented
+        public int GuestOrderSuggestions(GuestRequest guest)
         {
-            throw new NotImplementedException();
+            int sum = 0;
+            foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+            {
+                if(item.GuestRequestKey1==guest.GuestRequestKey1&&item.Status==BEEnum.Status.mailSent)
+                {
+                    sum++;
+                }
+            }
+            return sum;
         }
         /// <summary>
         /// returns the number of orders sent to guests or orders filled out
@@ -176,7 +184,6 @@ namespace BL
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -186,8 +193,8 @@ namespace BL
             {
                 throw new UnexceptableDetailsException("order cannot be closed.");
             }
-            if(!canOrder(order))
-                throw new UnexceptableDetailsException("we are sorry, but the dates are unavaileble. please visit us another time.")
+            if (!canOrder(order))
+                throw new UnexceptableDetailsException("we are sorry, but the dates are unavaileble. please visit us another time.");
             try
             {
                 FactoryDAL.getDAL().AddOrder(order);
@@ -281,42 +288,34 @@ namespace BL
         }
         public void DeleteGuestRequest(GuestRequest guestRequest)
         {
-            throw new NotImplementedException();
+            FactoryDAL.getDAL().DeleteGuestRequest(guestRequest);
         }
-
         public void DeleteHostingUnit(HostingUnit hostingUnit)
         {
-            throw new NotImplementedException();
+            if (!checkdeletehosting(hostingUnit))
+                throw new UnexceptableDetailsException("Cannot delete a hosting unit that has an active order.");
+            FactoryDAL.getDAL().DeleteHostingUnit(hostingUnit);
         }
-
-
-
-
         public List<HostingUnit> GetAllHostingUnits()
         {
             throw new NotImplementedException();
         }
-
         public List<GuestRequest> GetAllGuestRequest()
         {
             throw new NotImplementedException();
         }
-
         public List<Order> GetAllOrders()
         {
             throw new NotImplementedException();
         }
-
         public List<BankBranch> GetAllBanks()
         {
             throw new NotImplementedException();
         }
-
         public void CalcNumOfHostingUnits()
         {
             throw new NotImplementedException();
         }
-
         public int calcNumOfDaysBetween(params DateTime[] num)
         {
             int sum = 0;
@@ -334,7 +333,6 @@ namespace BL
             }
             return sum;
         }
-
         private bool canOrder(Order order)
         {
             HostingUnit host =FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1);
@@ -355,6 +353,15 @@ namespace BL
             }
             return true;
 
+        }
+        private bool checkdeletehosting(HostingUnit hosty)
+        {
+            foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+            {
+                if (item.HostingUnitKey1 == hosty.HostingUnitKey1)
+                    return false;
+            }
+            return true;
         }
     }
 }
