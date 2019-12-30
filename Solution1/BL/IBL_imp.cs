@@ -29,7 +29,22 @@ namespace BL
             }
             return L;
         }
-        
+        /// <summary>
+        /// function recieves either two dates and calculates the time betweeen them, or one and calculates from the present 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        /// <summary>
+        /// calculates the end date of a stay
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public DateTime CalcEndDate(DateTime start, int num)
+        {
+            DateTime endDate = start.AddDays(num);
+            return endDate;
+        }
         /// <summary>
         /// checks for free units a a spacifec time ???(is this correct?)
         /// </summary>
@@ -101,9 +116,17 @@ namespace BL
         /// </summary>
         /// <param name="guest"></param>
         /// <returns>returns the number of orders sent</returns>
-        public int GuestOrderSuggestions(GuestRequest guest) //not implamented
+        public int GuestOrderSuggestions(GuestRequest guest)
         {
-            throw new NotImplementedException();
+            int sum = 0;
+            foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+            {
+                if(item.GuestRequestKey1==guest.GuestRequestKey1&&item.Status==BEEnum.Status.mailSent)
+                {
+                    sum++;
+                }
+            }
+            return sum;
         }
         /// <summary>
         /// returns the number of orders sent to guests or orders filled out
@@ -115,8 +138,6 @@ namespace BL
             throw new NotImplementedException();
         }
 
-
-        #region grouping
         /************the next few functions are using grouping***********/
         public List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest()//grouping
         {
@@ -153,9 +174,6 @@ namespace BL
             return v.ToList();
         }
         /**************end of grouping*************/
-        #endregion
-
-        #region add
         public void AddGuestRequest(GuestRequest guestRequest)
         {
             if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
@@ -166,7 +184,6 @@ namespace BL
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -176,8 +193,8 @@ namespace BL
             {
                 throw new UnexceptableDetailsException("order cannot be closed.");
             }
-            if(!canOrder(order))
-                throw new UnexceptableDetailsException("we are sorry, but the dates are unavaileble. please visit us another time.")
+            if (!canOrder(order))
+                throw new UnexceptableDetailsException("we are sorry, but the dates are unavaileble. please visit us another time.");
             try
             {
                 FactoryDAL.getDAL().AddOrder(order);
@@ -202,9 +219,6 @@ namespace BL
                 throw;
             }
         }
-        #endregion
-
-        #region update
         public void UpdateGuestRequest(GuestRequest guestRequest)
         {
             if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
@@ -258,13 +272,13 @@ namespace BL
         }
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            if ((hostingUnit.Owner1.CollectionClearance1==false) && (FactoryDAL.getDAL().GetHostingUnitByKey(hostingUnit.HostingUnitKey1).Owner1.CollectionClearance1==true))
+            if (hostingUnit.Owner1==null)//may need to change it from mail sent
             {
-                throw new UnexceptableDetailsException("unable to update hosting unit because you cant change clearence once cleared!");
+                throw new Exception("");
             }
             try
             {
-                FactoryDAL.getDAL().UpdateHostingUnit(hostingUnit);
+                FactoryDAL.getDAL().UpdateOrder(hostingUnit);
             }
             catch (Exception)
             {
@@ -272,53 +286,36 @@ namespace BL
                 throw;
             }
         }
-        #endregion
-
-        #region delete
         public void DeleteGuestRequest(GuestRequest guestRequest)
         {
-            throw new NotImplementedException();
+            FactoryDAL.getDAL().DeleteGuestRequest(guestRequest);
         }
-
         public void DeleteHostingUnit(HostingUnit hostingUnit)
         {
-            throw new NotImplementedException();
+            if (!checkdeletehosting(hostingUnit))
+                throw new UnexceptableDetailsException("Cannot delete a hosting unit that has an active order.");
+            FactoryDAL.getDAL().DeleteHostingUnit(hostingUnit);
         }
-        #endregion
-
-        #region get
         public List<HostingUnit> GetAllHostingUnits()
         {
             throw new NotImplementedException();
         }
-
         public List<GuestRequest> GetAllGuestRequest()
         {
             throw new NotImplementedException();
         }
-
         public List<Order> GetAllOrders()
         {
             throw new NotImplementedException();
         }
-
         public List<BankBranch> GetAllBanks()
         {
             throw new NotImplementedException();
         }
-        #endregion
-
-        #region calc
         public void CalcNumOfHostingUnits()
         {
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// function recieves either two dates and calculates the time betweeen them, or one and calculates from the present 
-        /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
         public int calcNumOfDaysBetween(params DateTime[] num)
         {
             int sum = 0;
@@ -336,20 +333,6 @@ namespace BL
             }
             return sum;
         }
-
-        /// <summary>
-        /// calculates the end date of a stay
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        public DateTime CalcEndDate(DateTime start, int num)
-        {
-            DateTime endDate = start.AddDays(num);
-            return endDate;
-        }
-        #endregion
-
         private bool canOrder(Order order)
         {
             HostingUnit host =FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1);
@@ -370,6 +353,15 @@ namespace BL
             }
             return true;
 
+        }
+        private bool checkdeletehosting(HostingUnit hosty)
+        {
+            foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+            {
+                if (item.HostingUnitKey1 == hosty.HostingUnitKey1)
+                    return false;
+            }
+            return true;
         }
     }
 }
