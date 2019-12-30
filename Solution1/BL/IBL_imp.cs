@@ -29,22 +29,7 @@ namespace BL
             }
             return L;
         }
-        /// <summary>
-        /// function recieves either two dates and calculates the time betweeen them, or one and calculates from the present 
-        /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        /// <summary>
-        /// calculates the end date of a stay
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        public DateTime CalcEndDate(DateTime start, int num)
-        {
-            DateTime endDate = start.AddDays(num);
-            return endDate;
-        }
+        
         /// <summary>
         /// checks for free units a a spacifec time ???(is this correct?)
         /// </summary>
@@ -130,6 +115,8 @@ namespace BL
             throw new NotImplementedException();
         }
 
+
+        #region grouping
         /************the next few functions are using grouping***********/
         public List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest()//grouping
         {
@@ -166,6 +153,9 @@ namespace BL
             return v.ToList();
         }
         /**************end of grouping*************/
+        #endregion
+
+        #region add
         public void AddGuestRequest(GuestRequest guestRequest)
         {
             if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
@@ -212,6 +202,9 @@ namespace BL
                 throw;
             }
         }
+        #endregion
+
+        #region update
         public void UpdateGuestRequest(GuestRequest guestRequest)
         {
             if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
@@ -265,13 +258,13 @@ namespace BL
         }
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            if (hostingUnit.Owner1==null)//may need to change it from mail sent
+            if ((hostingUnit.Owner1.CollectionClearance1==false) && (FactoryDAL.getDAL().GetHostingUnitByKey(hostingUnit.HostingUnitKey1).Owner1.CollectionClearance1==true))
             {
-                throw new Exception("");
+                throw new UnexceptableDetailsException("unable to update hosting unit because you cant change clearence once cleared!");
             }
             try
             {
-                FactoryDAL.getDAL().UpdateOrder(hostingUnit);
+                FactoryDAL.getDAL().UpdateHostingUnit(hostingUnit);
             }
             catch (Exception)
             {
@@ -279,6 +272,9 @@ namespace BL
                 throw;
             }
         }
+        #endregion
+
+        #region delete
         public void DeleteGuestRequest(GuestRequest guestRequest)
         {
             throw new NotImplementedException();
@@ -288,10 +284,9 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+        #endregion
 
-
-
-
+        #region get
         public List<HostingUnit> GetAllHostingUnits()
         {
             throw new NotImplementedException();
@@ -311,12 +306,19 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+        #endregion
 
+        #region calc
         public void CalcNumOfHostingUnits()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// function recieves either two dates and calculates the time betweeen them, or one and calculates from the present 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         public int calcNumOfDaysBetween(params DateTime[] num)
         {
             int sum = 0;
@@ -334,6 +336,19 @@ namespace BL
             }
             return sum;
         }
+
+        /// <summary>
+        /// calculates the end date of a stay
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public DateTime CalcEndDate(DateTime start, int num)
+        {
+            DateTime endDate = start.AddDays(num);
+            return endDate;
+        }
+        #endregion
 
         private bool canOrder(Order order)
         {
