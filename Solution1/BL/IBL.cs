@@ -128,7 +128,7 @@ namespace BL
         /// <param name="hosting"></param>
         /// <returns></returns>
         int HostingUnitOrdersFilled(HostingUnit hosting);
-
+        bool canOrder(Order order);
 
 
         //need to add the second function fro this class. dont know what it is/

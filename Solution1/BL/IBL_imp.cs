@@ -182,10 +182,12 @@ namespace BL
         }
         public void AddOrder(Order order)
         {
-            if (order.Status==BEEnum.Status.ClosedByClientResponse|| order.Status == BEEnum.Status.closedByClientsLackOfResponse)
+            if (order.Status==BEEnum.Status.dealMade|| order.Status == BEEnum.Status.closedByClientsLackOfResponse|| order.Status == BEEnum.Status.dealMadeWithOtherHost)
             {
                 throw new UnexceptableDetailsException("order cannot be closed.");
             }
+            if(!canOrder(order))
+                throw new UnexceptableDetailsException("we are sorry, but the dates are unavaileble. please visit us another time.")
             try
             {
                 FactoryDAL.getDAL().AddOrder(order);
@@ -224,20 +226,36 @@ namespace BL
             }
         }
         public void UpdateOrder(Order order)
-        {          
-            if( FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.mailSent)//may need to change it from mail sent
+        {         //if closed then closed, doesnt matter how 
+            if( FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.dealMade|| FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.dealMadeWithOtherHost|| FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
             {
-                throw new Exception("order cannot be changed once deal is closed.");
+                throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
             }
             try
             {
 
-                if (order.Status == BEEnum.Status.mailSent&& FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status!= BEEnum.Status.mailSent)
+                if (order.Status == BEEnum.Status.dealMade)
                 {
-                   Configuration.commmission+=10* calcNumOfDaysBetween(FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1).EntryDate1, FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1).ReleaseDate1) ;//dont knwo what to do with this
+                    GuestRequest temp = FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1);
+                   Configuration.commmission+=10* calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1) ;//dont knwo what to do with this
                     UpdateHostingUnit(FactoryDAL.getDAL().updateDiary(FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1), FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1)));
+                    temp.status1 = order.Status;
+                    UpdateGuestRequest(temp);
+                    foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+                    {
+                        if (item.GuestRequestKey1 == order.GuestRequestKey1)
+                            item.Status = order.Status;
+                    }
                 }
+                if (order.Status == BEEnum.Status.mailSent && FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
+                    throw new UnexceptableDetailsException("you can't send a mail, until you have signed a permission to charge the bank");
+
                 FactoryDAL.getDAL().UpdateOrder(order);
+                //temporary till we learn how to send an email
+                if (order.Status == BEEnum.Status.mailSent)
+                {
+                    Console.WriteLine(order.ToString());
+                }
             }
             catch (Exception)
             {
@@ -317,7 +335,27 @@ namespace BL
             return sum;
         }
 
+        private bool canOrder(Order order)
+        {
+            HostingUnit host =FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1);
+            GuestRequest guest = FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1);
+            for (int i = guest.EntryDate1.Month; i <= guest.ReleaseDate1.Month; i++)
+            {
+                int j = 0;
+                if (i == guest.EntryDate1.Month)
+                    j = guest.EntryDate1.Day;
+                int stop = 31;
+                if (i == guest.ReleaseDate1.Month)
+                    stop = guest.ReleaseDate1.Day;
+                for (; j < stop; j++)
+                {
+                    if (host.Diary1[i, j] == true)
+                        return false;
+                }
+            }
+            return true;
 
+        }
     }
 }
 
