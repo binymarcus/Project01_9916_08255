@@ -17,8 +17,8 @@ namespace BL
         public List<Order> AllOrdersByCriteria(Delegate check)
         {
             List<Order> L = new List<Order>();
-            var v = from item in dal.GetAllOrders()
-                    where
+            var v = from item in FactoryDAL.getDAL().GetAllOrders()
+                    where 
                     select item;
 
             if (v.Count() == 0)
@@ -55,7 +55,7 @@ namespace BL
         {
             List<HostingUnit> L = new List<HostingUnit>();
             DateTime end = CalEndDate(startdate, numOfDaysForVacatrion);
-            var v = from item in dal.GetAllHostingUnits()
+            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
                     where checkDates(startdate, end, item) == true
                     select item;
 
@@ -101,7 +101,7 @@ namespace BL
         public List<Order> OlderOrders(int numOfDays)
         {
             List<Order> L = new List<Order>();
-            var v = from item in dal.GetAllOrders()
+            var v = from item in FactoryDAL.getDAL().GetAllOrders()
                     where DateTime.Today.DayOfYear - item.OrderDate1.DayOfYear >= numOfDays
                     select item;
             foreach (var item in v)
@@ -227,7 +227,7 @@ namespace BL
         {          
             if( FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.mailSent)//may need to change it from mail sent
             {
-                throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
+                throw new Exception("order cannot be changed once deal is closed.");
             }
             try
             {
@@ -249,11 +249,11 @@ namespace BL
         {
             if (hostingUnit.Owner1==null)//may need to change it from mail sent
             {
-                throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
+                throw new Exception("");
             }
             try
             {
-                FactoryDAL.getDAL().UpdateOrder(order);
+                FactoryDAL.getDAL().UpdateOrder(hostingUnit);
             }
             catch (Exception)
             {
