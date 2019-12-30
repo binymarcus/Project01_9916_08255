@@ -54,7 +54,7 @@ namespace BL
         public List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
         {
             List<HostingUnit> L = new List<HostingUnit>();
-            DateTime end = CalEndDate(startdate, numOfDaysForVacatrion);
+            DateTime end = FactoryBL.getIBL().CalcEndDate(startdate, numOfDaysForVacatrion);
             var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
                     where checkDates(startdate, end, item) == true
                     select item;

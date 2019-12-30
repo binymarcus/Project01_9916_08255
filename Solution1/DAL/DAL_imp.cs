@@ -23,7 +23,7 @@ namespace DAL
             if (v.Count() != 0)
                 throw new ArgumentException("GuestRequest key already exists");
 
-            DataSource.GuestRequestList.Add(guestRequest);
+            DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
         /// <summary>
         /// updates a request of a client thats already int the system|throws an error if doesn't exist
@@ -40,7 +40,7 @@ namespace DAL
                 throw new KeyNotFoundException("GuestRequest key does not exist");
 
             DataSource.GuestRequestList.Remove(guestRequest);
-            DataSource.GuestRequestList.Add(guestRequest);
+            DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
         /// <summary>
         /// deletes an existing guest request|sends an error if doesnt exist
@@ -70,7 +70,7 @@ namespace DAL
             if (v.Count() != 0)
                 throw new Exception("hostingUnit key already exists");
 
-            DataSource.HostingUnitList.Add(hostingUnit);
+            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
         }
         /// <summary>
         /// removes an existing hosting unit from the system|throws error uf unit doesnt exist
@@ -101,7 +101,7 @@ namespace DAL
                 throw new Exception("hosting unit  does not exist");
 
             DataSource.HostingUnitList.Remove(hostingUnit);
-            DataSource.HostingUnitList.Add(hostingUnit);
+            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
         }
         /// <summary>
         /// adds an order from a client to the system|throws error if order already exists
@@ -117,7 +117,7 @@ namespace DAL
                 if (v.Count() != 0)
                     throw new Exception("order key allready exists");
 
-                DataSource.OrderList.Add(order);
+                DataSource.OrderList.Add(Cloning.Clone(order));
 
             }
         }
@@ -129,7 +129,7 @@ namespace DAL
         {//TODO: need to put try and catch
 
             DataSource.OrderList.Remove(order);
-            DataSource.OrderList.Add(order);
+            DataSource.OrderList.Add(Cloning.Clone(order));
 
         }
         /// <summary>
