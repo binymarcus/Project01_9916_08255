@@ -272,13 +272,13 @@ namespace BL
         }
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            if (hostingUnit.Owner1==null)//may need to change it from mail sent
+            if ((hostingUnit.Owner1.CollectionClearance1 == false) && (FactoryDAL.getDAL().GetHostingUnitByKey(hostingUnit.HostingUnitKey1).Owner1.CollectionClearance1 == true))
             {
-                throw new Exception("");
+                throw new UnexceptableDetailsException("unable to update hosting unit because you cant change clearence once cleared!");
             }
             try
             {
-                FactoryDAL.getDAL().UpdateOrder(hostingUnit);
+                FactoryDAL.getDAL().UpdateHostingUnit(hostingUnit);
             }
             catch (Exception)
             {
