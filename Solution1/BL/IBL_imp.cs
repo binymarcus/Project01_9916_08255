@@ -36,8 +36,6 @@ namespace BL
         /// <param name="numOfDaysForVacatrion"></param>
         /// <returns></returns>
         /// 
-
-
         public List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
         {
             
@@ -126,7 +124,6 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-
         #region grouping
         public List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest()//grouping
         {
