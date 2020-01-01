@@ -10,46 +10,51 @@ namespace BL
     public class IBL_imp : IBL
     {
         ///<summary>
-        /// geta a method of checking the orders and returns all the orders that fit that method
+        /// geta a method of checking the GuestRequests and returns all the GuestRequests that fit that method
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
-        public List<Order> AllOrdersByCriteria(Delegate check)
+        public List<GuestRequest> AllOrdersByCriteria(Predicate<GuestRequest> check)//used FUNC as Predicate as requested
         {
-            List<Order> L = new List<Order>();
-            var v = from item in FactoryDAL.getDAL().GetAllOrders()
-                    where 
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in FactoryDAL.getDAL().GetAllGuestRequest()
+                    where check(item)
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("There are no orders by this criteria");
+                throw new Exception("There are no GuestRequests by this criteria");
             foreach (var item in v)
             {
                 L.Add(item);
             }
             return L;
-        }    
+        }
         /// <summary>
         /// checks for free units a a spacifec time ???(is this correct?)
         /// </summary>
         /// <param name="startdate"></param>
         /// <param name="numOfDaysForVacatrion"></param>
         /// <returns></returns>
+        /// 
+
+
         public List<HostingUnit> FreeUnits(DateTime startdate, int numOfDaysForVacatrion)
         {
+            
             List<HostingUnit> L = new List<HostingUnit>();
-            DateTime end = FactoryBL.getIBL().CalcEndDate(startdate, numOfDaysForVacatrion);
-            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
-                    where checkDates(startdate, end, item) == true
-                    select item;
+             DateTime end = FactoryBL.getIBL().CalcEndDate(startdate, numOfDaysForVacatrion);
+             var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+                     where checkDates(startdate, end, item) == true
+                     select item;
 
-            if (v.Count() == 0)
-                throw new Exception("There are no Free units in these dates");
-            foreach (var item in v)
-            {
-                L.Add(item);
-            }
-            return L;
+
+             if (v.Count() == 0)
+                 throw new Exception("There are no Free units in these dates");
+             foreach (var item in v)
+             {
+                 L.Add(item);
+             }
+             return L;
 
         }
         /// <summary>
@@ -105,7 +110,7 @@ namespace BL
             int sum = 0;
             foreach (var item in FactoryDAL.getDAL().GetAllOrders())
             {
-                if(item.GuestRequestKey1==guest.GuestRequestKey1&&item.Status==BEEnum.Status.mailSent)
+                if (item.GuestRequestKey1 == guest.GuestRequestKey1 && item.Status == BEEnum.Status.mailSent)
                 {
                     sum++;
                 }
@@ -175,7 +180,7 @@ namespace BL
         }
         public void AddOrder(Order order)
         {
-            if (order.Status==BEEnum.Status.dealMade|| order.Status == BEEnum.Status.closedByClientsLackOfResponse|| order.Status == BEEnum.Status.dealMadeWithOtherHost)
+            if (order.Status == BEEnum.Status.dealMade || order.Status == BEEnum.Status.closedByClientsLackOfResponse || order.Status == BEEnum.Status.dealMadeWithOtherHost)
             {
                 throw new UnexceptableDetailsException("order cannot be closed.");
             }
@@ -218,12 +223,12 @@ namespace BL
             }
             catch (Exception)
             {
-              throw;
+                throw;
             }
         }
         public void UpdateOrder(Order order)
         {         //if closed then closed, doesnt matter how 
-            if( FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.dealMade|| FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.dealMadeWithOtherHost|| FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status==BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
+            if (FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMade || FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMadeWithOtherHost || FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
             {
                 throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
             }
@@ -233,7 +238,7 @@ namespace BL
                 if (order.Status == BEEnum.Status.dealMade)
                 {
                     GuestRequest temp = FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1);
-                   Configuration.commmission+=10* calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1) ;//dont knwo what to do with this
+                    Configuration.commmission += 10 * calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1);//dont knwo what to do with this
                     UpdateHostingUnit(FactoryDAL.getDAL().updateDiary(FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1), FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1)));
                     temp.status1 = order.Status;
                     UpdateGuestRequest(temp);
@@ -324,8 +329,7 @@ namespace BL
         {
             int sum = 0;
             if (num.Length == 2)
-            {//this may have to change according to lenth of the actual months
-
+            {//this may have to change according to lenth of the actual months                           
                 sum += Math.Abs(num[0].Day - num[1].Day);
                 sum += Math.Abs(30 * (num[0].Month - num[1].Month));
             }
@@ -343,15 +347,23 @@ namespace BL
         /// <param name="start"></param>
         /// <param name="num"></param>
         /// <returns></returns>
-        public DateTime CalcEndDate(DateTime start, int num)
+        public DateTime CalcEndDate(DateTime start, int num) //uses anonymous delegate
         {
-            DateTime endDate = start.AddDays(num);
-            return endDate;
+            Func<DateTime, int, DateTime> _CalcEndDate = delegate (DateTime _start, int _num)
+            {
+                DateTime endDate = _start.AddDays(_num);
+                return endDate;
+            };
+
+            return _CalcEndDate(start, num);
+
+            /*DateTime endDate = start.AddDays(num);
+            return endDate;*/
         }
         #endregion
-         private bool canOrder(Order order)
+        private bool canOrder(Order order)
         {
-            HostingUnit host =FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1);
+            HostingUnit host = FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1);
             GuestRequest guest = FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1);
             for (int i = guest.EntryDate1.Month; i <= guest.ReleaseDate1.Month; i++)
             {
@@ -440,7 +452,7 @@ namespace BL
         }
         public HostingUnit findFirstBestUnitInArea(GuestRequest guest)
         {
-            var v =  FactoryDAL.getDAL().GetAllHostingUnits().FindAll(x => x.areaOfHostingUnit == guest.area1);
+            var v = FactoryDAL.getDAL().GetAllHostingUnits().FindAll(x => x.areaOfHostingUnit == guest.area1);
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
             {
                 var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && x.HasPool);
@@ -451,7 +463,7 @@ namespace BL
                 return l.First();
 
             }
-            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1==BEEnum.Option.notInterested)
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.notInterested)
             {
                 var l = v.FindAll(x => x.HasChildrensAttractions1 && !x.HasGarden && x.HasJaccuzzi && x.HasPool);
                 if (l.Count == 0)
@@ -513,7 +525,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Optional)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1  && x.HasJaccuzzi && x.HasPool);
+                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasJaccuzzi && x.HasPool);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -533,7 +545,7 @@ namespace BL
             }
             return v.First();
         }
-        public Order findLongestOrder()
+        public Order findLongestOrderPending()
         {
             var v = FactoryDAL.getDAL().GetAllOrders().FindAll(x => x.Status == BEEnum.Status.pending);
             Order longest = v.First();

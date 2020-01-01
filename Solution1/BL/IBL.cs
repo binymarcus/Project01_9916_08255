@@ -83,6 +83,7 @@ namespace BL
         /// <returns></returns>
         void CalcNumOfHostingUnits();
         #endregion
+
         #region mandotory functions from BL
         /// <summary>
         /// checks and returns all the hosting units that are emoty in the specifies days
@@ -108,7 +109,7 @@ namespace BL
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
-        List<Order> AllOrdersByCriteria(Delegate check);
+        List<GuestRequest> AllOrdersByCriteria(Predicate<GuestRequest> check);
         /// <summary>
         /// the function recieves a guest request and returns the number of orders sent to it.
         /// </summary>
@@ -128,6 +129,7 @@ namespace BL
         List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest();
         #endregion
         #endregion
+
         #region functions for use of other functions
         /// <summary>
         /// calculates the end date of a stay
