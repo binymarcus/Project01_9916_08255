@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BE;
 using DS;
+using MyException;
 
 namespace DAL
 {
@@ -15,21 +16,34 @@ namespace DAL
         /// <param name="guestRequest"></param>
        public  void AddGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
-            var v = from item in DataSource.GuestRequestList
-                    let temp = guestRequest.GuestRequestKey1 //using linq function "let" as required
-                    where item.GuestRequestKey1 == temp
-                    select new {GuestRequest = item}; //using linq function "select new" as required
-
-            if (v.Count() != 0)
-                throw new ArgumentException("GuestRequest key already exists");
-
+            guestRequest.GuestRequestKey1 = Configuration.GuestRequestKey++;
             DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
+        /// <summary>
+        /// adds a hosting unit to the system|throw error if hosting unit already exists
+        /// </summary>
+        /// <param name="hostingUnit"> the hosting unit from BE</param>
+        public void AddHostingUnit(HostingUnit hostingUnit)
+        {
+            hostingUnit.HostingUnitKey1 = ++Configuration.HostingUnitKey;
+            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
+        }
+        /// <summary>
+        /// adds an order from a client to the system|throws error if order already exists
+        /// </summary>
+        /// <param name="order">Order defined in BE</param>
+        public void AddOrder(Order order)
+        {          
+                order.OrderKey1 = Configuration.OrderKey++;
+                DataSource.OrderList.Add(Cloning.Clone(order));
+
+        }
+
         /// <summary>
         /// updates a request of a client thats already int the system|throws an error if doesn't exist
         /// </summary>
         /// <param name="guestRequest"></param>
-       public void UpdateGuestRequest(GuestRequest guestRequest)
+        public void UpdateGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
             //TODO: need to put try and catch
             var v = from item in DataSource.GuestRequestList
@@ -57,21 +71,7 @@ namespace DAL
            
                 DataSource.GuestRequestList.Remove(guestRequest);
         }
-        /// <summary>
-        /// adds a hosting unit to the system|throw error if hosting unit already exists
-        /// </summary>
-        /// <param name="hostingUnit"> the hosting unit from BE</param>
-        public void AddHostingUnit(HostingUnit hostingUnit)
-        {//TODO: need to put try and catch
-            var v = from item in DataSource.HostingUnitList
-                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
-                    select item;
-
-            if (v.Count() != 0)
-                throw new Exception("hostingUnit key already exists");
-
-            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
-        }
+        
         /// <summary>
         /// removes an existing hosting unit from the system|throws error uf unit doesnt exist
         /// </summary>
@@ -102,24 +102,6 @@ namespace DAL
 
             DataSource.HostingUnitList.Remove(hostingUnit);
             DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
-        }
-        /// <summary>
-        /// adds an order from a client to the system|throws error if order already exists
-        /// </summary>
-        /// <param name="order">Order defined in BE</param>
-       public void AddOrder(Order order)
-        {
-            {//TODO: need to put try and catch
-                var v = from item in DataSource.OrderList
-                        where item.OrderKey1 == order.OrderKey1
-                        select item;
-
-                if (v.Count() != 0)
-                    throw new Exception("order key allready exists");
-
-                DataSource.OrderList.Add(Cloning.Clone(order));
-
-            }
         }
         /// <summary>
         /// updates the terms of an order from a client|throws error if order already exists

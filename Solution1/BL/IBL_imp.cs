@@ -4,6 +4,7 @@ using System.Linq;
 using BE;
 using DAL;
 using DS;
+using MyException;
 
 namespace BL
 {
@@ -110,7 +111,7 @@ namespace BL
             int sum = 0;
             foreach (var item in dal.GetAllOrders())
             {
-                if (item.GuestRequestKey1 == guest.GuestRequestKey1 && item.Status == BEEnum.Status.mailSent)
+                if (item.GuestRequestKey1 == guest.GuestRequestKey1 && item.Status1 == BEEnum.Status.mailSent)
                 {
                     sum++;
                 }
@@ -138,7 +139,7 @@ namespace BL
         public List<IGrouping<BEEnum.Area, HostingUnit>> GroupByAreaOfHostingUnit()//grouping
         {
             var v = from item in dal.GetAllHostingUnits()
-                    group item by item.areaOfHostingUnit;
+                    group item by item.AreaOfHostingUnit;
             return v.ToList();
         }
         /// <summary>
@@ -180,7 +181,7 @@ namespace BL
         }
         public void AddOrder(Order order)
         {
-            if (order.Status == BEEnum.Status.dealMade || order.Status == BEEnum.Status.closedByClientsLackOfResponse || order.Status == BEEnum.Status.dealMadeWithOtherHost)
+            if (order.Status1 == BEEnum.Status.dealMade || order.Status1 == BEEnum.Status.closedByClientsLackOfResponse || order.Status1 == BEEnum.Status.dealMadeWithOtherHost)
             {
                 throw new UnexceptableDetailsException("order cannot be closed.");
             }
@@ -228,33 +229,33 @@ namespace BL
         }
         public void UpdateOrder(Order order)
         {         //if closed then closed, doesnt matter how 
-            if (dal.GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMade || dal.GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMadeWithOtherHost || dal.GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
+            if (dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.dealMade || dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.dealMadeWithOtherHost || dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
             {
                 throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
             }
             try
             {
 
-                if (order.Status == BEEnum.Status.dealMade)
+                if (order.Status1 == BEEnum.Status.dealMade)
                 {
                     GuestRequest temp = dal.GetGuestRequestByKey(order.GuestRequestKey1);
                     HostingUnit hosting = dal.GetHostingUnitByKey(order.HostingUnitKey1);
-                    hosting.Commission= Configuration.commmission * calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1);//dont knwo what to do with this
+                    hosting.Commission1= Configuration.commmission * calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1);//dont knwo what to do with this
                     UpdateHostingUnit(dal.updateDiary(hosting, dal.GetGuestRequestByKey(order.GuestRequestKey1)));
-                    temp.status1 = order.Status;
+                    temp.status1 = order.Status1;
                     UpdateGuestRequest(temp);
                     foreach (var item in dal.GetAllOrders())
                     {
                         if (item.GuestRequestKey1 == order.GuestRequestKey1)
-                            item.Status = order.Status;
+                            item.Status1 = order.Status1;
                     }
                 }
-                if (order.Status == BEEnum.Status.mailSent && dal.GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
+                if (order.Status1 == BEEnum.Status.mailSent && dal.GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
                     throw new UnexceptableDetailsException("you can't send a mail, until you have signed a permission to charge the bank");
 
                 dal.UpdateOrder(order);
                 //temporary till we learn how to send an email
-                if (order.Status == BEEnum.Status.mailSent)
+                if (order.Status1 == BEEnum.Status.mailSent)
                 {
                     Console.WriteLine(order.ToString());
                 }
@@ -346,7 +347,6 @@ namespace BL
             }
         }
         #endregion
-
         #region calc
         public void CalcNumOfHostingUnits()
         {
@@ -438,7 +438,7 @@ namespace BL
         {
             List<HostingUnit> L = new List<HostingUnit>();
             var v = from item in dal.GetAllHostingUnits()
-                    where item.HasPool
+                    where item.hasPool1
                     select item;
             foreach (var item in v)
             {
@@ -453,7 +453,7 @@ namespace BL
 
             List<HostingUnit> L = new List<HostingUnit>();
             var v = from item in dal.GetAllHostingUnits()
-                    where item.HasJaccuzzi
+                    where item.hasJaccuzzi1
                     select item;
             foreach (var item in v)
             {
@@ -468,7 +468,7 @@ namespace BL
 
             List<HostingUnit> L = new List<HostingUnit>();
             var v = from item in dal.GetAllHostingUnits()
-                    where item.HasGarden
+                    where item.hasGarden1
                     select item;
             foreach (var item in v)
             {
@@ -483,7 +483,7 @@ namespace BL
 
             List<HostingUnit> L = new List<HostingUnit>();
             var v = from item in dal.GetAllHostingUnits()
-                    where item.HasChildrensAttractions1
+                    where item.hasChildrensAttractions1
                     select item;
             foreach (var item in v)
             {
@@ -495,10 +495,10 @@ namespace BL
         }
         public HostingUnit findFirstBestUnitInArea(GuestRequest guest)
         {
-            var v = dal.GetAllHostingUnits().FindAll(x => x.areaOfHostingUnit == guest.area1);
+            var v = dal.GetAllHostingUnits().FindAll(x => x.AreaOfHostingUnit == guest.area1);
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                var l = v.FindAll(x => x.hasChildrensAttractions1 && x.hasGarden1 && x.hasJaccuzzi1 && x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -508,7 +508,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.notInterested)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1 && !x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                var l = v.FindAll(x => x.hasChildrensAttractions1 && !x.hasGarden1 && x.hasJaccuzzi1 && x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -518,7 +518,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.notInterested && guest.Garden1 == BEEnum.Option.Must)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && !x.HasJaccuzzi && x.HasPool);
+                var l = v.FindAll(x => x.hasChildrensAttractions1 && x.hasGarden1 && !x.hasJaccuzzi1 && x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -528,7 +528,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.notInterested && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && !x.HasPool);
+                var l = v.FindAll(x => x.hasChildrensAttractions1 && x.hasGarden1 && x.hasJaccuzzi1 && !x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -538,7 +538,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.notInterested && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
             {
-                var l = v.FindAll(x => !x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                var l = v.FindAll(x => !x.hasChildrensAttractions1 && x.hasGarden1 && x.hasJaccuzzi1 && x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -548,7 +548,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Optional && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi);
+                var l = v.FindAll(x => x.hasChildrensAttractions1 && x.hasGarden1 && x.hasJaccuzzi1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -558,7 +558,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Optional && guest.Garden1 == BEEnum.Option.Must)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasPool);
+                var l = v.FindAll(x => x.hasChildrensAttractions1 && x.hasGarden1 && x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -568,7 +568,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Optional)
             {
-                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasJaccuzzi && x.HasPool);
+                var l = v.FindAll(x => x.hasChildrensAttractions1 && x.hasJaccuzzi1 && x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -578,7 +578,7 @@ namespace BL
             }
             if (guest.ChildrensAttractions1 == BEEnum.Option.Optional && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
             {
-                var l = v.FindAll(x => x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                var l = v.FindAll(x => x.hasGarden1 && x.hasJaccuzzi1 && x.hasPool1);
                 if (l.Count == 0)
                 {
                     throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
@@ -590,7 +590,7 @@ namespace BL
         }
         public Order findLongestOrderPending()
         {
-            var v = dal.GetAllOrders().FindAll(x => x.Status == BEEnum.Status.pending);
+            var v = dal.GetAllOrders().FindAll(x => x.Status1 == BEEnum.Status.pending);
             Order longest = v.First();
             foreach (var item in v)
             {

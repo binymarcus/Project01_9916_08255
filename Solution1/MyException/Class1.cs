@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace BL
+namespace MyException
 {
-    [Serializable]
-    class UnexceptableDetailsException : Exception
+    public class UnexceptableDetailsException : Exception
     {
-        public UnexceptableDetailsException()
-        {
-
-        }
 
         public UnexceptableDetailsException(string messege) : base(messege)
         {

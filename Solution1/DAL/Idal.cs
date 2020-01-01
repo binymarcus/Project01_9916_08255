@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BE;
+using MyException;
 
 namespace DAL
 {

@@ -14,20 +14,20 @@ namespace BE
         bool hasPool;
         bool hasJaccuzzi;
         bool hasGarden;
-        bool HasChildrensAttractions;
+        bool hasChildrensAttractions;
         BEEnum.Area areaOfHOstingUnit;
         int commission;
         #region properties
         public long HostingUnitKey1 { get => HostingUnitKey; set => HostingUnitKey = value; }
+        public Host Owner1 { get => Owner; set => Owner = value; }
         public string HostingUnitName1 { get => HostingUnitName; set => HostingUnitName = value; }
         public bool[,] Diary1 { get => Diary; set => Diary = value; }
-        public Host Owner1 { get => Owner; set => Owner = value; }
-        public BEEnum.Area areaOfHostingUnit { get => areaOfHOstingUnit; set => areaOfHOstingUnit = value;}
-        public bool HasPool { get => hasPool; set => hasPool = value; }
-        public bool HasJaccuzzi { get => hasJaccuzzi; set => hasJaccuzzi = value; }
-        public bool HasGarden { get => hasGarden; set => hasGarden = value; }
-        public bool HasChildrensAttractions1 { get => HasChildrensAttractions; set => HasChildrensAttractions = value; }
-        public int Commission { get => commission; set => commission = value; }
+        public BEEnum.Area AreaOfHostingUnit { get => areaOfHOstingUnit; set => areaOfHOstingUnit = value;}
+        public bool hasPool1 { get => hasPool; set => hasPool = value; }
+        public bool hasJaccuzzi1 { get => hasJaccuzzi; set => hasJaccuzzi = value; }
+        public bool hasGarden1 { get => hasGarden; set => hasGarden = value; }
+        public bool hasChildrensAttractions1 { get => hasChildrensAttractions; set => hasChildrensAttractions = value; }
+        public int Commission1 { get => commission; set => commission = value; }
         #endregion
         public override string ToString()
         {
@@ -40,8 +40,8 @@ namespace BE
             to += "\n Area of the hosting unit: " + areaOfHOstingUnit.ToString();
                 if(hasPool)to+="\n There is a pool.";
             if (hasJaccuzzi) to += "\n There is a Jaccuzzi.";
-            if (HasGarden) to += "\n There is a Garden.";
-            if (HasChildrensAttractions) to += "\n There are children's attractions.";
+            if (hasGarden1) to += "\n There is a Garden.";
+            if (hasChildrensAttractions) to += "\n There are children's attractions.";
             return to;
         }
         private ArrayList VacationDates()//returns list of dates of occupied days

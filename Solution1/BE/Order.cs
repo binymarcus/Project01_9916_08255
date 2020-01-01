@@ -18,7 +18,7 @@ namespace BE
         public long OrderKey1 { get => OrderKey; set => OrderKey = value; }
         public DateTime CreateDate1 { get => CreateDate; set => CreateDate = value; }
         public DateTime OrderDate1 { get => OrderDate; set => OrderDate = value; }
-        public BEEnum.Status Status { get => status; set => status = value; }
+        public BEEnum.Status Status1 { get => status; set => status = value; }
         #endregion
         public override string ToString()
         {
