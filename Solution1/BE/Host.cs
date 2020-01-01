@@ -15,7 +15,7 @@ namespace BE
         int BankAccountNumber;
         bool CollectionClearance;// bool to check if we are cleared to take money from bank
         int NumOfHostinUnits;
-
+        #region properties
         public long HostKey1 { get => HostKey; set => HostKey = value; }
         public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
@@ -25,8 +25,7 @@ namespace BE
         public int BankAccountNumber1 { get => BankAccountNumber; set => BankAccountNumber = value; }
         public bool CollectionClearance1 { get => CollectionClearance; set => CollectionClearance = value; }
         public int NumOfHostinUnits1 { get => NumOfHostinUnits; set => NumOfHostinUnits = value; }
-        /*************may need to make more variables-erase at the end of project*************/
-
+        #endregion
         public override string ToString()
         {
             string to = "Host Key: " + Convert.ToString(HostKey);

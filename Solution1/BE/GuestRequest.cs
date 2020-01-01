@@ -18,7 +18,7 @@ namespace BE
          int Adults;
          int Children;
          int TotalGuests;
-        //*******enums***********//
+        #region enums
         BEEnum.Option pool;
         BEEnum.Option Jacuzzi;
         BEEnum.Option Garden;
@@ -26,9 +26,8 @@ namespace BE
         BEEnum.Type type;
         BEEnum.Area area;
         BEEnum.Status status;
-
-        //****properties****//
-
+        #endregion
+        #region properties
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
         public string PrivateName1 { get => PrivateName; set => PrivateName = value; }
         public string FamilyName1 { get => FamilyName; set => FamilyName = value; }
@@ -47,7 +46,7 @@ namespace BE
         public BEEnum.Type type1 { get => type; set => type = value;}
         public BEEnum.Area area1 { get => area; set => area = value;}
         public BEEnum.Status status1 { get => status; set => status = value;}
-
+        #endregion
         public override string ToString()
         {
               string toString = "";
@@ -70,6 +69,5 @@ namespace BE
             toString += "ChildrensAttractions: " + ChildrensAttractions.ToString() + "\n";
             return toString;
         }
-        //may need add other things. will do later. erase at end of project
     }
 }

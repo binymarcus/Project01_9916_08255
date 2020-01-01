@@ -123,7 +123,6 @@ namespace BL
         }
 
         #region grouping
-        /************the next few functions are using grouping***********/
         public List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest()//grouping
         {
             var v = from item in FactoryDAL.getDAL().GetAllGuestRequest()
@@ -158,7 +157,6 @@ namespace BL
                     group item by item.NumOfHostinUnits1;
             return v.ToList();
         }
-        /**************end of grouping*************/
         #endregion
 
         #region add
@@ -292,7 +290,7 @@ namespace BL
         }
         #endregion
 
-        #region get
+        #region Get
         public List<HostingUnit> GetAllHostingUnits()
         {
             throw new NotImplementedException();
@@ -351,7 +349,7 @@ namespace BL
             return endDate;
         }
         #endregion
-        private bool canOrder(Order order)
+         private bool canOrder(Order order)
         {
             HostingUnit host =FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1);
             GuestRequest guest = FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1);
@@ -380,6 +378,171 @@ namespace BL
                     return false;
             }
             return true;
+        }
+        public List<HostingUnit> allUnitsWithPools()
+        {
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+                    where item.HasPool
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<HostingUnit> allUnitsWithJaccuzzis()
+        {
+
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+                    where item.HasJaccuzzi
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<HostingUnit> allUnitsWithGardens()
+        {
+
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+                    where item.HasGarden
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<HostingUnit> allUnitsWithchildrensattractions()
+        {
+
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+                    where item.HasChildrensAttractions1
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public HostingUnit findFirstBestUnitInArea(GuestRequest guest)
+        {
+            var v =  FactoryDAL.getDAL().GetAllHostingUnits().FindAll(x => x.areaOfHostingUnit == guest.area1);
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
+            {
+                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1==BEEnum.Option.notInterested)
+            {
+                var l = v.FindAll(x => x.HasChildrensAttractions1 && !x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.notInterested && guest.Garden1 == BEEnum.Option.Must)
+            {
+                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && !x.HasJaccuzzi && x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.notInterested && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
+            {
+                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && !x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.notInterested && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
+            {
+                var l = v.FindAll(x => !x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Optional && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
+            {
+                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Optional && guest.Garden1 == BEEnum.Option.Must)
+            {
+                var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Optional)
+            {
+                var l = v.FindAll(x => x.HasChildrensAttractions1  && x.HasJaccuzzi && x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            if (guest.ChildrensAttractions1 == BEEnum.Option.Optional && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
+            {
+                var l = v.FindAll(x => x.HasGarden && x.HasJaccuzzi && x.HasPool);
+                if (l.Count == 0)
+                {
+                    throw new UnexceptableDetailsException("There are no hosting units that meet your demands in your area");
+                }
+                return l.First();
+
+            }
+            return v.First();
+        }
+        public Order findLongestOrder()
+        {
+            var v = FactoryDAL.getDAL().GetAllOrders().FindAll(x => x.Status == BEEnum.Status.pending);
+            Order longest = v.First();
+            foreach (var item in v)
+            {
+                if (item.OrderDate1.DayOfYear < longest.OrderDate1.DayOfYear)
+                    longest = item;
+            }
+            return longest;
         }
     }
 }
