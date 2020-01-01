@@ -9,6 +9,8 @@ namespace BL
 {
     public class IBL_imp : IBL
     {
+        Idal dal = FactoryDAL.getDAL();
+
         ///<summary>
         /// geta a method of checking the GuestRequests and returns all the GuestRequests that fit that method
         /// </summary>
@@ -17,7 +19,7 @@ namespace BL
         public List<GuestRequest> AllOrdersByCriteria(Predicate<GuestRequest> check)//used FUNC as Predicate as requested
         {
             List<GuestRequest> L = new List<GuestRequest>();
-            var v = from item in FactoryDAL.getDAL().GetAllGuestRequest()
+            var v = from item in dal.GetAllGuestRequest()
                     where check(item)
                     select item;
 
@@ -41,7 +43,7 @@ namespace BL
             
             List<HostingUnit> L = new List<HostingUnit>();
              DateTime end = FactoryBL.getIBL().CalcEndDate(startdate, numOfDaysForVacatrion);
-             var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+             var v = from item in dal.GetAllHostingUnits()
                      where checkDates(startdate, end, item) == true
                      select item;
 
@@ -88,7 +90,7 @@ namespace BL
         public List<Order> OlderOrders(int numOfDays)
         {
             List<Order> L = new List<Order>();
-            var v = from item in FactoryDAL.getDAL().GetAllOrders()
+            var v = from item in dal.GetAllOrders()
                     where DateTime.Today.DayOfYear - item.OrderDate1.DayOfYear >= numOfDays
                     select item;
             foreach (var item in v)
@@ -106,7 +108,7 @@ namespace BL
         public int GuestOrderSuggestions(GuestRequest guest)
         {
             int sum = 0;
-            foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+            foreach (var item in dal.GetAllOrders())
             {
                 if (item.GuestRequestKey1 == guest.GuestRequestKey1 && item.Status == BEEnum.Status.mailSent)
                 {
@@ -127,14 +129,14 @@ namespace BL
         #region grouping
         public List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest()//grouping
         {
-            var v = from item in FactoryDAL.getDAL().GetAllGuestRequest()
+            var v = from item in dal.GetAllGuestRequest()
                     group item by item.area1;
 
             return v.ToList();
         }
         public List<IGrouping<BEEnum.Area, HostingUnit>> GroupByAreaOfHostingUnit()//grouping
         {
-            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+            var v = from item in dal.GetAllHostingUnits()
                     group item by item.areaOfHostingUnit;
             return v.ToList();
         }
@@ -144,7 +146,7 @@ namespace BL
         /// <returns></returns>
         public List<IGrouping<int, GuestRequest>> GroupedByNumOfGuests()//grouping
         {
-            var v = from item in FactoryDAL.getDAL().GetAllGuestRequest()
+            var v = from item in dal.GetAllGuestRequest()
                     group item by item.TotalGuests1;
             return v.ToList();
         }
@@ -168,7 +170,7 @@ namespace BL
                 throw new UnexceptableDetailsException("Entry date must be at least one day before exit date.");
             try
             {
-                FactoryDAL.getDAL().AddGuestRequest(guestRequest);
+                dal.AddGuestRequest(guestRequest);
             }
             catch (Exception)
             {
@@ -185,7 +187,7 @@ namespace BL
                 throw new UnexceptableDetailsException("we are sorry, but the dates are unavaileble. please visit us another time.");
             try
             {
-                FactoryDAL.getDAL().AddOrder(order);
+                dal.AddOrder(order);
             }
             catch (Exception)
             {
@@ -199,7 +201,7 @@ namespace BL
                 throw new UnexceptableDetailsException("All hosting units must have an owner");
             try
             {
-                FactoryDAL.getDAL().AddHostingUnit(hostingUnit);
+                dal.AddHostingUnit(hostingUnit);
             }
             catch (Exception)
             {
@@ -216,7 +218,7 @@ namespace BL
                 throw new UnexceptableDetailsException("Entry date must be at least one day before exit date.");
             try
             {
-                FactoryDAL.getDAL().UpdateGuestRequest(guestRequest);
+                dal.UpdateGuestRequest(guestRequest);
             }
             catch (Exception)
             {
@@ -225,7 +227,7 @@ namespace BL
         }
         public void UpdateOrder(Order order)
         {         //if closed then closed, doesnt matter how 
-            if (FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMade || FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMadeWithOtherHost || FactoryDAL.getDAL().GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
+            if (dal.GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMade || dal.GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.dealMadeWithOtherHost || dal.GetOrderByKey(order.OrderKey1).Status == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
             {
                 throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
             }
@@ -234,21 +236,21 @@ namespace BL
 
                 if (order.Status == BEEnum.Status.dealMade)
                 {
-                    GuestRequest temp = FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1);
+                    GuestRequest temp = dal.GetGuestRequestByKey(order.GuestRequestKey1);
                     Configuration.commmission += 10 * calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1);//dont knwo what to do with this
-                    UpdateHostingUnit(FactoryDAL.getDAL().updateDiary(FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1), FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1)));
+                    UpdateHostingUnit(dal.updateDiary(dal.GetHostingUnitByKey(order.HostingUnitKey1), dal.GetGuestRequestByKey(order.GuestRequestKey1)));
                     temp.status1 = order.Status;
                     UpdateGuestRequest(temp);
-                    foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+                    foreach (var item in dal.GetAllOrders())
                     {
                         if (item.GuestRequestKey1 == order.GuestRequestKey1)
                             item.Status = order.Status;
                     }
                 }
-                if (order.Status == BEEnum.Status.mailSent && FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
+                if (order.Status == BEEnum.Status.mailSent && dal.GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
                     throw new UnexceptableDetailsException("you can't send a mail, until you have signed a permission to charge the bank");
 
-                FactoryDAL.getDAL().UpdateOrder(order);
+                dal.UpdateOrder(order);
                 //temporary till we learn how to send an email
                 if (order.Status == BEEnum.Status.mailSent)
                 {
@@ -263,13 +265,13 @@ namespace BL
         }
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            if ((hostingUnit.Owner1.CollectionClearance1 == false) && (FactoryDAL.getDAL().GetHostingUnitByKey(hostingUnit.HostingUnitKey1).Owner1.CollectionClearance1 == true))
+            if ((hostingUnit.Owner1.CollectionClearance1 == false) && (dal.GetHostingUnitByKey(hostingUnit.HostingUnitKey1).Owner1.CollectionClearance1 == true))
             {
                 throw new UnexceptableDetailsException("unable to update hosting unit because you cant change clearence once cleared!");
             }
             try
             {
-                FactoryDAL.getDAL().UpdateHostingUnit(hostingUnit);
+                dal.UpdateHostingUnit(hostingUnit);
             }
             catch (Exception)
             {
@@ -282,13 +284,13 @@ namespace BL
         #region delete
         public void DeleteGuestRequest(GuestRequest guestRequest)
         {
-            FactoryDAL.getDAL().DeleteGuestRequest(guestRequest);
+            dal.DeleteGuestRequest(guestRequest);
         }
         public void DeleteHostingUnit(HostingUnit hostingUnit)
         {
             if (!checkdeletehosting(hostingUnit))
                 throw new UnexceptableDetailsException("Cannot delete a hosting unit that has an active order.");
-            FactoryDAL.getDAL().DeleteHostingUnit(hostingUnit);
+            dal.DeleteHostingUnit(hostingUnit);
         }
         #endregion
 
@@ -360,8 +362,8 @@ namespace BL
         #endregion
         private bool canOrder(Order order)
         {
-            HostingUnit host = FactoryDAL.getDAL().GetHostingUnitByKey(order.HostingUnitKey1);
-            GuestRequest guest = FactoryDAL.getDAL().GetGuestRequestByKey(order.GuestRequestKey1);
+            HostingUnit host = dal.GetHostingUnitByKey(order.HostingUnitKey1);
+            GuestRequest guest = dal.GetGuestRequestByKey(order.GuestRequestKey1);
             for (int i = guest.EntryDate1.Month; i <= guest.ReleaseDate1.Month; i++)
             {
                 int j = 0;
@@ -381,7 +383,7 @@ namespace BL
         }
         private bool checkdeletehosting(HostingUnit hosty)
         {
-            foreach (var item in FactoryDAL.getDAL().GetAllOrders())
+            foreach (var item in dal.GetAllOrders())
             {
                 if (item.HostingUnitKey1 == hosty.HostingUnitKey1)
                     return false;
@@ -391,7 +393,7 @@ namespace BL
         public List<HostingUnit> allUnitsWithPools()
         {
             List<HostingUnit> L = new List<HostingUnit>();
-            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+            var v = from item in dal.GetAllHostingUnits()
                     where item.HasPool
                     select item;
             foreach (var item in v)
@@ -406,7 +408,7 @@ namespace BL
         {
 
             List<HostingUnit> L = new List<HostingUnit>();
-            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+            var v = from item in dal.GetAllHostingUnits()
                     where item.HasJaccuzzi
                     select item;
             foreach (var item in v)
@@ -421,7 +423,7 @@ namespace BL
         {
 
             List<HostingUnit> L = new List<HostingUnit>();
-            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+            var v = from item in dal.GetAllHostingUnits()
                     where item.HasGarden
                     select item;
             foreach (var item in v)
@@ -436,7 +438,7 @@ namespace BL
         {
 
             List<HostingUnit> L = new List<HostingUnit>();
-            var v = from item in FactoryDAL.getDAL().GetAllHostingUnits()
+            var v = from item in dal.GetAllHostingUnits()
                     where item.HasChildrensAttractions1
                     select item;
             foreach (var item in v)
@@ -449,7 +451,7 @@ namespace BL
         }
         public HostingUnit findFirstBestUnitInArea(GuestRequest guest)
         {
-            var v = FactoryDAL.getDAL().GetAllHostingUnits().FindAll(x => x.areaOfHostingUnit == guest.area1);
+            var v = dal.GetAllHostingUnits().FindAll(x => x.areaOfHostingUnit == guest.area1);
             if (guest.ChildrensAttractions1 == BEEnum.Option.Must && guest.pool1 == BEEnum.Option.Must && guest.Jacuzzi1 == BEEnum.Option.Must && guest.Garden1 == BEEnum.Option.Must)
             {
                 var l = v.FindAll(x => x.HasChildrensAttractions1 && x.HasGarden && x.HasJaccuzzi && x.HasPool);
@@ -544,7 +546,7 @@ namespace BL
         }
         public Order findLongestOrderPending()
         {
-            var v = FactoryDAL.getDAL().GetAllOrders().FindAll(x => x.Status == BEEnum.Status.pending);
+            var v = dal.GetAllOrders().FindAll(x => x.Status == BEEnum.Status.pending);
             Order longest = v.First();
             foreach (var item in v)
             {
