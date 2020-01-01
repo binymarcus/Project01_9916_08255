@@ -191,6 +191,7 @@ namespace DAL
         {
               foreach (var item1 in DataSource.HostList)
               {
+                item1.NumOfHostinUnits1 = 0;
                      foreach (var item2 in DataSource.HostingUnitList)
                      {
                            if(item1.HostKey1 == item2.Owner1.HostKey1)

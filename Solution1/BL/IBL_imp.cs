@@ -122,7 +122,7 @@ namespace BL
         /// </summary>
         /// <param name="hosting"></param>
         /// <returns></returns>
-        public int HostingUnitOrdersFilled(HostingUnit hosting) //not implamented
+        public int HostingUnitOrdersFilled(HostingUnit hosting) 
         {
             var v = GetAllOrders().FindAll(x => x.HostingUnitKey1 == hosting.HostingUnitKey1);
             return v.Count();
@@ -299,26 +299,66 @@ namespace BL
         #region Get
         public List<HostingUnit> GetAllHostingUnits()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return dal.GetAllHostingUnits();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         public List<GuestRequest> GetAllGuestRequest()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return dal.GetAllGuestRequest();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         public List<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return dal.GetAllOrders();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         public List<BankBranch> GetAllBanks()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return dal.GetAllBanks();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         #endregion
 
         #region calc
         public void CalcNumOfHostingUnits()
         {
-            throw new NotImplementedException();
+            try
+            {
+                dal.CalcNumOfHostingUnits();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         /// <summary>
         /// function recieves either two dates and calculates the time betweeen them, or one and calculates from the present 
