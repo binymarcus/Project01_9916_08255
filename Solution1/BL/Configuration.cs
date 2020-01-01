@@ -6,6 +6,6 @@ namespace BL
 {
     class Configuration
     {
-        public static int commmission=0;
+        public static int commmission=10;
     }
 }

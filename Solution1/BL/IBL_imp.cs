@@ -124,7 +124,8 @@ namespace BL
         /// <returns></returns>
         public int HostingUnitOrdersFilled(HostingUnit hosting) //not implamented
         {
-            throw new NotImplementedException();
+            var v = GetAllOrders().FindAll(x => x.HostingUnitKey1 == hosting.HostingUnitKey1);
+            return v.Count();
         }
         #region grouping
         public List<IGrouping<BEEnum.Area, GuestRequest>> GroupedByAreaOfGuestRequest()//grouping
@@ -237,8 +238,9 @@ namespace BL
                 if (order.Status == BEEnum.Status.dealMade)
                 {
                     GuestRequest temp = dal.GetGuestRequestByKey(order.GuestRequestKey1);
-                    Configuration.commmission += 10 * calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1);//dont knwo what to do with this
-                    UpdateHostingUnit(dal.updateDiary(dal.GetHostingUnitByKey(order.HostingUnitKey1), dal.GetGuestRequestByKey(order.GuestRequestKey1)));
+                    HostingUnit hosting = dal.GetHostingUnitByKey(order.HostingUnitKey1);
+                    hosting.Commission= Configuration.commmission * calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1);//dont knwo what to do with this
+                    UpdateHostingUnit(dal.updateDiary(hosting, dal.GetGuestRequestByKey(order.GuestRequestKey1)));
                     temp.status1 = order.Status;
                     UpdateGuestRequest(temp);
                     foreach (var item in dal.GetAllOrders())
@@ -360,6 +362,7 @@ namespace BL
             return endDate;*/
         }
         #endregion
+        #region private functions for ibm_imp
         private bool canOrder(Order order)
         {
             HostingUnit host = dal.GetHostingUnitByKey(order.HostingUnitKey1);
@@ -390,6 +393,7 @@ namespace BL
             }
             return true;
         }
+        #endregion
         public List<HostingUnit> allUnitsWithPools()
         {
             List<HostingUnit> L = new List<HostingUnit>();

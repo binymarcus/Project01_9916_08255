@@ -9,7 +9,7 @@ namespace BE
           public enum Status {pending, mailSent,closedByClientsLackOfResponse, dealMade,dealMadeWithOtherHost};
          public enum Area { All,North,South,Center,Jerusalem}
          public enum Option { Must,Optional,notInterested}
-         public enum Type { Zimmer,Hotel,Camping,BAndB }  
+         public enum _Type { Zimmer,Hotel,Camping,BAndB }  
     }
 
 }

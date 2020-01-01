@@ -16,6 +16,7 @@ namespace BE
         bool hasGarden;
         bool HasChildrensAttractions;
         BEEnum.Area areaOfHOstingUnit;
+        int commission;
         #region properties
         public long HostingUnitKey1 { get => HostingUnitKey; set => HostingUnitKey = value; }
         public string HostingUnitName1 { get => HostingUnitName; set => HostingUnitName = value; }
@@ -26,7 +27,8 @@ namespace BE
         public bool HasJaccuzzi { get => hasJaccuzzi; set => hasJaccuzzi = value; }
         public bool HasGarden { get => hasGarden; set => hasGarden = value; }
         public bool HasChildrensAttractions1 { get => HasChildrensAttractions; set => HasChildrensAttractions = value; }
-        #endregion 
+        public int Commission { get => commission; set => commission = value; }
+        #endregion
         public override string ToString()
         {
             string to = "Hosting unit key: " + Convert.ToString(HostingUnitKey);
