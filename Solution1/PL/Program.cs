@@ -45,13 +45,13 @@ namespace PL
             guesty.PrivateName1 = "notmoshe";
 
             try
-             {
-                 bl.UpdateGuestRequest(guesty);
-             }
-             catch (Exception e)
-             {
-                 Console.WriteLine(e);
-             }
+            {
+                bl.UpdateGuestRequest(guesty);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
             try
             {
@@ -61,7 +61,7 @@ namespace PL
             {
                 Console.WriteLine(e);
             }
-            */
+
             foreach (GuestRequest i in bl.GetAllGuestRequest())
             {
                 Console.WriteLine(i);
@@ -86,7 +86,7 @@ namespace PL
                 bl.AddHostingUnit(unit2);
                 bl.AddHostingUnit(unit3);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
@@ -163,7 +163,76 @@ namespace PL
                 Console.WriteLine(e); ;
             }
             #endregion
-            Console.ReadKey();
-        }
+            Order order1 = new Order();
+            Order order2 = new Order();
+            order1.GuestRequestKey1 = guesty.GuestRequestKey1;
+            order1.HostingUnitKey1 = unit1.HostingUnitKey1;
+            order2.GuestRequestKey1 = guesty2.GuestRequestKey1;
+            order2.HostingUnitKey1 = unit3.HostingUnitKey1;
+
+            try
+            {
+                bl.AddOrder(order1);
+                bl.AddOrder(order2);
+
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try
+            {
+                foreach (var item in bl.GetAllOrders())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            order1.Status1 = BEEnum.Status.mailSent;
+            unit1.Owner1.CollectionClearance1 = true;
+            order2.Status1 = BEEnum.Status.dealMade;
+            try
+            {
+                bl.UpdateOrder(order1);
+                bl.UpdateOrder(order2);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try
+            {
+                foreach (var item in bl.GetAllOrders())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try
+            {
+                foreach (var item in bl.OlderOrders(0))
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+
+                Console.ReadKey();
+                    }
     }
 }
