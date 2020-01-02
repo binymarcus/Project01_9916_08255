@@ -46,7 +46,7 @@ namespace BE
             to += "\n Bank Number: " + BankNumber;
             to += "\n Branch number: " + BranchNumbner;
             to += "\n Branch adrress: " + BranchAddress;
-            to += "\n Branch City: " + BranchCity;
+            to += "\n Branch City: " + BranchCity+"\n---------------------";
             return to;
 
         }

@@ -42,6 +42,7 @@ namespace BE
             if (hasJaccuzzi) to += "\n There is a Jaccuzzi.";
             if (hasGarden1) to += "\n There is a Garden.";
             if (hasChildrensAttractions) to += "\n There are children's attractions.";
+            to += "\n------------------------------";
             return to;
         }
         private ArrayList VacationDates()//returns list of dates of occupied days

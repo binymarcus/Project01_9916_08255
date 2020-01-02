@@ -28,6 +28,7 @@ namespace BE
             to += "\n Date the order was made: " + CreateDate.ToString();
             to += "\n Date email was sent to client: " + OrderDate.ToString();
             to += "\n status of the order: " + status.ToString();
+            to += "\n----------------------";
             return to;
         }
     }

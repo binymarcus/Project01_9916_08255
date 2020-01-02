@@ -15,6 +15,7 @@ namespace BL
         ///<summary>
         /// geta a method of checking the GuestRequests and returns all the GuestRequests that fit that method
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <param name="check"></param>
         /// <returns></returns>
         public List<GuestRequest> AllOrdersByCriteria(Predicate<GuestRequest> check)//used FUNC as Predicate as requested
@@ -25,7 +26,7 @@ namespace BL
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("There are no GuestRequests by this criteria");
+                throw new NoItemsFound("There are no GuestRequests by this criteria");
             foreach (var item in v)
             {
                 L.Add(item);
@@ -35,6 +36,7 @@ namespace BL
         /// <summary>
         /// checks for free units a a spacifec time ???(is this correct?)
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <param name="startdate"></param>
         /// <param name="numOfDaysForVacatrion"></param>
         /// <returns></returns>
@@ -50,7 +52,7 @@ namespace BL
 
 
              if (v.Count() == 0)
-                 throw new Exception("There are no Free units in these dates");
+                 throw new NoItemsFound("There are no Free units in these dates");
              foreach (var item in v)
              {
                  L.Add(item);
@@ -59,7 +61,7 @@ namespace BL
 
         }
         /// <summary>
-        /// checks if dates are occupied or vacent
+        /// checks if dates are occupied or vacant
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
@@ -86,6 +88,7 @@ namespace BL
         /// <summary>
         /// returns all the orders that are equall or older than the number of days received
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <param name="numOfDays">integer for the number of days</param>
         /// <returns></returns>
         public List<Order> OlderOrders(int numOfDays)
@@ -98,6 +101,8 @@ namespace BL
             {
                 L.Add(item);
             }
+            if (L.Count() == 0)
+                throw new NoItemsFound("There are no orders older then the number of days sent.");
             return L;
 
         }
@@ -434,6 +439,7 @@ namespace BL
             return true;
         }
         #endregion
+        #region lists of hosting unit appliances
         public List<HostingUnit> allUnitsWithPools()
         {
             List<HostingUnit> L = new List<HostingUnit>();
@@ -493,6 +499,7 @@ namespace BL
 
             return L;
         }
+        #endregion
         public HostingUnit findFirstBestUnitInArea(GuestRequest guest)
         {
             var v = dal.GetAllHostingUnits().FindAll(x => x.AreaOfHostingUnit == guest.area1);

@@ -32,6 +32,9 @@ namespace PL
             {
                 Console.WriteLine(e);
             }*/
+           
+            Console.WriteLine(guesty.ToString());
+            bL.DeleteGuestRequest(guesty);
             Console.WriteLine(guesty.ToString());
             Console.ReadKey();
         }

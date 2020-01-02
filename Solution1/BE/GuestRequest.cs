@@ -66,7 +66,7 @@ namespace BE
             toString += "Pool: " + pool.ToString() + "\n";
             toString += "Jacuzzi: " + Jacuzzi.ToString() + "\n";
             toString += "Garden: " + Garden.ToString() + "\n";
-            toString += "ChildrensAttractions: " + ChildrensAttractions.ToString() + "\n";
+            toString += "ChildrensAttractions: " + ChildrensAttractions.ToString() + "\n------------------------------------------------";
             return toString;
         }
     }

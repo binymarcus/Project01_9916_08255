@@ -36,7 +36,7 @@ namespace BE
             to += "\n bank branch details: " + BankBranchDetails.ToString();
             to += "\n bank account number: " + BankAccountNumber;
             to += "\n collection clearance: " + CollectionClearance;
-            to += "\n number of hosting units: " + NumOfHostinUnits;
+            to += "\n number of hosting units: " + NumOfHostinUnits+"\n-----------------------";
             return to;
         }
     }
