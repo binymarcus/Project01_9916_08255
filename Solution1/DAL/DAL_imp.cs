@@ -36,8 +36,8 @@ namespace DAL
         public void AddOrder(Order order)
         {
             order.CreateDate1 = DateTime.Now;
-                order.OrderKey1 = Configuration.OrderKey++;
-                DataSource.OrderList.Add(Cloning.Clone(order));
+            order.OrderKey1 = Configuration.OrderKey++;
+            DataSource.OrderList.Add(Cloning.Clone(order));
 
         }
         #endregion
@@ -50,7 +50,7 @@ namespace DAL
         /// <param name="guestRequest"></param>
         public void UpdateGuestRequest(GuestRequest guestRequest)
         {
-           GuestRequest cloned = Cloning.Clone(guestRequest);
+            GuestRequest cloned = Cloning.Clone(guestRequest);
 
             var v = from item in DataSource.GuestRequestList
                     where item.GuestRequestKey1 == cloned.GuestRequestKey1
@@ -60,7 +60,7 @@ namespace DAL
                 throw new KeyNotFoundException("GuestRequest key does not exist");
 
             foreach (var item in v.ToList())
-                { DataSource.GuestRequestList.Remove(item); }
+            { DataSource.GuestRequestList.Remove(item); }
             //DataSource.GuestRequestList.Remove(guestRequest);
             DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
@@ -113,23 +113,23 @@ namespace DAL
         public void DeleteGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
             var v = from item in DataSource.GuestRequestList
-                where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
-                select item;
+                    where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
+                    select item;
 
-                if (v.Count() == 0)
-                    throw new KeyNotFoundException("GuestRequest key not found");
+            if (v.Count() == 0)
+                throw new KeyNotFoundException("GuestRequest key not found");
 
             foreach (var item in v.ToList())
             { DataSource.GuestRequestList.Remove(item); }
             //DataSource.GuestRequestList.Remove(guestRequest);
         }
-        
+
         /// <summary>
         /// removes an existing hosting unit from the system|throws error uf unit doesnt exist
         /// </summary>
         /// <exception cref="KeyNotFoundException"></exception>
         /// <param name="hostingUnit">hosting unit defined in BE</param>
-       public  void DeleteHostingUnit(HostingUnit hostingUnit)
+        public void DeleteHostingUnit(HostingUnit hostingUnit)
         {//TODO: need to put try and catch
             var v = from item in DataSource.HostingUnitList
                     where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
@@ -140,7 +140,7 @@ namespace DAL
 
             foreach (var item in v.ToList())
             { DataSource.HostingUnitList.Remove(item); }
-           // DataSource.HostingUnitList.Remove(hostingUnit);
+            // DataSource.HostingUnitList.Remove(hostingUnit);
         }
         #endregion
 
@@ -169,7 +169,7 @@ namespace DAL
 
             List<GuestRequest> L = new List<GuestRequest>();
             foreach (var item in DataSource.GuestRequestList)
-            L.Add(Cloning.Clone(item));
+                L.Add(Cloning.Clone(item));
             if (L.Count() == 0)
                 throw new NoItemsFound("there are no hosting units in the system.");
             return L;
@@ -196,11 +196,46 @@ namespace DAL
         {
             List<BankBranch> L = new List<BankBranch>
             {
-             new BankBranch("leumi" , 1, 1, "begin 1", "jerusalem"),
-             new BankBranch("leumi" , 1, 2, "begin 2", "jerusalem"),
-             new BankBranch("leumi" , 1, 3, "begin 3", "jerusalem"),
-             new BankBranch("leumi" , 1, 4, "begin 4", "jerusalem"),
-             new BankBranch("leumi" , 1, 5, "begin 5", "jerusalem")
+             new BankBranch()
+             {
+              BankName1 = "leumi",
+              BankNumber1= 1,
+              BranchNumbner1 = 1,
+              BranchAddress1 = "begin 1",
+              BranchCity1 = "jerusalem"
+             },
+             new BankBranch()
+             {
+              BankName1 = "leumi",
+              BankNumber1= 1,
+              BranchNumbner1 = 2,
+              BranchAddress1 = "begin 2",
+              BranchCity1 = "jerusalem"
+             },
+             new BankBranch()
+             {
+              BankName1 = "leumi",
+              BankNumber1= 1,
+              BranchNumbner1 = 3,
+              BranchAddress1 = "begin 3",
+              BranchCity1 = "jerusalem"
+             },
+             new BankBranch()
+             {
+              BankName1 = "leumi",
+              BankNumber1= 1,
+              BranchNumbner1 = 4,
+              BranchAddress1 = "begin 4",
+              BranchCity1 = "jerusalem"
+             },
+             new BankBranch()
+             {
+              BankName1 = "leumi",
+              BankNumber1= 1,
+              BranchNumbner1 = 5,
+              BranchAddress1 = "begin 5",
+              BranchCity1 = "jerusalem"
+             }
             };
 
             return L;
@@ -259,7 +294,7 @@ namespace DAL
         #region updateDiary
         public HostingUnit updateDiary(HostingUnit host, GuestRequest guest)
         {
-          
+
             for (int i = guest.EntryDate1.Month; i <= guest.ReleaseDate1.Month; i++)
             {
                 int j = 0;

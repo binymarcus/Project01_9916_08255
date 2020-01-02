@@ -25,15 +25,6 @@ namespace BE
         string BranchAddress;
         string BranchCity;
 
-        public BankBranch(string bankName, int bankNumber, int branchNumbner, string branchAddress, string branchCity)
-        {
-            BankName = bankName;
-            BankNumber = bankNumber;
-            BranchNumbner = branchNumbner;
-            BranchAddress = branchAddress;
-            BranchCity = branchCity;
-        }
-
         public string BankName1 { get => BankName; set => BankName = value; }
         public int BankNumber1 { get => BankNumber; set => BankNumber = value; }
         public int BranchNumbner1 { get => BranchNumbner; set => BranchNumbner = value; }
