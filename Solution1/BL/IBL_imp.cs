@@ -95,7 +95,7 @@ namespace BL
         {
             List<Order> L = new List<Order>();
             var v = from item in dal.GetAllOrders()
-                    where DateTime.Today.DayOfYear - item.OrderDate1.DayOfYear >= numOfDays
+                    where (DateTime.Today.DayOfYear - item.OrderDate1.DayOfYear >= numOfDays)||(DateTime.Today.DayOfYear - item.CreateDate1.DayOfYear>=numOfDays)
                     select item;
             foreach (var item in v)
             {
@@ -194,6 +194,7 @@ namespace BL
                 throw new UnexceptableDetailsException("we are sorry, but the dates are unavaileble. please visit us another time.");
             try
             {
+                order.CreateDate1 = DateTime.Now;
                 dal.AddOrder(order);
             }
             catch (Exception)
@@ -212,7 +213,7 @@ namespace BL
             }
             catch (Exception)
             {
-
+                
                 throw;
             }
         }
@@ -258,12 +259,14 @@ namespace BL
                 if (order.Status1 == BEEnum.Status.mailSent && dal.GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
                     throw new UnexceptableDetailsException("you can't send a mail, until you have signed a permission to charge the bank");
 
-                dal.UpdateOrder(order);
                 //temporary till we learn how to send an email
                 if (order.Status1 == BEEnum.Status.mailSent)
                 {
-                    Console.WriteLine(order.ToString());
+                    order.OrderDate1 = DateTime.Now;
+                    Console.WriteLine(" since there is no email we print the information\n" +order.ToString());
                 }
+                dal.UpdateOrder(order);
+
             }
             catch (Exception)
             {
@@ -431,10 +434,17 @@ namespace BL
         }
         private bool checkdeletehosting(HostingUnit hosty)
         {
-            foreach (var item in dal.GetAllOrders())
+            try
             {
-                if (item.HostingUnitKey1 == hosty.HostingUnitKey1)
-                    return false;
+                foreach (var item in dal.GetAllOrders())
+                {
+                    if (item.HostingUnitKey1 == hosty.HostingUnitKey1)
+                        return false;
+                }
+            }
+            catch
+            {
+                return true;
             }
             return true;
         }

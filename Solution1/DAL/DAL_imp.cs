@@ -136,7 +136,7 @@ namespace DAL
                     select item;
 
             if (v.Count() == 0)
-                throw new KeyNotFoundException("GuestRequest key does not exist");
+                throw new KeyNotFoundException("hosting unit  key does not exist");
 
             foreach (var item in v.ToList())
             { DataSource.HostingUnitList.Remove(item); }
@@ -171,7 +171,7 @@ namespace DAL
             foreach (var item in DataSource.GuestRequestList)
                 L.Add(Cloning.Clone(item));
             if (L.Count() == 0)
-                throw new NoItemsFound("there are no hosting units in the system.");
+                throw new NoItemsFound("there are no guest requests in the system.");
             return L;
         }
         /// <summary>
@@ -185,7 +185,7 @@ namespace DAL
             foreach (var item in DataSource.OrderList)
                 L.Add(Cloning.Clone(item));
             if (L.Count() == 0)
-                throw new NoItemsFound("there are no hosting units in the system.");
+                throw new NoItemsFound("there are no orders in the system.");
             return L;
         }
         /// <summary>
