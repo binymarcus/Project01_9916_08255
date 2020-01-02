@@ -88,6 +88,7 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         void CalcNumOfHostingUnits();
+        List<Host> GetAllHosts();
         #endregion
 
         #region mandotory functions from BL
@@ -158,6 +159,7 @@ namespace BL
         List<HostingUnit> allUnitsWithGardens();
         List<HostingUnit> allUnitsWithchildrensattractions();
         HostingUnit findFirstBestUnitInArea(GuestRequest guest);
+
         Order findLongestOrderPending();
    }
 }

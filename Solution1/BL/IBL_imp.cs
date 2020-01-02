@@ -356,6 +356,17 @@ namespace BL
                 throw;
             }
         }
+        public List<Host> GetAllHosts()
+        {
+            try
+            {
+                return dal.GetAllHosts();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }        }
         public List<BankBranch> GetAllBanks()
         {
             try
@@ -630,6 +641,8 @@ namespace BL
             }
             return longest;
         }
+
+       
     }
 }
 

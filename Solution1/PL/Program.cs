@@ -79,23 +79,30 @@ namespace PL
             HostingUnit unit1 = new HostingUnit();
             HostingUnit unit2 = new HostingUnit();
             HostingUnit unit3 = new HostingUnit();
+            HostingUnit unit5 = new HostingUnit();
             unit1.AreaOfHostingUnit = BEEnum.Area.All;
             unit2.AreaOfHostingUnit = BEEnum.Area.Center;
             unit3.AreaOfHostingUnit = BEEnum.Area.North;
             unit1.hasChildrensAttractions1 = true;
             unit2.hasJaccuzzi1 = true;
             unit3.hasPool1 = true;
+            unit5.hasGarden1 = true;
+            unit5.hasJaccuzzi1 = true;
             Host parp = new Host();
+            parp.PrivateName1 = "mcawesome";
+            parp.FamilyName1 = "village";
             bl.AddHost(parp);
             unit1.Owner1 = parp;
             unit2.Owner1 = new Host();
             unit3.Owner1 = parp;
+            unit5.Owner1 = parp;
            
             try//test for  adding hosting units
             {
                 bl.AddHostingUnit(unit1);
                 bl.AddHostingUnit(unit2);
                 bl.AddHostingUnit(unit3);
+                bl.AddHostingUnit(unit5);
             }
             catch (Exception e)
             {
@@ -200,7 +207,11 @@ namespace PL
                 Console.WriteLine(" _________________________________________________________________________\n Test for number of hosting units in one host");
 
                 bl.CalcNumOfHostingUnits();
-                Console.WriteLine(parp.NumOfHostinUnits1);
+                foreach (var item in bl.GetAllHosts())
+                {
+                    Console.WriteLine(   item.ToString());
+                }
+          
             }
             catch (Exception e)
             {
@@ -215,6 +226,48 @@ namespace PL
                     Console.WriteLine(item.ToString());
                 }
             }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+        
+            try// test for the function all units with pools
+            {
+                Console.WriteLine("_________________________________________________________________________\n All units with Pools:");
+                foreach (var item in bl.allUnitsWithPools())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+}
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+        
+            try// test for the function all units with Gardens
+            {
+                Console.WriteLine("_________________________________________________________________________\n All units with Gardnes:");
+                foreach (var item in bl.allUnitsWithGardens())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+}
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+        
+            try// test for the function all units with Jacccuzzis
+            {
+                Console.WriteLine("_________________________________________________________________________\n All units with jaccuzzi:");
+                foreach (var item in bl.allUnitsWithJaccuzzis())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+}
             catch (Exception e)
             {
 

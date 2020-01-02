@@ -39,7 +39,6 @@ namespace BE
             to += "\n Branch adrress: " + BranchAddress;
             to += "\n Branch City: " + BranchCity+"\n---------------------";
             return to;
-
         }
     }
 }

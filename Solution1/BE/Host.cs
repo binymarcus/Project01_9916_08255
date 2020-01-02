@@ -33,7 +33,6 @@ namespace BE
             to += "\n Last name: " + FamilyName;
             to += "\n Phone number: " + Convert.ToString(phoneNumber);
             to += "\n Mailing address: " + MailAddress;
-            to += "\n bank branch details: " + BankBranchDetails.ToString();
             to += "\n bank account number: " + BankAccountNumber;
             to += "\n collection clearance: " + CollectionClearance;
             to += "\n number of hosting units: " + NumOfHostinUnits+"\n-----------------------";

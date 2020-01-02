@@ -80,6 +80,7 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
      List<BankBranch> GetAllBanks();
+        List<Host> GetAllHosts();
         Order GetOrderByKey(long key);
         GuestRequest GetGuestRequestByKey(long key);
         HostingUnit GetHostingUnitByKey(long key);

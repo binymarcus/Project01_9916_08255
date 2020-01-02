@@ -249,12 +249,19 @@ namespace DAL
 
             return L;
         }
-
-        /// <summary>
-        /// sets num of hosting units each host has
-        /// </summary>
-        /// <returns></returns>
-        public void CalcNumOfHostingUnits()
+        public List<Host> GetAllHosts()
+        {
+            List<Host> L = new List<Host>();
+            foreach (var item in DataSource.HostList)
+                L.Add(Cloning.Clone(item));
+            if (L.Count() == 0)
+                throw new NoItemsFound("there are no orders in the system.");
+            return L;
+        }        /// <summary>
+                             /// sets num of hosting units each host has
+                             /// </summary>
+                             /// <returns></returns>
+            public void CalcNumOfHostingUnits()
         {
             foreach (var item1 in DataSource.HostList)
             {
@@ -319,6 +326,10 @@ namespace DAL
             }
             return host;
         }
+
+       
+
+
         #endregion
 
 
