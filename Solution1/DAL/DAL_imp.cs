@@ -40,6 +40,15 @@ namespace DAL
             DataSource.OrderList.Add(Cloning.Clone(order));
 
         }
+        /// <summary>
+        /// adds a host to the system
+        /// </summary>
+        /// <param name="host">Host defined in BE</param>
+        public void AddHost(Host host)
+        {
+            host.HostKey1 = Configuration.HostKey++;
+            DataSource.HostList.Add(Cloning.Clone(host));
+        }
         #endregion
 
         #region update
