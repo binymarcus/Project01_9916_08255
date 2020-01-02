@@ -77,9 +77,10 @@ namespace PL
             unit1.hasChildrensAttractions1 = true;
             unit2.hasJaccuzzi1 = true;
             unit3.hasPool1 = true;
-            unit1.Owner1 = new Host();
+            Host parp = new Host();
+            unit1.Owner1 = parp;
             unit2.Owner1 = new Host();
-            unit3.Owner1 = new Host();
+            unit3.Owner1 = parp;
             try
             {
                 bl.AddHostingUnit(unit1);
@@ -92,7 +93,7 @@ namespace PL
             }
             try
             {
-                foreach (var item in bl.GetAllHostingUnits())
+              foreach (var item in bl.GetAllHostingUnits())
                 {
                     Console.WriteLine(item.ToString());
                 }
@@ -162,13 +163,42 @@ namespace PL
 
                 Console.WriteLine(e); ;
             }
+            HostingUnit unit4 = new HostingUnit();
+            unit4.AreaOfHostingUnit = BEEnum.Area.Jerusalem;
+            unit4.Owner1 = new Host();
+            bl.AddHostingUnit(unit4);
+            try
+            {
+                foreach (var item in bl.GroupByAreaOfHostingUnit())
+                {
+                    Console.WriteLine(item.Key.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try
+            {
+                bl.CalcNumOfHostingUnits();
+                Console.WriteLine(parp.NumOfHostinUnits1);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
             #endregion
             Order order1 = new Order();
             Order order2 = new Order();
+            Order order3 = new Order();
             order1.GuestRequestKey1 = guesty.GuestRequestKey1;
             order1.HostingUnitKey1 = unit1.HostingUnitKey1;
-            order2.GuestRequestKey1 = guesty2.GuestRequestKey1;
+            order2.GuestRequestKey1 = guesty.GuestRequestKey1;
             order2.HostingUnitKey1 = unit3.HostingUnitKey1;
+            order3.GuestRequestKey1 = guesty.GuestRequestKey1;
+            order3.HostingUnitKey1 = unit4.HostingUnitKey1;
 
             try
             {
@@ -230,9 +260,17 @@ namespace PL
             {
                 Console.WriteLine(e);
             }
+            try
+            {
+                Console.WriteLine("number of orders sent to this guest suggestion: "+bl.GuestOrderSuggestions(guesty));
+            }
+            catch (Exception e)
+            {
 
-
-                Console.ReadKey();
-                    }
+                Console.WriteLine(e); ;
+            }     
+            
+            Console.ReadKey();
+        }
     }
 }
