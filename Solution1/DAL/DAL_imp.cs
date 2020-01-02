@@ -9,12 +9,12 @@ namespace DAL
 {
     public class DAL_imp : Idal
     {
-        
+        #region add
         /// <summary>
         /// adds a request for service from a client to the system|throws an error if request already exists
         /// </summary>
         /// <param name="guestRequest"></param>
-       public  void AddGuestRequest(GuestRequest guestRequest)
+        public void AddGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
             guestRequest.GuestRequestKey1 = Configuration.GuestRequestKey++;
             DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
@@ -38,7 +38,9 @@ namespace DAL
                 DataSource.OrderList.Add(Cloning.Clone(order));
 
         }
+        #endregion
 
+        #region update
         /// <summary>
         /// updates a request of a client thats already int the system|throws an error if doesn't exist
         /// </summary>
@@ -61,10 +63,49 @@ namespace DAL
             DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
         /// <summary>
+        /// updates the information on an existing hosting unit|throws error if unit doesnt exist
+        /// </summary>
+        /// <param name="hostingUnit">hosting unit defined in BE</param>
+        public void UpdateHostingUnit(HostingUnit hostingUnit)
+        {//TODO: need to put try and catch
+            var v = from item in DataSource.HostingUnitList
+                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
+                    select item;
+
+            if (v.Count() == 0)
+                throw new Exception("hosting unit  does not exist");
+
+            foreach (var item in v.ToList())
+            { DataSource.HostingUnitList.Remove(item); }
+            //DataSource.HostingUnitList.Remove(hostingUnit);
+            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
+        }
+        /// <summary>
+        /// updates the terms of an order from a client|throws error if order already exists
+        /// </summary>
+        /// <param name="order">Order defined in BE</param>
+        public void UpdateOrder(Order order)
+        {//TODO: need to put try and catch
+            var v = from item in DataSource.OrderList
+                    where item.OrderKey1 == order.OrderKey1
+                    select item;
+
+            if (v.Count() == 0)
+                throw new Exception("hosting unit  does not exist");
+            foreach (var item in v.ToList())
+            { DataSource.OrderList.Remove(item); }
+            //DataSource.OrderList.Remove(order);
+            DataSource.OrderList.Add(Cloning.Clone(order));
+
+        }
+        #endregion
+
+        #region delete
+        /// <summary>
         /// deletes an existing guest request|sends an error if doesnt exist
         /// </summary>
         /// <param name="guestRequest"></param>
-       public void DeleteGuestRequest(GuestRequest guestRequest)
+        public void DeleteGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
             var v = from item in DataSource.GuestRequestList
                 where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
@@ -95,37 +136,9 @@ namespace DAL
             { DataSource.HostingUnitList.Remove(item); }
            // DataSource.HostingUnitList.Remove(hostingUnit);
         }
-        /// <summary>
-        /// updates the information on an existing hosting unit|throws error if unit doesnt exist
-        /// </summary>
-        /// <param name="hostingUnit">hosting unit defined in BE</param>
-       public void UpdateHostingUnit(HostingUnit hostingUnit)
-        {//TODO: need to put try and catch
-            var v = from item in DataSource.HostingUnitList
-                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
-                    select item;
+        #endregion
 
-            if (v.Count() == 0)
-                throw new Exception("hosting unit  does not exist");
-
-            foreach (var item in v.ToList())
-            { DataSource.HostingUnitList.Remove(item); }
-            //DataSource.HostingUnitList.Remove(hostingUnit);
-            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
-        }
-        /// <summary>
-        /// updates the terms of an order from a client|throws error if order already exists
-        /// </summary>
-        /// <param name="order">Order defined in BE</param>
-        public void UpdateOrder(Order order)
-        {//TODO: need to put try and catch
-
-            foreach (var item in v.ToList())
-            { DataSource.OrderList.Remove(item); }
-            //DataSource.OrderList.Remove(order);
-            DataSource.OrderList.Add(Cloning.Clone(order));
-
-        }
+        #region get
         /// <summary>
         /// finds and returns a list of all the hosting units in the sytem
         /// </summary>
@@ -177,23 +190,26 @@ namespace DAL
 
             return L;
         }
-         /// <summary>
+
+        /// <summary>
         /// sets num of hosting units each host has
         /// </summary>
         /// <returns></returns>
         public void CalcNumOfHostingUnits()
         {
-              foreach (var item1 in DataSource.HostList)
-              {
+            foreach (var item1 in DataSource.HostList)
+            {
                 item1.NumOfHostinUnits1 = 0;
-                     foreach (var item2 in DataSource.HostingUnitList)
-                     {
-                           if(item1.HostKey1 == item2.Owner1.HostKey1)
-                               item1.NumOfHostinUnits1++;
-                     }
-              }
+                foreach (var item2 in DataSource.HostingUnitList)
+                {
+                    if (item1.HostKey1 == item2.Owner1.HostKey1)
+                        item1.NumOfHostinUnits1++;
+                }
+            }
         }
+        #endregion
 
+        #region get by key
         public Order GetOrderByKey(long key)
         {
             foreach (var item in GetAllOrders())
@@ -223,7 +239,9 @@ namespace DAL
             throw new Exception("the hosting unit does not exist");
 
         }
+        #endregion
 
+        #region updateDiary
         public HostingUnit updateDiary(HostingUnit host, GuestRequest guest)
         {
           
@@ -242,7 +260,8 @@ namespace DAL
             }
             return host;
         }
-      
+        #endregion
+
 
     }
 }
