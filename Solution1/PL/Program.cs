@@ -53,7 +53,7 @@ namespace PL
                  Console.WriteLine(e);
              }
 
-           try
+            try
             {
                 bl.DeleteGuestRequest(guesty1);
             }
@@ -61,7 +61,7 @@ namespace PL
             {
                 Console.WriteLine(e);
             }
-
+            */
             foreach (GuestRequest i in bl.GetAllGuestRequest())
             {
                 Console.WriteLine(i);
