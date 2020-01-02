@@ -61,10 +61,18 @@ namespace PL
             {
                 Console.WriteLine(e);
             }
-
-            foreach (GuestRequest i in bl.GetAllGuestRequest())
+            try
             {
-                Console.WriteLine(i);
+                Console.WriteLine("_________________________________________________________________________\n" +
+                    " All Guest Requests:");
+                foreach (GuestRequest i in bl.GetAllGuestRequest())
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
             }
             #endregion
             #region hosting unit tests
@@ -78,10 +86,12 @@ namespace PL
             unit2.hasJaccuzzi1 = true;
             unit3.hasPool1 = true;
             Host parp = new Host();
+            bl.AddHost(parp);
             unit1.Owner1 = parp;
             unit2.Owner1 = new Host();
             unit3.Owner1 = parp;
-            try
+           
+            try//test for  adding hosting units
             {
                 bl.AddHostingUnit(unit1);
                 bl.AddHostingUnit(unit2);
@@ -91,8 +101,9 @@ namespace PL
             {
                 Console.WriteLine(e);
             }
-            try
+            try//test for getAllHostingUnits after adding
             {
+                Console.WriteLine(" _________________________________________________________________________\n All Hosting Units:");
               foreach (var item in bl.GetAllHostingUnits())
                 {
                     Console.WriteLine(item.ToString());
@@ -106,8 +117,9 @@ namespace PL
             unit1.HostingUnitName1 = "zimmer";
             unit2.hasPool1 = true;
             unit3.HostingUnitName1 = "jimmering";
-            try
+            try//test to make sure the original didnt changewithout update
             {
+                Console.WriteLine(" _________________________________________________________________________\n All Hosting Units:");
                 foreach (var item in bl.GetAllHostingUnits())
                 {
                     Console.WriteLine(item.ToString());
@@ -118,7 +130,7 @@ namespace PL
 
                 Console.WriteLine(e); ;
             }
-            try
+            try//test to make sure update works
             {
                 bl.UpdateHostingUnit(unit1);
                 bl.UpdateHostingUnit(unit2);
@@ -130,8 +142,9 @@ namespace PL
 
                 Console.WriteLine(e); ;
             }
-            try
+            try//printing out to see if update works
             {
+                Console.WriteLine(" _________________________________________________________________________\n All Hosting Units:");
                 foreach (var item in bl.GetAllHostingUnits())
                 {
                     Console.WriteLine(item.ToString());
@@ -142,7 +155,7 @@ namespace PL
 
                 Console.WriteLine(e); ;
             }
-            try
+            try//tets for delete hosting unit
             {
                 bl.DeleteHostingUnit(unit2);
             }
@@ -151,8 +164,9 @@ namespace PL
 
                 Console.WriteLine(e);
             }
-            try
+            try//printing to see if deleted one was printed
             {
+                Console.WriteLine(" _________________________________________________________________________\n All Hosting Units:");
                 foreach (var item in bl.GetAllHostingUnits())
                 {
                     Console.WriteLine(item.ToString());
@@ -167,8 +181,10 @@ namespace PL
             unit4.AreaOfHostingUnit = BEEnum.Area.Jerusalem;
             unit4.Owner1 = new Host();
             bl.AddHostingUnit(unit4);
-            try
+            try//basic test for grouping, may be cn=hanged
             {
+                Console.WriteLine(" _________________________________________________________________________\n Areas that exist in the hosting units");
+
                 foreach (var item in bl.GroupByAreaOfHostingUnit())
                 {
                     Console.WriteLine(item.Key.ToString());
@@ -179,10 +195,25 @@ namespace PL
 
                 Console.WriteLine(e); ;
             }
-            try
+            try//test for calcnumofhosts, using parp which is in two seperate hosting units , set higher inthe code
             {
+                Console.WriteLine(" _________________________________________________________________________\n Test for number of hosting units in one host");
+
                 bl.CalcNumOfHostingUnits();
                 Console.WriteLine(parp.NumOfHostinUnits1);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try// test for the function all units with attractions
+            {
+                Console.WriteLine("_________________________________________________________________________\n All units with children attractions:");
+                foreach (var item in bl.allUnitsWithchildrensattractions())
+                {
+                    Console.WriteLine(item.ToString());
+                }
             }
             catch (Exception e)
             {
@@ -214,6 +245,8 @@ namespace PL
             }
             try
             {
+                Console.WriteLine(" _________________________________________________________________________\n All Orders :");
+
                 foreach (var item in bl.GetAllOrders())
                 {
                     Console.WriteLine(item.ToString());
@@ -239,6 +272,8 @@ namespace PL
             }
             try
             {
+                Console.WriteLine(" _________________________________________________________________________\n All Orders :");
+
                 foreach (var item in bl.GetAllOrders())
                 {
                     Console.WriteLine(item.ToString());
@@ -251,6 +286,8 @@ namespace PL
             }
             try
             {
+                Console.WriteLine(" _________________________________________________________________________\n All Orders older than x :");
+
                 foreach (var item in bl.OlderOrders(0))
                 {
                     Console.WriteLine(item.ToString());
@@ -262,14 +299,29 @@ namespace PL
             }
             try
             {
+                Console.WriteLine(" _________________________________________________________________________");
+
                 Console.WriteLine("number of orders sent to this guest suggestion: "+bl.GuestOrderSuggestions(guesty));
             }
             catch (Exception e)
             {
 
                 Console.WriteLine(e); ;
-            }     
-            
+            }
+            try
+            {
+                Console.WriteLine(" _________________________________________________________________________\n All the Banks :");
+
+                foreach (var item in bl.GetAllBanks())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); 
+            }
             Console.ReadKey();
         }
     }
