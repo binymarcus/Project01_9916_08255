@@ -11,16 +11,17 @@ namespace DAL
     {
         #region add
         /// <summary>
-        /// adds a request for service from a client to the system|throws an error if request already exists
+        /// adds a request for service from a client to the system
         /// </summary>
         /// <param name="guestRequest"></param>
         public void AddGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
             guestRequest.GuestRequestKey1 = Configuration.GuestRequestKey++;
+            guestRequest.RegistrationDate1 = DateTime.Now;
             DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
         /// <summary>
-        /// adds a hosting unit to the system|throw error if hosting unit already exists
+        /// adds a hosting unit to the system
         /// </summary>
         /// <param name="hostingUnit"> the hosting unit from BE</param>
         public void AddHostingUnit(HostingUnit hostingUnit)
@@ -29,11 +30,12 @@ namespace DAL
             DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
         }
         /// <summary>
-        /// adds an order from a client to the system|throws error if order already exists
+        /// adds an order from a client to the system
         /// </summary>
         /// <param name="order">Order defined in BE</param>
         public void AddOrder(Order order)
-        {          
+        {
+            order.CreateDate1 = DateTime.Now;
                 order.OrderKey1 = Configuration.OrderKey++;
                 DataSource.OrderList.Add(Cloning.Clone(order));
 
@@ -42,12 +44,12 @@ namespace DAL
 
         #region update
         /// <summary>
-        /// updates a request of a client thats already int the system|throws an error if doesn't exist
+        /// updates a request of a client thats already int the system
         /// </summary>
+        /// <exception cref="KeyNotFoundException"></exception>
         /// <param name="guestRequest"></param>
         public void UpdateGuestRequest(GuestRequest guestRequest)
-        {//TODO: need to put try and catch
-            //TODO: need to put try and catch
+        {
            GuestRequest cloned = Cloning.Clone(guestRequest);
 
             var v = from item in DataSource.GuestRequestList
@@ -65,15 +67,16 @@ namespace DAL
         /// <summary>
         /// updates the information on an existing hosting unit|throws error if unit doesnt exist
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <param name="hostingUnit">hosting unit defined in BE</param>
         public void UpdateHostingUnit(HostingUnit hostingUnit)
-        {//TODO: need to put try and catch
+        {
             var v = from item in DataSource.HostingUnitList
                     where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("hosting unit  does not exist");
+                throw new NoItemsFound("hosting unit  does not exist");
 
             foreach (var item in v.ToList())
             { DataSource.HostingUnitList.Remove(item); }
@@ -83,6 +86,7 @@ namespace DAL
         /// <summary>
         /// updates the terms of an order from a client|throws error if order already exists
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <param name="order">Order defined in BE</param>
         public void UpdateOrder(Order order)
         {//TODO: need to put try and catch
@@ -91,7 +95,7 @@ namespace DAL
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("hosting unit  does not exist");
+                throw new NoItemsFound("hosting unit  does not exist");
             foreach (var item in v.ToList())
             { DataSource.OrderList.Remove(item); }
             //DataSource.OrderList.Remove(order);
@@ -102,8 +106,9 @@ namespace DAL
 
         #region delete
         /// <summary>
-        /// deletes an existing guest request|sends an error if doesnt exist
+        /// deletes an existing guest request
         /// </summary>
+        /// <exception cref="KeyNotFoundException"></exception>
         /// <param name="guestRequest"></param>
         public void DeleteGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
@@ -122,6 +127,7 @@ namespace DAL
         /// <summary>
         /// removes an existing hosting unit from the system|throws error uf unit doesnt exist
         /// </summary>
+        /// <exception cref="KeyNotFoundException"></exception>
         /// <param name="hostingUnit">hosting unit defined in BE</param>
        public  void DeleteHostingUnit(HostingUnit hostingUnit)
         {//TODO: need to put try and catch
@@ -130,7 +136,7 @@ namespace DAL
                     select item;
 
             if (v.Count() == 0)
-                throw new Exception("GuestRequest key does not exist");
+                throw new KeyNotFoundException("GuestRequest key does not exist");
 
             foreach (var item in v.ToList())
             { DataSource.HostingUnitList.Remove(item); }
@@ -138,21 +144,25 @@ namespace DAL
         }
         #endregion
 
-        #region get
+        #region Get
         /// <summary>
         /// finds and returns a list of all the hosting units in the sytem
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <returns>all the hosting units in the system</returns>
         public List<HostingUnit> GetAllHostingUnits()
         {
             List<HostingUnit> L = new List<HostingUnit>();
             foreach (var item in DataSource.HostingUnitList)
                 L.Add(Cloning.Clone(item));
+            if (L.Count() == 0)
+                throw new NoItemsFound("there are no hosting units in the system.");
             return L;
         }
         /// <summary>
         /// shows all clients currently in the system
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <returns>List of the Clients in the system-by request</returns>
         public List<GuestRequest> GetAllGuestRequest()//this may need to change from guest request
         {
@@ -160,17 +170,22 @@ namespace DAL
             List<GuestRequest> L = new List<GuestRequest>();
             foreach (var item in DataSource.GuestRequestList)
             L.Add(Cloning.Clone(item));
+            if (L.Count() == 0)
+                throw new NoItemsFound("there are no hosting units in the system.");
             return L;
         }
         /// <summary>
         /// gets all the orders in the system
         /// </summary>
+        /// <exception cref="NoItemsFound"></exception>
         /// <returns><list of the Orders/returns>
         public List<Order> GetAllOrders()
         {
             List<Order> L = new List<Order>();
             foreach (var item in DataSource.OrderList)
                 L.Add(Cloning.Clone(item));
+            if (L.Count() == 0)
+                throw new NoItemsFound("there are no hosting units in the system.");
             return L;
         }
         /// <summary>

@@ -27,16 +27,16 @@ namespace PL
             guesty.Children1 = 3;
             guesty.PrivateName1 = "notmoshe";
 
-            /*try
+            try
              {
                  bl.UpdateGuestRequest(guesty);
              }
              catch (Exception e)
              {
                  Console.WriteLine(e);
-             }*/
+             }
 
-            try
+          /*  try
             {
                 bl.DeleteGuestRequest(guesty);
             }
@@ -44,7 +44,7 @@ namespace PL
             {
                 Console.WriteLine(e);
             }
-
+            */
             foreach (GuestRequest i in bl.GetAllGuestRequest())
             {
                 Console.WriteLine(i);
