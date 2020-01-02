@@ -431,10 +431,17 @@ namespace BL
         }
         private bool checkdeletehosting(HostingUnit hosty)
         {
-            foreach (var item in dal.GetAllOrders())
+            try
             {
-                if (item.HostingUnitKey1 == hosty.HostingUnitKey1)
-                    return false;
+                foreach (var item in dal.GetAllOrders())
+                {
+                    if (item.HostingUnitKey1 == hosty.HostingUnitKey1)
+                        return false;
+                }
+            }
+            catch(Exception e)
+            {
+                return true;
             }
             return true;
         }

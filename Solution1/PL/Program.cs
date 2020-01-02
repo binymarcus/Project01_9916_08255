@@ -67,7 +67,102 @@ namespace PL
                 Console.WriteLine(i);
             }
             #endregion
+            #region hosting unit tests
+            HostingUnit unit1 = new HostingUnit();
+            HostingUnit unit2 = new HostingUnit();
+            HostingUnit unit3 = new HostingUnit();
+            unit1.AreaOfHostingUnit = BEEnum.Area.All;
+            unit2.AreaOfHostingUnit = BEEnum.Area.Center;
+            unit3.AreaOfHostingUnit = BEEnum.Area.North;
+            unit1.hasChildrensAttractions1 = true;
+            unit2.hasJaccuzzi1 = true;
+            unit3.hasPool1 = true;
+            unit1.Owner1 = new Host();
+            unit2.Owner1 = new Host();
+            unit3.Owner1 = new Host();
+            try
+            {
+                bl.AddHostingUnit(unit1);
+                bl.AddHostingUnit(unit2);
+                bl.AddHostingUnit(unit3);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            try
+            {
+                foreach (var item in bl.GetAllHostingUnits())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception e)
+            {
 
+                Console.WriteLine(e); ;
+            }
+            unit1.HostingUnitName1 = "zimmer";
+            unit2.hasPool1 = true;
+            unit3.HostingUnitName1 = "jimmering";
+            try
+            {
+                foreach (var item in bl.GetAllHostingUnits())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try
+            {
+                bl.UpdateHostingUnit(unit1);
+                bl.UpdateHostingUnit(unit2);
+                bl.UpdateHostingUnit(unit3);
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try
+            {
+                foreach (var item in bl.GetAllHostingUnits())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            try
+            {
+                bl.DeleteHostingUnit(unit2);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e);
+            }
+            try
+            {
+                foreach (var item in bl.GetAllHostingUnits())
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e); ;
+            }
+            #endregion
             Console.ReadKey();
         }
     }
