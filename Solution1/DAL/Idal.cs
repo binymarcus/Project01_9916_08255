@@ -22,12 +22,12 @@ namespace DAL
         /// adds a hosting unit to the system
         /// </summary>
         /// <param name="hostingUnit"> the hosting unit from BE</param>
-        void AddHost(HostingUnit hostingUnit);
+        void AddHostingUnit(HostingUnit hostingUnit);
         /// <summary>
         /// adds Host  to the system
         /// </summary>
         /// <param name="host">Order defined in BE</param>
-        void Add(Host host);
+        void AddHost(Host host);
         #endregion
         #region Update
         /// <summary>

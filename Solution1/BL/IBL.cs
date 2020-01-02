@@ -26,6 +26,11 @@ namespace BL
         /// </summary>
         /// <param name="order">Order defined in BE</param>
         void AddOrder(Order order);
+        /// <summary>
+        /// adds a hostto the system
+        /// </summary>
+        /// <param name="host"> the host from BE</param>
+        void AddHost(Host host);
         #endregion 
         #region Update
         /// <summary>

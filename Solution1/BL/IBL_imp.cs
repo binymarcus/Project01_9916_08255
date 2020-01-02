@@ -217,6 +217,20 @@ namespace BL
                 throw;
             }
         }
+
+        public void AddHost(Host host)
+        {
+            try
+            {
+                dal.AddHost(host);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         #endregion
 
         #region update
