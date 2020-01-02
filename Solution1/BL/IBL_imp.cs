@@ -116,7 +116,7 @@ namespace BL
             int sum = 0;
             foreach (var item in dal.GetAllOrders())
             {
-                if (item.GuestRequestKey1 == guest.GuestRequestKey1 && item.Status1 == BEEnum.Status.mailSent)
+                if (item.GuestRequestKey1 == guest.GuestRequestKey1 &&( item.Status1 == BEEnum.Status.mailSent||item.Status1==BEEnum.Status.dealMade))
                 {
                     sum++;
                 }
