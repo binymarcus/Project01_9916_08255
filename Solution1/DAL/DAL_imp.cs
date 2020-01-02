@@ -46,14 +46,18 @@ namespace DAL
         public void UpdateGuestRequest(GuestRequest guestRequest)
         {//TODO: need to put try and catch
             //TODO: need to put try and catch
+           GuestRequest cloned = Cloning.Clone(guestRequest);
+
             var v = from item in DataSource.GuestRequestList
-                    where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
+                    where item.GuestRequestKey1 == cloned.GuestRequestKey1
                     select item;
 
             if (v.Count() == 0)
                 throw new KeyNotFoundException("GuestRequest key does not exist");
 
-            DataSource.GuestRequestList.Remove(guestRequest);
+            foreach (var item in v.ToList())
+                { DataSource.GuestRequestList.Remove(item); }
+            //DataSource.GuestRequestList.Remove(guestRequest);
             DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
         /// <summary>
@@ -68,8 +72,10 @@ namespace DAL
 
                 if (v.Count() == 0)
                     throw new KeyNotFoundException("GuestRequest key not found");
-           
-                DataSource.GuestRequestList.Remove(guestRequest);
+
+            foreach (var item in v.ToList())
+            { DataSource.GuestRequestList.Remove(item); }
+            //DataSource.GuestRequestList.Remove(guestRequest);
         }
         
         /// <summary>
@@ -85,7 +91,9 @@ namespace DAL
             if (v.Count() == 0)
                 throw new Exception("GuestRequest key does not exist");
 
-            DataSource.HostingUnitList.Remove(hostingUnit);
+            foreach (var item in v.ToList())
+            { DataSource.HostingUnitList.Remove(item); }
+           // DataSource.HostingUnitList.Remove(hostingUnit);
         }
         /// <summary>
         /// updates the information on an existing hosting unit|throws error if unit doesnt exist
@@ -100,7 +108,9 @@ namespace DAL
             if (v.Count() == 0)
                 throw new Exception("hosting unit  does not exist");
 
-            DataSource.HostingUnitList.Remove(hostingUnit);
+            foreach (var item in v.ToList())
+            { DataSource.HostingUnitList.Remove(item); }
+            //DataSource.HostingUnitList.Remove(hostingUnit);
             DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
         }
         /// <summary>
@@ -110,7 +120,9 @@ namespace DAL
         public void UpdateOrder(Order order)
         {//TODO: need to put try and catch
 
-            DataSource.OrderList.Remove(order);
+            foreach (var item in v.ToList())
+            { DataSource.OrderList.Remove(item); }
+            //DataSource.OrderList.Remove(order);
             DataSource.OrderList.Add(Cloning.Clone(order));
 
         }
@@ -134,7 +146,7 @@ namespace DAL
 
             List<GuestRequest> L = new List<GuestRequest>();
             foreach (var item in DataSource.GuestRequestList)
-                L.Add(Cloning.Clone(item));
+            L.Add(Cloning.Clone(item));
             return L;
         }
         /// <summary>
