@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS", "DS\DS.csproj", "{109C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyException", "MyException\MyException.csproj", "{FD54C589-7445-486F-B1CC-6B3DB5595B3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLWPF", "PLWPF\PLWPF.csproj", "{FFB5F6DF-F4C9-4080-B20B-66AF11D67288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{FD54C589-7445-486F-B1CC-6B3DB5595B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD54C589-7445-486F-B1CC-6B3DB5595B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD54C589-7445-486F-B1CC-6B3DB5595B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB5F6DF-F4C9-4080-B20B-66AF11D67288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB5F6DF-F4C9-4080-B20B-66AF11D67288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB5F6DF-F4C9-4080-B20B-66AF11D67288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB5F6DF-F4C9-4080-B20B-66AF11D67288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
