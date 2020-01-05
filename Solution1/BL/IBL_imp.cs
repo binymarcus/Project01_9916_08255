@@ -630,7 +630,8 @@ namespace BL
             }
             return v.First();
         }
-        public Order findLongestOrderPending()
+        //we'll use this once we have diffrent times for each order entry 
+       /* public Order findLongestOrderPending()
         {
             var v = dal.GetAllOrders().FindAll(x => x.Status1 == BEEnum.Status.pending);
             Order longest = v.First();
@@ -640,7 +641,7 @@ namespace BL
                     longest = item;
             }
             return longest;
-        }
+        }*/
 
        
     }
