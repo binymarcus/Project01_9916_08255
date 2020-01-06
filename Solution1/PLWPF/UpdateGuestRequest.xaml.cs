@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for HostingUnit.xaml
+    /// Interaction logic for UpdateGuestRequest.xaml
     /// </summary>
-    public partial class HostingUnit : Window
+    public partial class UpdateGuestRequest : Window
     {
-        public HostingUnit()
+        public UpdateGuestRequest()
         {
             InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
         }
     }
 }

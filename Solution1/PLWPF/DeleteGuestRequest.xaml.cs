@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for HostingUnit.xaml
+    /// Interaction logic for DeleteGuestRequest.xaml
     /// </summary>
-    public partial class HostingUnit : Window
+    public partial class DeleteGuestRequest : Window
     {
-        public HostingUnit()
+        public DeleteGuestRequest()
         {
             InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
         }
     }
 }

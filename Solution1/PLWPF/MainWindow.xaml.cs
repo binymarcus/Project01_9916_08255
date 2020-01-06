@@ -25,6 +25,22 @@ namespace PLWPF
         {
             InitializeComponent();
             IBL myBL;
+           
+        }
+        private void guestRequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window addGuestRequestWindow = new GuestRequest();
+            addGuestRequestWindow.ShowDialog();
+        }
+        private void hostingUnitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window addHostingUnitWindow = new HostingUnit();
+            addHostingUnitWindow.Show();
+        }
+        private void orderButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window addOrderWindow = new Order();
+            addOrderWindow.Show();
         }
     }
 }

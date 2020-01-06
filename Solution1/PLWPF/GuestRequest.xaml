@@ -1,4 +1,4 @@
-﻿<Window x:Class="PLWPF.MainWindow"
+﻿<Window x:Class="PLWPF.GuestRequest"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,9 +12,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="GuestRequestButton" Content ="Guest Request" Margin="10" FontSize="30" Grid.Row="0" Click="guestRequestButton_Click"/>
-        <Button x:Name="HostingUnitButton" Content ="Hosting Unit" Margin="10" FontSize="30" Grid.Row="1" Click="hostingUnitButton_Click"/>
-        <Button x:Name="OrderButton" Content ="Order" Margin="10" FontSize="30" Grid.Row="2" Click="orderButton_Click"/>
+        <Button x:Name="AddRequestButton" Content ="Add Request" Margin="10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click"/>
+        <Button x:Name="UpdateRequestButton" Content ="Update Request" Margin="10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click"/>
+        <Button x:Name="DeleteRequestButton" Content ="Delete Request" Margin="10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click"/>
 
     </Grid>
 </Window>

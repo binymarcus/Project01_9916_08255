@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for AddGuestRequest.xaml
+    /// Interaction logic for AddGuestrequest.xaml
     /// </summary>
     public partial class AddGuestRequest : Window
     {
@@ -23,5 +23,7 @@ namespace PLWPF
         {
             InitializeComponent();
         }
+
+       
     }
 }
