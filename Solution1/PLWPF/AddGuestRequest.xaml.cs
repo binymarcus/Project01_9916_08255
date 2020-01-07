@@ -19,11 +19,39 @@ namespace PLWPF
     /// </summary>
     public partial class AddGuestRequest : Window
     {
+        BE.GuestRequest guest;
+        BL.IBL bl;
         public AddGuestRequest()
         {
             InitializeComponent();
+            guest = new BE.GuestRequest();
+            this.GuestRequestDetailsGrid.DataContext = guest;
+            guest.FamilyName1 = this.FNameTextBox.Text;
+            guest.MailAddress1 = this.EmailtextBox.Text;
+            //need to finsih adding all the properties
+            bl = BL.FactoryBL.getIBL();
+        }
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.AddGuestRequest(guest);
+                this.GuestRequestDetailsGrid.DataContext = guest;
+                //this.PNameTextBox.ClearValue(TextBox.TextProperty);
+                //  this.FNameTextBox.ClearValue(TextBox.TextProperty);
+                MessageBox.Show("Guest Request Added, Key:" + guest.GuestRequestKey1);
+            }
+            catch (FormatException)
+            {
+
+                MessageBox.Show("Please check your input and try again");
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-       
     }
 }
