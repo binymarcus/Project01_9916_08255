@@ -26,17 +26,23 @@ namespace PLWPF
         private void addRequestButton_Click(object sender, RoutedEventArgs e)
         {
             Window addRequestWindow = new AddGuestRequest();
-            addRequestWindow.ShowDialog();
+            addRequestWindow.Show();
+            this.Close();
+
         }
         private void updateRequestButton_Click(object sender, RoutedEventArgs e)
         {
             Window updateRequestWindow = new UpdateGuestRequest();
-            updateRequestWindow.ShowDialog();
+            updateRequestWindow.Show();
+            this.Close();
+
         }
         private void deleteRequestButton_Click(object sender, RoutedEventArgs e)
         {
             Window deleteRequestWindow = new DeleteGuestRequest();
-            deleteRequestWindow.ShowDialog();
+            deleteRequestWindow.Show();
+            this.Close();
+
         }
     }
 }

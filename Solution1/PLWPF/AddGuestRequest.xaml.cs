@@ -27,7 +27,6 @@ namespace PLWPF
             guest = new BE.GuestRequest();
             this.GuestRequestDetailsGrid.DataContext = guest;
             guest.FamilyName1 = this.FNameTextBox.Text;
-            guest.MailAddress1 = this.EmailtextBox.Text;
             //need to finsih adding all the properties
             bl = BL.FactoryBL.getIBL();
         }
@@ -53,5 +52,60 @@ namespace PLWPF
             }
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_3(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_4(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_5(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_6(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        
+        private void btOrder_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_3(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

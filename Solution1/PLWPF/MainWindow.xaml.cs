@@ -30,17 +30,23 @@ namespace PLWPF
         private void guestRequestButton_Click(object sender, RoutedEventArgs e)
         {
             Window addGuestRequestWindow = new GuestRequest();
-            addGuestRequestWindow.ShowDialog();
+            addGuestRequestWindow.Show();
+
+            this.Close();
         }
         private void hostingUnitButton_Click(object sender, RoutedEventArgs e)
         {
             Window addHostingUnitWindow = new HostingUnit();
             addHostingUnitWindow.Show();
+            this.Close();
+
         }
         private void orderButton_Click(object sender, RoutedEventArgs e)
         {
             Window addOrderWindow = new Order();
             addOrderWindow.Show();
+            this.Close();
+
         }
     }
 }
