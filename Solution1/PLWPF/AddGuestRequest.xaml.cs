@@ -26,37 +26,37 @@ namespace PLWPF
             InitializeComponent();
             guest = new BE.GuestRequest();
             this.GuestRequestDetailsGrid.DataContext = guest;
-            guest.FamilyName1 = this.FNameTextBox.Text;
+            guest.FamilyName1 = this.familyName1TextBox.Text;
             //need to finsih adding all the properties
             bl = BL.FactoryBL.getIBL();
             
         }
         private void TextBox_MouseEnter(object sender, RoutedEventArgs e)
         {
-            if(sender==this.numOfAdults)
+            if(sender==this.adults1TextBox)
             {
-                if (this.numOfAdults.Text == "insert num of Adults")
-                    this.numOfAdults.Clear();
+                if (this.adults1TextBox.Text == "insert num of Adults")
+                    this.adults1TextBox.Clear();
             }
-            if (sender == this.numofChildren)
+            if (sender == this.children1TextBox)
             {
-                if (this.numofChildren.Text == "insert num of Children")
-                    this.numofChildren.Clear();
+                if (this.children1TextBox.Text == "insert num of Children")
+                    this.children1TextBox.Clear();
             }
-            if (sender == this.PrivateName)
+            if (sender == this.privateName1TextBox)
             {
-                if (this.PrivateName.Text == "insert private name")
-                    this.PrivateName.Clear();
+                if (this.privateName1TextBox.Text == "insert private name")
+                    this.privateName1TextBox.Clear();
             }
-            if (sender == this.FamilyName)
+            if (sender == this.familyName1TextBox)
             {
-                if (this.FamilyName.Text == "insert family name")
-                    this.FamilyName.Clear();
+                if (this.familyName1TextBox.Text == "insert family name")
+                    this.familyName1TextBox.Clear();
             }
-            if (sender == this.Email)
+            if (sender == this.mailAddress1TextBox)
             {
-                if (this.Email.Text == "insert email")
-                    this.Email.Clear();
+                if (this.mailAddress1TextBox.Text == "insert email")
+                    this.mailAddress1TextBox.Clear();
             }
         }
         
@@ -149,6 +149,19 @@ namespace PLWPF
         {
             this.Close();
 
+        }
+
+        private void numOfAdults_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // guestRequestViewSource.Source = [generic data source]
         }
     }
 }
