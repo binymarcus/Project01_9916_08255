@@ -147,8 +147,9 @@ namespace PLWPF
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
+            Window guestRequestWindow = new GuestRequest();
+            guestRequestWindow.Show();
             this.Close();
-
         }
 
         private void numOfAdults_TextChanged(object sender, TextChangedEventArgs e)
@@ -162,6 +163,11 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // guestRequestViewSource.Source = [generic data source]
+        }
+
+        private void adults1TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

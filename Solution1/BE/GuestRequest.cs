@@ -12,8 +12,8 @@ namespace BE
          string FamilyName;
          string MailAddress;
          DateTime RegistrationDate;
-         DateTime EntryDate;
-         DateTime ReleaseDate;
+        DateTime EntryDate=DateTime.Now;
+         DateTime ReleaseDate=DateTime.Now;
          string SubArea; 
          int Adults;
          public int Children;
