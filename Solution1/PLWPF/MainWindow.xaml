@@ -6,11 +6,14 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
         <Button x:Name="GuestRequestButton" Content ="Guest Request" Margin="10" FontSize="30" Grid.Row="0" Click="guestRequestButton_Click"/>
         <Button x:Name="HostingUnitButton" Content ="Hosting Unit" Margin="10" FontSize="30" Grid.Row="1" Click="hostingUnitButton_Click"/>

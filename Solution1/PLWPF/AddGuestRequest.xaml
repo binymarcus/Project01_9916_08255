@@ -41,8 +41,8 @@
             <TextBox x:Name="FNameTextBox" Text="{Binding GuestRequestFamilyName1}" Grid.Column="1" Margin="2.667,132,362.333,2.667" Grid.RowSpan="2"/>
 
             <Label Content="Email:" Grid.Column="0" Margin="3" Grid.Row="2"/>
-            <TextBox HorizontalAlignment="Left" Height="44" Margin="0.667,0,0,0" TextWrapping="Wrap" Text="insert family name" VerticalAlignment="Top" Width="347" Grid.Column="1" Grid.Row="1" TextChanged="TextBox_TextChanged_1"/>
-            <TextBox HorizontalAlignment="Left" Height="44" Margin="2.667,3,0,0" TextWrapping="Wrap" Text="insert email" VerticalAlignment="Top" Width="347" Grid.RowSpan="2" Grid.Row="2" Grid.Column="1"/>
+            <TextBox Name="FamilyName"  HorizontalAlignment="Left" FontSize="25" Height="44" Margin="126,0.333,0,0" MouseLeftButtonDown="TextBox_MouseEnter" TextWrapping="Wrap" Text="insert family name" VerticalAlignment="Top" Width="349" Grid.Row="1" TextChanged="TextBox_TextChanged_1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <TextBox Name="Email" HorizontalAlignment="Left" FontSize="25" Height="49" Margin="127,0.333,0,0" MouseLeftButtonDown="TextBox_MouseEnter" TextWrapping="Wrap" Text="insert email" VerticalAlignment="Top" Width="348" Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="2"/>
 
             <Label Content="Adults:" Margin="10,3,10.333,0" Grid.Row="3"/>
             <Label Content="Children:" HorizontalAlignment="Left" Margin="3,9,0,0" Grid.Row="4" VerticalAlignment="Top" Width="86"/>
@@ -52,23 +52,23 @@
             <Label Content="ChildrensAttractions" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="8" VerticalAlignment="Top"/>
             <Label Content="Type" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="9" VerticalAlignment="Top"/>
             <Label Content="Area" HorizontalAlignment="Left" Height="42" Margin="10,1.667,0,0" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="44" Margin="0.667,-3,0,0" TextWrapping="Wrap" Text="insert private name" VerticalAlignment="Top" Width="347" Grid.Column="1" TextChanged="TextBox_TextChanged_2"/>
-            <ComboBox SelectionChanged="ComboBox_SelectionChanged_1" Grid.Column="1" Margin="2.667,0,304.333,0" Grid.Row="5">
+            <TextBox Name="PrivateName" HorizontalAlignment="Left" Height="41" Margin="127,3,0,0" TextWrapping="Wrap" Text="insert private name" VerticalAlignment="Top" Width="348" MouseLeftButtonDown="TextBox_MouseEnter" TextChanged="TextBox_TextChanged_2" FontSize="25" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <ComboBox SelectionChanged="ComboBox_SelectionChanged_1" Margin="126,0.333,308.333,43.667" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <ComboBox SelectionChanged="ComboBox_SelectionChanged_2" Grid.Column="1" Margin="2.667,1,304.333,43" Grid.Row="6" Grid.RowSpan="2">
+            <ComboBox SelectionChanged="ComboBox_SelectionChanged_2" Margin="127,0.333,308.333,43.667" Grid.Row="6" Grid.RowSpan="2" Grid.ColumnSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <ComboBox SelectionChanged="ComboBox_SelectionChanged_3" Grid.Column="1" Margin="2.667,0,304.333,0" Grid.Row="7">
+            <ComboBox SelectionChanged="ComboBox_SelectionChanged_3" Margin="126,0.333,308.333,43" Grid.Row="7" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <ComboBox SelectionChanged="ComboBox_SelectionChanged_4" Grid.Column="1" Margin="4.667,0,302.333,0" Grid.Row="8">
+            <ComboBox SelectionChanged="ComboBox_SelectionChanged_4" Margin="126,0.333,308.333,0" Grid.Row="8" Grid.ColumnSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
@@ -86,14 +86,24 @@
                 <ComboBoxItem Content="Center" />
                 <ComboBoxItem Content="Jerusalem" />
             </ComboBox>
-            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="4.667,5.333,0,0" Grid.Row="3" TextWrapping="Wrap" Text="insert num of Adults" VerticalAlignment="Top" Width="345" Grid.RowSpan="2"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="9.667,0.333,0,0" Grid.Row="4" TextWrapping="Wrap" Text="insert num of Children" VerticalAlignment="Top" Width="344" TextChanged="TextBox_TextChanged_3"/>
-
-            <Calendar SelectionMode="SingleRange" Grid.Column="1" Margin="383.667,37,39.333,9.667" Grid.RowSpan="5" />
+            
+            <TextBox  Name="numOfAdults"  HorizontalAlignment="Left" Height="39" MouseLeftButtonDown="TextBox_MouseEnter" FontSize="25" Margin="127,5.333,0,0" Grid.Row="3" TextWrapping="Wrap" Text="insert num of Adults" VerticalAlignment="Top" Width="348" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+           <TextBox Name="numofChildren"  HorizontalAlignment="Left" MouseLeftButtonDown="TextBox_MouseEnter" Height="44" FontSize="25" Margin="126,0.333,0,0" Grid.Row="4" TextWrapping="Wrap" Text="insert num of Children" VerticalAlignment="Top" Width="350" TextChanged="TextBox_TextChanged_3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
             <Label Content="vacation dates" Grid.Column="1" HorizontalAlignment="Left" Margin="469.667,15,0,0" VerticalAlignment="Top" Width="89"/>
-
+            <Viewbox Name="vbCalendar" Grid.Column="1" HorizontalAlignment="Left" Height="156" Margin="436.667,10.333,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="177">
+                <Calendar/>
+            </Viewbox>
             <!--need to make calender like in targil 3-->
         </Grid>
-        <Button x:Name="addButton" Content=" Add" FontSize="40" Grid.Row="2"  Margin="0" Click="addButton_Click"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Button x:Name="addButton" Content=" Add" FontSize="40" Grid.Row="2" Grid.Column="1"  Margin="0" Click="addButton_Click"/>
+            <Button x:Name="cancelButton" Content=" Cancel" FontSize="40" Grid.Row="2" Grid.Column="0" Margin="0" Click="cancelButton_Click"/>
+        </Grid>
+
     </Grid>
 </Window>
