@@ -34,6 +34,17 @@ namespace PLWPF
 
             this.Close();
         }
+        private void Close_Button(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void עברית(object sender, RoutedEventArgs e)
+        {
+            Window mainWindowHeberew = new GuestRequest();
+            mainWindowHeberew.Show();
+
+            this.Close();
+        }
         private void hostingUnitButton_Click(object sender, RoutedEventArgs e)
         {
             Window addHostingUnitWindow = new HostingUnit();

@@ -15,10 +15,18 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <Button x:Name="GuestRequestButton" Content ="Guest Request" Margin="0,0,10.333,0" FontSize="30" Grid.Row="0" Click="guestRequestButton_Click"/>
+        <Button x:Name="GuestRequestButton" Content ="Guest Request" Margin="0,20,0.333,0" FontSize="30" Grid.Row="0" Click="guestRequestButton_Click"/>
         <Button x:Name="HostingUnitButton" Content ="Hosting Unit" Margin="0,0,0.333,4.667" FontSize="30" Grid.Row="1" Click="hostingUnitButton_Click"/>
-        <Button x:Name="OrderButton" Content ="Order" Margin="0,0.333,0.333,4.667" FontSize="30" Grid.Row="2" Click="orderButton_Click"/>
-        <Button x:Name="button" Content="Language" HorizontalAlignment="Left" FontSize="30" Margin="423,75,-422.667,0" Grid.Row="1" VerticalAlignment="Top" Width="793" Height="84" Grid.RowSpan="2"/>
-
+        <Button x:Name="OrderButton" Content ="Order" Margin="0,80,0.333,83.667" FontSize="30" Grid.Row="1" Click="orderButton_Click" Grid.RowSpan="3"/>
+        <StackPanel>
+            <Menu x:Name="Language" >
+                <MenuItem Header=" Language/שפה" >
+                    <MenuItem Header="עברית" Click="עברית" />
+                    <MenuItem Header="English"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Button x:Name="HostButton" FontSize="30" Content="Host" HorizontalAlignment="Left" Margin="0,0.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="793" Height="84" Grid.RowSpan="2"/>
+        <Button x:Name="Close" Click="Close_Button" FontSize="30" Content="Close" HorizontalAlignment="Left" Margin="0,0.333,0,-0.333" Grid.Row="4" VerticalAlignment="Top" Width="793" Height="84"/>
     </Grid>
 </Window>
