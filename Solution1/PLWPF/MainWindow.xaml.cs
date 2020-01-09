@@ -29,8 +29,8 @@ namespace PLWPF
         }
         private void guestRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            Window addGuestRequestWindow = new GuestRequest();
-            addGuestRequestWindow.Show();
+            Window GuestRequestWindow = new GuestRequest();
+            GuestRequestWindow.Show();
 
             this.Close();
         }

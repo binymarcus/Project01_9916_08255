@@ -97,7 +97,7 @@
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
             <Label Content="Private Name:" HorizontalAlignment="Left" Margin="3,6,0,2" VerticalAlignment="Center" Height="26" Width="93"/>
-            <xctk:WatermarkTextBox x:Name="privateName1TextBox" Watermark="Please insert your private name" HorizontalAlignment="Left" Height="24" Margin="0.667,2,-133,0" Text="{Binding PrivateName1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1"/>
+            <xctk:WatermarkTextBox x:Name="privateName1TextBox" Watermark="Please insert your private name" HorizontalAlignment="Left" Height="24" Margin="0.667,2,-133,0" Text="{Binding PrivateName1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1" TextChanged="privateName1TextBox_TextChanged"/>
             <Label Content="Release Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,24.667" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="90" Grid.RowSpan="2"/>
             <DatePicker x:Name="releaseDate1DatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="0.667,0,-116.333,25.333" Grid.Row="4"  SelectedDate="{Binding ReleaseDate1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="26" Width="357" Grid.RowSpan="2"/>
             <Label Content="Sub Area:" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" Height="26" Width="96"/>

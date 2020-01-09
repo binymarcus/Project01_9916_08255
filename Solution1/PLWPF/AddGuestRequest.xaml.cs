@@ -26,7 +26,7 @@ namespace PLWPF
             InitializeComponent();
             guest = new BE.GuestRequest();
             this.GuestRequestDetailsGrid.DataContext = guest;
-            guest.FamilyName1 = this.familyName1TextBox.Text;
+            //guest.FamilyName1 = this.familyName1TextBox.Text;
             //need to finsih adding all the properties
             bl = BL.FactoryBL.getIBL();
             
@@ -65,11 +65,12 @@ namespace PLWPF
             try
             {
                 bl.AddGuestRequest(guest);
-                this.GuestRequestDetailsGrid.DataContext = guest;
-                //this.PNameTextBox.ClearValue(TextBox.TextProperty);
-                //  this.FNameTextBox.ClearValue(TextBox.TextProperty);
                 MessageBox.Show("Guest Request Added, Key:" + guest.GuestRequestKey1);
+                this.GuestRequestDetailsGrid.DataContext = guest;
+                Window GuestRequestWindow = new GuestRequest();
+                GuestRequestWindow.Show();
 
+                this.Close();
             }
 
             catch (FormatException)
@@ -166,6 +167,11 @@ namespace PLWPF
         }
 
         private void adults1TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void privateName1TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
