@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-        <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -15,9 +15,10 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <Button x:Name="GuestRequestButton" Content ="Guest Request" Margin="10" FontSize="30" Grid.Row="0" Click="guestRequestButton_Click"/>
-        <Button x:Name="HostingUnitButton" Content ="Hosting Unit" Margin="10" FontSize="30" Grid.Row="1" Click="hostingUnitButton_Click"/>
-        <Button x:Name="OrderButton" Content ="Order" Margin="10" FontSize="30" Grid.Row="2" Click="orderButton_Click"/>
+        <Button x:Name="GuestRequestButton" Content ="Guest Request" Margin="0,0,10.333,0" FontSize="30" Grid.Row="0" Click="guestRequestButton_Click"/>
+        <Button x:Name="HostingUnitButton" Content ="Hosting Unit" Margin="0,0,0.333,4.667" FontSize="30" Grid.Row="1" Click="hostingUnitButton_Click"/>
+        <Button x:Name="OrderButton" Content ="Order" Margin="0,0.333,0.333,4.667" FontSize="30" Grid.Row="2" Click="orderButton_Click"/>
+        <Button x:Name="button" Content="Language" HorizontalAlignment="Left" FontSize="30" Margin="423,75,-422.667,0" Grid.Row="1" VerticalAlignment="Top" Width="793" Height="84" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>
