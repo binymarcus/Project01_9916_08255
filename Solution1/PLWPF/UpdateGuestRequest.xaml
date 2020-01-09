@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="UpdateGuestRequest" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="0,0,0.333,-1.333">
+        <Label Content="Update order" FontSize="25" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="49" Width="773"/>
+
     </Grid>
 </Window>

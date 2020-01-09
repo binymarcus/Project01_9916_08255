@@ -305,6 +305,15 @@ namespace DAL
             throw new Exception("the hosting unit does not exist");
 
         }
+        public GuestRequest GetGuestRequestname(string pname, string fname)
+        {
+            foreach (var item in GetAllGuestRequest())
+            {
+                if (pname == item.PrivateName1 && fname == item.FamilyName1)                 
+                        return item;                                 
+            }
+            throw new Exception("the guest request does not exist");
+        }
         #endregion
 
         #region updateDiary

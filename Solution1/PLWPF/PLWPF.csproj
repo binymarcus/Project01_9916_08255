@@ -73,6 +73,9 @@
     <Compile Include="DeleteGuestRequest.xaml.cs">
       <DependentUpon>DeleteGuestRequest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateBY.xaml.cs">
+      <DependentUpon>UpdateBY.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateGuestRequest.xaml.cs">
       <DependentUpon>UpdateGuestRequest.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateBY.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -59,7 +59,7 @@ namespace DAL
         /// <param name="hostingUnit">hosting unit defined in BE</param>
       void DeleteHostingUnit(HostingUnit hostingUnit);
         #endregion
-
+        #region get by
         /// <summary>
         /// finds and returns a list of all the hosting units in the sytem
         /// </summary>
@@ -84,7 +84,10 @@ namespace DAL
         Order GetOrderByKey(long key);
         GuestRequest GetGuestRequestByKey(long key);
         HostingUnit GetHostingUnitByKey(long key);
-        HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
+
+        GuestRequest GetGuestRequestname(string pname, string fname);
+        #endregion
+      HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
 
      /// <summary>
      /// reutrns num of hosting units each host has

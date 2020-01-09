@@ -32,8 +32,10 @@ namespace PLWPF
         }
         private void updateRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            Window updateRequestWindow = new UpdateGuestRequest();
-            updateRequestWindow.Show();
+            Window UpdateBYWindow = new UpdateBY();
+            UpdateBYWindow.Show();
+            //Window updateRequestWindow = new UpdateGuestRequest();
+            //updateRequestWindow.Show();
             this.Close();
 
         }
