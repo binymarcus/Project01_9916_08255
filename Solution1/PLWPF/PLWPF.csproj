@@ -73,8 +73,8 @@
     <Compile Include="DeleteGuestRequest.xaml.cs">
       <DependentUpon>DeleteGuestRequest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateBY.xaml.cs">
-      <DependentUpon>UpdateBY.xaml</DependentUpon>
+    <Compile Include="UpdateDeleteBy.xaml.cs">
+      <DependentUpon>UpdateDeleteBy.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateGuestRequest.xaml.cs">
       <DependentUpon>UpdateGuestRequest.xaml</DependentUpon>
@@ -120,7 +120,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateBY.xaml">
+    <Page Include="UpdateDeleteBy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

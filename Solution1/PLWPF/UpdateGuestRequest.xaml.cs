@@ -23,5 +23,17 @@ namespace PLWPF
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // guestRequestViewSource.Source = [generic data source]
+        }
+        //TO DO
+        //find the guest request by name or key
+        //put the info in the grid
+        //update the guest request
     }
 }

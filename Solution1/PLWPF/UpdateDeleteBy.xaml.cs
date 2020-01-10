@@ -15,20 +15,28 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for UpdateBY.xaml
+    /// Interaction logic for UpdateDeleteBy.xaml
     /// </summary>
-    public partial class UpdateBY : Window
+    public partial class UpdateDeleteBy : Window
     {
-        public UpdateBY()
+        public UpdateDeleteBy()
         {
             InitializeComponent();
         }
-        private void continueButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {            
             Window updateRequestWindow = new UpdateGuestRequest();
             updateRequestWindow.Show();
             this.Close();
 
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            //find the guest request by name or key
+            //the delete the guest request
+            MessageBox.Show("Guest Request deleted, Key:" );
+            this.Close();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

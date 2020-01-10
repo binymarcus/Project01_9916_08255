@@ -32,7 +32,7 @@ namespace PLWPF
         }
         private void updateRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            Window UpdateBYWindow = new UpdateBY();
+            Window UpdateBYWindow = new UpdateDeleteBy();
             UpdateBYWindow.Show();
             //Window updateRequestWindow = new UpdateGuestRequest();
             //updateRequestWindow.Show();
@@ -41,9 +41,13 @@ namespace PLWPF
         }
         private void deleteRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            Window deleteRequestWindow = new DeleteGuestRequest();
-            deleteRequestWindow.Show();
+            Window UpdateBYWindow = new UpdateDeleteBy();
+            UpdateBYWindow.Show();
             this.Close();
+
+           // Window deleteRequestWindow = new DeleteGuestRequest();
+           //deleteRequestWindow.Show();
+           //this.Close();
 
         }
         private void backButton_Click(object sender, RoutedEventArgs e)
