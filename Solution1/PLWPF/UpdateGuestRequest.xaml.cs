@@ -24,7 +24,7 @@ namespace PLWPF
         public UpdateGuestRequest()
         {
             InitializeComponent();
-            if(UpdateDeleteBy().UpdatefamilyNameTextBox.Text != null && UpdateDeleteBy().UpdatePrivateNameTextBox.Text != null)
+          /*  if(UpdateDeleteBy().UpdatefamilyNameTextBox.Text != null && UpdateDeleteBy().UpdatePrivateNameTextBox.Text != null)
             {
                 guest = bl.GetGuestRequestByName(UpdateDeleteBy().UpdatefamilyNameTextBox.Text, UpdateDeleteBy().UpdatePrivateNameTextBox.Text);
                 this.updateRequestDetailsGrid.DataContext = guest;
@@ -34,7 +34,7 @@ namespace PLWPF
                 guest = bl.GetGuestRequestByKey(long.Parse(UpdateDeleteBy().UpdateKey.Text));
                 this.updateRequestDetailsGrid.DataContext = guest;
             }           
-
+            */
         }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {

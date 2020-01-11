@@ -30,6 +30,7 @@ namespace PLWPF
             this.Close();
 
         }
+
         private void updateRequestButton_Click(object sender, RoutedEventArgs e)
         {
             Window UpdateBYWindow = new UpdateDeleteBy();
