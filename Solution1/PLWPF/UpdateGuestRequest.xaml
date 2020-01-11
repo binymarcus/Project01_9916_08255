@@ -95,7 +95,7 @@
                 <ComboBoxItem Content="BAndB" />
             </ComboBox>
         </Grid>
-        <Button x:Name="UpdateButton" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,346,0,0" VerticalAlignment="Top" Width="323" Click="UpdateButton_Click" Height="66"/>
+        <Button x:Name="UpdateButton" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,346,0,0" VerticalAlignment="Top" Width="323" Height="66" Click="UpdateButton_Click"/>
 
 
     </Grid>

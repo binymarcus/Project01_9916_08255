@@ -26,11 +26,24 @@ namespace PLWPF
             InitializeComponent();
         }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {            
-            Window updateRequestWindow = new UpdateGuestRequest();
-            updateRequestWindow.Show();
-            this.Close();
+        {
 
+            if (this.UpdatefamilyNameTextBox.Text != null && this.UpdatePrivateNameTextBox.Text != null)
+            {
+                Window updateRequestWindow = new UpdateGuestRequest(this.UpdatefamilyNameTextBox.Text, this.UpdatePrivateNameTextBox.Text);
+                updateRequestWindow.Show();
+                this.Close();
+            }
+            else if (this.UpdateKey.Text != null)
+            {
+                Window updateRequestWindow = new UpdateGuestRequest(long.Parse(this.UpdateKey.Text));
+                updateRequestWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

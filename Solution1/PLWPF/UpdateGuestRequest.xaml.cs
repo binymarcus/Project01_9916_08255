@@ -21,20 +21,22 @@ namespace PLWPF
     {
         BE.GuestRequest guest;
         BL.IBL bl;
-        public UpdateGuestRequest()
+
+        public UpdateGuestRequest(string pname, string fname)
         {
-            InitializeComponent();
-          /*  if(UpdateDeleteBy().UpdatefamilyNameTextBox.Text != null && UpdateDeleteBy().UpdatePrivateNameTextBox.Text != null)
-            {
-                guest = bl.GetGuestRequestByName(UpdateDeleteBy().UpdatefamilyNameTextBox.Text, UpdateDeleteBy().UpdatePrivateNameTextBox.Text);
+            InitializeComponent();    
+                guest = bl.GetGuestRequestByName(pname, fname);
                 this.updateRequestDetailsGrid.DataContext = guest;
-            }
-            if(UpdateDeleteBy().UpdateKey.Text != null)
-            {
-                guest = bl.GetGuestRequestByKey(long.Parse(UpdateDeleteBy().UpdateKey.Text));
+            this.Close();
+        }
+        public UpdateGuestRequest(long key)
+        {
+                InitializeComponent();
+                guest = bl.GetGuestRequestByKey(key);
                 this.updateRequestDetailsGrid.DataContext = guest;
-            }           
-            */
+                this.Close();
+
+
         }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
