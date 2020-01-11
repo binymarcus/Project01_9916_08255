@@ -344,6 +344,31 @@ namespace BL
                 throw;
             }
         }
+
+        public GuestRequest GetGuestRequestByKey(long key)
+        {
+            try
+            {
+                return dal.GetGuestRequestByKey(key);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public GuestRequest GetGuestRequestByName(string pname, string fname)
+        {
+            try
+            {
+                return dal.GetGuestRequestByName(pname, fname);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public List<Order> GetAllOrders()
         {
             try
@@ -366,7 +391,8 @@ namespace BL
             {
 
                 throw;
-            }        }
+            }    
+        }
         public List<BankBranch> GetAllBanks()
         {
             try

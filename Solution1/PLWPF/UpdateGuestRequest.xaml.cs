@@ -19,11 +19,29 @@ namespace PLWPF
     /// </summary>
     public partial class UpdateGuestRequest : Window
     {
+        BE.GuestRequest guest;
+        BL.IBL bl;
         public UpdateGuestRequest()
         {
             InitializeComponent();
-        }
+            if(UpdateDeleteBy().UpdatefamilyNameTextBox.Text != null && UpdateDeleteBy().UpdatePrivateNameTextBox.Text != null)
+            {
+                guest = bl.GetGuestRequestByName(UpdateDeleteBy().UpdatefamilyNameTextBox.Text, UpdateDeleteBy().UpdatePrivateNameTextBox.Text);
+                this.updateRequestDetailsGrid.DataContext = guest;
+            }
+            if(UpdateDeleteBy().UpdateKey.Text != null)
+            {
+                guest = bl.GetGuestRequestByKey(long.Parse(UpdateDeleteBy().UpdateKey.Text));
+                this.updateRequestDetailsGrid.DataContext = guest;
+            }           
 
+        }
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            bl.UpdateGuestRequest(guest);
+            MessageBox.Show("Guest Request updated, Key: " + guest.GuestRequestKey1);
+            this.Close();
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -31,9 +49,6 @@ namespace PLWPF
             // Load data by setting the CollectionViewSource.Source property:
             // guestRequestViewSource.Source = [generic data source]
         }
-        //TO DO
-        //find the guest request by name or key
-        //put the info in the grid
-        //update the guest request
+        
     }
 }

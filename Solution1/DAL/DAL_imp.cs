@@ -305,7 +305,7 @@ namespace DAL
             throw new Exception("the hosting unit does not exist");
 
         }
-        public GuestRequest GetGuestRequestname(string pname, string fname)
+        public GuestRequest GetGuestRequestByName(string pname, string fname)
         {
             foreach (var item in GetAllGuestRequest())
             {
