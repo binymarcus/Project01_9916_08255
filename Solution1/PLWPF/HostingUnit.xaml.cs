@@ -28,5 +28,30 @@ namespace PLWPF
         {
             throw new NotImplementedException();
         }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window AddUnitWindow = new AddUnit();
+            AddUnitWindow.Show();
+            this.Close();
+        }
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window UpdateUnitWindow = new UpdateDeleteBy();
+            UpdateUnitWindow.Show();
+            this.Close();
+        }
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window DeleteUnitWindow = new UpdateDeleteBy();
+            DeleteUnitWindow.Show();
+            this.Close();
+        }
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window mWindow = new MainWindow();
+            mWindow.Show();
+            this.Close();
+
+        }
     }
 }
