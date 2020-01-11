@@ -14,7 +14,7 @@
             <RowDefinition Height="105*"/>
         </Grid.RowDefinitions>
         <Button x:Name="AddRequestButton" Content ="Add Request" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click"/>
-        <Button x:Name="UpdateRequestButton" Content ="Update Request" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click"/>
+        <Button x:Name="UpdateRequestButton" Content ="Update Request" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1" Click="updateUnitButton_Click"/>
         <Button x:Name="DeleteRequestButton" Content ="Delete Request" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click"/>
         <Button  x:Name="BackButton" Click="backButton_Click" Content="Back" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
     </Grid>

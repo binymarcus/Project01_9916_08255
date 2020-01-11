@@ -13,8 +13,8 @@
             <RowDefinition Height="104.667"/>
             <RowDefinition Height="105*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="AddUnitButton" Content ="Add Unit" Click="AddButton_Click" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" />
-        <Button x:Name="UpdateUnitButton" Content ="Update Unit" Click="UpdateButton_Click" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1"/>
+        <Button x:Name="AddUnitButton" Content ="Add Unit"  Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addUnitButton_Click"/>
+        <Button x:Name="UpdateUnitButton" Content ="Update Unit" Click="updateUnitButton_Click" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1"/>
         <Button x:Name="DeleteUnitButton" Content ="Delete Unit" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2"/>
         <Button  x:Name="BackButton" Click="backButton_Click" Content="Back" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
     </Grid>

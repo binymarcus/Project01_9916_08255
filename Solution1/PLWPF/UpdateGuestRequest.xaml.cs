@@ -22,7 +22,7 @@ namespace PLWPF
         BE.GuestRequest guest;
         BL.IBL bl;
 
-        public UpdateGuestRequest(string pname, string fname)
+  /*      public UpdateGuestRequest(string pname, string fname)
         {
             InitializeComponent();
             if(UpdateDeleteBy().UpdatefamilyNameTextBox.Text != null && UpdateDeleteBy().UpdatePrivateNameTextBox.Text != null)
@@ -44,7 +44,7 @@ namespace PLWPF
             bl.UpdateGuestRequest(guest);
             MessageBox.Show("Guest Request updated, Key: " + guest.GuestRequestKey1);
             this.Close();
-        }
+        }*/
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
