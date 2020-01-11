@@ -23,11 +23,6 @@ namespace PLWPF
         {
             InitializeComponent();
         }
-
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
             Window addUnitWindow = new AddUnit();

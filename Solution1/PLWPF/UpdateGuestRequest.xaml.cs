@@ -23,7 +23,7 @@ namespace PLWPF
         BL.IBL bl;
        // IBL bl = FactoryBL.getIBL(); is this what we need?
 
-  /*      public UpdateGuestRequest(string pname, string fname)
+  /*     public UpdateGuestRequest(string pname, string fname)
         {
             InitializeComponent();
             if(UpdateDeleteBy().UpdatefamilyNameTextBox.Text != null && UpdateDeleteBy().UpdatePrivateNameTextBox.Text != null)
