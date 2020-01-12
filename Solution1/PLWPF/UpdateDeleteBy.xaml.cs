@@ -29,13 +29,13 @@ namespace PLWPF
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (this.UpdatefamilyNameTextBox.Text != null && this.UpdatePrivateNameTextBox.Text != null)
+            if (this.UpdatefamilyNameTextBox.Text != "" && this.UpdatePrivateNameTextBox.Text != "")
             {
-                Window updateRequestWindow = new UpdateGuestRequest(this.UpdatefamilyNameTextBox.Text, this.UpdatePrivateNameTextBox.Text);
+                Window updateRequestWindow = new UpdateGuestRequest(this.UpdatePrivateNameTextBox.Text, this.UpdatefamilyNameTextBox.Text);
                 updateRequestWindow.Show();
                 this.Close();
             }
-            else if (this.UpdateKey.Text != null)
+            else if (this.UpdateKey.Text != "")
             {
                 Window updateRequestWindow = new UpdateGuestRequest(long.Parse(this.UpdateKey.Text));
                 updateRequestWindow.Show();
@@ -43,13 +43,15 @@ namespace PLWPF
             }
             else
             {
-                this.Close();
+
+                MessageBox.Show("Guest Request does not exist, " +
+                   "or you entered info into wrong fields");
             }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.DeleteFamilyNameTextBox.Text != null && this.DeletePrivateNameTextBox.Text != null)//what is the watermark considard as?
+            if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "")
             {
                 guest = bl.GetGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);               
                 long tempkey = guest.GuestRequestKey1;
@@ -57,7 +59,7 @@ namespace PLWPF
                 MessageBox.Show("Guest Request deleted, Key: " + tempkey);
                 this.Close();
             }
-            else if (this.UpdateKey != null)//what is the watermark considard as?
+            else if (this.UpdateKey.Text != "")
             {             
                 guest = bl.GetGuestRequestByKey(long.Parse(this.DeleteKeyTextBox.Text));
                 long tempkey = guest.GuestRequestKey1;
@@ -67,7 +69,7 @@ namespace PLWPF
             }
             else
             {
-                MessageBox.Show("Guest Request does not exist" +
+                MessageBox.Show("Guest Request does not exist, " +
                     "or you entered info into wrong fields");
             }
         }
