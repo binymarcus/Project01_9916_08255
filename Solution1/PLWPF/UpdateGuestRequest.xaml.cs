@@ -23,10 +23,12 @@ namespace PLWPF
         BL.IBL bl;
        // IBL bl = FactoryBL.getIBL(); is this what we need?
 
-        public UpdateGuestRequest(string pname, string fname)
+  /*     public UpdateGuestRequest(string pname, string fname)
         {
-            InitializeComponent();    
-                guest = bl.GetGuestRequestByName(pname, fname);
+            InitializeComponent();
+            if(UpdateDeleteBy().UpdatefamilyNameTextBox.Text != null && UpdateDeleteBy().UpdatePrivateNameTextBox.Text != null)
+            {
+                guest = bl.GetGuestRequestByName(UpdateDeleteBy().UpdatefamilyNameTextBox.Text, UpdateDeleteBy().UpdatePrivateNameTextBox.Text);
                 this.updateRequestDetailsGrid.DataContext = guest;
             this.Close();
         }
@@ -35,8 +37,7 @@ namespace PLWPF
                 InitializeComponent();
                 guest = bl.GetGuestRequestByKey(key);
                 this.updateRequestDetailsGrid.DataContext = guest;
-                this.Close();
-
+            }           
 
         }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -44,7 +45,7 @@ namespace PLWPF
             bl.UpdateGuestRequest(guest);
             MessageBox.Show("Guest Request updated, Key: " + guest.GuestRequestKey1);
             this.Close();
-        }
+        }*/
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 

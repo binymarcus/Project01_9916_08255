@@ -23,22 +23,19 @@ namespace PLWPF
         {
             InitializeComponent();
         }
+        private void addUnitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window addUnitWindow = new AddUnit();
+            addUnitWindow.Show();
+            this.Close();
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
         }
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void updateUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            Window AddUnitWindow = new AddUnit();
-            AddUnitWindow.Show();
+            Window updateUnitWindow = new UpdateDeleteBy();
+            updateUnitWindow.Show();
             this.Close();
-        }
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-            Window UpdateUnitWindow = new UpdateDeleteBy();
-            UpdateUnitWindow.Show();
-            this.Close();
+
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {

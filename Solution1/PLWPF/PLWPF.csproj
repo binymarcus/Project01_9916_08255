@@ -156,6 +156,7 @@
     <None Include="Properties\DataSources\BE.BEEnum+Status.datasource" />
     <None Include="Properties\DataSources\BE.BEEnum+_Type.datasource" />
     <None Include="Properties\DataSources\BE.GuestRequest.datasource" />
+    <None Include="Properties\DataSources\BE.HostingUnit.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
