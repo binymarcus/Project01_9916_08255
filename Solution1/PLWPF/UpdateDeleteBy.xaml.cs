@@ -51,24 +51,24 @@ namespace PLWPF
         {
             if (this.DeleteFamilyNameTextBox.Text != null && this.DeletePrivateNameTextBox.Text != null)//what is the watermark considard as?
             {
-                guest = bl.GetGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);
-                bl.DeleteGuestRequest(guest);
+                guest = bl.GetGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);               
                 long tempkey = guest.GuestRequestKey1;
+                bl.DeleteGuestRequest(guest);
                 MessageBox.Show("Guest Request deleted, Key: " + tempkey);
                 this.Close();
             }
             else if (this.UpdateKey != null)//what is the watermark considard as?
             {             
                 guest = bl.GetGuestRequestByKey(long.Parse(this.DeleteKeyTextBox.Text));
+                long tempkey = guest.GuestRequestKey1;
                 bl.DeleteGuestRequest(guest);
-                MessageBox.Show("Guest Request deleted, Key: " + guest.GuestRequestKey1);
+                MessageBox.Show("Guest Request deleted, Key: " + tempkey);
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Guest Request does not exist" +
                     "or you entered info into wrong fields");
-                this.Close();
             }
         }
 
