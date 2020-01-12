@@ -31,8 +31,14 @@ namespace PLWPF
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-
-            if (this.UpdatefamilyNameTextBox.Text != "" && this.UpdatePrivateNameTextBox.Text != "")
+            if (this.UpdatePrivateNameTextBox.Text != "" && this.UpdatefamilyNameTextBox.Text != "" && this.UpdateKey.Text != "")
+            {
+                MessageBox.Show("please enter only one field, byname or by key.");
+                Window UpdateDeleteByWindow = new UpdateDeleteBy();
+                UpdateDeleteByWindow.Show();
+                this.Close();
+            }
+            else if (this.UpdatefamilyNameTextBox.Text != "" && this.UpdatePrivateNameTextBox.Text != "")
             {
                 try
                 {
@@ -42,10 +48,7 @@ namespace PLWPF
                 catch (Exception)
                 {
                     MessageBox.Show("Guest Request does not exist");
-                }
-                Window UpdateDeleteByWindow = new UpdateDeleteBy();
-                UpdateDeleteByWindow.Show();
-                this.Close();
+                }               
             }
             else if (this.UpdateKey.Text != "")
             {
@@ -58,13 +61,10 @@ namespace PLWPF
                 {
                     MessageBox.Show("Guest Request does not exist");
                 }
-                Window UpdateDeleteByWindow = new UpdateDeleteBy();
-                UpdateDeleteByWindow.Show();
-                this.Close();
+                
             }
             else
             {
-
                 MessageBox.Show("Guest Request does not exist, " +
                    "or you entered info into wrong fields");
             }
@@ -72,23 +72,35 @@ namespace PLWPF
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "")
+            if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "" && this.DeleteKeyTextBox.Text != "")
             {
+                MessageBox.Show("please enter only one field, byname or by key.");
+                Window UpdateDeleteByWindow = new UpdateDeleteBy();
+                UpdateDeleteByWindow.Show();
+                this.Close();
+            }
+
+           else if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "")
+           {
                 try
                 {
                     guest = bl.GetGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);
                     long tempkey = guest.GuestRequestKey1;
                     bl.DeleteGuestRequest(guest);
                     MessageBox.Show("Guest Request deleted, Key: " + tempkey);
+                    Window GuestRequestWindow = new GuestRequest();
+                    GuestRequestWindow.Show();
+                    this.Close();
                 }
                 catch(Exception)
                 {
                     MessageBox.Show("Guest Request does not exist");
+                    Window GuestRequestWindow = new GuestRequest();
+                    GuestRequestWindow.Show();
+                    this.Close();
                 }               
-                Window GuestRequestWindow = new GuestRequest();
-                GuestRequestWindow.Show();
-                this.Close();
-            }
+                
+           }
             else if (this.DeleteKeyTextBox.Text != "")
             {
                 try
@@ -97,14 +109,18 @@ namespace PLWPF
                     long tempkey = guest.GuestRequestKey1;
                     bl.DeleteGuestRequest(guest);
                     MessageBox.Show("Guest Request deleted, Key: " + tempkey);
+                    Window GuestRequestWindow = new GuestRequest();
+                    GuestRequestWindow.Show();
+                    this.Close();
                 }
                 catch(Exception)
                 {
                     MessageBox.Show("Guest Request does not exist");
+                    Window GuestRequestWindow = new GuestRequest();
+                    GuestRequestWindow.Show();
+                    this.Close();
                 }
-                Window GuestRequestWindow = new GuestRequest();
-                GuestRequestWindow.Show();
-                this.Close();
+               
             }
             else
             {
