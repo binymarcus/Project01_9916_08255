@@ -13,7 +13,7 @@ namespace BE
          string MailAddress;
          DateTime RegistrationDate;
         DateTime EntryDate=DateTime.Now;
-         DateTime ReleaseDate=DateTime.Now;
+         DateTime ReleaseDate=DateTime.Now.AddDays(1);
          string SubArea; 
          int Adults;
          public int Children;

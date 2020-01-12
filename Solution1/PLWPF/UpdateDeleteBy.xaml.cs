@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BL;
 
 namespace PLWPF
 {
@@ -20,7 +21,9 @@ namespace PLWPF
     public partial class UpdateDeleteBy : Window
     {
         BE.GuestRequest guest;
-        BL.IBL bl;
+        //BL.IBL bl;
+        IBL bl = FactoryBL.getIBL();
+
         public UpdateDeleteBy()
         {
             InitializeComponent();
@@ -31,14 +34,32 @@ namespace PLWPF
 
             if (this.UpdatefamilyNameTextBox.Text != "" && this.UpdatePrivateNameTextBox.Text != "")
             {
-                Window updateRequestWindow = new UpdateGuestRequest(this.UpdatePrivateNameTextBox.Text, this.UpdatefamilyNameTextBox.Text);
-                updateRequestWindow.Show();
+                try
+                {
+                    Window updateRequestWindow = new UpdateGuestRequest(this.UpdatePrivateNameTextBox.Text, this.UpdatefamilyNameTextBox.Text);
+                    updateRequestWindow.Show();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Guest Request does not exist");
+                }
+                Window UpdateDeleteByWindow = new UpdateDeleteBy();
+                UpdateDeleteByWindow.Show();
                 this.Close();
             }
             else if (this.UpdateKey.Text != "")
             {
-                Window updateRequestWindow = new UpdateGuestRequest(long.Parse(this.UpdateKey.Text));
-                updateRequestWindow.Show();
+                try
+                {
+                    Window updateRequestWindow = new UpdateGuestRequest(long.Parse(this.UpdateKey.Text));
+                    updateRequestWindow.Show();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Guest Request does not exist");
+                }
+                Window UpdateDeleteByWindow = new UpdateDeleteBy();
+                UpdateDeleteByWindow.Show();
                 this.Close();
             }
             else
@@ -53,18 +74,36 @@ namespace PLWPF
         {
             if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "")
             {
-                guest = bl.GetGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);               
-                long tempkey = guest.GuestRequestKey1;
-                bl.DeleteGuestRequest(guest);
-                MessageBox.Show("Guest Request deleted, Key: " + tempkey);
+                try
+                {
+                    guest = bl.GetGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);
+                    long tempkey = guest.GuestRequestKey1;
+                    bl.DeleteGuestRequest(guest);
+                    MessageBox.Show("Guest Request deleted, Key: " + tempkey);
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Guest Request does not exist");
+                }               
+                Window GuestRequestWindow = new GuestRequest();
+                GuestRequestWindow.Show();
                 this.Close();
             }
-            else if (this.UpdateKey.Text != "")
-            {             
-                guest = bl.GetGuestRequestByKey(long.Parse(this.DeleteKeyTextBox.Text));
-                long tempkey = guest.GuestRequestKey1;
-                bl.DeleteGuestRequest(guest);
-                MessageBox.Show("Guest Request deleted, Key: " + tempkey);
+            else if (this.DeleteKeyTextBox.Text != "")
+            {
+                try
+                {
+                    guest = bl.GetGuestRequestByKey(long.Parse(this.DeleteKeyTextBox.Text));
+                    long tempkey = guest.GuestRequestKey1;
+                    bl.DeleteGuestRequest(guest);
+                    MessageBox.Show("Guest Request deleted, Key: " + tempkey);
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Guest Request does not exist");
+                }
+                Window GuestRequestWindow = new GuestRequest();
+                GuestRequestWindow.Show();
                 this.Close();
             }
             else
