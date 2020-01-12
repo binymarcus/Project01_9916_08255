@@ -25,7 +25,7 @@ namespace PLWPF
         {
             InitializeComponent();
         }
-        /*private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
 
             if (this.UpdatefamilyNameTextBox.Text != null && this.UpdatePrivateNameTextBox.Text != null)
@@ -69,7 +69,7 @@ namespace PLWPF
                     "or you entered info into wrong fields");
                 this.Close();
             }
-        }*/
+        }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {

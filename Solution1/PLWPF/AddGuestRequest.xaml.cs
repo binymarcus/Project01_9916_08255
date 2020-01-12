@@ -31,34 +31,7 @@ namespace PLWPF
             bl = BL.FactoryBL.getIBL();
             
         }
-        private void TextBox_MouseEnter(object sender, RoutedEventArgs e)
-        {
-            if(sender==this.adults1TextBox)
-            {
-                if (this.adults1TextBox.Text == "insert num of Adults")
-                    this.adults1TextBox.Clear();
-            }
-            if (sender == this.children1TextBox)
-            {
-                if (this.children1TextBox.Text == "insert num of Children")
-                    this.children1TextBox.Clear();
-            }
-            if (sender == this.privateName1TextBox)
-            {
-                if (this.privateName1TextBox.Text == "insert private name")
-                    this.privateName1TextBox.Clear();
-            }
-            if (sender == this.familyName1TextBox)
-            {
-                if (this.familyName1TextBox.Text == "insert family name")
-                    this.familyName1TextBox.Clear();
-            }
-            if (sender == this.mailAddress1TextBox)
-            {
-                if (this.mailAddress1TextBox.Text == "insert email")
-                    this.mailAddress1TextBox.Clear();
-            }
-        }
+       
         
         private void addButton_Click(object sender, RoutedEventArgs e)
         {

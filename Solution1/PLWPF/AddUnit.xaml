@@ -67,8 +67,65 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="has Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,1,0,-17" Grid.Row="0" VerticalAlignment="Top" Height="44"/>
-            <CheckBox x:Name="hasChildrensAttractions1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="hasChildrensAttractions1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="20.667,15,-11.667,-0.333" Grid.Row="0" VerticalAlignment="Center" RenderTransformOrigin="-1.29,0.528"/>
         </Grid>
+        <Grid x:Name="grid4" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,16.333,0,0" Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="351">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="158.667"/>
+                <ColumnDefinition Width="Auto" MinWidth="44.667"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="has Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,3" Grid.Row="0" VerticalAlignment="Center" Height="29" Width="148"/>
+            <CheckBox x:Name="hasGarden1CheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding hasGarden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="9.667,6,0,10" Grid.Row="0" VerticalAlignment="Center" Height="16" Width="21" Grid.Column="1"/>
+        </Grid>
+        <Grid x:Name="grid5" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,8.667,0,0" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="259">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="159.333"/>
+                <ColumnDefinition Width="Auto" MinWidth="35.333"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="has Pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="67"/>
+            <CheckBox x:Name="hasPool1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,6,0,10" Grid.Row="0" VerticalAlignment="Center" Height="16" Width="20"/>
+        </Grid>
+        <Grid x:Name="grid6" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,11,0,0" Grid.Row="6" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="306">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="159.333"/>
+                <ColumnDefinition Width="Auto" MinWidth="45.333"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="has Jaccuzzi:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="85"/>
+            <CheckBox x:Name="hasJaccuzzi1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasJaccuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,10,0,6" Grid.Row="0" VerticalAlignment="Center" Height="16" Width="21"/>
+        </Grid>
+        <Grid x:Name="grid7" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,0,0,-1.333" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="473" Height="54">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="158"/>
+                <ColumnDefinition Width="Auto" MinWidth="142"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Owner Family Name :" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,40" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="124"/>
+            <xctk:WatermarkTextBox x:Name="familyName1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0.333,0,0,43" Grid.Row="0" Watermark="Please enter owner family name" Text="{Binding Owner1.FamilyName1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="196"/>
+            <Grid x:Name="grid8" HorizontalAlignment="Left" Margin="3,36,0,-2" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="442">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="126"/>
+                    <ColumnDefinition Width="Auto" MinWidth="232.667"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Owner Private Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,-4,0,10" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="127" Grid.ColumnSpan="2"/>
+                <xctk:WatermarkTextBox x:Name="privateName1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="71.333,-4,-44.667,13" Grid.Row="0" Watermark="Please enter the owners private name" Text="{Binding Owner1.PrivateName1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="208"/>
+            </Grid>
+        </Grid>
+        <Button x:Name="Add" Content="Add" FontSize="25" Click="addButton_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="257.333,0,0,-0.333" Grid.Row="7" VerticalAlignment="Top" Width="377" Height="53"/>
+        <Button x:Name="Cancel" Content="Cancel" FontSize="25" Click="cancelButton_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="257.333,0,0,0" Grid.Row="6" VerticalAlignment="Top" Width="377" Height="52"/>
 
     </Grid>
 </Window>
