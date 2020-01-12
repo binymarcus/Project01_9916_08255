@@ -35,15 +35,54 @@ namespace PLWPF
         
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            int int1;
+            int error = 0;
             try
             {
-                bl.AddGuestRequest(guest);
-                MessageBox.Show("Guest Request Added, Key:" + guest.GuestRequestKey1);
-                this.GuestRequestDetailsGrid.DataContext = guest;
-                Window GuestRequestWindow = new GuestRequest();
-                GuestRequestWindow.Show();
+                if (guest.PrivateName1 == "" && error == 0)//need to fill out name
+                {
+                    MessageBox.Show("need to fill out private name");
+                    error++;
+                    Window GuestRequestWindow1 = new GuestRequest();
+                    GuestRequestWindow1.Show();
+                    this.Close();
+                }
+                else if (guest.FamilyName1 == "" && error == 0)//need to fill out name)
+                {
+                    MessageBox.Show("need to fill out family name");
+                    error++;
+                    Window GuestRequestWindow1 = new GuestRequest();
+                    GuestRequestWindow1.Show();
+                    this.Close();
+                }
+                else if (!(int.TryParse(adults1TextBox.Text, out int1)) && error == 0)//num of adults has to be a number
+                {
+                    MessageBox.Show("num of adults has to be filled with a number");
+                    error++;
+                    Window GuestRequestWindow1 = new GuestRequest();
+                    GuestRequestWindow1.Show();
+                    this.Close();
+                }
 
-                this.Close();
+                if ((!int.TryParse(children1TextBox.Text, out int1))&& error == 0)//num of adults has to be a number
+                {
+                    MessageBox.Show("num of children has to be filled with a number");
+                    error++;
+                    Window GuestRequestWindow1 = new GuestRequest();
+                    GuestRequestWindow1.Show();
+                    this.Close();
+                }
+                
+                if (error == 0)
+                {
+                    bl.AddGuestRequest(guest);
+                    MessageBox.Show("Guest Request Added, Key:" + guest.GuestRequestKey1);
+                    this.GuestRequestDetailsGrid.DataContext = guest;
+                    Window GuestRequestWindow = new GuestRequest();
+                    GuestRequestWindow.Show();
+
+                    this.Close();
+                }
             }
 
             catch (FormatException)
