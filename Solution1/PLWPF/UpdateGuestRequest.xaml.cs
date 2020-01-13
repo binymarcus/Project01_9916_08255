@@ -35,7 +35,7 @@ namespace PLWPF
             {
                 throw;                
             }
-                this.updateRequestDetailsGrid.DataContext = guest;
+                this.UpdateGuestRequestDetailsGrid.DataContext = guest;
         }
         public UpdateGuestRequest(long key)
         {
@@ -48,7 +48,7 @@ namespace PLWPF
             {
                 throw;
             }
-            this.updateRequestDetailsGrid.DataContext = guest;
+            this.UpdateGuestRequestDetailsGrid.DataContext = guest;
         }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
