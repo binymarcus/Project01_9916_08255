@@ -42,7 +42,7 @@ namespace PLWPF
             {
                 try
                 {
-                   //sends to a window whith a scroll box and then the user has to pick which gs he wants to update
+                   //sends to a window with a scroll box and then the user updates the gs he wants to update
                     Window UpdateByNameChooseWindow = new UpdateByNameChoose(this.UpdatePrivateNameTextBox.Text, this.UpdatefamilyNameTextBox.Text);
                     UpdateByNameChooseWindow.Show();
                 }
@@ -81,6 +81,7 @@ namespace PLWPF
                 this.Close();
             }
 
+            //not sure we can do delete by name
            /*else if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "")
            {
                 try

@@ -31,31 +31,24 @@ namespace PLWPF
 
             foreach (BE.GuestRequest item in guestList)
             {
-                Button UpdateButton = new Button();
+                TextBox text = new TextBox(); 
                 GRUserControl gruc = new GRUserControl(item);
                 b.Children.Add(gruc);
-                b.Children.Add(UpdateButton);
+                b.Children.Add(text);
+
             }
 
             scrollview1.Content = b;
-
-
         }
-        public UpdateByNameChoose()
+      
+        private void updatebyNameupdateButton_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-        }
-        //use this function after the user picks which one he wants to update
-      /*  private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (gruc.UpdatefamilyNameTextBox.Text != "" && gruc.UpdatePrivateNameTextBox.Text != "")
+            foreach (BE.GuestRequest item in guestList)
             {
-                Window updateRequestWindow = new UpdateGuestRequest(item);
-                updateRequestWindow.Show();
+                bl.UpdateGuestRequest(item);
             }
-
-        }*/
+                this.Close();
+        }
     }
 }
     

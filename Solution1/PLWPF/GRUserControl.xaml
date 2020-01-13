@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:PLWPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="519">
-    <Grid x:Name="ByNameUpdateDetailsGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="463" Margin="0,45,0,-86" Width="455">
+    <!--DataContext="{StaticResource guestRequestViewSource}"-->
+    <Grid x:Name="ByNameUpdateDetailsGrid"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="463" Margin="0,45,0,-86" Width="455">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>

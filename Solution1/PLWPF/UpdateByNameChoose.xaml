@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="UpdateByNameChoose" Height="450" Width="800">
     <Grid>
-        <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="331">
+        <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="434">
             <StackPanel x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
-               
-                </StackPanel>
+
+            </StackPanel>
         </ScrollViewer>
+        <Button x:Name="updatebyNameupdateButton" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="449,352,0,0" VerticalAlignment="Top" Width="334" Height="59" Click="updatebyNameupdateButton_Click" />
 
     </Grid>
 </Window>
