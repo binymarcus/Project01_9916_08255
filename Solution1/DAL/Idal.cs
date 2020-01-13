@@ -85,9 +85,9 @@ namespace DAL
         GuestRequest GetGuestRequestByKey(long key);
         HostingUnit GetHostingUnitByKey(long key);
 
-        GuestRequest GetGuestRequestByName(string pname, string fname);
+        List<GuestRequest> GetallGuestRequestByName(string pname, string fname);
         #endregion
-      HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
+        HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
 
      /// <summary>
      /// reutrns num of hosting units each host has

@@ -92,7 +92,7 @@ namespace BL
 
         GuestRequest GetGuestRequestByKey(long key);
 
-        GuestRequest GetGuestRequestByName(string pname ,string fname);
+        List<GuestRequest> GetallGuestRequestByName(string pname ,string fname);
         #endregion
 
         #region mandotory functions from BL

@@ -24,18 +24,10 @@ namespace PLWPF
        // BL.IBL bl;
        IBL bl = FactoryBL.getIBL(); //is this what we need?
 
-      public UpdateGuestRequest(string pname, string fname)
+      public UpdateGuestRequest(GuestRequest guesty)
         {
             InitializeComponent();
-            try
-            {
-                guest = bl.GetGuestRequestByName(pname, fname);
-            }
-            catch (Exception)
-            {
-                throw;                
-            }
-                this.UpdateGuestRequestDetailsGrid.DataContext = guest;
+            this.UpdateGuestRequestDetailsGrid.DataContext = guesty;
         }
         public UpdateGuestRequest(long key)
         {

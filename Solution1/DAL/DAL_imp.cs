@@ -305,14 +305,25 @@ namespace DAL
             throw new Exception("the hosting unit does not exist");
 
         }
-        public GuestRequest GetGuestRequestByName(string pname, string fname)
+        public List<GuestRequest> GetallGuestRequestByName(string pname, string fname)
         {
-            foreach (var item in GetAllGuestRequest())
+            /*foreach (var item in GetAllGuestRequest())
             {
                 if (pname == item.PrivateName1 && fname == item.FamilyName1)                 
                         return item;                                 
             }
-            throw new Exception("the guest request does not exist");
+            throw new Exception("the guest request does not exist");*/
+            List<GuestRequest> L = new List<GuestRequest>();
+            foreach (var item in DataSource.GuestRequestList)
+            {
+                if (item.PrivateName1 == pname && item.FamilyName1 == fname)
+                {
+                    L.Add(Cloning.Clone(item));
+                }
+            }
+            if (L.Count() == 0)
+                throw new NoItemsFound("there are no guest requests in the system.");
+            return L;
         }
         #endregion
 

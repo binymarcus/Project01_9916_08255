@@ -73,6 +73,12 @@
     <Compile Include="AddUnit.xaml.cs">
       <DependentUpon>AddUnit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GRUserControl.xaml.cs">
+      <DependentUpon>GRUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateByNameChoose.xaml.cs">
+      <DependentUpon>UpdateByNameChoose.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateDeleteBy.xaml.cs">
       <DependentUpon>UpdateDeleteBy.xaml</DependentUpon>
     </Compile>
@@ -84,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddUnit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GRUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,6 +127,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateByNameChoose.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -357,11 +357,11 @@ namespace BL
                 throw;
             }
         }
-        public GuestRequest GetGuestRequestByName(string pname, string fname)
+        public List<GuestRequest> GetallGuestRequestByName(string pname, string fname)
         {
             try
             {
-                return dal.GetGuestRequestByName(pname, fname);
+                return dal.GetallGuestRequestByName(pname, fname);
             }
             catch (Exception)
             {

@@ -31,7 +31,7 @@ namespace PLWPF
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.UpdatePrivateNameTextBox.Text != "" && this.UpdatefamilyNameTextBox.Text != "" && this.UpdateKey.Text != "")
+            if ((this.UpdatePrivateNameTextBox.Text != "" || this.UpdatefamilyNameTextBox.Text != "" ) && this.UpdateKey.Text != "")
             {
                 MessageBox.Show("please enter only one field, byname or by key.");
                 Window UpdateDeleteByWindow = new UpdateDeleteBy();
@@ -42,12 +42,13 @@ namespace PLWPF
             {
                 try
                 {
-                    Window updateRequestWindow = new UpdateGuestRequest(this.UpdatePrivateNameTextBox.Text, this.UpdatefamilyNameTextBox.Text);
-                    updateRequestWindow.Show();
+                   //sends to a window whith a scroll box and then the user has to pick which gs he wants to update
+                    Window UpdateByNameChooseWindow = new UpdateByNameChoose(this.UpdatePrivateNameTextBox.Text, this.UpdatefamilyNameTextBox.Text);
+                    UpdateByNameChooseWindow.Show();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Guest Request does not exist");
+                    MessageBox.Show("Guest Requests for this user don't exist");
                 }               
             }
             else if (this.UpdateKey.Text != "")
@@ -80,11 +81,11 @@ namespace PLWPF
                 this.Close();
             }
 
-           else if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "")
+           /*else if (this.DeleteFamilyNameTextBox.Text != "" && this.DeletePrivateNameTextBox.Text != "")
            {
                 try
                 {
-                    guest = bl.GetGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);
+                    guest = bl.GetallGuestRequestByName(this.DeletePrivateNameTextBox.Text, this.DeleteFamilyNameTextBox.Text);
                     long tempkey = guest.GuestRequestKey1;
                     bl.DeleteGuestRequest(guest);
                     MessageBox.Show("Guest Request deleted, Key: " + tempkey);
@@ -100,7 +101,7 @@ namespace PLWPF
                     this.Close();
                 }               
                 
-           }
+           }*/
             else if (this.DeleteKeyTextBox.Text != "")
             {
                 try
