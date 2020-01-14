@@ -4,18 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="106*"/>
-            <RowDefinition Height="104.667"/>
-            <RowDefinition Height="105*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
-        <Button x:Name="AddRequestButton" Content ="Add Request" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click"/>
-        <Button x:Name="UpdateRequestButton" Content ="Update Request" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click"/>
-        <Button x:Name="DeleteRequestButton" Content ="Delete Request" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click"/>
-        <Button  x:Name="BackButton" Click="backButton_Click" Content="Back" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
+        <Button x:Name="AddRequestButton" Content ="Add Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click"/>
+        <Button x:Name="UpdateRequestButton" Content ="Update Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click"/>
+        <Button x:Name="DeleteRequestButton" Content ="Delete Request" Visibility="Visible" Margin="10,10.,10.333,10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click"/>
+        <Button x:Name="ShowAllButton" Content="Show All My Guests Requests" Visibility="Visible" FontSize="30" HorizontalAlignment="Left" Margin="10,10,10.333,10" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="81" Click="ShowAllButton_Click"/>
+        <Button  x:Name="BackButton" Click="backButton_Click" Content="Back" Visibility="Visible" HorizontalAlignment="Left" FontSize="30" Margin="10,10,10.333,10" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="85"/>
+        <xctk:WatermarkTextBox Watermark="Private Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="privatenameinput" Margin="0,0.333,407.333,93.667" Grid.RowSpan="2" />
+        <xctk:WatermarkTextBox Watermark="Family Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="familyenameinput" Margin="386,0.333,0.333,93.667" Grid.RowSpan="2"/>
+        <Button x:Name="showbutton" Content="Show" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="386,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="407" Height="67" Click="showbutton_Click"/>
+        <Button x:Name="cancelbutton" Content="cancel" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="381" Height="67" Click="cancelbutton_Click"/>
+        <ScrollViewer x:Name="scrollview1" Visibility="Hidden" HorizontalAlignment="Left" Height="460" Margin="7,12,0,-1.333" Grid.RowSpan="5" VerticalAlignment="Top" Width="391">
+            <StackPanel x:Name="b" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
+                
+            </StackPanel>
+        </ScrollViewer>
+        <Button x:Name="BackButton2" Content="Back" Visibility="Hidden" HorizontalAlignment="Left" Margin="416,10,0,0" VerticalAlignment="Top" Width="367" Height="74" Click="BackButton2_Click"/>
     </Grid>
 </Window>

@@ -55,7 +55,7 @@ namespace PLWPF
                     GuestRequestWindow1.Show();
                     this.Close();
                 }
-                else if (!(int.TryParse(adults1TextBox.Text, out int1)) && error == 0)//num of adults has to be a number
+                else if ((adults1TextBox.Text != "") && (!(int.TryParse(adults1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
                 {
                     MessageBox.Show("num of adults has to be filled with a number");
                     error++;
@@ -64,7 +64,7 @@ namespace PLWPF
                     this.Close();
                 }
 
-                if ((!int.TryParse(children1TextBox.Text, out int1))&& error == 0)//num of adults has to be a number
+                if  ((children1TextBox.Text != "") && (!(int.TryParse(children1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
                 {
                     MessageBox.Show("num of children has to be filled with a number");
                     error++;

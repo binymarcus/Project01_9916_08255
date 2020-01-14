@@ -33,6 +33,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+
         <Label Content="Adults:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,23,0,1.667" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="56" Grid.RowSpan="2"/>
         <TextBox x:Name="adults1TextBox" HorizontalAlignment="Left" Height="25" Margin="0.667,0.667,-117,0.333" Grid.Row="5" Text="{Binding Adults1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1"/>
         <Label Content="area:" Grid.Column="0" HorizontalAlignment="Left" Margin="2,2.333,0,23" Grid.Row="7" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>

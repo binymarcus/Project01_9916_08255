@@ -12,7 +12,8 @@
 
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="updatebyNameupdateButton" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="449,352,0,0" VerticalAlignment="Top" Width="334" Height="59" Click="updatebyNameupdateButton_Click" />
+        <Button x:Name="updatebyNameupdateButton" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="449,281,0,0" VerticalAlignment="Top" Width="334" Height="59" Click="updatebyNameupdateButton_Click" />
+        <Button x:Name="BackButton" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="449,345,0,0" VerticalAlignment="Top" Width="334" Height="66" Click="BackButton_Click"/>
 
     </Grid>
 </Window>
