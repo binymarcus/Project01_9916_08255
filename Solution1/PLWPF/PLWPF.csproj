@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -76,6 +80,15 @@
     <Compile Include="GRUserControl.xaml.cs">
       <DependentUpon>GRUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HostRegistraion.xaml.cs">
+      <DependentUpon>HostRegistraion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignInPage.xaml.cs">
+      <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateByNameChoose.xaml.cs">
       <DependentUpon>UpdateByNameChoose.xaml</DependentUpon>
     </Compile>
@@ -84,6 +97,9 @@
     </Compile>
     <Compile Include="UpdateGuestRequest.xaml.cs">
       <DependentUpon>UpdateGuestRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="AddGuestRequest.xaml">
       <SubType>Designer</SubType>
@@ -102,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HostingUnit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostRegistraion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +150,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UpdateByNameChoose.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateGuestRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,6 +202,7 @@
     <None Include="Properties\DataSources\BE.BEEnum+Status.datasource" />
     <None Include="Properties\DataSources\BE.BEEnum+_Type.datasource" />
     <None Include="Properties\DataSources\BE.GuestRequest.datasource" />
+    <None Include="Properties\DataSources\BE.Host.datasource" />
     <None Include="Properties\DataSources\BE.HostingUnit.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
