@@ -60,7 +60,7 @@
             <Label Content="Entry Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,25.333" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="77" Grid.RowSpan="2"/>
             <DatePicker x:Name="entryDate1DatePicker"   Grid.Column="1" Margin="1,0,-104,22.667" Grid.Row="3" SelectedDate="{Binding EntryDate1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="28" Grid.RowSpan="2"/>
             <Label Content="Family Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="6,2,0,22.667" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
-            <TextBox x:Name="familyName1TextBox" HorizontalAlignment="Left" Height="29" Margin="0.667,0,-133.667,23" Grid.Row="1" Text="{Binding FamilyName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1" Grid.RowSpan="2"/>
+            <TextBox x:Name="FamilyName1TextBox" HorizontalAlignment="Left" Height="29" Margin="0.667,0,-133.667,23" Grid.Row="1" Text="{Binding FamilyName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1" Grid.RowSpan="2"/>
             <Label Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25.666,0,25" Grid.Row="11" VerticalAlignment="Center" Height="26" Width="61" Grid.RowSpan="3"/>
             <ComboBox x:Name="garden1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="1,2.333,-105,20.333" Grid.Row="12" Text="{Binding Garden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="356" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
@@ -95,7 +95,8 @@
                 <ComboBoxItem Content="BAndB" />
             </ComboBox>
         </Grid>
-        <Button x:Name="UpdateButton" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,346,0,0" VerticalAlignment="Top" Width="323" Height="66" Click="UpdateButton_Click"/>
+        <Button x:Name="UpdateButton" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,273,0,0" VerticalAlignment="Top" Width="323" Height="66" Click="UpdateButton_Click"/>
+        <Button x:Name="BackButton" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="323" Height="68" Click="BackButton_Click"/>
 
 
     </Grid>

@@ -31,11 +31,8 @@ namespace PLWPF
 
             foreach (BE.GuestRequest item in guestList)
             {
-                TextBox text = new TextBox(); 
                 GRUserControl gruc = new GRUserControl(item);
                 b.Children.Add(gruc);
-                b.Children.Add(text);
-
             }
 
             scrollview1.Content = b;

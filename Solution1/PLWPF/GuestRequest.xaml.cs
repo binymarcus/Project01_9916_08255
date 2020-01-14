@@ -55,8 +55,8 @@ namespace PLWPF
         }
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Window mWindow = new MainWindow();
-            mWindow.Show();
+            Window signinwindow = new SignInPage();
+            signinwindow.Show();
             this.Close();
 
         }
@@ -68,8 +68,7 @@ namespace PLWPF
             this.showbutton.Visibility = Visibility.Visible;
             this.cancelbutton.Visibility = Visibility.Visible;
             this.ShowAllButton.Visibility = Visibility.Hidden;
-            this.BackButton.Visibility = Visibility.Hidden;
-
+            this.SignOutButton.Visibility = Visibility.Hidden;
         }
 
         private void showbutton_Click(object sender, RoutedEventArgs e)
@@ -84,7 +83,7 @@ namespace PLWPF
             this.UpdateRequestButton.Visibility = Visibility.Hidden;
             this.DeleteRequestButton.Visibility = Visibility.Hidden;
             this.ShowAllButton.Visibility = Visibility.Hidden;
-            this.BackButton.Visibility = Visibility.Hidden;
+            this.SignOutButton.Visibility = Visibility.Hidden;
 
             this.BackButton2.Visibility = Visibility.Visible;
             this.scrollview1.Visibility = Visibility.Visible;
@@ -114,7 +113,7 @@ namespace PLWPF
             this.showbutton.Visibility = Visibility.Hidden;
             this.cancelbutton.Visibility = Visibility.Hidden;
             this.ShowAllButton.Visibility = Visibility.Visible;
-            this.BackButton.Visibility = Visibility.Visible;
+            this.SignOutButton.Visibility = Visibility.Visible;
         }
 
         private void BackButton2_Click(object sender, RoutedEventArgs e)
@@ -123,7 +122,7 @@ namespace PLWPF
             this.UpdateRequestButton.Visibility = Visibility.Visible;
             this.DeleteRequestButton.Visibility = Visibility.Visible;
             this.ShowAllButton.Visibility = Visibility.Visible;
-            this.BackButton.Visibility = Visibility.Visible;
+            this.SignOutButton.Visibility = Visibility.Visible;
 
             this.BackButton2.Visibility = Visibility.Hidden;
             this.scrollview1.Visibility = Visibility.Hidden;

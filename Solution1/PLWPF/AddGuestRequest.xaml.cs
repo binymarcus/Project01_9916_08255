@@ -39,40 +39,33 @@ namespace PLWPF
             int error = 0;
             try
             {
-                if (guest.PrivateName1 == "" && error == 0)//need to fill out name
+                if (PrivateName1TextBox.Text == "" && error == 0)//need to fill out name (we dont care if his name is a number)
                 {
                     MessageBox.Show("need to fill out private name");
                     error++;
-                    Window GuestRequestWindow1 = new GuestRequest();
-                    GuestRequestWindow1.Show();
-                    this.Close();
+                    PrivateName1TextBox.Clear();
                 }
-                else if (guest.FamilyName1 == "" && error == 0)//need to fill out name)
+                else if (FamilyName1TextBox.Text == "" && error == 0)//need to fill out name (we dont care if his name is a number)
                 {
                     MessageBox.Show("need to fill out family name");
                     error++;
-                    Window GuestRequestWindow1 = new GuestRequest();
-                    GuestRequestWindow1.Show();
-                    this.Close();
+                    FamilyName1TextBox.Clear();
                 }
                 else if ((adults1TextBox.Text != "") && (!(int.TryParse(adults1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
                 {
                     MessageBox.Show("num of adults has to be filled with a number");
                     error++;
-                    Window GuestRequestWindow1 = new GuestRequest();
-                    GuestRequestWindow1.Show();
-                    this.Close();
+                    adults1TextBox.Clear();
                 }
 
-                if  ((children1TextBox.Text != "") && (!(int.TryParse(children1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
+                if ((children1TextBox.Text != "") && (!(int.TryParse(children1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
                 {
                     MessageBox.Show("num of children has to be filled with a number");
                     error++;
-                    Window GuestRequestWindow1 = new GuestRequest();
-                    GuestRequestWindow1.Show();
-                    this.Close();
+                    children1TextBox.Clear();
+
                 }
-                
+
                 if (error == 0)
                 {
                     bl.AddGuestRequest(guest);

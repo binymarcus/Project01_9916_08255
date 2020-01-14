@@ -45,6 +45,7 @@ namespace PLWPF
                    //sends to a window with a scroll box and then the user updates the gs he wants to update
                     Window UpdateByNameChooseWindow = new UpdateByNameChoose(this.UpdatePrivateNameTextBox.Text, this.UpdatefamilyNameTextBox.Text);
                     UpdateByNameChooseWindow.Show();
+                    this.Close();
                 }
                 catch (Exception)
                 {
@@ -57,6 +58,7 @@ namespace PLWPF
                 {
                     Window updateRequestWindow = new UpdateGuestRequest(long.Parse(this.UpdateKey.Text));
                     updateRequestWindow.Show();
+                    this.Close();
                 }
                 catch (Exception)
                 {
