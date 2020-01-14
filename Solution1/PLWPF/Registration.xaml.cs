@@ -24,6 +24,8 @@ namespace PLWPF
     {
         XElement guestRoot=new XElement("guestsInfo");
         string guestPath = "@GuestXml.xml";
+        XElement HostRoot = new XElement("hostsInfo");
+
         public void SaveGuest()
         {
             XElement username = new XElement("username", textBoxFirstName.Text);
@@ -78,6 +80,11 @@ namespace PLWPF
                 }
                 else
                 {
+                    if(checkInputGuest()||checkInputHost())
+                    {
+                        MessageBox.Show("user name already exists, please try again");
+                        Reset();
+                    } 
                     SaveGuest();
                     MessageBox.Show("added to the system");
                     SignInPage login = new SignInPage();
@@ -87,7 +94,37 @@ namespace PLWPF
                     
             }
         }
+        private bool checkInputGuest()
+        {
+            var v = from use in guestRoot.Elements()
+                    where use.Element("username").Value == textBoxFirstName.Text
+                    select use;
+            if (v.Count() == 1)
+                return true;
+            else return false;
+        }
+        private bool checkInputHost()
+        {
+            var v = from use in HostRoot.Elements()
+                    where use.Element("username").Value == textBoxFirstName.Text
+                    select use;
+            if (v.Count() == 1)
+                return true;
+            else return false;
+        }
+        private void LoadData()
+        {
+            try
+            {
+                guestRoot = XElement.Load("@GuestXml.xml");
+                HostRoot = XElement.Load("@HostXml.xml");
+            }
+            catch
+            {
 
+                throw new Exception("File upload problem");
+            }
+        }
         private void Host_Click(object sender, RoutedEventArgs e)
         {
             HostRegistraion host = new HostRegistraion();

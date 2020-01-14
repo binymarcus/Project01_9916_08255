@@ -42,8 +42,8 @@ namespace PLWPF   {
         }
         private void CreateFilesHost()
         {
-            guestRoot = new XElement("hostsInfo");
-            guestRoot.Save("@HostXml.xml");
+            HostRoot = new XElement("hostsInfo");
+            HostRoot.Save("@HostXml.xml");
         }
         Registration registration = new Registration();
         Welcome welcome = new Welcome();

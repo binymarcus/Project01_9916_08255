@@ -20,8 +20,9 @@ namespace PLWPF
     /// </summary>
     public partial class HostRegistraion : Window
     {
-        XElement hostRoot;
         String hostPath="@HostXml.xml";
+        XElement guestRoot = new XElement("guestsInfo");
+        XElement hostRoot = new XElement("hostsInfo");
         public HostRegistraion()
         {
             InitializeComponent();
@@ -31,11 +32,11 @@ namespace PLWPF
             hostRoot = new XElement("ghost");
             XElement username = new XElement("username", txtUsername.Text);
             XElement password = new XElement("password", passwordBox1.Password);
-            XElement Pname = new XElement("first name", privateName1TextBox.Text);
-            XElement Fname = new XElement("last name", familyName1TextBox.Text);
+            XElement Pname = new XElement("firstName", privateName1TextBox.Text);
+            XElement Fname = new XElement("lastName", familyName1TextBox.Text);
             XElement email = new XElement("Email", mailAddress1TextBox.Text);
-            XElement phone = new XElement("Phone number", phoneNumber1TextBox.Text);
-            XElement bank = new XElement("Bank account number", bankAccountNumber1TextBox.Text);
+            XElement phone = new XElement("PhoneNumber", phoneNumber1TextBox.Text);
+            XElement bank = new XElement("BankAccountNumber", bankAccountNumber1TextBox.Text);
             XElement clearance = new XElement("Clearance", collectionClearance1CheckBox.Content);
             XElement signIn = new XElement("SIgnInInfo", username, password);
             XElement Host = new XElement("Host", Pname, Fname, email, phone, bank, clearance);
@@ -54,6 +55,31 @@ namespace PLWPF
             {
                 errormessage.Text = "enter a password";
                 passwordBox1.Focus();
+            }
+            else if (privateName1TextBox.Text.Length == 0)
+            {
+                errormessage.Text = "enter a first name";
+                privateName1TextBox.Focus();
+            }
+            else if (familyName1TextBox.Text.Length == 0)
+            {
+                errormessage.Text = "enter a last name";
+                familyName1TextBox.Focus();
+            }
+            else if (mailAddress1TextBox.Text.Length == 0)
+            {
+                errormessage.Text = "enter an email account";
+                mailAddress1TextBox.Focus();
+            }
+            else if (phoneNumber1TextBox.Text.Length == 0)
+            {
+                errormessage.Text = "enter a phone number";
+                phoneNumber1TextBox.Focus();
+            }
+            else if (bankAccountNumber1TextBox.Text.Length == 0)
+            {
+                errormessage.Text = "enter a bank account number";
+                bankAccountNumber1TextBox.Focus();
             }
             else
             {
@@ -99,8 +125,37 @@ namespace PLWPF
         {
             Close();
         }
-      
+        private bool checkInputGuest()
+        {
+            var v = from use in guestRoot.Elements()
+                    where use.Element("username").Value == textBoxFirstName.Text
+                    select use;
+            if (v.Count() == 1)
+                return true;
+            else return false;
+        }
+        private bool checkInputHost()
+        {
+            var v = from use in hostRoot.Elements()
+                    where use.Element("username").Value == textBoxFirstName.Text
+                    select use;
+            if (v.Count() == 1)
+                return true;
+            else return false;
+        }
+        private void LoadData()
+        {
+            try
+            {
+                guestRoot = XElement.Load("@GuestXml.xml");
+                hostRoot = XElement.Load("@HostXml.xml");
+            }
+            catch
+            {
 
+                throw new Exception("File upload problem");
+            }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
