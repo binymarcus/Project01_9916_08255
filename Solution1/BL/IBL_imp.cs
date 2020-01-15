@@ -357,6 +357,18 @@ namespace BL
                 throw;
             }
         }
+        public HostingUnit GetHostingUnitByKey(long key)
+        {
+            try
+            {
+                return dal.GetHostingUnitByKey(key);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public List<GuestRequest> GetallGuestRequestByName(string pname, string fname)
         {
             try
@@ -393,16 +405,29 @@ namespace BL
                 throw;
             }    
         }
+        HostingUnit GetHostingUnitByName(string name)
+        {
+            try
+            {
+                return dal.GetHostingUnitByName(name);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
         public List<BankBranch> GetAllBanks()
         {
             try
             {
                 return dal.GetAllBanks();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
         }
         #endregion

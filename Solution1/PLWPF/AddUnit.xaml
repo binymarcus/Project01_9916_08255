@@ -47,7 +47,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Commission :" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Center" Height="56" Width="159"/>
-            <xctk:WatermarkTextBox x:Name="commission1TextBox" HorizontalAlignment="Left" Height="46" Margin="159,10,-480.333,0" Grid.Row="0" Watermark="Please enter ypur commission" Text="{Binding Commission1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="634" Grid.ColumnSpan="3"/>
+            <xctk:WatermarkTextBox x:Name="commission1TextBox" HorizontalAlignment="Left" Height="46" Margin="159,10,-480.333,0" Grid.Row="0" Watermark="Please enter your commission" Text="{Binding Commission1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="634" Grid.ColumnSpan="3"/>
             <Label Content="Area of hosting unit: :" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="56" Width="159" Margin="0,56,0,-56"/>
 
         </Grid>

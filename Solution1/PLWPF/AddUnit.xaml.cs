@@ -32,6 +32,7 @@ namespace PLWPF
 
         public AddUnit(BE.Host host)
         {
+            InitializeComponent();
             owner = host;
         }
 

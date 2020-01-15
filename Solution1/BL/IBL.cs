@@ -89,8 +89,9 @@ namespace BL
         /// <returns></returns>
         void CalcNumOfHostingUnits();
         List<Host> GetAllHosts();
-
+        HostingUnit GetHostingUnitByName(string name);
         GuestRequest GetGuestRequestByKey(long key);
+        HostingUnit GetHostingUnitByKey(long key);
 
         List<GuestRequest> GetallGuestRequestByName(string pname ,string fname);
         #endregion

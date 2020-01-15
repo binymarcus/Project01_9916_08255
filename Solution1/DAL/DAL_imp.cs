@@ -26,6 +26,11 @@ namespace DAL
         /// <param name="hostingUnit"> the hosting unit from BE</param>
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
+            foreach (var item in GetAllHostingUnits())
+            {
+                if (item.HostingUnitName1 == hostingUnit.HostingUnitName1)
+                    throw new UnexceptableDetailsException("cannot enter two hosting units with the same name");
+            }
             hostingUnit.HostingUnitKey1 = ++Configuration.HostingUnitKey;
             DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
         }
@@ -272,6 +277,16 @@ namespace DAL
                         item1.NumOfHostinUnits1++;
                 }
             }
+        }
+        public HostingUnit GetHostingUnitByName(string name)
+        {
+            foreach (var item in GetAllHostingUnits())
+            {
+                if (name == item.HostingUnitName1)
+                    return item;
+            }
+            throw new Exception("the hosting unit does not exist");
+
         }
         #endregion
 

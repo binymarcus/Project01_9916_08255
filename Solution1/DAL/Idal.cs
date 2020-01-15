@@ -84,6 +84,7 @@ namespace DAL
         Order GetOrderByKey(long key);
         GuestRequest GetGuestRequestByKey(long key);
         HostingUnit GetHostingUnitByKey(long key);
+        HostingUnit GetHostingUnitByName(string name);
 
         List<GuestRequest> GetallGuestRequestByName(string pname, string fname);
         #endregion

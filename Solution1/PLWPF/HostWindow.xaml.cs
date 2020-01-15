@@ -27,6 +27,7 @@ namespace PLWPF
         public HostWindow()
         {
             InitializeComponent();
+            LoadData();
         }
         public HostWindow(string username)
         {
@@ -57,26 +58,35 @@ namespace PLWPF
         }
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Window mWindow = new MainWindow();
+            Window mWindow = new SignInPage();
             mWindow.Show();
             this.Close();
 
         }
         private BE.Host getHost()
         {
-                var v = (from use in HostRoot.Elements()
-                         where use.Element("username").Value == user
-                         select new BE.Host()
-                         {
-                             PrivateName1 = use.Element("Host").Element("firstName").Value,
-                             FamilyName1 = use.Element("Host").Element("lastName").Value,
-                             MailAddress1 = use.Element("Host").Element("Email").Value,
-                             PhoneNumber1 = int.Parse(use.Element("Host").Element("PhoneNumber").Value),
-                             BankAccountNumber1 = int.Parse(use.Element("Host").Element("BankAccountNumber").Value),
-                             CollectionClearance1 = bool.Parse(use.Element("Host").Element("Clearance").Value)
-                         }).FirstOrDefault();
-            bl.AddHost(v);
-            return v;
+            BE.Host host;
+            try
+            {
+                host= (from use in HostRoot.Elements()
+                        where use.Element("username").Value == user
+                        select new BE.Host()
+                        {
+                            PrivateName1 = use.Element("Host").Element("firstName").Value,
+                            FamilyName1 = use.Element("Host").Element("lastName").Value,
+                            MailAddress1 = use.Element("Host").Element("Email").Value,
+                            PhoneNumber1 = int.Parse(use.Element("Host").Element("PhoneNumber").Value),
+                            BankAccountNumber1 = int.Parse(use.Element("Host").Element("BankAccountNumber").Value),
+                            CollectionClearance1 = bool.Parse(use.Element("Host").Element("Clearance").Value)
+                        }).FirstOrDefault();
+                bl.AddHost(host);
+
+            }
+            catch
+            {
+                host = null;
+            }
+            return host;
 
         }
         private void LoadData()
