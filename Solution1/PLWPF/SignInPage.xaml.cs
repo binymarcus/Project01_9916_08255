@@ -73,7 +73,7 @@ namespace PLWPF   {
                     {
                         if (checkInputHost())
                         {
-                            HostingUnit ho = new HostingUnit();
+                            HostWindow ho = new HostWindow(txtUsername.Text);
                             ho.Show();
                             this.Close();
                         }
@@ -117,8 +117,9 @@ namespace PLWPF   {
         }
         private bool checkInputHost()
         {
+
             var v = from use in HostRoot.Elements()
-                    where (use.Element("username").Value == txtUsername.Text) && (use.Element("password").Value == txtPassword.Password)
+                    where (use.Element("username").Value == txtUsername.Text)&&(use.Element("password").Value == txtPassword.Password)
                     select use;
             if (v.Count() == 1)
                 return true;

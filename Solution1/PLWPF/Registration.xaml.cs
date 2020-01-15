@@ -38,6 +38,7 @@ namespace PLWPF
         public Registration()
         {
             InitializeComponent();
+            LoadData();
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {

@@ -47,7 +47,7 @@ namespace PLWPF
         }
         private void hostingUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            Window addHostingUnitWindow = new HostingUnit();
+            Window addHostingUnitWindow = new HostWindow();
             addHostingUnitWindow.Show();
             this.Close();
 

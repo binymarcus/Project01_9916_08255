@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,22 +21,29 @@ namespace PLWPF
     public partial class AddUnit : Window
     {
         BE.HostingUnit unit;
-        BL.IBL bl;
+         IBL bl = BL.FactoryBL.getIBL();
+        BE.Host owner;
         public AddUnit()
         {
             InitializeComponent();
             unit = new BE.HostingUnit();
             this.DataContext = unit;
-            bl = BL.FactoryBL.getIBL();
         }
+
+        public AddUnit(BE.Host host)
+        {
+            owner = host;
+        }
+
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                unit.Owner1 = owner;
                 bl.AddHostingUnit(unit);
                 MessageBox.Show("Hosting Unit Added, Key:" + unit.HostingUnitKey1);
                 this.DataContext = unit;
-                Window HostingUnitWindow = new HostingUnit();
+                HostWindow HostingUnitWindow = new HostWindow();
                 HostingUnitWindow.Show();
                 this.Close();
             }
@@ -67,7 +75,7 @@ namespace PLWPF
         }
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Window HostingUnitWindow = new HostingUnit();
+            Window HostingUnitWindow = new HostWindow();
             HostingUnitWindow.Show();
             this.Close();
         }

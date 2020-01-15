@@ -26,11 +26,12 @@ namespace PLWPF
         public HostRegistraion()
         {
             InitializeComponent();
+            LoadData();
         }
         public void saveHost()
         {
             hostRoot = new XElement("ghost");
-            XElement username = new XElement("username", txtUsername.Text);
+            XElement username = new XElement("username", textBoxFirstName.Text);
             XElement password = new XElement("password", passwordBox1.Password);
             XElement Pname = new XElement("firstName", privateName1TextBox.Text);
             XElement Fname = new XElement("lastName", familyName1TextBox.Text);
@@ -38,10 +39,8 @@ namespace PLWPF
             XElement phone = new XElement("PhoneNumber", phoneNumber1TextBox.Text);
             XElement bank = new XElement("BankAccountNumber", bankAccountNumber1TextBox.Text);
             XElement clearance = new XElement("Clearance", collectionClearance1CheckBox.Content);
-            XElement signIn = new XElement("SIgnInInfo", username, password);
-            XElement Host = new XElement("Host", Pname, Fname, email, phone, bank, clearance);
-            XElement HostInfo = new XElement("HostInfo", Host, signIn);
-            hostRoot.Add(HostInfo);
+            XElement Host = new XElement("Host",username,password,Pname, Fname, email, phone, bank, clearance);
+            hostRoot.Add(Host);
             hostRoot.Save(hostPath);
         }
         private void Submit_Click(object sender, RoutedEventArgs e)
