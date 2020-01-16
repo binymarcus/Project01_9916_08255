@@ -66,26 +66,21 @@ namespace PLWPF
         private BE.Host getHost()
         {
             BE.Host host;
-            try
-            {
+            
                 host= (from use in HostRoot.Elements()
                         where use.Element("username").Value == user
                         select new BE.Host()
                         {
-                            PrivateName1 = use.Element("Host").Element("firstName").Value,
-                            FamilyName1 = use.Element("Host").Element("lastName").Value,
-                            MailAddress1 = use.Element("Host").Element("Email").Value,
-                            PhoneNumber1 = int.Parse(use.Element("Host").Element("PhoneNumber").Value),
-                            BankAccountNumber1 = int.Parse(use.Element("Host").Element("BankAccountNumber").Value),
-                            CollectionClearance1 = bool.Parse(use.Element("Host").Element("Clearance").Value)
+                            PrivateName1 = use.Element("host").Element("firstName").Value,
+                            FamilyName1 = use.Element("host").Element("lastName").Value,
+                            MailAddress1 = use.Element("host").Element("Email").Value,
+                            PhoneNumber1 = int.Parse(use.Element("host").Element("PhoneNumber").Value),
+                            BankAccountNumber1 = int.Parse(use.Element("host").Element("BankAccountNumber").Value),
+                            CollectionClearance1 = bool.Parse(use.Element("host").Element("Clearance").Value)
                         }).FirstOrDefault();
                 bl.AddHost(host);
-
-            }
-            catch
-            {
-                host = null;
-            }
+            
+            
             return host;
 
         }

@@ -30,7 +30,7 @@ namespace PLWPF
         }
         public void saveHost()
         {
-            hostRoot = new XElement("ghost");
+            hostRoot = new XElement("host");
             XElement username = new XElement("username", textBoxFirstName.Text);
             XElement password = new XElement("password", passwordBox1.Password);
             XElement Pname = new XElement("firstName", privateName1TextBox.Text);
@@ -87,13 +87,18 @@ namespace PLWPF
                     errormessage.Text = " password do not match";
                     passwordBoxConfirm.Focus();
                 }
-                else
-                {
-                    saveHost();
-                    MessageBox.Show("added to the system");
-                    SignInPage login = new SignInPage();
-                    login.Show();
-                    Close();
+                else {
+                    if(checkInputGuest()||checkInputHost())
+                    {
+                        MessageBox.Show("user already exists, try again");
+                    }
+                   else {
+                        saveHost();
+                        MessageBox.Show("added to the system");
+                        SignInPage login = new SignInPage();
+                        login.Show();
+                        Close();
+                    } 
                 }
 
             }

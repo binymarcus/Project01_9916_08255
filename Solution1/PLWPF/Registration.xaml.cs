@@ -14,6 +14,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using System.IO;
 
 namespace PLWPF
 {
@@ -38,7 +39,12 @@ namespace PLWPF
         public Registration()
         {
             InitializeComponent();
-            LoadData();
+            if (!File.Exists("@GuestXml.xml"))
+                CreateFilesGuest();
+            if (!File.Exists("@HostXml.xml"))
+                CreateFilesHost();
+            else
+                LoadData();
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
@@ -81,19 +87,32 @@ namespace PLWPF
                 }
                 else
                 {
-                    if(checkInputGuest()||checkInputHost())
+                    if (checkInputGuest() || checkInputHost())
                     {
                         MessageBox.Show("user name already exists, please try again");
                         Reset();
-                    } 
-                    SaveGuest();
-                    MessageBox.Show("added to the system");
-                    SignInPage login = new SignInPage();
-                    login.Show();
-                    Close();
+                    }
+                    else
+                    {
+                        SaveGuest();
+                        MessageBox.Show("added to the system");
+                        SignInPage login = new SignInPage();
+                        login.Show();
+                        Close();
+                    }
                 }
                     
             }
+        }
+        private void CreateFilesGuest()
+        {
+            guestRoot = new XElement("guestsInfo");
+            guestRoot.Save("@GuestXml.xml");
+        }
+        private void CreateFilesHost()
+        {
+            HostRoot = new XElement("hostsInfo");
+            HostRoot.Save("@HostXml.xml");
         }
         private bool checkInputGuest()
         {

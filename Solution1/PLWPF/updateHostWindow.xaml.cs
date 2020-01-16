@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace PLWPF
     public partial class updateHostWindow : Window
     {
         private BE.HostingUnit unit;
-
+        IBL bl = FactoryBL.getIBL();
         public updateHostWindow()
         {
             InitializeComponent();
@@ -45,45 +46,31 @@ namespace PLWPF
         private void update_Click(object sender, RoutedEventArgs e)
         {
 
-                int int1;
                 int error = 0;
                 try
                 {
-                    //if (hostingUnitName1TextBox.Text == "" && error == 0)//need to fill out name (we dont care if his name is a number)
-                    //{
-                    //    MessageBox.Show("need to fill out private name");
-                    //    error++;
-                    //}
-                    //else if (FamilyName1TextBox.Text == "" && error == 0)//need to fill out name (we dont care if his name is a number)
-                    //{
-                    //    MessageBox.Show("need to fill out family name");
-                    //    error++;
-                    //    FamilyName1TextBox.Clear();
-                    //}
-                    //else if ((adults1TextBox.Text != "") && (!(int.TryParse(adults1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
-                    //{
-                    //    MessageBox.Show("num of adults has to be filled with a number");
-                    //    error++;
-                    //    adults1TextBox.Clear();
-                    //}
-
-                    //if ((children1TextBox.Text != "") && (!(int.TryParse(children1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
-                    //{
-                    //    MessageBox.Show("num of children has to be filled with a number");
-                    //    error++;
-                    //    children1TextBox.Clear();
-
-                    //}
-
-                    //if (error == 0)
-                    //{
-                    //    bl.UpdateGuestRequest(guest);
-                    //    MessageBox.Show("Guest Request updated, Key: " + guest.GuestRequestKey1);
-                    //    Window GuestRequestWindow = new GuestRequest();
-                    //    GuestRequestWindow.Show();
-                    //    this.Close();
-                    //}
+                if (hostingUnitName1TextBox.Text == "" && error == 0)//need to fill out name (we dont care if his name is a number)
+                {
+                    MessageBox.Show("need to fill out  name");
+                    error++;
                 }
+                else if (commission1TextBox.Text == "" && error == 0)
+                {
+                    MessageBox.Show("need to fill out comission");
+                    error++;
+                }
+
+                
+
+                if (error == 0)
+                {
+                    bl.UpdateHostingUnit(unit);
+                    MessageBox.Show("Guest Request updated, Key: " + unit.HostingUnitKey1);
+                    Window hWindow = new HostWindow();
+                    hWindow.Show();
+                    this.Close();
+                }
+            }
                 catch (FormatException)
                 {
 
