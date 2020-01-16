@@ -31,7 +31,7 @@ namespace PLWPF
         public void saveHost()
         {
             hostRoot = new XElement("host");
-            XElement username = new XElement("username", textBoxFirstName.Text);
+            XElement username = new XElement("username", textBoxUserName.Text);
             XElement password = new XElement("password", passwordBox1.Password);
             XElement Pname = new XElement("firstName", privateName1TextBox.Text);
             XElement Fname = new XElement("lastName", familyName1TextBox.Text);
@@ -45,46 +45,66 @@ namespace PLWPF
         }
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (txtUsername.Text.Length == 0)
+            int int1;
+            if (textBoxUserName.Text.Length == 0)
             {
-                errormessage.Text = "Enter a username.";
-                txtUsername.Focus();
+                MessageBox.Show("Enter a username.");
+                textBoxUserName.Focus();
             }
             else if (passwordBox1.Password.Length == 0)
             {
-                errormessage.Text = "enter a password";
+                MessageBox.Show("Enter a password.");
                 passwordBox1.Focus();
+            }
+            
+                else if (passwordBoxConfirm.Password.Length == 0)
+            {
+                MessageBox.Show("confirm your password.");
+                passwordBoxConfirm.Focus();
             }
             else if (privateName1TextBox.Text.Length == 0)
             {
-                errormessage.Text = "enter a first name";
+                MessageBox.Show("enter your private name.");
                 privateName1TextBox.Focus();
             }
             else if (familyName1TextBox.Text.Length == 0)
             {
-                errormessage.Text = "enter a last name";
+                MessageBox.Show("enter your family name.");
                 familyName1TextBox.Focus();
             }
             else if (mailAddress1TextBox.Text.Length == 0)
             {
-                errormessage.Text = "enter an email account";
+                MessageBox.Show("enter your email address.");
                 mailAddress1TextBox.Focus();
             }
             else if (phoneNumber1TextBox.Text.Length == 0)
             {
-                errormessage.Text = "enter a phone number";
+                MessageBox.Show("enter your phone number.");
                 phoneNumber1TextBox.Focus();
             }
             else if (bankAccountNumber1TextBox.Text.Length == 0)
             {
-                errormessage.Text = "enter a bank account number";
+                MessageBox.Show("enter your bank account number.");
                 bankAccountNumber1TextBox.Focus();
+            }
+            else if(!(int.TryParse(bankAccountNumber1TextBox.Text, out int1)))
+            {
+                MessageBox.Show("bank account number has to ba a number.");
+                bankAccountNumber1TextBox.Clear();
+                bankAccountNumber1TextBox.Focus();
+            }
+            else if (!(int.TryParse(phoneNumber1TextBox.Text, out int1)))
+            {
+                MessageBox.Show("phone number has to ba a number.");
+                phoneNumber1TextBox.Clear();
+                phoneNumber1TextBox.Focus();
             }
             else
             {
                 if (passwordBox1.Password != passwordBoxConfirm.Password)
                 {
-                    errormessage.Text = " password do not match";
+                    MessageBox.Show("password do not match.");
+                    passwordBoxConfirm.Clear();
                     passwordBoxConfirm.Focus();
                 }
                 else {
@@ -117,7 +137,7 @@ namespace PLWPF
         public void Reset()
         {
             privateName1TextBox.Text = "";
-            txtUsername.Text = "";
+            textBoxUserName.Text = "";
             familyName1TextBox.Text = "";
             mailAddress1TextBox.Text = "";
             phoneNumber1TextBox.Text = "";
@@ -132,7 +152,7 @@ namespace PLWPF
         private bool checkInputGuest()
         {
             var v = from use in guestRoot.Elements()
-                    where use.Element("username").Value == textBoxFirstName.Text
+                    where use.Element("username").Value == textBoxUserName.Text
                     select use;
             if (v.Count() == 1)
                 return true;
@@ -141,7 +161,7 @@ namespace PLWPF
         private bool checkInputHost()
         {
             var v = from use in hostRoot.Elements()
-                    where use.Element("username").Value == textBoxFirstName.Text
+                    where use.Element("username").Value == textBoxUserName.Text
                     select use;
             if (v.Count() == 1)
                 return true;

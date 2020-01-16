@@ -42,7 +42,7 @@
             <TextBlock Height="23" HorizontalAlignment="Left" x:Name="txtUsername" Text="Username:" VerticalAlignment="Top" Width="110" />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="0,20,0,0" x:Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="0,43,0,0" x:Name="textBlockConfirmPwd" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" />
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="115,0,0,0" x:Name="textBoxFirstName" VerticalAlignment="Top" Width="138" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="115,0,0,0" x:Name="textBoxUserName" VerticalAlignment="Top" Width="138" />
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="115,20,0,0" x:Name="passwordBox1" VerticalAlignment="Top" Width="138" />
             <!--For password-->
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="115,43,0,0" x:Name="passwordBoxConfirm" VerticalAlignment="Top" Width="138" />
