@@ -23,7 +23,6 @@ namespace PLWPF
         BE.HostingUnit unit;
         //BL.IBL bl;
         IBL bl = FactoryBL.getIBL();
-        bool flag = true;
         public updeletebyunit()
         {
             InitializeComponent();
@@ -90,7 +89,7 @@ namespace PLWPF
                      unit = bl.GetHostingUnitByName(this.DeletePrivateNameTextBox.Text);
                      long tempkey = unit.HostingUnitKey1;
                      bl.DeleteHostingUnit(unit);
-                     MessageBox.Show("Guest Request deleted, Key: " + tempkey);
+                     MessageBox.Show("Unit deleted, Key: " + tempkey);
                      Window GuestRequestWindow = new HostWindow();
                      GuestRequestWindow.Show();
                      this.Close();

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.updateHostWindow"
         mc:Ignorable="d"
-        Title="updateHostWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="updateHostWindow" Height="450" Width="453.333" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
     </Window.Resources>
@@ -32,7 +32,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Hosting Unit Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="hostingUnitKey1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding HostingUnitKey1, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="hostingUnitKey1TextBox"  Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding HostingUnitKey1, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid3" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Height="38" Width="237">
             <Grid.ColumnDefinitions>
@@ -89,6 +89,8 @@
             <Label Content="has Pool 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <CheckBox x:Name="hasPool1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
         </Grid>
+        <Button x:Name="back" Content="Back" HorizontalAlignment="Left" Margin="0,359,0,-0.333" VerticalAlignment="Top" Width="220" Height="62"/>
+        <Button x:Name="update" Content="Update" Click="update_Click" HorizontalAlignment="Left" Margin="220,359,-0.333,-0.333" VerticalAlignment="Top" Width="227" Height="62"/>
 
     </Grid>
 </Window>
