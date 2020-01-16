@@ -405,19 +405,7 @@ namespace BL
                 throw;
             }    
         }
-        HostingUnit GetHostingUnitByName(string name)
-        {
-            try
-            {
-                return dal.GetHostingUnitByName(name);
-            }
-            catch (Exception e)
-            {
-
-                throw e;
-            }
-        }
-
+        
         public List<BankBranch> GetAllBanks()
         {
             try
@@ -695,7 +683,19 @@ namespace BL
              return longest;
          }
 
+        HostingUnit IBL.GetHostingUnitByName(string name)
+        {
 
+            try
+            {
+                return dal.GetHostingUnitByName(name);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
     }
 }
 
