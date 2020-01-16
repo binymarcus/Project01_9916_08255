@@ -1,0 +1,17 @@
+﻿<Window x:Class="PLWPF.AdminMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="AdminMainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="GRfunctions" Content="Guest Request Functions" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GRfunctions_Click" />
+        <Button x:Name="HostFunctions" Content="Host Functions" HorizontalAlignment="Left" Margin="422,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="HostFunctions_Click"/>
+        <Button x:Name="HUFunctions" Content="Hosting Unit Functions" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="HUFunctions_Click"/>
+        <Button x:Name="OrderFunctions" Content="Order Functions" HorizontalAlignment="Left" Margin="422,113,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="OrderFunctions_Click"/>
+        <Button x:Name="SignOut" Content="Sign Out" HorizontalAlignment="Left" Margin="422,359,0,0" VerticalAlignment="Top" Width="361" Height="50" Click="SignOut_Click"/>
+
+    </Grid>
+</Window>

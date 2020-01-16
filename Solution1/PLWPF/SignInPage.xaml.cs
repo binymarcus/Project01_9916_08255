@@ -61,7 +61,7 @@ namespace PLWPF   {
                 }
                 if (txtUsername.Text == "Admin" && txtPassword.Password == "admin")
                 {
-                    MainWindow admin = new MainWindow();
+                    AdminMainWindow admin = new AdminMainWindow();
                     admin.Show();
                     this.Close();
                 }

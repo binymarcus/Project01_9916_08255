@@ -42,6 +42,11 @@ namespace PLWPF
             XElement Host = new XElement("Host",username,password,Pname, Fname, email, phone, bank, clearance);
             hostRoot.Add(Host);
             hostRoot.Save(hostPath);
+
+            MessageBox.Show("added to the system, Host Key: ");
+            SignInPage login = new SignInPage();
+            login.Show();
+            Close();
         }
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
@@ -114,10 +119,7 @@ namespace PLWPF
                     }
                    else {
                         saveHost();
-                        MessageBox.Show("added to the system");
-                        SignInPage login = new SignInPage();
-                        login.Show();
-                        Close();
+                        
                     } 
                 }
 

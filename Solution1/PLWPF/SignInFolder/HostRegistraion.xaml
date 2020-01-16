@@ -80,7 +80,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Private Name 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="93"/>
+                <Label Content="Private Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="93"/>
                 <TextBox x:Name="privateName1TextBox" Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="2.667,4,0,4" Grid.Row="0" Text="{Binding PrivateName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             </Grid>
             <Grid x:Name="grid4" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="243,106,0,0" VerticalAlignment="Top" Width="222">
@@ -91,7 +91,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Phone Number 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <TextBox x:Name="phoneNumber1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding PhoneNumber1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             </Grid>
             <Grid x:Name="grid5" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Height="16">
@@ -102,8 +102,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Collection Clearance 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="-4,-10,0,16" Grid.Row="0" VerticalAlignment="Center"/>
-                <CheckBox x:Name="collectionClearance1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding CollectionClearance1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,0,0,16" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label Content="Collection Clearance 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="-4,-2,0,0" Grid.Row="0" VerticalAlignment="Center" Height="34"/>
+                <CheckBox x:Name="collectionClearance1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding CollectionClearance1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,0,-0.333,0" Grid.Row="0" VerticalAlignment="Center" Height="32" RenderTransformOrigin="0.57,0.807"/>
             </Grid>
             <Grid x:Name="grid6" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="210,146,0,0" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
@@ -113,7 +113,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Bank Account Number 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label Content="Bank Account Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <TextBox x:Name="bankAccountNumber1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BankAccountNumber1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             </Grid>
         </Grid>
