@@ -38,7 +38,7 @@ namespace PLWPF
             XElement email = new XElement("Email", mailAddress1TextBox.Text);
             XElement phone = new XElement("PhoneNumber", phoneNumber1TextBox.Text);
             XElement bank = new XElement("BankAccountNumber", bankAccountNumber1TextBox.Text);
-            XElement clearance = new XElement("Clearance", collectionClearance1CheckBox.Content);
+            XElement clearance = new XElement("Clearance", collectionClearance1CheckBox.IsChecked.ToString());
             XElement Host = new XElement("Host",username,password,Pname, Fname, email, phone, bank, clearance);
             hostRoot.Add(Host);
             hostRoot.Save(hostPath);
