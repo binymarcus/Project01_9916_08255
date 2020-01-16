@@ -71,12 +71,12 @@ namespace PLWPF
                         where use.Element("username").Value == user
                         select new BE.Host()
                         {
-                            PrivateName1 = use.Element("host").Element("firstName").Value,
-                            FamilyName1 = use.Element("host").Element("lastName").Value,
-                            MailAddress1 = use.Element("host").Element("Email").Value,
-                            PhoneNumber1 = int.Parse(use.Element("host").Element("PhoneNumber").Value),
-                            BankAccountNumber1 = int.Parse(use.Element("host").Element("BankAccountNumber").Value),
-                            CollectionClearance1 = bool.Parse(use.Element("host").Element("Clearance").Value)
+                            PrivateName1 = use.Element("firstName").Value,
+                            FamilyName1 = use.Element("lastName").Value,
+                            MailAddress1 = use.Element("Email").Value,
+                            PhoneNumber1 = int.Parse(use.Element("PhoneNumber").Value),
+                            BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
+                            CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
                         }).FirstOrDefault();
                 bl.AddHost(host);
             
