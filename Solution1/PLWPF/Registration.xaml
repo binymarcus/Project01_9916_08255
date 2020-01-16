@@ -40,7 +40,6 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,136,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />
             <Button Content="Submit" Height="23" HorizontalAlignment="Left" Margin="183,204,0,0" Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" />
             <Button Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" Name="button2" VerticalAlignment="Top" Width="70" Click="button2_Click" />
-            <Button Content="Cancel" Height="23" HorizontalAlignment="Right" Margin="0,204,60,0" Name="button3" VerticalAlignment="Top" Width="70" Click="button3_Click" />
             <Button x:Name="Host" Content="Register as Host" Click="Host_Click" HorizontalAlignment="Left" Margin="0,221,0,0" VerticalAlignment="Top" Width="126" Height="43"/>
         </Grid>
     </Grid>

@@ -25,11 +25,12 @@
         <xctk:WatermarkTextBox Watermark="Family Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="familyenameinput" Margin="386,0.333,0.333,93.667" Grid.RowSpan="2"/>
         <Button x:Name="showbutton" Content="Show" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="386,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="407" Height="67" Click="showbutton_Click"/>
         <Button x:Name="cancelbutton" Content="cancel" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="381" Height="67" Click="cancelbutton_Click"/>
-        <ScrollViewer x:Name="scrollview1" Visibility="Hidden" HorizontalAlignment="Left" Height="460" Margin="7,12,0,-1.333" Grid.RowSpan="5" VerticalAlignment="Top" Width="391">
+        <ScrollViewer x:Name="scrollview1" Visibility="Collapsed" HorizontalAlignment="Left" Height="460" Margin="7,12,0,-1.333" Grid.RowSpan="5" VerticalAlignment="Top" Width="391">
             <StackPanel x:Name="b" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
-                
+
             </StackPanel>
         </ScrollViewer>
         <Button x:Name="BackButton2" Content="Back" Visibility="Hidden" HorizontalAlignment="Left" Margin="416,10,0,0" VerticalAlignment="Top" Width="367" Height="74" Click="BackButton2_Click"/>
+        <Label x:Name="alllabal" Content="please enter your name in order to view all your guest requests" FontSize="25" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,0.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="783" Height="74"/>
     </Grid>
 </Window>

@@ -36,6 +36,10 @@ namespace PLWPF
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             int int1;
+            int adultint;
+            int.TryParse(adults1TextBox.Text, out adultint);
+            int childrenint;
+            int.TryParse(adults1TextBox.Text, out childrenint);
             int error = 0;
             try
             {
@@ -58,12 +62,23 @@ namespace PLWPF
                     adults1TextBox.Clear();
                 }
 
-                if ((children1TextBox.Text != "") && (!(int.TryParse(children1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
+                else if ((children1TextBox.Text != "") && (!(int.TryParse(children1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
                 {
                     MessageBox.Show("num of children has to be filled with a number");
                     error++;
                     children1TextBox.Clear();
-
+                }
+                else if (adultint < 0)
+                {
+                    MessageBox.Show("num of adults has to be equel or larger then 0");
+                    error++;
+                    adults1TextBox.Clear();
+                }
+                else if (childrenint < 0)
+                {
+                    MessageBox.Show("num of children has to be equel or larger then 0");
+                    error++;
+                    adults1TextBox.Clear();
                 }
 
                 if (error == 0)

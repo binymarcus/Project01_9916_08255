@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Name 1:"/>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Name:"/>
             <TextBox x:Name="hostingUnitName1TextBox" Width="306" VerticalAlignment="Center" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3.333,5,-182.667,4.667" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
         <Grid x:Name="grid2" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="437" Height="36">
@@ -31,7 +31,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Hosting Unit Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Hosting Unit Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="hostingUnitKey1TextBox"  Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding HostingUnitKey1, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid3" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Height="38" Width="237">
@@ -42,7 +42,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Commission 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Commission:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="commission1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Commission1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid4" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="29" Width="210">
@@ -53,7 +53,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="has Childrens Attractions 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="has Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <CheckBox x:Name="hasChildrensAttractions1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
         </Grid>
         <Grid x:Name="grid5" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Height="30" Width="185">
@@ -64,7 +64,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="has Garden 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="has Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <CheckBox x:Name="hasGarden1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasGarden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
         </Grid>
         <Grid x:Name="grid6" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Height="31" Width="164">
@@ -75,7 +75,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="has Jaccuzzi 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="has Jaccuzzi:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <CheckBox x:Name="hasJaccuzzi1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasJaccuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
         </Grid>
         <Grid x:Name="grid7" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Height="35" Width="146">
@@ -86,7 +86,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="has Pool 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="has Pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <CheckBox x:Name="hasPool1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
         </Grid>
         <Button x:Name="back" Content="Back" HorizontalAlignment="Left" Margin="0,359,0,-0.333" VerticalAlignment="Top" Width="220" Height="62"/>

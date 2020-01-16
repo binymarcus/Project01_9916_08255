@@ -45,14 +45,14 @@ namespace PLWPF
         }
         private void updateUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            Window updateUnitWindow = new UpdateDeleteBy();
+            Window updateUnitWindow = new updeletebyunit();
             updateUnitWindow.Show();
             this.Close();
 
         }
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            Window DeleteUnitWindow = new UpdateDeleteBy();
+            Window DeleteUnitWindow = new updeletebyunit();
             DeleteUnitWindow.Show();
             this.Close();
         }
@@ -96,5 +96,7 @@ namespace PLWPF
                 throw new Exception("File upload problem");
             }
         }
+
+       
     }
 }
