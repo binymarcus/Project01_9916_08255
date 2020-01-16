@@ -80,8 +80,8 @@ namespace PLWPF   {
 
                         if (checkInputGuest())
                         {
-                            GuestRequest gu = new GuestRequest();
-                            gu.Show();
+                            Welcome welcomeWindow = new Welcome();
+                            welcomeWindow.Show();
                             this.Close();
                         }
                     }

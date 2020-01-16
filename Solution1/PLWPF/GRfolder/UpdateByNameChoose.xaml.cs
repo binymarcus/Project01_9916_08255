@@ -40,15 +40,26 @@ namespace PLWPF
       
         private void updatebyNameupdateButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (BE.GuestRequest item in guestList)
+            try
             {
-                bl.UpdateGuestRequest(item);
+                foreach (BE.GuestRequest item in guestList)
+                {
+                    bl.UpdateGuestRequest(item);
+                }
             }
-                this.Close();
+            catch (Exception)
+            {
+                MessageBox.Show("update error");
+            }
+            Window GRMain = new GuestRequest();
+            GRMain.Show();
+            this.Close();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            Window GRMain = new GuestRequest();
+            GRMain.Show();
             this.Close();
         }
     }
