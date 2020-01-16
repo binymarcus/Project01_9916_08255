@@ -211,10 +211,9 @@ namespace BL
             {
                 dal.AddHostingUnit(hostingUnit);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                
-                throw;
+                throw e;
             }
         }
 

@@ -60,7 +60,6 @@ public static class Cloning
         target.hasChildrensAttractions1 = original.hasChildrensAttractions1;
         target.Commission1 = original.Commission1;
         target.AreaOfHostingUnit = original.AreaOfHostingUnit;
-
         return target;
     }
 

@@ -26,13 +26,23 @@ namespace DAL
         /// <param name="hostingUnit"> the hosting unit from BE</param>
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
-            foreach (var item in GetAllHostingUnits())
+            try
             {
-                if (item.HostingUnitName1 == hostingUnit.HostingUnitName1)
-                    throw new UnexceptableDetailsException("cannot enter two hosting units with the same name");
+                foreach (var item in GetAllHostingUnits())
+                {
+                    if (item.HostingUnitName1 == hostingUnit.HostingUnitName1)
+                        throw new UnexceptableDetailsException("cannot enter two hosting units with the same name");
+                }
             }
-            hostingUnit.HostingUnitKey1 = ++Configuration.HostingUnitKey;
-            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
+            catch
+            {
+
+            }
+            finally
+            {
+                hostingUnit.HostingUnitKey1 = Configuration.HostingUnitKey++;
+                DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
+            }
         }
         /// <summary>
         /// adds an order from a client to the system

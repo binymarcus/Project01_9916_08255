@@ -20,26 +20,27 @@ namespace PLWPF
     /// </summary>
     public partial class AddUnit : Window
     {
-        BE.HostingUnit unit;
+        BE.HostingUnit unit=new BE.HostingUnit();
          IBL bl = BL.FactoryBL.getIBL();
         BE.Host owner;
         public AddUnit()
         {
             InitializeComponent();
             unit = new BE.HostingUnit();
-            this.DataContext = unit;
         }
 
         public AddUnit(BE.Host host)
         {
             InitializeComponent();
             owner = host;
+            this.addunit.DataContext = unit;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                unit.Owner1 = new BE.Host();
                 unit.Owner1 = owner;
                 bl.AddHostingUnit(unit);
                 MessageBox.Show("Hosting Unit Added, Key:" + unit.HostingUnitKey1);
