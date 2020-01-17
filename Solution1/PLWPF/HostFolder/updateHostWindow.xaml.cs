@@ -32,7 +32,6 @@ namespace PLWPF
         {
             this.unit = uni;
             this.DataContext = unit;
-            hostingUnitKey1TextBox.IsReadOnly = true;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

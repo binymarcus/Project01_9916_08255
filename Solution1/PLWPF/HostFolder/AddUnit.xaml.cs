@@ -20,7 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class AddUnit : Window
     {
-        BE.HostingUnit unit=new BE.HostingUnit();
+        BE.HostingUnit unit;
          IBL bl = BL.FactoryBL.getIBL();
         BE.Host owner;
         public AddUnit()
@@ -33,6 +33,7 @@ namespace PLWPF
         {
             InitializeComponent();
             owner = host;
+            unit = new BE.HostingUnit();
             this.addunit.DataContext = unit;
         }
 

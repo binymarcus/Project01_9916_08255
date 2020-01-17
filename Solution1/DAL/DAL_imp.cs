@@ -269,9 +269,7 @@ namespace DAL
             List<Host> L = new List<Host>();
             foreach (var item in DataSource.HostList)
                 L.Add(Cloning.Clone(item));
-            if (L.Count() == 0)
-                throw new NoItemsFound("there are no orders in the system.");
-            return L;
+                      return L;
         }        /// <summary>
                              /// sets num of hosting units each host has
                              /// </summary>

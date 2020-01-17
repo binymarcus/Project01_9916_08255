@@ -22,22 +22,44 @@ namespace PLWPF
     public partial class HostWindow : Window
     {
         string user;
+        BE.Host host;
        XElement HostRoot = new XElement("hostsInfo");
         IBL bl = FactoryBL.getIBL();
         public HostWindow()
         {
             InitializeComponent();
             LoadData();
+            host = new BE.Host();
+            host = getOldestHostKey();
+
         }
         public HostWindow(string username)
         {
             InitializeComponent();
             user = username;
+            host = new BE.Host();
+            host = getHost();
+
+        }
+        private BE.Host getOldestHostKey()
+        {
+            BE.HostingUnit temp=new BE.HostingUnit();
+            temp.HostingUnitKey1 = 10000000;
+            foreach (var item in bl.GetAllHostingUnits())
+            {
+                if (item.HostingUnitKey1 > temp.HostingUnitKey1)
+                    temp = item;
+            }
+          foreach( var item  in bl.GetAllHosts())
+            {
+                if (item.HostKey1 == temp.Owner1.HostKey1)
+                    return item;
+            }
+            return null;
         }
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
             LoadData();
-            BE.Host host = getHost();
             Window addUnitWindow = new AddUnit(host);
             addUnitWindow.Show();
             this.Close();
@@ -66,23 +88,36 @@ namespace PLWPF
         private BE.Host getHost()
         {
             BE.Host host;
-            
-                host= (from use in HostRoot.Elements()
-                        where use.Element("username").Value == user
-                        select new BE.Host()
-                        {
-                            PrivateName1 = use.Element("firstName").Value,
-                            FamilyName1 = use.Element("lastName").Value,
-                            MailAddress1 = use.Element("Email").Value,
-                            PhoneNumber1 = int.Parse(use.Element("PhoneNumber").Value),
-                            BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
-                            CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
-                        }).FirstOrDefault();
-                bl.AddHost(host);
-            
+
+            host = (from use in HostRoot.Elements()
+                    where use.Element("username").Value == user
+                    select new BE.Host()
+                    {
+                        PrivateName1 = use.Element("firstName").Value,
+                        FamilyName1 = use.Element("lastName").Value,
+                        MailAddress1 = use.Element("Email").Value,
+                        PhoneNumber1 = int.Parse(use.Element("PhoneNumber").Value),
+                        BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
+                        CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
+                    }).FirstOrDefault();
+            host.HostKey1 = 0;
+            host.HostKey1 = getHostKey(host);
+            if(host.HostKey1==0)
+                 bl.AddHost(host);
+
             
             return host;
 
+        }
+        private long getHostKey(BE.Host host)
+        {
+
+            foreach (var item in bl.GetAllHosts())
+            {
+                if (host.FamilyName1 == item.FamilyName1 && host.PrivateName1 == item.PrivateName1 && host.MailAddress1 == item.MailAddress1)
+                    return item.HostKey1;
+            }
+            return 0;
         }
         private void LoadData()
         {

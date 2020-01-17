@@ -95,8 +95,8 @@
     <Compile Include="GRfolder\GRUserControl.xaml.cs">
       <DependentUpon>GRUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SignInFolder\HostRegistraion.xaml.cs">
-      <DependentUpon>HostRegistraion.xaml</DependentUpon>
+    <Compile Include="SignInFolder\HostRegistration.xaml.cs">
+      <DependentUpon>HostRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="SignInFolder\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
@@ -162,7 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SignInFolder\HostRegistraion.xaml">
+    <Page Include="SignInFolder\HostRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
