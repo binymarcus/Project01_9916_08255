@@ -30,7 +30,16 @@ namespace PLWPF
             InitializeComponent();
             LoadData();
             host = new BE.Host();
-            host = getOldestHostKey();
+            try
+            {
+                host = getOldestHostKey();
+
+            }
+            catch 
+            {
+
+                
+            }
         }
         public HostWindow(string username)
         {

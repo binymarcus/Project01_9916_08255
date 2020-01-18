@@ -325,10 +325,10 @@ namespace BL
             {
                 return dal.GetAllHostingUnits();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
         }
         public List<GuestRequest> GetAllGuestRequest()
