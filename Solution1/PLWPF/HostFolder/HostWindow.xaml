@@ -14,8 +14,10 @@
             <RowDefinition Height="105*"/>
         </Grid.RowDefinitions>
         <Button x:Name="AddUnitButton" Background="SandyBrown" Content ="Add Unit"  Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addUnitButton_Click"/>
-        <Button x:Name="UpdateUnitButton" Background="SandyBrown" Content ="Update Unit" Click="updateUnitButton_Click" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1"/>
-        <Button x:Name="DeleteUnitButton" Background="SandyBrown" Content ="Delete Unit" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2" Click="DeleteUnitButton_Click"/>
-        <Button  x:Name="BackButton" Background="PaleGreen" Click="backButton_Click" Content="Sign Out" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
+        <Button x:Name="UpdateUnitButton" Background="SandyBrown" Content ="Update/Delete Unit" Click="updateUnitButton_Click" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1"/>
+        <Button x:Name="OrderUnitButton" Content="Order" Background="SandyBrown" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2" Click="OrderUnitButton_Click"/>
+        <Button  x:Name="BackButton"  Content="Cancel" Background="PaleGreen" Click="backButton_Click" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
+        <Button x:Name="AddORder" Visibility="Hidden" Content="ADD" Background="MistyRose" FontSize="25" HorizontalAlignment="Left" Margin="10,10.667,0,0" Grid.Row="2" VerticalAlignment="Top" Width="383" Height="84"/>
+        <Button x:Name="UpdateOrder" Visibility="Hidden" Content="Update" Background="MistyRose" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390" Margin="393,10.667,0,0" Grid.Row="2" Height="84"/>
     </Grid>
 </Window>

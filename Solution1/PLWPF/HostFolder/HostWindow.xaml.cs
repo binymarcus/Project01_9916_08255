@@ -81,12 +81,7 @@ namespace PLWPF
             this.Close();
 
         }
-        private void DeleteUnitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Window DeleteUnitWindow = new updeletebyunit();
-            DeleteUnitWindow.Show();
-            this.Close();
-        }
+        
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Window mWindow = new SignInPage();
@@ -140,6 +135,16 @@ namespace PLWPF
             }
         }
 
-       
+        private void DeleteUnitButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrderUnitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.OrderUnitButton.Visibility= Visibility.Hidden;
+            this.AddORder.Visibility = Visibility.Visible;
+            this.UpdateOrder.Visibility = Visibility.Visible;
+        }
     }
 }
