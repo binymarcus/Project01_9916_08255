@@ -24,12 +24,12 @@ namespace PLWPF
         IBL bl = FactoryBL.getIBL();
         public updateHostWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();     
         }
 
         public updateHostWindow(BE.HostingUnit uni)
         {
+            InitializeComponent();
             this.unit = uni;
             this.DataContext = unit;
         }

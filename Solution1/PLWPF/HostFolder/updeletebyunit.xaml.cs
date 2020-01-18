@@ -32,7 +32,7 @@ namespace PLWPF
         {
             if (this.UpdatePrivateNameTextBox.Text != ""  && this.UpdateKey.Text != "")
             {
-                MessageBox.Show("please enter only one field, byname or by key.");
+                MessageBox.Show("please enter only one field, by name or by key.");
                 Window UpdateDeleteByWindow = new UpdateDeleteBy();
                 UpdateDeleteByWindow.Show();
                 this.Close();

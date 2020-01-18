@@ -40,7 +40,6 @@ namespace PLWPF
             for (int i = 0; i < 6; i++)
             {
                 temp = ar[(r.Next(0, ar.Length))];
-
                 pwd += temp;
             }
 
