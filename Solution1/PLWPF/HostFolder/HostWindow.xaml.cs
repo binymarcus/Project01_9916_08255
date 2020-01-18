@@ -31,11 +31,11 @@ namespace PLWPF
             LoadData();
             host = new BE.Host();
             host = getOldestHostKey();
-
         }
         public HostWindow(string username)
         {
             InitializeComponent();
+            LoadData();
             user = username;
             host = new BE.Host();
             host = getHost();
@@ -44,7 +44,7 @@ namespace PLWPF
         private BE.Host getOldestHostKey()
         {
             BE.HostingUnit temp=new BE.HostingUnit();
-            temp.HostingUnitKey1 = 10000000;
+            temp.Owner1 = new BE.Host();
             foreach (var item in bl.GetAllHostingUnits())
             {
                 if (item.HostingUnitKey1 > temp.HostingUnitKey1)
@@ -87,7 +87,7 @@ namespace PLWPF
         }
         private BE.Host getHost()
         {
-            BE.Host host;
+            BE.Host host= new BE.Host();
 
             host = (from use in HostRoot.Elements()
                     where use.Element("username").Value == user
@@ -99,9 +99,8 @@ namespace PLWPF
                         PhoneNumber1 = int.Parse(use.Element("PhoneNumber").Value),
                         BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
                         CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
-                    }).FirstOrDefault();
-            host.HostKey1 = 0;
-            host.HostKey1 = getHostKey(host);
+                    }).Single();
+                       host.HostKey1 = getHostKey(host);
             if(host.HostKey1==0)
                  bl.AddHost(host);
 

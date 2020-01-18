@@ -46,7 +46,7 @@ namespace PLWPF
                 bl.AddHostingUnit(unit);
                 MessageBox.Show("Hosting Unit Added, Key:" + unit.HostingUnitKey1);
                 this.DataContext = unit;
-                HostWindow HostingUnitWindow = new HostWindow();
+                Window HostingUnitWindow = new HostWindow();
                 HostingUnitWindow.Show();
                 this.Close();
             }
