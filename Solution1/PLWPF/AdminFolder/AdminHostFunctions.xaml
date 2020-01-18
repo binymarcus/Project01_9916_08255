@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="AdminHostFunctions" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="GetAllHostsButton" Content="Get All Hosts" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllHostsButton_Click"/>
-        <Button x:Name="DoSomthing" Content="Do Somthing" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
+    <Grid Background="AntiqueWhite">
+        <Button x:Name="GetAllHostsButton" FontSize="25" Background="Aqua" Content="Get All Hosts" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllHostsButton_Click"/>
+        <Button x:Name="DoSomthing" Background="Aqua" FontSize="25" Content="Do Somthing" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
+        <Button x:Name="BackButton" Background="BlueViolet" FontSize="25" Content="Back" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
 
     </Grid>
 </Window>

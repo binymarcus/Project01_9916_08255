@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="HostingUnit" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Wheat">
         <Grid.RowDefinitions>
             <RowDefinition Height="105*"/>
             <RowDefinition Height="106*"/>
             <RowDefinition Height="104.667"/>
             <RowDefinition Height="105*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="AddUnitButton" Content ="Add Unit"  Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addUnitButton_Click"/>
-        <Button x:Name="UpdateUnitButton" Content ="Update Unit" Click="updateUnitButton_Click" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1"/>
-        <Button x:Name="DeleteUnitButton" Content ="Delete Unit" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2" Click="DeleteUnitButton_Click"/>
-        <Button  x:Name="BackButton" Click="backButton_Click" Content="Sign Out" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
+        <Button x:Name="AddUnitButton" Background="SandyBrown" Content ="Add Unit"  Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addUnitButton_Click"/>
+        <Button x:Name="UpdateUnitButton" Background="SandyBrown" Content ="Update Unit" Click="updateUnitButton_Click" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1"/>
+        <Button x:Name="DeleteUnitButton" Background="SandyBrown" Content ="Delete Unit" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2" Click="DeleteUnitButton_Click"/>
+        <Button  x:Name="BackButton" Background="PaleGreen" Click="backButton_Click" Content="Sign Out" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
     </Grid>
 </Window>

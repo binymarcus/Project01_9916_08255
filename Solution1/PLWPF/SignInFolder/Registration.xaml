@@ -25,7 +25,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             </Button.Style>
         </Button>
         <!--end Button as a Link button using style-->
-        <Grid Margin="31,0,29,23" Background="White" Height="264" VerticalAlignment="Bottom">
+        <Grid Background="Beige" Margin="31,0,29,23" Height="264" VerticalAlignment="Bottom">
             <Grid.RowDefinitions>
                 <RowDefinition Height="252*" />
                 <!--   <RowDefinition Height="12*" />-->
@@ -38,9 +38,9 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="222" />
             <!--For password-->
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,136,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />
-            <Button Content="Submit" Height="23" HorizontalAlignment="Left" Margin="183,204,0,0" Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" />
-            <Button Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" Name="button2" VerticalAlignment="Top" Width="70" Click="button2_Click" />
-            <Button x:Name="Host" Content="Register as Host" Click="Host_Click" HorizontalAlignment="Left" Margin="0,221,0,0" VerticalAlignment="Top" Width="126" Height="43"/>
+            <Button Background="RosyBrown" Content="Submit" Height="23" HorizontalAlignment="Left" Margin="183,204,0,0" Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" />
+            <Button Background="RosyBrown" Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" Name="button2" VerticalAlignment="Top" Width="70" Click="button2_Click" />
+            <Button Background="Lavender" x:Name="Host" Content="Register as Host" Click="Host_Click" HorizontalAlignment="Left" Margin="0,221,0,0" VerticalAlignment="Top" Width="126" Height="43"/>
         </Grid>
     </Grid>
 </Window>  

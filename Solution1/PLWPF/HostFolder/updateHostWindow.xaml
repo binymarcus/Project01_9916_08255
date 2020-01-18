@@ -10,7 +10,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
     </Window.Resources>
-    <Grid>
+    <Grid Background="Wheat">
 
         <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource hostingUnitViewSource}" Height="34" Width="793">
             <Grid.RowDefinitions>
@@ -89,8 +89,8 @@
             <Label Content="has Pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <CheckBox x:Name="hasPool1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
         </Grid>
-        <Button x:Name="back" Content="Back" HorizontalAlignment="Left" Margin="0,359,0,-0.333" VerticalAlignment="Top" Width="220" Height="62"/>
-        <Button x:Name="update" Content="Update" Click="update_Click" HorizontalAlignment="Left" Margin="220,359,-0.333,-0.333" VerticalAlignment="Top" Width="227" Height="62"/>
+        <Button x:Name="back" Background="PaleGreen" Content="Back" HorizontalAlignment="Left" Margin="0,359,0,-0.333" VerticalAlignment="Top" Width="220" Height="62"/>
+        <Button x:Name="update" Background="SandyBrown" Content="Update" Click="update_Click" HorizontalAlignment="Left" Margin="220,359,-0.333,-0.333" VerticalAlignment="Top" Width="227" Height="62"/>
 
     </Grid>
 </Window>

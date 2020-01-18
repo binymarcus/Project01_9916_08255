@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="AdminOrderFunctions" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="GetAllOrders" Content="Get All Orders" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllOrders_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
+    <Grid Background="AntiqueWhite">
+        <Button x:Name="GetAllOrders" FontSize="25" Background="Aqua" Content="Get All Orders" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllOrders_Click"/>
+        <Button Content="Button" FontSize="25" Background="Aqua" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
+        <Button x:Name="BackButton" FontSize="25" Background="BlueViolet" Content="Back" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
 
     </Grid>
 </Window>

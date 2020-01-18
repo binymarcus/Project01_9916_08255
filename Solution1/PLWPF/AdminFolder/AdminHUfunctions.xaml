@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="AdminHUfunctions" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="GetAllHU" Content="Get All Hosting Units" FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllHU_Click"/>
-        <Button x:Name="DoSomthing" Content="Do Somthing" FontSize="25" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
-        <Button x:Name="BackButton" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="423,311,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="BackButton_Click"/>
+    <Grid Background="AntiqueWhite">
+        <Button x:Name="GetAllHU" Background="Aqua" Content="Get All Hosting Units" FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllHU_Click"/>
+        <Button x:Name="DoSomthing" Background="Aqua" Content="Do Somthing" FontSize="25" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
+        <Button x:Name="BackButton" Background="BlueViolet" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="423,355,0,0" VerticalAlignment="Top" Width="360" Height="56" Click="BackButton_Click"/>
 
     </Grid>
 </Window>

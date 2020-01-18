@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="AdminGRfunctions" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="GetAllGR" Content="Get All Guest Requests" FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllGR_Click"/>
-        <Button x:Name="FindGRcriteria" Content="Find Guest Request by criteria" FontSize="25" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="FindGRcriteria_Click"/>
-        <Button x:Name="BackButton" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
+    <Grid Background="AntiqueWhite">
+        <Button x:Name="GetAllGR" Background="Aqua" Content="Get All Guest Requests" FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllGR_Click"/>
+        <Button x:Name="FindGRcriteria" Background="Aqua" Content="Find Guest Request by criteria" FontSize="25" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="FindGRcriteria_Click"/>
+        <Button x:Name="BackButton" Background="BlueViolet" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
 
     </Grid>
 </Window>

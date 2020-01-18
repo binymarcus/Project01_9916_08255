@@ -7,7 +7,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
-    <Grid>
+    <Grid Background="Beige">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -16,11 +16,11 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <Button x:Name="AddRequestButton" Content ="Add Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click"/>
-        <Button x:Name="UpdateRequestButton" Content ="Update Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click"/>
-        <Button x:Name="DeleteRequestButton" Content ="Delete Request" Visibility="Visible" Margin="10,10.,10.333,10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click"/>
-        <Button x:Name="ShowAllButton" Content="Show All My Guests Requests" Visibility="Visible" FontSize="30" HorizontalAlignment="Left" Margin="10,10,10.333,10" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="81" Click="ShowAllButton_Click"/>
-        <Button  x:Name="SignOutButton" Click="backButton_Click" Content="Sign Out" Visibility="Visible" HorizontalAlignment="Left" FontSize="30" Margin="10,10,10.333,10" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="85"/>
+        <Button x:Name="AddRequestButton" Background="LightCoral" Content ="Add Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click"/>
+        <Button x:Name="UpdateRequestButton" Background="LightCoral" Content ="Update Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click"/>
+        <Button x:Name="DeleteRequestButton" Background="LightCoral" Content ="Delete Request" Visibility="Visible" Margin="10,10.,10.333,10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click"/>
+        <Button x:Name="ShowAllButton" Background="LightCoral" Content="Show All My Guests Requests" Visibility="Visible" FontSize="30" HorizontalAlignment="Left" Margin="10,10,10.333,10" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="81" Click="ShowAllButton_Click"/>
+        <Button  x:Name="SignOutButton" Background="IndianRed" Click="backButton_Click" Content="Sign Out" Visibility="Visible" HorizontalAlignment="Left" FontSize="30" Margin="10,10,10.333,10" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="85"/>
         <xctk:WatermarkTextBox Watermark="Private Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="privatenameinput" Margin="0,0.333,407.333,93.667" Grid.RowSpan="2" />
         <xctk:WatermarkTextBox Watermark="Family Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="familyenameinput" Margin="386,0.333,0.333,93.667" Grid.RowSpan="2"/>
         <Button x:Name="showbutton" Content="Show" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="386,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="407" Height="67" Click="showbutton_Click"/>

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="UpdateDeleteBy" Height="450" Width="800">
-    <Grid x:Name="UpdateDeleteByRequestDetailsGrid"> 
+    <Grid x:Name="UpdateDeleteByRequestDetailsGrid" Background="Beige"> 
         <Label Content="Update By Key:" FontSize="30" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="57" Width="252"/>
         <xctk:WatermarkTextBox x:Name="UpdateKey" FontSize="30" HorizontalAlignment="Left" Height="57" Margin="267,10,0,0" TextWrapping="Wrap"  Watermark="please enter your key" VerticalAlignment="Top" Width="472"/>
         <Label Content="Update By Name:" FontSize="30" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Height="57" Width="252"/>
@@ -21,9 +21,9 @@
         <xctk:WatermarkTextBox x:Name="DeleteFamilyNameTextBox" FontSize="30" HorizontalAlignment="Left" Height="49" Margin="499,195,0,0" TextWrapping="Wrap" Watermark="family name" VerticalAlignment="Top" Width="239"/>
 
 
-        <Button x:Name="UpdateButton"  Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="386" Height="70" Click="UpdateButton_Click"/>
-        <Button x:Name="backButton" Content="Back" FontSize="30" HorizontalAlignment="Left" Margin="0,341,0,0" VerticalAlignment="Top" Width="783" Height="70" Click="backButton_Click"/>
-        <Button x:Name="DeleteButton" Content="Delete" FontSize="30" HorizontalAlignment="Left" Margin="391,266,0,0" VerticalAlignment="Top" Width="392" Height="70" Click="DeleteButton_Click"/>
+        <Button x:Name="UpdateButton" Background="LightCoral" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="386" Height="70" Click="UpdateButton_Click"/>
+        <Button x:Name="backButton" Background="IndianRed" Content="Back" FontSize="30" HorizontalAlignment="Left" Margin="0,341,0,0" VerticalAlignment="Top" Width="783" Height="70" Click="backButton_Click"/>
+        <Button x:Name="DeleteButton"  Background="LightCoral" Content="Delete" FontSize="30" HorizontalAlignment="Left" Margin="391,266,0,0" VerticalAlignment="Top" Width="392" Height="70" Click="DeleteButton_Click"/>
        
     </Grid>
 </Window>

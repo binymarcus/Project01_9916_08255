@@ -7,28 +7,28 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddGuestRequest"
         mc:Ignorable="d"
-        Title="AddGuestrequest" Height="750" Width="800" Loaded="Window_Loaded">
+        Title="AddGuestrequest" Background="Beige" Height="683.342" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
     </Window.Resources>
-    <Grid Margin="0,0,0.333,174.667">
+    <Grid Margin="0,0,0.333,168">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Content="Add New Guest Request" FontSize="30" Margin="0,-19,0.333,19"/>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="0,190.667,0,-190.667">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
 
             </Grid.ColumnDefinitions>
-            <Button x:Name="addButton" Content=" Add" FontSize="40" Grid.Row="2" Grid.Column="1"  Margin="0" Click="addButton_Click"/>
-            <Button x:Name="cancelButton" Content=" Cancel" FontSize="40" Grid.Row="2" Grid.Column="0" Margin="0" Click="cancelButton_Click"/>
+            <Button x:Name="addButton" Background="LightCoral" Content=" Add" FontSize="40" Grid.Column="1"  Margin="10.333,-45,-10.667,45" Click="addButton_Click"/>
+            <Button x:Name="cancelButton" Background="IndianRed" Content=" Cancel" FontSize="40" Grid.Column="0" Margin="0,-45,396.333,45" Click="cancelButton_Click" Grid.ColumnSpan="2"/>
         </Grid>
 
-        <Grid x:Name="GuestRequestDetailsGrid" DataContext="{StaticResource guestRequestViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="463" Margin="0,45,0,0" Grid.RowSpan="2" Width="455">
+        <Grid x:Name="GuestRequestDetailsGrid" DataContext="{StaticResource guestRequestViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="523" Margin="0,45,0,-82" Grid.RowSpan="3" Width="490">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -66,8 +66,8 @@
             </ComboBox>
             <Label Content="Children:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.333,0,22" Grid.Row="6" VerticalAlignment="Center" Height="26" Width="67" Grid.RowSpan="2"/>
             <xctk:WatermarkTextBox x:Name="children1TextBox" Watermark=" Please enter the number of children on vacation" HorizontalAlignment="Left" Height="26" Margin="0.667,0.667,-119,24.667" Grid.Row="6" Text="{Binding Children1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.RowSpan="2" Grid.Column="1"/>
-            <Label Content="Childrens Attractions:" HorizontalAlignment="Left" Margin="3,2.333,0,22.334" Grid.Row="13" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
-            <ComboBox x:Name="childrensAttractions1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="0,0,-104.333,22.667" Grid.Row="13" Text="{Binding ChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.RowSpan="2">
+            <Label Content="Childrens Attractions:" HorizontalAlignment="Left" Margin="3,15.333,0,16" Grid.Row="13" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2" RenderTransformOrigin="0.463,1.282"/>
+            <ComboBox x:Name="childrensAttractions1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="2,13.333,-104.333,16" Grid.Row="13" Text="{Binding ChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
@@ -76,14 +76,14 @@
             <DatePicker x:Name="entryDate1DatePicker"   Grid.Column="1" Margin="1,1,-104,0" Grid.Row="3" SelectedDate="{Binding EntryDate1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Height="28" Grid.RowSpan="2"/>
             <Label Content="Family Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="6,2,0,22.667" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
             <xctk:WatermarkTextBox x:Name="FamilyName1TextBox" HorizontalAlignment="Left" Height="29" Margin="0.667,0,-133.667,23" Grid.Row="1" Watermark="Please insert your family name" Text="{Binding FamilyName1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1" Grid.RowSpan="2"/>
-            <Label Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25.666,0,25" Grid.Row="11" VerticalAlignment="Center" Height="26" Width="61" Grid.RowSpan="3"/>
+            <Label Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,10,0,0" Grid.Row="12" VerticalAlignment="Top" Height="26" Width="61" Grid.RowSpan="2"/>
             <ComboBox x:Name="garden1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="1,2.333,-105,20.333" Grid.Row="12" Text="{Binding Garden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="356" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <Label Content="Jacuzzi:" HorizontalAlignment="Left" Margin="2,25.666,0,0.334" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
-            <ComboBox x:Name="jacuzzi1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="1,25.666,-107.667,0.334" Grid.Row="10" Text="{Binding Jacuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="356" Grid.RowSpan="2">
+            <Label Content="Jacuzzi:" HorizontalAlignment="Left" Margin="2,25.666,0,0.334" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2" RenderTransformOrigin="0.484,0.846"/>
+            <ComboBox x:Name="jacuzzi1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="2,5.667,-104,25.667" Grid.Row="11" Text="{Binding Jacuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="356" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />

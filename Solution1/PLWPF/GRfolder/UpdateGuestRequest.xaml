@@ -10,7 +10,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
     </Window.Resources>
-    <Grid x:Name="updateRequestDetailsGrid" Margin="0,0,0.333,-1.333" DataContext="{StaticResource guestRequestViewSource}">
+    <Grid x:Name="updateRequestDetailsGrid" Background="Beige" Margin="0,0,0.333,-1.333" DataContext="{StaticResource guestRequestViewSource}">
         <Label Content="Update order" FontSize="25" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="49" Width="773"/>
 
         <Grid x:Name="UpdateGuestRequestDetailsGrid" DataContext="{StaticResource guestRequestViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="463" Margin="0,45,0,-86" Width="455">
@@ -95,8 +95,8 @@
                 <ComboBoxItem Content="BAndB" />
             </ComboBox>
         </Grid>
-        <Button x:Name="UpdateButton" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,273,0,0" VerticalAlignment="Top" Width="323" Height="66" Click="UpdateButton_Click"/>
-        <Button x:Name="BackButton" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="323" Height="68" Click="BackButton_Click"/>
+        <Button x:Name="UpdateButton"  Background="LightCoral" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,273,0,0" VerticalAlignment="Top" Width="323" Height="66" Click="UpdateButton_Click"/>
+        <Button x:Name="BackButton"  Background="IndianRed" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="323" Height="68" Click="BackButton_Click"/>
 
 
     </Grid>
