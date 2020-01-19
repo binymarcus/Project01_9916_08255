@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.AdminFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,9 @@ namespace PLWPF
 
         private void GetAllGR_Click(object sender, RoutedEventArgs e)
         {
+            Window get = new ShowAllGR();
+            get.Show();
+            this.Close();
 
         }
 

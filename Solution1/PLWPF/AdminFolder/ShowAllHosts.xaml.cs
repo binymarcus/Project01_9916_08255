@@ -16,24 +16,24 @@ using System.Windows.Shapes;
 namespace PLWPF.AdminFolder
 {
     /// <summary>
-    /// Interaction logic for ShowAllGR.xaml
+    /// Interaction logic for ShowAllHosts.xaml
     /// </summary>
-    public partial class ShowAllGR : Window
+    public partial class ShowAllHosts : Window
     {
         IBL bl = FactoryBL.getIBL();
-        List<BE.GuestRequest> guestList = new List<BE.GuestRequest>();
-        public ShowAllGR()
+        List<BE.Host> hostList = new List<BE.Host>();
+        public ShowAllHosts()
         {
             InitializeComponent();
             scrollview1 = new ScrollViewer();
 
             try
             {
-                guestList = bl.GetAllGuestRequest();
+                hostList = bl.GetAllHosts();
 
 
 
-                foreach (BE.GuestRequest item in guestList)
+                foreach (BE.Host item in hostList)
                 {
                     GRUserControl gruc = new GRUserControl(item);
                     b.Children.Add(gruc);
@@ -41,14 +41,14 @@ namespace PLWPF.AdminFolder
 
                 scrollview1.Content = b;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 textBlock.Visibility = Visibility.Visible;
 
             }
         }
 
-        
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Window GRMain = new AdminGRfunctions();
