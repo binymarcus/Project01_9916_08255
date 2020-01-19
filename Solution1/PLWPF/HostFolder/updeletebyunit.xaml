@@ -9,14 +9,14 @@
         Title="UpdateDeleteBy" Height="450" Width="800">
     <Grid x:Name="UpdateDeleteByRequestDetailsGrid" Background="Wheat">
         <Label Content="Update By Key:" FontSize="30" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="57" Width="252"/>
-        <xctk:WatermarkTextBox x:Name="UpdateKey" FontSize="30" HorizontalAlignment="Left" Height="57" Margin="267,10,0,0" TextWrapping="Wrap"  Watermark="please enter your key" VerticalAlignment="Top" Width="472"/>
+        <xctk:WatermarkTextBox Background="Aquamarine" x:Name="UpdateKey" FontSize="30" HorizontalAlignment="Left" Height="57" Margin="267,10,0,0" TextWrapping="Wrap"  Watermark="please enter your key" VerticalAlignment="Top" Width="472"/>
         <Label Content="Update By Name:" FontSize="30" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Height="57" Width="252"/>
-        <xctk:WatermarkTextBox x:Name="UpdatePrivateNameTextBox" FontSize="30" HorizontalAlignment="Left" Height="57" Margin="267,72,0,0" TextWrapping="Wrap" Watermark="unit name" VerticalAlignment="Top" Width="471"/>
+        <xctk:WatermarkTextBox Background="Aquamarine" x:Name="UpdatePrivateNameTextBox" FontSize="30" HorizontalAlignment="Left" Height="57" Margin="267,72,0,0" TextWrapping="Wrap" Watermark="unit name" VerticalAlignment="Top" Width="471"/>
 
         <Label Content="Delete By Key:" FontSize="30" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="252" Height="56"/>
         <Label Content="Delete By Name:" FontSize="30" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Height="49" Width="252"/>
-        <xctk:WatermarkTextBox x:Name="DeleteKeyTextBox" FontSize="30" HorizontalAlignment="Left" Height="56" Margin="267,134,0,0" TextWrapping="Wrap" Watermark="please enter your key" VerticalAlignment="Top" Width="471"/>
-        <xctk:WatermarkTextBox x:Name="DeletePrivateNameTextBox" FontSize="30" HorizontalAlignment="Left" Height="49" Margin="267,195,0,0" TextWrapping="Wrap" Watermark="unit name" VerticalAlignment="Top" Width="472"/>
+        <xctk:WatermarkTextBox Background="Aquamarine" x:Name="DeleteKeyTextBox" FontSize="30" HorizontalAlignment="Left" Height="56" Margin="267,134,0,0" TextWrapping="Wrap" Watermark="please enter your key" VerticalAlignment="Top" Width="471"/>
+        <xctk:WatermarkTextBox Background="Aquamarine" x:Name="DeletePrivateNameTextBox" FontSize="30" HorizontalAlignment="Left" Height="49" Margin="267,195,0,0" TextWrapping="Wrap" Watermark="unit name" VerticalAlignment="Top" Width="472"/>
 
 
         <Button x:Name="UpdateButton" Background="SandyBrown" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="386" Height="70" Click="UpdateButton_Click"/>
