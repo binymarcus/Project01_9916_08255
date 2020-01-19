@@ -27,8 +27,15 @@ namespace PLWPF
         {
             InitializeComponent();
             //gets a guest request and uses function to get a list with all HU by Host name and then shows all of them
-            L = bl.GetAllHostingUnitsByHostKey(key1);
-            hostingUnitListView.DataContext = L;
+            try
+            {
+                L = bl.GetAllHostingUnitsByHostKey(key1);
+                hostingUnitListView.DataContext = L;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

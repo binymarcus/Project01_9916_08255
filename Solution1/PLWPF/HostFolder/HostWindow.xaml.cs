@@ -166,9 +166,16 @@ namespace PLWPF
 
         private void ShowAll_Button_Click(object sender, RoutedEventArgs e)
         {
-            Window showallwindow = new showAllHUWindow(Convert.ToInt64(host.HostKey1));
-            showallwindow.Show();
-            this.Close();
+            try
+            {
+                Window showallwindow = new showAllHUWindow(Convert.ToInt64(host.HostKey1));
+                showallwindow.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("you have no hosting units!");
+            }
         }
     }
 }
