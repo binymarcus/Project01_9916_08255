@@ -21,7 +21,7 @@ namespace PLWPF.AdminFolder
     public partial class showAllUnits : Window
     {
         IBL bl = FactoryBL.getIBL();
-        List<BE.Host> hostList = new List<BE.Host>();
+        List<BE.HostingUnit> unitList = new List<BE.HostingUnit>();
         public showAllUnits()
         {
             InitializeComponent();
@@ -29,13 +29,13 @@ namespace PLWPF.AdminFolder
 
             try
             {
-                hostList = bl.GetAllHosts();
+                unitList = bl.GetAllHostingUnits();
 
 
 
-                foreach (BE.Host item in hostList)
+                foreach (BE.HostingUnit item in unitList)
                 {
-                    HostUC gruc = new HostUC(item);
+                    HUuserCuntrol gruc = new HUuserCuntrol(item);
                     b.Children.Add(gruc);
                 }
 
