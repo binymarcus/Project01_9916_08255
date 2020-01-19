@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.AdminFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,9 @@ namespace PLWPF
 
         private void GetAllHostsButton_Click(object sender, RoutedEventArgs e)
         {
+            Window host = new ShowAllHosts();
+            host.Show();
+            this.Close();
 
         }
 

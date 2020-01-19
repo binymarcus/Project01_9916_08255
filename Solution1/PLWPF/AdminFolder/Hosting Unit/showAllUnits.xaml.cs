@@ -16,26 +16,26 @@ using System.Windows.Shapes;
 namespace PLWPF.AdminFolder
 {
     /// <summary>
-    /// Interaction logic for ShowAllHosts.xaml
+    /// Interaction logic for showAllUnits.xaml
     /// </summary>
-    public partial class ShowAllHosts : Window
+    public partial class showAllUnits : Window
     {
         IBL bl = FactoryBL.getIBL();
-        List<BE.Host> hostList = new List<BE.Host>();
-        public ShowAllHosts()
+        List<BE.HostingUnit> unitList = new List<BE.HostingUnit>();
+        public showAllUnits()
         {
             InitializeComponent();
             scrollview1 = new ScrollViewer();
 
             try
             {
-                hostList = bl.GetAllHosts();
+                unitList = bl.GetAllHostingUnits();
 
 
 
-                foreach (BE.Host item in hostList)
+                foreach (BE.HostingUnit item in unitList)
                 {
-                    GRUserControl gruc = new GRUserControl(item);
+                    HUuserCuntrol gruc = new HUuserCuntrol(item);
                     b.Children.Add(gruc);
                 }
 
@@ -51,7 +51,7 @@ namespace PLWPF.AdminFolder
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Window GRMain = new AdminGRfunctions();
+            Window GRMain = new AdminHostFunctions();
             GRMain.Show();
             this.Close();
         }
