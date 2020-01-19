@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF
 {
@@ -21,45 +23,26 @@ namespace PLWPF
     public partial class AddOrder : Window
     {
         IBL bl = FactoryBL.getIBL();
-        List<BE.GuestRequest> guestList = new List<BE.GuestRequest>();
-        public AddOrder()
+        List<BE.HostingUnit> hostingList = new List<BE.HostingUnit>();
+        public AddOrder(long key)
         {
             InitializeComponent();
-            guestList = bl.GetAllGuestRequest();
+            hostingList = bl.GetAllHostingUnitsByHostKey(key);
 
             scrollview1 = new ScrollViewer();
 
-            foreach (BE.GuestRequest item in guestList)
+            foreach (BE.HostingUnit item in hostingList)
             {
-                GRUserControl gruc = new GRUserControl(item);
+                HUuserCuntrol gruc = new HUuserCuntrol(item);
                 b.Children.Add(gruc);
             }
 
             scrollview1.Content = b;
         }
 
-        private void updatebyNameupdateButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                foreach (BE.GuestRequest item in guestList)
-                {
-                    bl.UpdateGuestRequest(item);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("update error");
-            }
-            Window GRMain = new GuestRequest();
-            GRMain.Show();
-            this.Close();
-        }
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Window GRMain = new GuestRequest();
-            GRMain.Show();
+            
             this.Close();
         }
     }
