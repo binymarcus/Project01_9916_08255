@@ -337,10 +337,10 @@ namespace BL
             {
                 return dal.GetAllGuestRequest();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
         }
 

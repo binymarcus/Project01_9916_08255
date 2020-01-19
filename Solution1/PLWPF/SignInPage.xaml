@@ -6,8 +6,15 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
            Title="Sign In Page" FontSize="14" Height="370" Width="350" Background="#04c582" >
+        
     <Border Background="Black" CornerRadius="20" Margin="20">
         <StackPanel Margin="20">
+            <Menu x:Name="Language" Background="Black">
+                <MenuItem Header=" Language/שפה" Background="Black" Foreground="White">
+                    <MenuItem Header="עברית" Background="#04c582" Foreground="Black"/>
+                    <MenuItem Header="English" Background="#04c582" Foreground="Black"/>
+                </MenuItem>
+            </Menu>
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator/>
             <Label Content="Username" Foreground="White"/>

@@ -23,7 +23,7 @@ namespace PLWPF
     {
         string user;
         BE.Host host;
-       XElement HostRoot = new XElement("hostsInfo");
+        XElement HostRoot = new XElement("hostsInfo");
         IBL bl = FactoryBL.getIBL();
         public HostWindow()
         {
@@ -35,10 +35,10 @@ namespace PLWPF
                 host = getOldestHostKey();
 
             }
-            catch 
+            catch
             {
 
-                
+
             }
         }
         public HostWindow(string username)
@@ -52,14 +52,14 @@ namespace PLWPF
         }
         private BE.Host getOldestHostKey()
         {
-            BE.HostingUnit temp=new BE.HostingUnit();
+            BE.HostingUnit temp = new BE.HostingUnit();
             temp.Owner1 = new BE.Host();
             foreach (var item in bl.GetAllHostingUnits())
             {
                 if (item.HostingUnitKey1 > temp.HostingUnitKey1)
                     temp = item;
             }
-          foreach( var item  in bl.GetAllHosts())
+            foreach (var item in bl.GetAllHosts())
             {
                 if (item.HostKey1 == temp.Owner1.HostKey1)
                     return item;
@@ -81,7 +81,7 @@ namespace PLWPF
             this.Close();
 
         }
-        
+
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Window mWindow = new SignInPage();
@@ -91,7 +91,7 @@ namespace PLWPF
         }
         private BE.Host getHost()
         {
-            BE.Host host= new BE.Host();
+            BE.Host host = new BE.Host();
 
             host = (from use in HostRoot.Elements()
                     where use.Element("username").Value == user
@@ -104,11 +104,11 @@ namespace PLWPF
                         BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
                         CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
                     }).Single();
-                       host.HostKey1 = getHostKey(host);
-            if(host.HostKey1==0)
-                 bl.AddHost(host);
+            host.HostKey1 = getHostKey(host);
+            if (host.HostKey1 == 0)
+                bl.AddHost(host);
 
-            
+
             return host;
 
         }
@@ -135,16 +135,32 @@ namespace PLWPF
             }
         }
 
-        private void DeleteUnitButton_Click_1(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void OrderUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.OrderUnitButton.Visibility= Visibility.Hidden;
-            this.AddORder.Visibility = Visibility.Visible;
+            this.OrderUnitButton.Visibility = Visibility.Hidden;
+            this.AddOrder.Visibility = Visibility.Visible;
             this.UpdateOrder.Visibility = Visibility.Visible;
+        }
+
+        private void AddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Window addWindow = new AddOrder();
+                addWindow.Show();
+                this.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc + " please add requests or wait for a guest to add");
+            }
+        }
+
+        private void UpdateOrder_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
