@@ -83,6 +83,9 @@
     <Compile Include="AdminFolder\AdminOrderFunctions.xaml.cs">
       <DependentUpon>AdminOrderFunctions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminFolder\ShowAllGR.xaml.cs">
+      <DependentUpon>ShowAllGR.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HostFolder\AddUnit.xaml.cs">
       <DependentUpon>AddUnit.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminFolder\AdminOrderFunctions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminFolder\ShowAllGR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
