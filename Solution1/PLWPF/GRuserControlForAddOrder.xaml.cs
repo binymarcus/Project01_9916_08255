@@ -12,29 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BE;
-using BL;
 
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for HUuserCuntrol.xaml
+    /// Interaction logic for GRuserControlForAddOrder.xaml
     /// </summary>
-    public partial class HUuserCuntrol : UserControl
+    public partial class GRuserControlForAddOrder : UserControl
     {
-        IBL bl = FactoryBL.getIBL();
-        //List<HostingUnit> L = new List<HostingUnit>();
-        public HUuserCuntrol()
+        public GRuserControlForAddOrder(BE.GuestRequest guesty)
         {
             InitializeComponent();
-        }
-        public HUuserCuntrol(BE.HostingUnit gruc)
-        {
-            InitializeComponent();
-            grid1.DataContext = gruc;
+            grid1.DataContext = guesty;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
 
             // Do not load your data at design time.
@@ -46,14 +43,9 @@ namespace PLWPF
             // }
         }
 
-        private void HUChoose_Click(object sender, RoutedEventArgs e)
+        private void GSpick_Click(object sender, RoutedEventArgs e)
         {
-            
-            Window pickGS = new PickGSforOrder();
-            pickGS.Show();
-            
-            //send the hosting unit info to the window with the list of gr.
-        }
 
+        }
     }
 }
