@@ -24,7 +24,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox Margin="6,-1,-6,-1">
-                                    Content="{Binding AreaOfHostingUnit}
+                                    Content={Binding AreaOfHostingUnit}
                                 </ComboBox>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

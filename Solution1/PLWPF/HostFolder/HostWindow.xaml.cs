@@ -149,7 +149,7 @@ namespace PLWPF
         {
             try
             {
-                Window addWindow = new AddOrder();
+                Window addWindow = new AddOrder(Convert.ToInt64(host.HostKey1));
                 addWindow.Show();
                 this.Close();
             }

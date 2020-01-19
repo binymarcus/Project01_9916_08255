@@ -7,13 +7,11 @@
         mc:Ignorable="d"
         Title="Add Order" Height="450" Width="800">
     <Grid Background="Beige">
-        <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="434">
+        <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="773">
             <StackPanel x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
 
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="updatebyNameupdateButton" Background="LightCoral" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="449,281,0,0" VerticalAlignment="Top" Width="334" Height="59" Click="updatebyNameupdateButton_Click" />
-        <Button x:Name="BackButton" Background="IndianRed" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="449,345,0,0" VerticalAlignment="Top" Width="334" Height="66" Click="BackButton_Click"/>
 
     </Grid>
 </Window>
