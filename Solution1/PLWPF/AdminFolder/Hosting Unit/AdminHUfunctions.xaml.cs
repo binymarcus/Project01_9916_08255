@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.AdminFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,10 @@ namespace PLWPF
 
         private void GetAllHU_Click(object sender, RoutedEventArgs e)
         {
-
+            Window hu = new showAllUnits();
+            hu.Show();
+            this.Close();
+             
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

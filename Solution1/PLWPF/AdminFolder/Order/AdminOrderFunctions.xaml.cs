@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BL;
+using PLWPF.AdminFolder.Order;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +21,7 @@ namespace PLWPF
     /// </summary>
     public partial class AdminOrderFunctions : Window
     {
+        IBL bl = FactoryBL.getIBL();
         public AdminOrderFunctions()
         {
             InitializeComponent();
@@ -26,7 +29,9 @@ namespace PLWPF
 
         private void GetAllOrders_Click(object sender, RoutedEventArgs e)
         {
-
+            Window or = new showAllOrders();
+            or.Show();
+            this.Close();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -34,6 +39,19 @@ namespace PLWPF
             Window adminMainWindow = new AdminMainWindow();
             adminMainWindow.Show();
             this.Close();
+        }
+
+        private void removerOldOrdersButton(object sender, RoutedEventArgs e)
+        {
+            Remove.Visibility = Visibility.Visible;
+            textBox.Visibility = Visibility.Visible;
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            bl.OlderOrders(int.Parse(textBox.Text));
+            Remove.Visibility = Visibility.Hidden;
+            textBox.Visibility = Visibility.Hidden;
         }
     }
 }
