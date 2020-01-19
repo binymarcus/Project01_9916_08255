@@ -89,6 +89,9 @@
     <Compile Include="AdminFolder\ShowAllHosts.xaml.cs">
       <DependentUpon>ShowAllHosts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GRuserControlForAddOrder.xaml.cs">
+      <DependentUpon>GRuserControlForAddOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HostFolder\AddUnit.xaml.cs">
       <DependentUpon>AddUnit.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,9 @@
     </Compile>
     <Compile Include="HUuserCuntrol.xaml.cs">
       <DependentUpon>HUuserCuntrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PickGSforOrder.xaml.cs">
+      <DependentUpon>PickGSforOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="SignInFolder\HostRegistration.xaml.cs">
       <DependentUpon>HostRegistration.xaml</DependentUpon>
@@ -158,6 +164,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GRuserControlForAddOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HostFolder\AddUnit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HUuserCuntrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PickGSforOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

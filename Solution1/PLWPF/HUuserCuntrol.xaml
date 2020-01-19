@@ -49,7 +49,7 @@
         <Label x:Name="hostingUnitKey1Label" Content="{Binding HostingUnitKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
         <Label Content="Hosting Unit Name 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
         <TextBox x:Name="hostingUnitName1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-        <Button x:Name="HUChoose" Content="Pick Me!" HorizontalAlignment="Left" Margin="10,53.667,0,-19.333" Grid.Row="8" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.404,1.476" Click="HUChoose_Click"/>
+        <Button x:Name="HUChoose" Content="Pick Me!" HorizontalAlignment="Left" Margin="10,53.667,0,-18.667" Grid.Row="8" Width="75" RenderTransformOrigin="0.404,1.476" Click="HUChoose_Click" Height="21" VerticalAlignment="Top"/>
     </Grid>
 
 </UserControl>
