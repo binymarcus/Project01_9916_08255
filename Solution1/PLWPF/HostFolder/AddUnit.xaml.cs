@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
 
 namespace PLWPF
 {
@@ -43,12 +44,32 @@ namespace PLWPF
             {
                 unit.Owner1 = new BE.Host();
                 unit.Owner1 = owner;
-                bl.AddHostingUnit(unit);
-                MessageBox.Show("Hosting Unit Added, Key:" + unit.HostingUnitKey1);
-                this.DataContext = unit;
-                Window HostingUnitWindow = new HostWindow();
-                HostingUnitWindow.Show();
-                this.Close();
+                if (hostingUnitNameTextBox.Text == "")
+                {
+                    MessageBox.Show("must enter a HostingUnit name!");
+                    hostingUnitNameTextBox.Clear();
+                    hostingUnitNameTextBox.Focus();
+                }
+                else if (commission1TextBox.Text == "")
+                {
+                    MessageBox.Show("must enter HostingUnit Commision!");
+                    commission1TextBox.Clear();
+                    commission1TextBox.Focus();
+                }
+                //else if(Area1.SelectedItem == BEEnum.Area.All)
+                //{
+                //    MessageBox.Show("must enter HostingUnit Area!");
+                //    Area1.Focus();
+                //}
+                else
+                {
+                    bl.AddHostingUnit(unit);
+                    MessageBox.Show("Hosting Unit Added, Key:" + unit.HostingUnitKey1);
+                    this.DataContext = unit;
+                    Window HostingUnitWindow = new HostWindow();
+                    HostingUnitWindow.Show();
+                    this.Close();
+                }
             }
 
             catch (FormatException)

@@ -34,12 +34,12 @@
             <xctk:WatermarkTextBox x:Name="commission1TextBox" HorizontalAlignment="Left" Height="46" Margin="159,10,-480.333,0" Grid.Row="1" Watermark="Please enter your commission" Text="{Binding Commission1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="634" Grid.ColumnSpan="3"/>
             <Label Content="Area of hosting unit: :" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="56" Width="159" Margin="0,56,0,-56"/>
 
-        <ComboBox x:Name="Area" Grid.Column="1" Margin="0.333,0.667,0.333,0" Grid.Row="2" Height="52" Text="{Binding AreaOfHostingUnit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" >
-            <ComboBoxItem Content="All"  />
+        <ComboBox x:Name="Area1" Grid.Column="1" Margin="0.333,0.667,0.333,0" Grid.Row="2" Height="52" Text="{Binding AreaOfHostingUnit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" >
+            <ComboBoxItem Content="All" />
             <ComboBoxItem Content="North" />
             <ComboBoxItem Content="South" />
             <ComboBoxItem Content="Center" />
-            <ComboBoxItem Content="Jerusalem" /> />
+            <ComboBoxItem Content="Jerusalem" />
         </ComboBox>
         <Label Content="has Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,1,0,-17" Grid.Row="3" VerticalAlignment="Top" Height="44"/>
             <CheckBox x:Name="hasChildrensAttractions1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="20.667,15,-11.667,-0.333" Grid.Row="3" VerticalAlignment="Center" RenderTransformOrigin="-1.29,0.528"/>

@@ -4,20 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="HostingUnit" Height="450" Width="800">
     <Grid Background="Wheat">
         <Grid.RowDefinitions>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="106*"/>
-            <RowDefinition Height="104.667"/>
-            <RowDefinition Height="105*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+
         </Grid.RowDefinitions>
         <Button x:Name="AddUnitButton" Background="SandyBrown" Content ="Add Unit"  Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addUnitButton_Click"/>
         <Button x:Name="UpdateUnitButton" Background="SandyBrown" Content ="Update/Delete Unit" Click="updateUnitButton_Click" Margin="10,10,10.333,9.667" FontSize="30" Grid.Row="1"/>
         <Button x:Name="OrderUnitButton" Content="Order" Background="SandyBrown" Margin="10,10.333,10.333,9.667" FontSize="30" Grid.Row="2" Click="OrderUnitButton_Click"/>
-        <Button  x:Name="BackButton"  Content="Cancel" Background="PaleGreen" Click="backButton_Click" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="85"/>
+        <Button  x:Name="BackButton"  Content="Cancel" Background="PaleGreen" Click="backButton_Click" HorizontalAlignment="Left" FontSize="30" Margin="10,10.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="64"/>
         <Button x:Name="AddOrder" Click="AddOrder_Click" Visibility="Hidden" Content="ADD" Background="MistyRose" FontSize="25" HorizontalAlignment="Left" Margin="10,10.667,0,0" Grid.Row="2" VerticalAlignment="Top" Width="383" Height="84"/>
         <Button x:Name="UpdateOrder" Click="UpdateOrder_Click" Visibility="Hidden" Content="Update" Background="MistyRose" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390" Margin="393,10.667,0,0" Grid.Row="2" Height="84"/>
+        <Button x:Name="ShowAll_Button" Background="SandyBrown" FontSize="25" Content="Show All" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Height="64" Width="773" Margin="10,10.333,0,0" Click="ShowAll_Button_Click">
+        </Button>
+        <!--<xctk:WatermarkTextBox x:Name="privatenameshowalltextbox" FontSize="25" Visibility="Hidden" HorizontalAlignment="Left" Height="53" Margin="10,15.333,0,0" Grid.Row="3" TextWrapping="Wrap" Watermark="Private Name:" VerticalAlignment="Top" Width="383"/>
+        <xctk:WatermarkTextBox x:Name="familynameshowalltextbox" FontSize="25" Visibility="Hidden" TextWrapping="Wrap" Watermark="Family Name:" RenderTransformOrigin="0.5,0.5" Margin="398,15.333,10.333,15.667" Grid.Row="3"/>
+        <Label x:Name="showalllable" Content="Enter your name in order to see all your hosting units:" Visibility="Hidden" FontSize="25" HorizontalAlignment="Left" Margin="10,10.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="773" Height="64"/>-->
+
     </Grid>
 </Window>

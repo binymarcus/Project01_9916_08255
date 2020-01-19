@@ -139,6 +139,7 @@ namespace PLWPF
 
         private void OrderUnitButton_Click(object sender, RoutedEventArgs e)
         {
+            ShowAll_Button.Visibility = Visibility.Hidden;
             this.OrderUnitButton.Visibility = Visibility.Hidden;
             this.AddOrder.Visibility = Visibility.Visible;
             this.UpdateOrder.Visibility = Visibility.Visible;
@@ -161,6 +162,13 @@ namespace PLWPF
         private void UpdateOrder_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ShowAll_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window showallwindow = new showAllHUWindow(Convert.ToInt64(host.HostKey1));
+            showallwindow.Show();
+            this.Close();
         }
     }
 }

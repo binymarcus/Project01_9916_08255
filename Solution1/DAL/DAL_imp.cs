@@ -348,6 +348,19 @@ namespace DAL
                 throw new NoItemsFound("there are no guest requests in the system.");
             return L;
         }
+
+        public List<HostingUnit> GetAllHostingUnitsByHostKey(long key1)
+        {
+            List<HostingUnit> L = new List<HostingUnit>();
+            foreach (var item in GetAllHostingUnits())
+            {
+                if (key1 == item.Owner1.HostKey1)
+                {
+                    L.Add(Cloning.Clone(item));
+                }
+            }
+            return L;
+        }
         #endregion
 
         #region updateDiary

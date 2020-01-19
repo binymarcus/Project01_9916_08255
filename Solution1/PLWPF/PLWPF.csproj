@@ -101,6 +101,9 @@
     <Compile Include="GRfolder\GRUserControl.xaml.cs">
       <DependentUpon>GRUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HostFolder\showAllHUWindow.xaml.cs">
+      <DependentUpon>showAllHUWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SignInFolder\HostRegistration.xaml.cs">
       <DependentUpon>HostRegistration.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HostFolder\HostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostFolder\showAllHUWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,6 +283,12 @@
       <Project>{6f286be7-5360-44a3-98cc-16bc3854eb5d}</Project>
       <Name>BL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="recaptchLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="recapthchaNotLogo.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

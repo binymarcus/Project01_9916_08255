@@ -24,7 +24,7 @@
         <Button x:Name="CuntinueBtton" Content="Continue" HorizontalAlignment="Left" Margin="317,193,0,0" VerticalAlignment="Top" Width="161" Height="31" Click="CuntinueBtton_Click"/>
         <Label Content="              I Am Not A Robot" Foreground="White" FontSize="25" HorizontalAlignment="Left" Margin="44,25,0,0" VerticalAlignment="Top" Height="46" Width="434"/>
         <Label x:Name="enterlabale" Content="       plese enter the code:" FontSize="14" Foreground="White" Visibility="Hidden" HorizontalAlignment="Left" Margin="293,76,0,0" VerticalAlignment="Top" Width="202"/>
-
+        <Image x:Name="logo" Visibility="Visible" Margin="435,251,23.667,9.667" Source="/PLWPF;component/recaptchLogo.png" Stretch="Fill" Width="60" Height="60"/>
     </Grid>
 
 </Window>

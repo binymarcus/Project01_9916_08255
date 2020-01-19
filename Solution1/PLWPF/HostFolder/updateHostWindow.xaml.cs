@@ -30,8 +30,8 @@ namespace PLWPF
         public updateHostWindow(BE.HostingUnit uni)
         {
             InitializeComponent();
-            this.unit = uni;
-            this.DataContext = unit;
+            unit = uni;
+            this.grid1.DataContext = uni;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -40,14 +40,21 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource hostingUnitViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostingUnitViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // hostingUnitViewSource.Source = [generic data source]
+            //System.Windows.Data.CollectionViewSource hostingUnitViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostingUnitViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // hostingUnitViewSource.Source = [generic data source]
         }
 
-        private void update_Click(object sender, RoutedEventArgs e)
+        private void hostingUnitDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-                int error = 0;
-                try
-                {
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int error = 0;
+            try
+            {
                 if (hostingUnitName1TextBox.Text == "" && error == 0)//need to fill out name (we dont care if his name is a number)
                 {
                     MessageBox.Show("need to fill out  name");
@@ -59,7 +66,7 @@ namespace PLWPF
                     error++;
                 }
 
-                
+
 
                 if (error == 0)
                 {
@@ -70,18 +77,25 @@ namespace PLWPF
                     this.Close();
                 }
             }
-                catch (FormatException)
-                {
+            catch (FormatException)
+            {
 
-                    MessageBox.Show("Please check your input and try again");
+                MessageBox.Show("Please check your input and try again");
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Window hostwindow = new HostWindow();
+            hostwindow.Show();
+            this.Close();
         }
     }
 }
