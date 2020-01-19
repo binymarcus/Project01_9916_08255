@@ -74,20 +74,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminFolder\AdminHostFunctions.xaml.cs">
+    <Compile Include="AdminFolder\Host\AdminHostFunctions.xaml.cs">
       <DependentUpon>AdminHostFunctions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminFolder\AdminHUfunctions.xaml.cs">
+    <Compile Include="AdminFolder\Hosting Unit\AdminHUfunctions.xaml.cs">
       <DependentUpon>AdminHUfunctions.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminFolder\AdminOrderFunctions.xaml.cs">
       <DependentUpon>AdminOrderFunctions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminFolder\ShowAllGR.xaml.cs">
+    <Compile Include="AdminFolder\GuestRequest\ShowAllGR.xaml.cs">
       <DependentUpon>ShowAllGR.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminFolder\ShowAllHosts.xaml.cs">
+    <Compile Include="AdminFolder\Host\ShowAllHosts.xaml.cs">
       <DependentUpon>ShowAllHosts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminFolder\Hosting Unit\showAllUnits.xaml.cs">
+      <DependentUpon>showAllUnits.xaml</DependentUpon>
     </Compile>
     <Compile Include="GRuserControlForAddOrder.xaml.cs">
       <DependentUpon>GRuserControlForAddOrder.xaml</DependentUpon>
@@ -95,7 +98,7 @@
     <Compile Include="HostFolder\AddUnit.xaml.cs">
       <DependentUpon>AddUnit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminFolder\AdminGRfunctions.xaml.cs">
+    <Compile Include="AdminFolder\GuestRequest\AdminGRfunctions.xaml.cs">
       <DependentUpon>AdminGRfunctions.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminFolder\AdminMainWindow.xaml.cs">
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="GRfolder\GRUserControl.xaml.cs">
       <DependentUpon>GRUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostFolder\HostUC.xaml.cs">
+      <DependentUpon>HostUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostFolder\showAllHUWindow.xaml.cs">
       <DependentUpon>showAllHUWindow.xaml</DependentUpon>
@@ -140,11 +146,11 @@
     <Compile Include="SignInFolder\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
-    <Page Include="AdminFolder\AdminHostFunctions.xaml">
+    <Page Include="AdminFolder\Host\AdminHostFunctions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminFolder\AdminHUfunctions.xaml">
+    <Page Include="AdminFolder\Hosting Unit\AdminHUfunctions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,11 +158,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminFolder\ShowAllGR.xaml">
+    <Page Include="AdminFolder\GuestRequest\ShowAllGR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminFolder\ShowAllHosts.xaml">
+    <Page Include="AdminFolder\Host\ShowAllHosts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminFolder\Hosting Unit\showAllUnits.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,7 +182,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminFolder\AdminGRfunctions.xaml">
+    <Page Include="AdminFolder\GuestRequest\AdminGRfunctions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GRfolder\GuestRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostFolder\HostUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
