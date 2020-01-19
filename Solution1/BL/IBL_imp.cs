@@ -682,12 +682,24 @@ namespace BL
              return longest;
          }
 
-        HostingUnit IBL.GetHostingUnitByName(string name)
+        public HostingUnit GetHostingUnitByName(string name)
         {
 
             try
             {
                 return dal.GetHostingUnitByName(name);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+        public List<HostingUnit> GetAllHostingUnitsByHostKey(long key1)
+        {
+            try
+            {
+                return dal.GetAllHostingUnitsByHostKey(key1);
             }
             catch (Exception e)
             {

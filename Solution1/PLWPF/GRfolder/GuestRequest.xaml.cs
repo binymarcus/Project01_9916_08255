@@ -150,7 +150,10 @@ namespace PLWPF
             this.ShowAllButton.Visibility = Visibility.Visible;
             this.SignOutButton.Visibility = Visibility.Visible;
 
-            
+            Window GSWindow = new GuestRequest();
+            GSWindow.Show();
+            this.Close();
         }
+
     }
 }
