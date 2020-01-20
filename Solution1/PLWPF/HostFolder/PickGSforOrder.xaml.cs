@@ -27,16 +27,6 @@ namespace PLWPF
         public PickGSforOrder()
         {
             InitializeComponent();
-            guestList = bl.GetAllGuestRequest();
-            scrollview1 = new ScrollViewer();
-
-            foreach (BE.GuestRequest item in guestList)
-            {
-                GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item);
-                b.Children.Add(gruc);
-            }
-
-            scrollview1.Content = b;
         }
         
         public PickGSforOrder(long hoeunitkey)
@@ -63,6 +53,11 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource hostingUnitViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostingUnitViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // hostingUnitViewSource.Source = [generic data source]
+        }
+
+        private void BackB_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

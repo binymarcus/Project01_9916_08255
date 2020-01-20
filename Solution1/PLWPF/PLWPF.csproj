@@ -80,9 +80,6 @@
     <Compile Include="AdminFolder\Hosting Unit\AdminHUfunctions.xaml.cs">
       <DependentUpon>AdminHUfunctions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminFolder\AdminOrderFunctions.xaml.cs">
-      <DependentUpon>AdminOrderFunctions.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdminFolder\GuestRequest\ShowAllGR.xaml.cs">
       <DependentUpon>ShowAllGR.xaml</DependentUpon>
     </Compile>
@@ -151,10 +148,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminFolder\Hosting Unit\AdminHUfunctions.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AdminFolder\AdminOrderFunctions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
