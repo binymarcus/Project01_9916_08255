@@ -4,12 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="AdminOrderFunctions" Height="450" Width="800">
     <Grid Background="AntiqueWhite">
         <Button x:Name="GetAllOrders" FontSize="25" Background="Aqua" Content="Get All Orders" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllOrders_Click"/>
-        <Button Content="Button" FontSize="25" Background="Aqua" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
+        <Button Content="Remove Old Orders" Click="removerOldOrdersButton" FontSize="25" Background="Aqua" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
+        <Button x:Name="Remove" Click="Remove_Click" Visibility="Hidden" Content="Remove" Background="Aqua" Margin="423,10,203.333,310.667"/>
         <Button x:Name="BackButton" FontSize="25" Background="BlueViolet" Content="Back" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
+        <xctk:WatermarkTextBox x:Name="textBox" Visibility="Hidden"  HorizontalAlignment="Left" Height="100" Margin="590,10,0,0" TextWrapping="Wrap" Watermark="Please enter number of days" VerticalAlignment="Top" Width="193"/>
 
     </Grid>
 </Window>
