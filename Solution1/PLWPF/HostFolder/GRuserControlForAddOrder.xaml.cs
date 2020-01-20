@@ -25,15 +25,45 @@ namespace PLWPF
         BE.Order order;
         long key2;
         long hostkey1;
+        BE.HostingUnit hu;
+        BE.GuestRequest gr;
         IBL bl = FactoryBL.getIBL();
         public GRuserControlForAddOrder(BE.GuestRequest guesty, long key1,long hostkey)
         {
             InitializeComponent();
             key2 = key1;
+            hostkey1 = hostkey;
+            gr = guesty;
+            hu = bl.GetHostingUnitByKey(key2);
             grid1.DataContext = guesty;
             order = new BE.Order();
         }
-
+        private void GSpick_Click(object sender, RoutedEventArgs e)
+        {
+            //we need to make the occupied dates set as occupied in the diary of the hosting unit
+            int error = 0;
+            for (DateTime date = gr.EntryDate1; date <= gr.ReleaseDate1; date = date.AddDays(1))
+            {
+               if( hu.Diary1[date.Month - 1, date.Day - 1] == true)
+                {
+                    MessageBox.Show("cannot preform order, the dates are allready occupied");
+                    error++;
+                }
+            }
+            if (error == 0)
+            {
+                for (DateTime date = gr.EntryDate1; date <= gr.ReleaseDate1; date = date.AddDays(1))
+                {
+                    hu.Diary1[date.Month - 1, date.Day - 1] = true;
+                }
+                bl.UpdateHostingUnit(hu);
+                order.HostingUnitKey1 = key2;
+                order.hostKey1 = hostkey1;
+                order.GuestRequestKey1 = Convert.ToInt64(guestRequestKey1Label.Content);
+                bl.AddOrder(order);
+                MessageBox.Show("order added, order key:" + order.OrderKey1);
+            }
+        }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -51,14 +81,6 @@ namespace PLWPF
             // }
         }
 
-        private void GSpick_Click(object sender, RoutedEventArgs e)
-        {
-            //we have the hosting unit key and the guestrequest key - need to make an order
-            order.HostingUnitKey1 = key2;
-            order.hostKey1 = hostkey1;
-            order.GuestRequestKey1 = Convert.ToInt64(guestRequestKey1Label.Content);
-            bl.AddOrder(order);
-            MessageBox.Show("order added, order key:" + order.OrderKey1);
-        }
+       
     }
 }
