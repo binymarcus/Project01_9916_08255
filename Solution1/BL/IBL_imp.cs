@@ -422,6 +422,19 @@ namespace BL
                 throw e;
             }
         }
+        public List<Order> GetAllOrdersByHostKey(long hostkey)
+        {
+            try
+            {
+                return dal.GetAllOrdersByHostKey(hostkey);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
         #endregion
         #region calc
         public void CalcNumOfHostingUnits()

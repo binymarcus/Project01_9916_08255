@@ -24,8 +24,9 @@ namespace PLWPF
     {
         BE.Order order;
         long key2;
+        long hostkey1;
         IBL bl = FactoryBL.getIBL();
-        public GRuserControlForAddOrder(BE.GuestRequest guesty, long key1)
+        public GRuserControlForAddOrder(BE.GuestRequest guesty, long key1,long hostkey)
         {
             InitializeComponent();
             key2 = key1;
@@ -54,6 +55,7 @@ namespace PLWPF
         {
             //we have the hosting unit key and the guestrequest key - need to make an order
             order.HostingUnitKey1 = key2;
+            order.hostKey1 = hostkey1;
             order.GuestRequestKey1 = Convert.ToInt64(guestRequestKey1Label.Content);
             bl.AddOrder(order);
             MessageBox.Show("order added, order key:" + order.OrderKey1);

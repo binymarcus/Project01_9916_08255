@@ -23,6 +23,7 @@ namespace PLWPF
         public Welcome()
         {
             InitializeComponent();
+            putrand();
         }
 
         private void putrand()

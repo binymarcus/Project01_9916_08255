@@ -24,16 +24,24 @@ namespace PLWPF
     {
         IBL bl = FactoryBL.getIBL();
         //List<HostingUnit> L = new List<HostingUnit>();
+        long hostkey1;
         public HUuserCuntrol()
         {
             InitializeComponent();
         }
-        public HUuserCuntrol(BE.HostingUnit gruc)
+        public HUuserCuntrol(BE.HostingUnit gruc, long hostkey)
         {
             InitializeComponent();
+            hostkey1 = hostkey;
             grid1.DataContext = gruc;
         }
 
+        private void HUChoose_Click(object sender, RoutedEventArgs e)
+        {
+            Window pickGS = new PickGSforOrder(Convert.ToInt64(hostingUnitKey1Label.Content),hostkey1);
+            pickGS.Show();
+            //send the hosting unit info to the window with the list of gr.
+        }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -46,13 +54,7 @@ namespace PLWPF
             // }
         }
 
-        private void HUChoose_Click(object sender, RoutedEventArgs e)
-        {
-            
-            Window pickGS = new PickGSforOrder(Convert.ToInt64(hostingUnitKey1Label.Content));
-            pickGS.Show();
-            //send the hosting unit info to the window with the list of gr.
-        }
+        
 
     }
 }

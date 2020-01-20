@@ -93,8 +93,7 @@ namespace BL
         GuestRequest GetGuestRequestByKey(long key);
         HostingUnit GetHostingUnitByKey(long key);
         List<HostingUnit> GetAllHostingUnitsByHostKey(long key1);
-
-
+        List<Order> GetAllOrdersByHostKey(long hostkey);
         List<GuestRequest> GetallGuestRequestByName(string pname ,string fname);
         #endregion
 

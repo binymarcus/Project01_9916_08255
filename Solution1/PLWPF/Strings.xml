@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<strings>
+  <lang lang="en">
+    <string name="welcome">Welcome</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="change_lang">Change Language</string>
+  </lang>
+  <lang lang="he">
+    <string name="welcome">ברוך הבא</string>
+    <string name="username">שם משתמש</string>
+    <string name="password">סיסמה</string>
+    <string name="change_lang">שנה שפה</string>
+  </lang>
+</strings>

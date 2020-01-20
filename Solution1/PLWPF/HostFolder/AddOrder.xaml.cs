@@ -23,16 +23,16 @@ namespace PLWPF
     {
         IBL bl = FactoryBL.getIBL();
         List<BE.HostingUnit> hostingList = new List<BE.HostingUnit>();
-        public AddOrder(long key)
+        public AddOrder(long hostkey)
         {
             InitializeComponent();
-            hostingList = bl.GetAllHostingUnitsByHostKey(key);
+            hostingList = bl.GetAllHostingUnitsByHostKey(hostkey);
 
             scrollview1 = new ScrollViewer();
 
             foreach (BE.HostingUnit item in hostingList)
             {
-                HUuserCuntrol gruc = new HUuserCuntrol(item);
+                HUuserCuntrol gruc = new HUuserCuntrol(item,hostkey);
                 b.Children.Add(gruc);
             }
 

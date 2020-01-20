@@ -13,23 +13,40 @@
     </UserControl.Resources>
 
     <Grid x:Name="ordergrid" DataContext="{StaticResource orderViewSource}" RenderTransformOrigin="0.497,0.549">
-
-
-
-        <Label Content="Order Date 1:" Grid.Column="0" Margin="0,137,692,287" Grid.Row="0" VerticalAlignment="Center"/>
-        <DatePicker x:Name="orderDate1DatePicker" HorizontalAlignment="Left" Margin="138,139,0,285" Grid.Row="0" SelectedDate="{Binding OrderDate1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="26"/>
-
-        <Label Content="Hosting Unit Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,191,0,233" Grid.Row="0" VerticalAlignment="Center"/>
-        <TextBox x:Name="hostingUnitKey1TextBox" HorizontalAlignment="Left" Height="19" Margin="138,198,0,233" Grid.Row="0" Text="{Binding HostingUnitKey1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
-        <Label Content="Order Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,222,0,202" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="98"/>
-
-        <Label Content="Guest Request Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,167,0,257" Grid.Row="0" VerticalAlignment="Center"/>
-        <TextBox x:Name="guestRequestKey1TextBox" HorizontalAlignment="Left" Height="23" Margin="138,170,0,257" Grid.Row="0" Text="{Binding GuestRequestKey1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
-        <Label Content="Create Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,104,0,318" Grid.Row="0" VerticalAlignment="Center" Height="28" Width="105" RenderTransformOrigin="0.807,-4.254"/>
-        <DatePicker x:Name="createDate1DatePicker" HorizontalAlignment="Left" Margin="138,104,0,324" Grid.Row="0" SelectedDate="{Binding CreateDate1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="22" Width="104"/>
-        <TextBox x:Name="orderKey1TextBox" HorizontalAlignment="Left" Height="23" Margin="138,222,0,205" Grid.Row="0" Text="{Binding OrderKey1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Create Date 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label x:Name="createDate1Label" Content="{Binding CreateDate1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Guest Request Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label x:Name="guestRequestKey1Label" Content="{Binding GuestRequestKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Content="Hosting Unit Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label x:Name="hostingUnitKey1Label" Content="{Binding HostingUnitKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="host Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label x:Name="hostKey1Label" Content="{Binding hostKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="Order Date 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label x:Name="orderDate1Label" Content="{Binding OrderDate1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="Order Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label x:Name="orderKey1Label" Content="{Binding OrderKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="Status 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="status1ComboBox" Grid.Column="1" DisplayMemberPath="Status1" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+        </Grid>
     </Grid>
 </UserControl>

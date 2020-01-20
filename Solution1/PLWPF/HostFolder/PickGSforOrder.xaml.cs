@@ -24,31 +24,31 @@ namespace PLWPF
         IBL bl = FactoryBL.getIBL();
         List<BE.GuestRequest> guestList = new List<BE.GuestRequest>();
         long key1;
+        long hostkey1;
 
         public PickGSforOrder()
         {
             InitializeComponent();
         }
         
-        public PickGSforOrder(long hoeunitkey)
+        public PickGSforOrder(long hoeunitkey,long hostkey)
         {
             InitializeComponent();
             key1 = hoeunitkey;
+            hostkey1 = hostkey;
             HostingUnit hoeunit;
             hoeunit = bl.GetHostingUnitByKey(hoeunitkey);
             grid2.DataContext = hoeunit;
-            //////////////////////////////////////////////////////////////
             guestList = bl.GetAllGuestRequest();
             scrollview1 = new ScrollViewer();
 
             foreach (BE.GuestRequest item in guestList)
             {
-                GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item,key1);
+                GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item,key1,hostkey1);
                 b.Children.Add(gruc);
             }
 
             scrollview1.Content = b;
-            ////////////////////////////////////////////////////////////////
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

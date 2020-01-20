@@ -161,7 +161,9 @@ namespace PLWPF
 
         private void UpdateOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            Window updateOrderwindow = new HostFolder.updateOrderWindow(Convert.ToInt64(host.HostKey1));
+            updateOrderwindow.Show();
+            this.Close();
         }
 
         private void ShowAll_Button_Click(object sender, RoutedEventArgs e)

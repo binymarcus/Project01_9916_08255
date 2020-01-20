@@ -90,12 +90,14 @@ namespace DAL
         List<HostingUnit> GetAllHostingUnitsByHostKey(long key1);
         #endregion
         HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
+        List<Order> GetAllOrdersByHostKey(long hostkey);
+
 
      /// <summary>
      /// reutrns num of hosting units each host has
      /// </summary>
      /// <returns></returns>
-     void CalcNumOfHostingUnits();
+        void CalcNumOfHostingUnits();
 
     }
 }

@@ -212,6 +212,19 @@ namespace DAL
                 throw new NoItemsFound("there are no orders in the system.");
             return L;
         }
+        public List<Order> GetAllOrdersByHostKey(long hostkey)
+        {
+            List<Order> L = new List<Order>();
+            foreach (var item in DataSource.OrderList)
+                if(hostkey == item.hostKey1)
+                {
+                    L.Add(Cloning.Clone(item));
+                }
+            if (L.Count() == 0)
+                throw new NoItemsFound("there are no orders in the system.");
+            return L;
+        }
+
         /// <summary>
         /// reutrns all the banks
         /// </summary>

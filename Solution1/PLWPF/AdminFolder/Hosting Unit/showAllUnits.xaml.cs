@@ -26,16 +26,14 @@ namespace PLWPF.AdminFolder
         {
             InitializeComponent();
             scrollview1 = new ScrollViewer();
-
+            long notreallykey = 0;
             try
             {
                 unitList = bl.GetAllHostingUnits();
 
-
-
                 foreach (BE.HostingUnit item in unitList)
                 {
-                    HUuserCuntrol gruc = new HUuserCuntrol(item);
+                    HUuserCuntrol gruc = new HUuserCuntrol(item, notreallykey);
                     b.Children.Add(gruc);
                 }
 

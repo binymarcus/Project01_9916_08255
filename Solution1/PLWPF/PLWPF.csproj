@@ -125,6 +125,9 @@
     <Compile Include="HostFolder\PickGSforOrder.xaml.cs">
       <DependentUpon>PickGSforOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HostFolder\updateOrderWindow.xaml.cs">
+      <DependentUpon>updateOrderWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SignInFolder\HostRegistration.xaml.cs">
       <DependentUpon>HostRegistration.xaml</DependentUpon>
     </Compile>
@@ -232,6 +235,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HostFolder\updateOrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SignInFolder\HostRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -315,6 +322,7 @@
     <None Include="Properties\DataSources\BE.GuestRequest.datasource" />
     <None Include="Properties\DataSources\BE.Host.datasource" />
     <None Include="Properties\DataSources\BE.HostingUnit.datasource" />
+    <None Include="Properties\DataSources\BE.Order1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -344,6 +352,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="checkbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

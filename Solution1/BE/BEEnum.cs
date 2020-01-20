@@ -11,5 +11,4 @@ namespace BE
          public enum Option { Optional, Must,notInterested}
          public enum _Type { Zimmer,Hotel,Camping,BAndB }  
     }
-
 }

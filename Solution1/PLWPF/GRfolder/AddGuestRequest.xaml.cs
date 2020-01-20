@@ -31,8 +31,18 @@ namespace PLWPF
             bl = BL.FactoryBL.getIBL();
             
         }
-       
-        
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             int int1;
@@ -48,18 +58,21 @@ namespace PLWPF
                     MessageBox.Show("need to fill out private name");
                     error++;
                     PrivateName1TextBox.Clear();
+                    PrivateName1TextBox.Focus();
                 }
                 else if (FamilyName1TextBox.Text == "" && error == 0)//need to fill out name (we dont care if his name is a number)
                 {
                     MessageBox.Show("need to fill out family name");
                     error++;
                     FamilyName1TextBox.Clear();
+                    FamilyName1TextBox.Focus();
                 }
                 else if ((adults1TextBox.Text != "") && (!(int.TryParse(adults1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
                 {
                     MessageBox.Show("num of adults has to be filled with a number");
                     error++;
                     adults1TextBox.Clear();
+                    adults1TextBox.Focus();
                 }
 
                 else if ((children1TextBox.Text != "") && (!(int.TryParse(children1TextBox.Text, out int1))) && (error == 0))//num of adults has to be a number
@@ -67,21 +80,39 @@ namespace PLWPF
                     MessageBox.Show("num of children has to be filled with a number");
                     error++;
                     children1TextBox.Clear();
+                    children1TextBox.Focus();
                 }
                 else if (adultint < 0)
                 {
                     MessageBox.Show("num of adults has to be equel or larger then 0");
                     error++;
                     adults1TextBox.Clear();
+                    adults1TextBox.Focus();
                 }
                 else if (childrenint < 0)
                 {
                     MessageBox.Show("num of children has to be equel or larger then 0");
                     error++;
+                    children1TextBox.Clear();
+                    children1TextBox.Focus();
+                }
+                else if (childrenint+adultint <= 0)
+                {
+                    MessageBox.Show("num of guests must be be equel or larger then 1");
+                    error++;
                     adults1TextBox.Clear();
+                    children1TextBox.Clear();
+                    adults1TextBox.Focus();
                 }
 
-                if (error == 0)
+                else if (!(IsValidEmail(mailAddress1TextBox.Text))|| mailAddress1TextBox.Text=="")
+                {
+                    MessageBox.Show("Enter a valid email address");
+                    error++;
+                    mailAddress1TextBox.Clear();
+                    mailAddress1TextBox.Focus();
+                }
+                    if (error == 0)
                 {
                     bl.AddGuestRequest(guest);
                     MessageBox.Show("Guest Request Added, Key:" + guest.GuestRequestKey1);

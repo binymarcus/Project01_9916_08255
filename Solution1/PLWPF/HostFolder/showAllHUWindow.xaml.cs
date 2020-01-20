@@ -23,6 +23,7 @@ namespace PLWPF
     {
         IBL bl = FactoryBL.getIBL();
         List<HostingUnit> L = new List<HostingUnit>();
+        long hostkey;
         public showAllHUWindow(long key1)
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace PLWPF
             {
                 L = bl.GetAllHostingUnitsByHostKey(key1);
                 hostingUnitListView.DataContext = L;
+                hostkey = key1;
             }
             catch (Exception)
             {
