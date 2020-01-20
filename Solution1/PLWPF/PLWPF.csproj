@@ -337,7 +337,13 @@
     <Resource Include="recaptchLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="recapthchaNotLogo.jpeg" />
+    <Resource Include="addGR.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ThumbsUp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="checkbox.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

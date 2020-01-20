@@ -13,6 +13,8 @@
             </StackPanel>
         </ScrollViewer>
         <Button x:Name="Back" Content="Back" Margin="538,361,10.333,9.667" Click="Back_Click"/>
+        <Image Source="/PLWPF;component/checkbox.png" Stretch="Fill" Margin="583,83,48.333,169.667"/>
+
 
     </Grid>
 </Window>

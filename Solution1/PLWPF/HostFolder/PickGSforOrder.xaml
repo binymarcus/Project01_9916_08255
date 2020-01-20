@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.PickGSforOrder"
         mc:Ignorable="d"
-        Title="PickGSforOrder" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="PickGSforOrder" Height="450" Width="800" Loaded="Window_Loaded"
+    Background="Beige">
     <Window.Resources>
         <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
     </Window.Resources>

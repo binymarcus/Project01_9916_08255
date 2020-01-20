@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF
 {
@@ -20,10 +22,15 @@ namespace PLWPF
     /// </summary>
     public partial class GRuserControlForAddOrder : UserControl
     {
-        public GRuserControlForAddOrder(BE.GuestRequest guesty)
+        BE.Order order;
+        long key2;
+        IBL bl = FactoryBL.getIBL();
+        public GRuserControlForAddOrder(BE.GuestRequest guesty, long key1)
         {
             InitializeComponent();
+            key2 = key1;
             grid1.DataContext = guesty;
+            order = new BE.Order();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -45,7 +52,11 @@ namespace PLWPF
 
         private void GSpick_Click(object sender, RoutedEventArgs e)
         {
-
+            //we have the hosting unit key and the guestrequest key - need to make an order
+            order.HostingUnitKey1 = key2;
+            order.GuestRequestKey1 = Convert.ToInt64(guestRequestKey1Label.Content);
+            bl.AddOrder(order);
+            MessageBox.Show("order added, order key:" + order.OrderKey1);
         }
     }
 }

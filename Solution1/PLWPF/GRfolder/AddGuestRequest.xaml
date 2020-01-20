@@ -20,12 +20,13 @@
         <Label Content="Add New Guest Request" FontSize="30" Margin="0,-19,0.333,19"/>
         <Grid Grid.Row="2" Margin="0,190.667,0,-190.667">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="117*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="28*"/>
+                <ColumnDefinition Width="232*"/>
+                <ColumnDefinition Width="397*"/>
 
             </Grid.ColumnDefinitions>
-            <Button x:Name="addButton" Background="LightCoral" Content=" Add" FontSize="40" Grid.Column="1"  Margin="10.333,-45,-10.667,45" Click="addButton_Click"/>
-            <Button x:Name="cancelButton" Background="IndianRed" Content=" Cancel" FontSize="40" Grid.Column="0" Margin="0,-45,396.333,45" Click="cancelButton_Click" Grid.ColumnSpan="2"/>
         </Grid>
 
         <Grid x:Name="GuestRequestDetailsGrid" DataContext="{StaticResource guestRequestViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="523" Margin="0,45,0,-82" Grid.RowSpan="3" Width="490">
@@ -110,6 +111,9 @@
                 <ComboBoxItem Content="BAndB" />
             </ComboBox>
         </Grid>
+        <Image Margin="495,45,38,515" Source="/PLWPF;component/addGR.jpg" Stretch="Fill"/>
+        <Button x:Name="addButton" Background="LightCoral" Content=" Add" FontSize="40"  Margin="495,356,10,404" Click="addButton_Click" Height="60"/>
+        <Button x:Name="cancelButton" Background="IndianRed" Content=" Cancel" FontSize="40" Grid.Column="0" Margin="495,421,10,339" Click="cancelButton_Click" Height="60"/>
 
     </Grid>
 </Window>

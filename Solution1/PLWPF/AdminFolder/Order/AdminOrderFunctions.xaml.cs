@@ -56,7 +56,7 @@ namespace PLWPF
                 textBox.Visibility = Visibility.Hidden;
                 MessageBox.Show("orders removed");
             }
-            catch(Exception c)
+            catch(Exception)
             {
                 MessageBox.Show("there are no orders older than the date requested");
             }

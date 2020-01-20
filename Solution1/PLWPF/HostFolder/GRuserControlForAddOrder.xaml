@@ -64,7 +64,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Guest Request Key:"/>
-            <Label x:Name="guestRequestKey1Label" VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding GuestRequestKey1}"/>
+            <Label x:Name="guestRequestKey1Label" VerticalAlignment="Center" Grid.Row="7" Margin="3.333,3.333,0,3.333" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding GuestRequestKey1}" Width="115"/>
             <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Jacuzzi:"/>
             <ComboBox x:Name="jacuzzi1ComboBox" Width="120" VerticalAlignment="Center" Grid.Row="8" Margin="3" ItemsSource="{Binding}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="Jacuzzi1" Grid.Column="1">
                 <ComboBox.ItemsPanel>

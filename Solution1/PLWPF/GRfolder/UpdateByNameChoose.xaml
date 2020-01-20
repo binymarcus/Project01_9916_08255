@@ -12,6 +12,7 @@
         </ScrollViewer>
         <Button x:Name="updatebyNameupdateButton" Background="LightCoral" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="449,281,0,0" VerticalAlignment="Top" Width="334" Height="59" Click="updatebyNameupdateButton_Click" />
         <Button x:Name="BackButton" Background="IndianRed" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="449,345,0,0" VerticalAlignment="Top" Width="334" Height="66" Click="BackButton_Click"/>
+        <Image Margin="481,54,29.333,189.667" Source="/PLWPF;component/ThumbsUp.jpg" Stretch="Fill"/>
 
     </Grid>
 </Window>
