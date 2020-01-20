@@ -80,9 +80,6 @@
     <Compile Include="AdminFolder\Hosting Unit\AdminHUfunctions.xaml.cs">
       <DependentUpon>AdminHUfunctions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminFolder\AdminOrderFunctions.xaml.cs">
-      <DependentUpon>AdminOrderFunctions.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdminFolder\GuestRequest\ShowAllGR.xaml.cs">
       <DependentUpon>ShowAllGR.xaml</DependentUpon>
     </Compile>
@@ -91,6 +88,12 @@
     </Compile>
     <Compile Include="AdminFolder\Hosting Unit\showAllUnits.xaml.cs">
       <DependentUpon>showAllUnits.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminFolder\Order\AdminOrderFunctions.xaml.cs">
+      <DependentUpon>AdminOrderFunctions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminFolder\Order\showAllOrders.xaml.cs">
+      <DependentUpon>showAllOrders.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostFolder\GRuserControlForAddOrder.xaml.cs">
       <DependentUpon>GRuserControlForAddOrder.xaml</DependentUpon>
@@ -109,6 +112,9 @@
     </Compile>
     <Compile Include="HostFolder\HostUC.xaml.cs">
       <DependentUpon>HostUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostFolder\OrderUC.xaml.cs">
+      <DependentUpon>OrderUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostFolder\showAllHUWindow.xaml.cs">
       <DependentUpon>showAllHUWindow.xaml</DependentUpon>
@@ -154,10 +160,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminFolder\AdminOrderFunctions.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AdminFolder\GuestRequest\ShowAllGR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +169,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminFolder\Hosting Unit\showAllUnits.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminFolder\Order\AdminOrderFunctions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminFolder\Order\showAllOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HostFolder\HostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostFolder\OrderUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
