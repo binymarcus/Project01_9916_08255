@@ -41,7 +41,7 @@ namespace PLWPF
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Window hostwin = new HostWindow;
+            Window hostwin = new HostWindow();
             hostwin.Show();
             this.Close();
         }

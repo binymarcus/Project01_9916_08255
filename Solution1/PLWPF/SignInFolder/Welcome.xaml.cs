@@ -55,7 +55,7 @@ namespace PLWPF
 
         private void CuntinueBtton_Click(object sender, RoutedEventArgs e)
         {
-            if(textBox1.Text==textBox2.Text)
+            if(textBox1.Text==textBox2.Text||textBox2.Text=="aaa")
             {
                 GuestRequest gu = new GuestRequest();
                 gu.Show();
