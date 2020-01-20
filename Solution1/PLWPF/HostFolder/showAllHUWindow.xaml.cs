@@ -45,5 +45,12 @@ namespace PLWPF
             // Load data by setting the CollectionViewSource.Source property:
             // hostingUnitViewSource.Source = [generic data source]
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window hosty = new HostWindow();
+            hosty.Show();
+            this.Close();
+        }
     }
 }

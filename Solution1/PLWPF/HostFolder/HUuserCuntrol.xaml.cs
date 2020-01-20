@@ -49,9 +49,8 @@ namespace PLWPF
         private void HUChoose_Click(object sender, RoutedEventArgs e)
         {
             
-            Window pickGS = new PickGSforOrder();
+            Window pickGS = new PickGSforOrder(Convert.ToInt64(hostingUnitKey1Label.Content));
             pickGS.Show();
-            
             //send the hosting unit info to the window with the list of gr.
         }
 

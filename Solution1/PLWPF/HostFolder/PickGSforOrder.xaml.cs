@@ -39,9 +39,11 @@ namespace PLWPF
             scrollview1.Content = b;
         }
         
-        public PickGSforOrder(HostingUnit hoeunit)
+        public PickGSforOrder(long hoeunitkey)
         {
             InitializeComponent();
+            HostingUnit hoeunit;
+            hoeunit = bl.GetHostingUnitByKey(hoeunitkey);
             grid2.DataContext = hoeunit;
             guestList = bl.GetAllGuestRequest();
             scrollview1 = new ScrollViewer();

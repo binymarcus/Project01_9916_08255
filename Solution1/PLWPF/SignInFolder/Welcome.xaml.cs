@@ -57,9 +57,6 @@ namespace PLWPF
         {
             if(textBox1.Text==textBox2.Text)
             {
-                this.logo.Visibility = Visibility.Hidden;
-                System.Threading.Thread.Sleep(2300);
-
                 GuestRequest gu = new GuestRequest();
                 gu.Show();
                 this.Close();
