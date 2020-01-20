@@ -39,10 +39,10 @@ namespace PLWPF
 
             scrollview1.Content = b;
         }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
-            
+            Window hostwin = new HostWindow();
+            hostwin.Show();
             this.Close();
         }
     }

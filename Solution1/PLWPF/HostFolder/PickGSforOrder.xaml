@@ -12,7 +12,7 @@
     </Window.Resources>
     <Grid>
 
-        <Grid x:Name="grid2" VerticalAlignment="Top" Margin="503,22,0,0" HorizontalAlignment="Left" DataContext="{StaticResource hostingUnitViewSource}">
+        <Grid x:Name="grid2" VerticalAlignment="Top" Margin="503,74,0,0" HorizontalAlignment="Left" DataContext="{StaticResource hostingUnitViewSource}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -27,31 +27,33 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Area Of Hosting Unit:"/>
-            <ComboBox x:Name="areaOfHostingUnitComboBox" Width="120" VerticalAlignment="Center" Grid.Row="0" Margin="3" ItemsSource="{Binding}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="AreaOfHostingUnit" Grid.Column="1">
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Area Of Hosting Unit:"/>
+            <ComboBox x:Name="areaOfHostingUnitComboBox" Width="120" VerticalAlignment="Center" Grid.Row="2" Margin="3" ItemsSource="{Binding}" Height="Auto" HorizontalAlignment="Left" DisplayMemberPath="AreaOfHostingUnit" Grid.Column="1">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Commission 1:"/>
-            <TextBox x:Name="commission1TextBox" Width="120" VerticalAlignment="Center" Text="{Binding Commission1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Childrens Attractions 1:"/>
-            <CheckBox x:Name="hasChildrensAttractions1CheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Garden 1:"/>
-            <CheckBox x:Name="hasGarden1CheckBox" VerticalAlignment="Center" Grid.Row="3" Margin="3" IsChecked="{Binding hasGarden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Jaccuzzi 1:"/>
-            <CheckBox x:Name="hasJaccuzzi1CheckBox" VerticalAlignment="Center" Grid.Row="4" Margin="3" IsChecked="{Binding hasJaccuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Pool 1:"/>
-            <CheckBox x:Name="hasPool1CheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Key 1:"/>
-            <Label x:Name="hostingUnitKey1Label" VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding HostingUnitKey1}"/>
-            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Name 1:"/>
-            <TextBox x:Name="hostingUnitName1TextBox" Width="120" VerticalAlignment="Center" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Commission:"/>
+            <TextBox x:Name="commission1TextBox" Width="120" VerticalAlignment="Center" Text="{Binding Commission1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Childrens Attractions:"/>
+            <CheckBox x:Name="hasChildrensAttractions1CheckBox" VerticalAlignment="Center" Grid.Row="4" Margin="3" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Garden:"/>
+            <CheckBox x:Name="hasGarden1CheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding hasGarden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Jaccuzzi:"/>
+            <CheckBox x:Name="hasJaccuzzi1CheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3" IsChecked="{Binding hasJaccuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="has Pool:"/>
+            <CheckBox x:Name="hasPool1CheckBox" VerticalAlignment="Center" Grid.Row="7" Margin="3" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Key:"/>
+            <Label x:Name="hostingUnitKey1Label" VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding HostingUnitKey1}"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Name:"/>
+            <TextBox x:Name="hostingUnitName1TextBox" Width="120" VerticalAlignment="Center" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
         <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="434">
             <StackPanel x:Name="b" HorizontalAlignment="Stretch" Height="auto" VerticalAlignment="Stretch" Width="auto"/>
         </ScrollViewer>
+        <Button x:Name="BackB" Content="Back" HorizontalAlignment="Left" Margin="608,378,0,9.667" Width="171" Click="BackB_Click"/>
+        <Label Content="your chosen hosting unit:" FontSize="20" HorizontalAlignment="Left" Margin="506,23,0,0" VerticalAlignment="Top" Height="46" Width="273"/>
     </Grid>
 </Window>
