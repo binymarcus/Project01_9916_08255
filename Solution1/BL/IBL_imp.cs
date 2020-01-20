@@ -94,16 +94,21 @@ namespace BL
         public List<Order> OlderOrders(int numOfDays)
         {
             List<Order> L = new List<Order>();
-            var v = from item in dal.GetAllOrders()
-                    where (DateTime.Today.DayOfYear - item.OrderDate1.DayOfYear >= numOfDays)||(DateTime.Today.DayOfYear - item.CreateDate1.DayOfYear>=numOfDays)
-                    select item;
-            foreach (var item in v)
-            {
-                L.Add(item);
-            }
-            if (L.Count() == 0)
-                throw new NoItemsFound("There are no orders older then the number of days sent.");
-            return L;
+            
+                var v = from item in dal.GetAllOrders()
+                        where (DateTime.Today.DayOfYear - item.OrderDate1.DayOfYear >= numOfDays) || (DateTime.Today.DayOfYear - item.CreateDate1.DayOfYear >= numOfDays)
+                        select item;
+
+                foreach (var item in v)
+                {
+                    L.Add(item);
+                    item.Status1 = BEEnum.Status.closedByClientsLackOfResponse;
+                    UpdateOrder(item);
+                }
+                if (L.Count() == 0)
+                    throw new NoItemsFound("There are no orders older then the number of days sent.");
+                return L;
+            
 
         }
         /// <summary>

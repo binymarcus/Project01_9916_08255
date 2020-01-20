@@ -49,9 +49,18 @@ namespace PLWPF
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-            bl.OlderOrders(int.Parse(textBox.Text));
-            Remove.Visibility = Visibility.Hidden;
-            textBox.Visibility = Visibility.Hidden;
-        }
+            try
+            {
+                bl.OlderOrders(int.Parse(textBox.Text));
+                Remove.Visibility = Visibility.Hidden;
+                textBox.Visibility = Visibility.Hidden;
+                MessageBox.Show("orders removed");
+            }
+            catch(Exception c)
+            {
+                MessageBox.Show("there are no orders older than the date requested");
+            }
+            }
+
     }
 }
