@@ -8,6 +8,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800"
         Background="Beige">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MyBrush" Color="LimeGreen"/>
+ 
+        <Style x:Key = "TriggerStyle" TargetType = "Button">
+            <Setter Property = "Foreground" Value = "Black" />
+            <Style.Triggers>
+                <Trigger Property = "IsMouseOver" Value = "True">
+                    <Setter Property = "Foreground" Value = "Blue" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Background="Beige">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -17,21 +29,21 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <Button x:Name="AddRequestButton" Background="LimeGreen" Content ="Add Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click"/>
-        <Button x:Name="UpdateRequestButton" Background="LimeGreen" Content ="Update Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click"/>
-        <Button x:Name="DeleteRequestButton" Background="LimeGreen" Content ="Delete Request" Visibility="Visible" Margin="10,10.,10.333,10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click"/>
-        <Button x:Name="ShowAllButton" Background="LimeGreen" Content="Show All My Guests Requests" Visibility="Visible" FontSize="30" HorizontalAlignment="Left" Margin="10,10,10.333,10" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="81" Click="ShowAllButton_Click"/>
-        <Button  x:Name="SignOutButton" Background="IndianRed" Click="backButton_Click" Content="Sign Out" Visibility="Visible" HorizontalAlignment="Left" FontSize="30" Margin="10,10,10.333,10" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="85"/>
+        <Button x:Name="AddRequestButton" Background="{StaticResource MyBrush}" Content ="Add Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click" Style = "{StaticResource TriggerStyle}" />
+        <Button x:Name="UpdateRequestButton" Background="{StaticResource MyBrush}" Content ="Update Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click" Style = "{StaticResource TriggerStyle}"/>
+        <Button x:Name="DeleteRequestButton" Background="{StaticResource MyBrush}" Content ="Delete Request" Visibility="Visible" Margin="10,10.,10.333,10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click" Style = "{StaticResource TriggerStyle}"/>
+        <Button x:Name="ShowAllButton" Background="{StaticResource MyBrush}" Content="Show All My Guests Requests" Visibility="Visible" FontSize="30" HorizontalAlignment="Left" Margin="10,10,10.333,10" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="81" Click="ShowAllButton_Click" Style = "{StaticResource TriggerStyle}"/>
+        <Button  x:Name="SignOutButton" Background="IndianRed" Click="backButton_Click" Content="Sign Out" Visibility="Visible" HorizontalAlignment="Left" FontSize="30" Margin="10,10,10.333,10" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="85" Style = "{StaticResource TriggerStyle}"/>
         <xctk:WatermarkTextBox Watermark="Private Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="privatenameinput" Margin="0,0.333,407.333,93.667" Grid.RowSpan="2" />
         <xctk:WatermarkTextBox Watermark="Family Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="familyenameinput" Margin="386,0.333,0.333,93.667" Grid.RowSpan="2"/>
-        <Button x:Name="showbutton" Content="Show" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="386,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="407" Height="67" Click="showbutton_Click"/>
-        <Button x:Name="cancelbutton" Content="cancel" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="381" Height="67" Click="cancelbutton_Click"/>
+        <Button x:Name="showbutton" Content="Show" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="386,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="407" Height="67" Click="showbutton_Click" Style = "{StaticResource TriggerStyle}"/>
+        <Button x:Name="cancelbutton" Content="cancel" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="381" Height="67" Click="cancelbutton_Click" Style = "{StaticResource TriggerStyle}"/>
         <ScrollViewer x:Name="scrollview1" Visibility="Collapsed" HorizontalAlignment="Left" Height="460" Margin="7,12,0,-1.333" Grid.RowSpan="5" VerticalAlignment="Top" Width="391">
             <StackPanel x:Name="b" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
 
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="BackButton2" Content="Back" Visibility="Hidden" HorizontalAlignment="Left" Margin="416,10,0,0" VerticalAlignment="Top" Width="367" Height="74" Click="BackButton2_Click"/>
+        <Button x:Name="BackButton2" Content="Back" Visibility="Hidden" HorizontalAlignment="Left" Margin="416,10,0,0" VerticalAlignment="Top" Width="367" Height="74" Click="BackButton2_Click" Style = "{StaticResource TriggerStyle}"/>
         <Label x:Name="alllabal" Content="please enter your name in order to view all your guest requests:" FontSize="25" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,0.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="783" Height="74"/>
     </Grid>
 </Window>

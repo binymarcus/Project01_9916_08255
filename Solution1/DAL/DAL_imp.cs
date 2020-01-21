@@ -139,13 +139,20 @@ namespace DAL
             var v = from item in DataSource.GuestRequestList
                     where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
                     select item;
-
+            var a = from item in DataSource.OrderList
+                    where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
+                    select item;
             if (v.Count() == 0)
                 throw new KeyNotFoundException("GuestRequest key not found");
 
             foreach (var item in v.ToList())
             { DataSource.GuestRequestList.Remove(item); }
             //DataSource.GuestRequestList.Remove(guestRequest);
+            if (a.Count() != 0)
+            {
+                foreach (var item in a.ToList())
+                { DataSource.OrderList.Remove(item); }
+            }
         }
 
         /// <summary>
@@ -158,6 +165,9 @@ namespace DAL
             var v = from item in DataSource.HostingUnitList
                     where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
                     select item;
+            var a = from item in DataSource.OrderList
+                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
+                    select item;
 
             if (v.Count() == 0)
                 throw new KeyNotFoundException("hosting unit  key does not exist");
@@ -165,6 +175,11 @@ namespace DAL
             foreach (var item in v.ToList())
             { DataSource.HostingUnitList.Remove(item); }
             // DataSource.HostingUnitList.Remove(hostingUnit);
+            if (a.Count() != 0)
+            {
+                foreach (var item in a.ToList())
+                { DataSource.OrderList.Remove(item); }
+            }
         }
         #endregion
 
