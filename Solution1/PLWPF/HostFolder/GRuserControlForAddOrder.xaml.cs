@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Mail;
 using BE;
 using BL;
 
@@ -62,6 +63,29 @@ namespace PLWPF
                 order.GuestRequestKey1 = Convert.ToInt64(guestRequestKey1Label.Content);
                 bl.AddOrder(order);
                 MessageBox.Show("order added, order key:" + order.OrderKey1);
+                //sending mail
+                MailMessage mail = new MailMessage();
+                mail.To.Add("moshesspam@gmail.com");
+                mail.From = new MailAddress("moshesspam@gmail.com");
+                mail.Subject = "order added";
+                mail.Body = "<p>your guest request has been added to an order</p>";
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Credentials = new System.Net.NetworkCredential("moshesspam@gmail.com","ihatespam");
+                smtp.EnableSsl = true;
+                try
+                {
+                  smtp.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                //changing the gr status to mail sent
+                gr.status1 = BEEnum.Status.mailSent;
+                bl.UpdateGuestRequest(gr);
+
             }
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

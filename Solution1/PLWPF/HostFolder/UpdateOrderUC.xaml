@@ -1,0 +1,52 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF.HostFolder"
+             xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.HostFolder.UpdateOrderUC"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="orderViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Order}, CreateList=True}"/>
+    </UserControl.Resources>
+    <Grid>
+
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="10,10,0,0" HorizontalAlignment="Left" DataContext="{StaticResource orderViewSource}" Height="322">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Create Date:"/>
+            <Label x:Name="createDate1Label" VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding CreateDate1}"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Guest Request Key:"/>
+            <Label x:Name="guestRequestKey1Label" VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding GuestRequestKey1}"/>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Key:"/>
+            <Label x:Name="hostingUnitKey1Label" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding HostingUnitKey1}"/>
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="host Key:"/>
+            <Label x:Name="hostKey1Label" VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding hostKey1}"/>
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Order Date:"/>
+            <Label x:Name="orderDate1Label" VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding OrderDate1}"/>
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Order Key:"/>
+            <Label x:Name="orderKey1Label" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding OrderKey1}"/>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Status:"/>
+            <ComboBox x:Name="status1ComboBox" IsEditable="True" IsReadOnly="True" Text="Please Select" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="3"  Height="Auto" HorizontalAlignment="Left" Grid.Column="1" SelectionChanged="status1ComboBox_SelectionChanged">
+                <ComboBoxItem Content="mailSent" />
+                <ComboBoxItem Content="dealMade" />
+            </ComboBox>
+           
+            <Label Content="------------------------------------------------" HorizontalAlignment="Left" Margin="0,90,0,-55.333" Grid.Row="6" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="240"/>
+            <Button Content="Update Me" HorizontalAlignment="Left" Margin="10,66,0,-0.333" Grid.Row="6" Width="223" Grid.ColumnSpan="2" Click="Button_Click"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

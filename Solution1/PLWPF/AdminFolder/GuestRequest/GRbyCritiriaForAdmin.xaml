@@ -1,0 +1,29 @@
+﻿<Window x:Class="PLWPF.AdminFolder.GuestRequest.GRbyCritiriaForAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.AdminFolder.GuestRequest"
+        mc:Ignorable="d"
+        Title="GRbyCritiriaForAdmin" Height="450" Width="800">
+    <Grid>
+        <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="404,10,0,0" VerticalAlignment="Top" Width="389">
+            <StackPanel x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button x:Name="poolGR" Content="allGRsWithPools" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="poolGR_Click"/>
+        <Button x:Name="jaccuzziGR" Content="allGRsWithJaccuzzis" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="jaccuzziGR_Click"/>
+        <Button x:Name="gardenGR" Content="allGRsWithGardens" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="gardenGR_Click"/>
+        <Button x:Name="childrenGR" Content="allGRsWithchildrensattractions" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="childrenGR_Click"/>
+        <Button x:Name="southGR" Content="All GRs In The South" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="southGR_Click"/>
+        <Button x:Name="northGR" Content="All GRs In The North" HorizontalAlignment="Left" Margin="207,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="northGR_Click"/>
+        <Button x:Name="centerGR" Content="All GRs In The Center" HorizontalAlignment="Left" Margin="207,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="centerGR_Click"/>
+        <Button x:Name="jemGR" Content="All GRs In Jerusalam" HorizontalAlignment="Left" Margin="207,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="jemGR_Click"/>
+        <Button x:Name="BackB" Content="Back" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="BackB_Click"/>
+
+
+
+    </Grid>
+</Window>

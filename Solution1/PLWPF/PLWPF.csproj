@@ -74,6 +74,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminFolder\GuestRequest\GRbyCritiriaForAdmin.xaml.cs">
+      <DependentUpon>GRbyCritiriaForAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminFolder\Hosting Unit\HUbyCritiriaForAdmin.xaml.cs">
+      <DependentUpon>HUbyCritiriaForAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminFolder\Host\AdminHostFunctions.xaml.cs">
       <DependentUpon>AdminHostFunctions.xaml</DependentUpon>
     </Compile>
@@ -125,6 +131,9 @@
     <Compile Include="HostFolder\PickGSforOrder.xaml.cs">
       <DependentUpon>PickGSforOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HostFolder\UpdateOrderUC.xaml.cs">
+      <DependentUpon>UpdateOrderUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HostFolder\updateOrderWindow.xaml.cs">
       <DependentUpon>updateOrderWindow.xaml</DependentUpon>
     </Compile>
@@ -155,6 +164,14 @@
     <Compile Include="SignInFolder\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminFolder\GuestRequest\GRbyCritiriaForAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminFolder\Hosting Unit\HUbyCritiriaForAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminFolder\Host\AdminHostFunctions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +249,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HostFolder\PickGSforOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostFolder\UpdateOrderUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PLWPF.AdminFolder.Hosting_Unit;
 
 namespace PLWPF
 {
@@ -37,6 +38,13 @@ namespace PLWPF
         {
             Window adminMainWindow = new AdminMainWindow();
             adminMainWindow.Show();
+            this.Close();
+        }
+
+        private void getcritiria_Click(object sender, RoutedEventArgs e)
+        {
+            Window hu = new HUbyCritiriaForAdmin();
+            hu.Show();
             this.Close();
         }
     }

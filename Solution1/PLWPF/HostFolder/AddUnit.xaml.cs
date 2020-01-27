@@ -40,6 +40,7 @@ namespace PLWPF
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            int commish;
             try
             {
                 unit.Owner1 = new BE.Host();
@@ -50,17 +51,17 @@ namespace PLWPF
                     hostingUnitNameTextBox.Clear();
                     hostingUnitNameTextBox.Focus();
                 }
-                else if (commission1TextBox.Text == "")
+                else if (commission1TextBox.Text == "" || (!(int.TryParse(commission1TextBox.Text, out commish))))
                 {
                     MessageBox.Show("must enter HostingUnit Commision!");
                     commission1TextBox.Clear();
                     commission1TextBox.Focus();
                 }
-                //else if(Area1.SelectedItem == BEEnum.Area.All)
-                //{
-                //    MessageBox.Show("must enter HostingUnit Area!");
-                //    Area1.Focus();
-                //}
+                else if(Area1.SelectedItem.ToString() == "Please Select")
+                {
+                    MessageBox.Show("must enter HostingUnit Area!");
+                    Area1.Focus();
+                }
                 else
                 {
                     bl.AddHostingUnit(unit);
@@ -102,6 +103,16 @@ namespace PLWPF
             Window HostingUnitWindow = new HostWindow();
             HostingUnitWindow.Show();
             this.Close();
+        }
+
+        private void commission1TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Area1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

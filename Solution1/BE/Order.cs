@@ -11,7 +11,7 @@ namespace BE
         long hostkey;
         long OrderKey;
         DateTime CreateDate;//date order was made
-        DateTime OrderDate;//date the email was sent to client 
+        DateTime OrderDate;//date the deal was made with the client 
         BEEnum.Status status;
         #region properties
         public long HostingUnitKey1 { get => HostingUnitKey; set => HostingUnitKey = value; }

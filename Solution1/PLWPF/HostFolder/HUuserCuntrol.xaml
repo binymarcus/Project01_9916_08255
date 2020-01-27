@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
     </UserControl.Resources>
-    <Grid x:Name="grid1" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="67,100,0,0" VerticalAlignment="Top" Height="314">
+    <Grid x:Name="grid1" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="67,100,0,0" VerticalAlignment="Top" Height="340">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
@@ -50,6 +50,8 @@
         <Label Content="Hosting Unit Name 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
         <TextBox x:Name="hostingUnitName1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         <Button x:Name="HUChoose" Content="Pick Me!" HorizontalAlignment="Left" Margin="10,53.667,0,-17.667" Grid.Row="8" Width="75" RenderTransformOrigin="0.404,1.476" Click="HUChoose_Click"/>
+        <Label Content="-----------------------------" HorizontalAlignment="Left" Margin="0,81,0,-49.667" Grid.Row="8" VerticalAlignment="Top" Width="160"/>
+
     </Grid>
 
 </UserControl>

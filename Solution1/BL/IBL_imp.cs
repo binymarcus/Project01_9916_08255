@@ -191,7 +191,7 @@ namespace BL
         }
         public void AddOrder(Order order)
         {
-            if (order.Status1 == BEEnum.Status.dealMade || order.Status1 == BEEnum.Status.closedByClientsLackOfResponse || order.Status1 == BEEnum.Status.dealMadeWithOtherHost)
+            if (order.Status1 == BEEnum.Status.dealMade || order.Status1 == BEEnum.Status.closedByClientsLackOfResponse)
             {
                 throw new UnexceptableDetailsException("order cannot be closed.");
             }
@@ -253,7 +253,7 @@ namespace BL
         }
         public void UpdateOrder(Order order)
         {         //if closed then closed, doesnt matter how 
-            if (dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.dealMade || dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.dealMadeWithOtherHost || dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
+            if (dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.dealMade || dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
             {
                 throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
             }

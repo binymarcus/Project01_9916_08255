@@ -31,11 +31,10 @@
             <xctk:WatermarkTextBox x:Name="hostingUnitNameTextBox" Width="632" VerticalAlignment="Center" Watermark="Please enter the units name." Text="{Binding HostingUnitName1,Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="2.333,4,-487.667,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
         
             <Label Content="Commission :" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="56" Width="159"/>
-        <xctk:WatermarkTextBox Background="Aquamarine" x:Name="commission1TextBox" HorizontalAlignment="Left" Height="46" Margin="159,10,-480.333,0" Grid.Row="1" Watermark="Please enter your commission" Text="{Binding Commission1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="634" Grid.ColumnSpan="3"/>
+        <xctk:WatermarkTextBox Background="Aquamarine" x:Name="commission1TextBox" HorizontalAlignment="Left" Height="46" Margin="159,10,-480.333,0" Grid.Row="1" Watermark="Please enter your commission" Text="{Binding Commission1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="634" Grid.ColumnSpan="3" TextChanged="commission1TextBox_TextChanged"/>
             <Label Content="Area of hosting unit: :" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="56" Width="159" Margin="0,56,0,-56"/>
 
-        <ComboBox x:Name="Area1" Grid.Column="1" Margin="0.333,0.667,0.333,0" Grid.Row="2" Height="52" Text="{Binding AreaOfHostingUnit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" >
-            <ComboBoxItem Content="All" />
+        <ComboBox x:Name="Area1" IsEditable="True" IsReadOnly="True" Text="Please Select" Grid.Column="1" Margin="0.333,0.667,0.333,0" Grid.Row="2" Height="52" VerticalAlignment="Center" SelectionChanged="Area1_SelectionChanged" >
             <ComboBoxItem Content="North" />
             <ComboBoxItem Content="South" />
             <ComboBoxItem Content="Center" />

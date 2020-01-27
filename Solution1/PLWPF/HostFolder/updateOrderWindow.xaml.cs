@@ -39,7 +39,7 @@ namespace PLWPF.HostFolder
 
                     foreach (BE.Order item in orderList)
                     {
-                        OrderUC gruc = new OrderUC(item);
+                    UpdateOrderUC gruc = new UpdateOrderUC(item);
                         b.Children.Add(gruc);
                     }
 

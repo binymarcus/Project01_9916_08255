@@ -49,7 +49,7 @@ namespace PLWPF
             int adultint;
             int.TryParse(adults1TextBox.Text, out adultint);
             int childrenint;
-            int.TryParse(adults1TextBox.Text, out childrenint);
+            int.TryParse(children1TextBox.Text, out childrenint);
             int error = 0;
             try
             {
@@ -96,7 +96,7 @@ namespace PLWPF
                     children1TextBox.Clear();
                     children1TextBox.Focus();
                 }
-                else if (childrenint+adultint <= 0)
+                else if ((childrenint+adultint) <= 0)
                 {
                     MessageBox.Show("num of guests must be be equel or larger then 1");
                     error++;
