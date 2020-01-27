@@ -91,7 +91,7 @@ namespace PL
             Host parp = new Host();
             parp.PrivateName1 = "mcawesome";
             parp.FamilyName1 = "village";
-            bl.AddHost(parp);
+            //bl.AddHost(parp);
             unit1.Owner1 = parp;
             unit2.Owner1 = new Host();
             unit3.Owner1 = parp;

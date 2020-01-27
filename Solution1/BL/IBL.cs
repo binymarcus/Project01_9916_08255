@@ -166,11 +166,19 @@ namespace BL
         List<HostingUnit> allUnitsWithJaccuzzis();
         List<HostingUnit> allUnitsWithGardens();
         List<HostingUnit> allUnitsWithchildrensattractions();
+        List<HostingUnit> allUnitsInSouth();
+        List<HostingUnit> allUnitsInNorth();
+        List<HostingUnit> allUnitsInCenter();
+        List<HostingUnit> allUnitsInJem();
         /// ////////////////////////////////
-        //List<GuestRequest> allGRsWithPools();
-        //List<GuestRequest> allGRsWithJaccuzzis();
-        //List<GuestRequest> allGRsWithGardens();
-        //List<GuestRequest> allGRsWithchildrensattractions();
+        List<GuestRequest> allGRsWithPools();
+        List<GuestRequest> allGRsWithJaccuzzis();
+        List<GuestRequest> allGRsWithGardens();
+        List<GuestRequest> allGRsWithchildrensattractions();
+        List<GuestRequest> allGRsInSouth();
+        List<GuestRequest> allGRsInNorth();
+        List<GuestRequest> allGRsInCenter();
+        List<GuestRequest> allGRsInJem();
         HostingUnit findFirstBestUnitInArea(GuestRequest guest);
 
         Order findLongestOrderPending();

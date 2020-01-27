@@ -12,6 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PLWPF.AdminFolder.GuestRequest;
+using BL;
+using BE;
 
 namespace PLWPF
 {
@@ -20,6 +23,8 @@ namespace PLWPF
     /// </summary>
     public partial class AdminGRfunctions : Window
     {
+        IBL bl = FactoryBL.getIBL();
+        List<BE.GuestRequest> unitList = new List<BE.GuestRequest>();
         public AdminGRfunctions()
         {
             InitializeComponent();
@@ -35,6 +40,9 @@ namespace PLWPF
 
         private void FindGRcriteria_Click(object sender, RoutedEventArgs e)
         {
+            Window win = new GRbyCritiriaForAdmin();
+            win.Show();
+            this.Close();
 
         }
 
@@ -43,6 +51,22 @@ namespace PLWPF
             Window adminMainWindow = new AdminMainWindow();
             adminMainWindow.Show();
             this.Close();
+        }
+
+        private void calc_Click(object sender, RoutedEventArgs e)
+        {
+            List<BE.GuestRequest> L = new List<BE.GuestRequest>();
+            int amount = 0;
+            try
+            {
+                L = bl.GetAllGuestRequest();
+                amount = L.Count();
+                MessageBox.Show("number of guest requests in the system:" + amount);
+            }
+            catch
+            {
+                MessageBox.Show("error!");
+            }
         }
     }
 }

@@ -122,5 +122,93 @@ namespace PLWPF.AdminFolder.Hosting_Unit
             win.Show();
             this.Close();
         }
+
+        private void southHU_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            long notreallykey = 0;
+            try
+            {
+                unitList = bl.allUnitsInSouth();
+
+                foreach (BE.HostingUnit item in unitList)
+                {
+                    HUuserCuntrol gruc = new HUuserCuntrol(item, notreallykey);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no hosting units fit critiria");
+            }
+        }
+
+        private void northHU_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            long notreallykey = 0;
+            try
+            {
+                unitList = bl.allUnitsInNorth();
+
+                foreach (BE.HostingUnit item in unitList)
+                {
+                    HUuserCuntrol gruc = new HUuserCuntrol(item, notreallykey);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no hosting units fit critiria");
+            }
+        }
+
+        private void centerHU_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            long notreallykey = 0;
+            try
+            {
+                unitList = bl.allUnitsInCenter();
+
+                foreach (BE.HostingUnit item in unitList)
+                {
+                    HUuserCuntrol gruc = new HUuserCuntrol(item, notreallykey);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no hosting units fit critiria");
+            }
+        }
+
+        private void jemHU_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            long notreallykey = 0;
+            try
+            {
+                unitList = bl.allUnitsInJem();
+
+                foreach (BE.HostingUnit item in unitList)
+                {
+                    HUuserCuntrol gruc = new HUuserCuntrol(item, notreallykey);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no hosting units fit critiria");
+            }
+        }
     }
 }

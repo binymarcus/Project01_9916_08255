@@ -590,6 +590,176 @@ namespace BL
 
             return L;
         }
+        public List<HostingUnit> allUnitsInSouth()
+        {
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in dal.GetAllHostingUnits()
+                    where item.AreaOfHostingUnit==BEEnum.Area.South
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<HostingUnit> allUnitsInNorth()
+        {
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in dal.GetAllHostingUnits()
+                    where item.AreaOfHostingUnit == BEEnum.Area.North
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<HostingUnit> allUnitsInCenter()
+        {
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in dal.GetAllHostingUnits()
+                    where item.AreaOfHostingUnit == BEEnum.Area.Center
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<HostingUnit> allUnitsInJem()
+        {
+            List<HostingUnit> L = new List<HostingUnit>();
+            var v = from item in dal.GetAllHostingUnits()
+                    where item.AreaOfHostingUnit == BEEnum.Area.Jerusalem
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        #endregion
+        #region lists of GR appliances
+        public List<GuestRequest> allGRsWithPools()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.pool1==BEEnum.Option.Must || item.pool1 == BEEnum.Option.Optional
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<GuestRequest> allGRsWithJaccuzzis()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.Jacuzzi1 == BEEnum.Option.Must || item.Jacuzzi1 == BEEnum.Option.Optional
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<GuestRequest> allGRsWithGardens()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.Garden1 == BEEnum.Option.Must || item.Garden1 == BEEnum.Option.Optional
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<GuestRequest> allGRsWithchildrensattractions()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.ChildrensAttractions1 == BEEnum.Option.Must || item.ChildrensAttractions1 == BEEnum.Option.Optional
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<GuestRequest> allGRsInSouth()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.area1 == BEEnum.Area.South || item.area1 == BEEnum.Area.All
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<GuestRequest> allGRsInNorth()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.area1 == BEEnum.Area.North || item.area1 == BEEnum.Area.All
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<GuestRequest> allGRsInCenter()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.area1 == BEEnum.Area.Center || item.area1 == BEEnum.Area.All
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
+        public List<GuestRequest> allGRsInJem()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.area1 == BEEnum.Area.Jerusalem || item.area1 == BEEnum.Area.All
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
         #endregion
         public HostingUnit findFirstBestUnitInArea(GuestRequest guest)
         {
