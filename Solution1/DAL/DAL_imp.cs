@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using BE;
 using DS;
 using MyException;
@@ -9,40 +12,90 @@ namespace DAL
 {
     public class DAL_imp : Idal
     {
+        string GRPath = "@GR_XML.xml";
+        XElement GRroot = new XElement("GRinfo");
+        string HUPath = "@HU_XML.xml";
+        XElement HUroot = new XElement("HUinfo");
+        string OrderPath = "@Order_XML.xml";
+        XElement OrderRoot = new XElement("Orderinfo");
+        string ConfigPath = "@Config_XML.xml";
+        XElement ConfigRoot = new XElement("Configinfo");
+        String hostPath = "@HostXml.xml";
+        XElement hostRoot = new XElement("hostsInfo");
+        Dal_XML_imp imp;
+        public DAL_imp()
+        {
+            imp = new Dal_XML_imp();
+            LoadData();
+        }
         #region add
         /// <summary>
         /// adds a request for service from a client to the system
         /// </summary>
         /// <param name="guestRequest"></param>
-        public void AddGuestRequest(GuestRequest guestRequest)
+        public void AddGuestRequest(GuestRequest guest)
         {//TODO: need to put try and catch
-            guestRequest.GuestRequestKey1 = Configuration.GuestRequestKey++;
-            guestRequest.RegistrationDate1 = DateTime.Now;
-            DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
+            guest.GuestRequestKey1 = Configuration.GuestRequestKey++;
+            guest.RegistrationDate1 = DateTime.Now;
+            GuestRequest guestRequest = Cloning.Clone(guest);
+            XElement guestkey = new XElement("guestkey", guestRequest.GuestRequestKey1);
+            XElement pname  = new XElement("Pname",guestRequest.PrivateName1);
+            XElement Fname = new XElement("Fname", guestRequest.FamilyName1);
+            XElement entryDate = new XElement("entryDate",guestRequest.EntryDate1);
+            XElement ReleaseDate = new XElement("releaseDate", guestRequest.ReleaseDate1);
+            XElement registrationDate = new XElement("registrationDate", guestRequest.RegistrationDate1);
+            XElement mail = new XElement("mail", guestRequest.MailAddress1);
+            XElement status = new XElement("status",guestRequest.status1);
+            XElement pool = new XElement("pool", guestRequest.pool1);
+            XElement jaccuzi = new XElement("jaccuzi", guestRequest.Jacuzzi1);
+            XElement garden = new XElement("garden", guestRequest.Garden1);
+            XElement childrenAttractions = new XElement("childrensAttractions", guestRequest.ChildrensAttractions1);
+            XElement Area = new XElement("Area", guestRequest.area1);
+            XElement sub = new XElement("subArea", guestRequest.SubArea1);
+            XElement adults = new XElement("adults", guestRequest.Adults1);
+            XElement kids = new XElement("kids", guestRequest.Children1);
+            XElement totalppl = new XElement("numppl", guestRequest.TotalGuests1);
+            GRroot.Add("GR", guestkey, pname, Fname, entryDate, ReleaseDate, registrationDate, mail, status, pool, jaccuzi, garden, childrenAttractions, Area, sub, adults, kids, totalppl);
+            GRroot.Save(GRPath);
         }
         /// <summary>
         /// adds a hosting unit to the system
         /// </summary>
         /// <param name="hostingUnit"> the hosting unit from BE</param>
         public void AddHostingUnit(HostingUnit hostingUnit)
-        {
-            try
-            {
-                foreach (var item in GetAllHostingUnits())
-                {
+        {            
+            foreach (var item in GetAllHostingUnits())
+               {
                     if (item.HostingUnitName1 == hostingUnit.HostingUnitName1)
                         throw new UnexceptableDetailsException("cannot enter two hosting units with the same name");
-                }
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                hostingUnit.HostingUnitKey1 = Configuration.HostingUnitKey++;
-                DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
-            }
+                }                 
+            hostingUnit.HostingUnitKey1 = Configuration.HostingUnitKey++;
+            HostingUnit unit = Cloning.Clone(hostingUnit);
+            HUroot= new XElement("UNIT");
+            XElement name = new XElement("name", unit.HostingUnitName1);
+            XElement key = new XElement("key", unit.HostingUnitKey1);
+            XElement Area = new XElement("Area", unit.AreaOfHostingUnit);
+            XElement commission = new XElement("commission", unit.Commission1);
+            XElement ownerPname = new XElement("ownerPname", unit.Owner1.PrivateName1);
+            XElement ownerLname = new XElement("ownerLname", unit.Owner1.FamilyName1);
+            XElement mail = new XElement("mail", unit.Owner1.MailAddress1);
+            XElement phone = new XElement("phone", unit.Owner1.PhoneNumber1);
+            XElement hostKey = new XElement("hostKey", unit.Owner1.HostKey1);
+            XElement bankNum = new XElement("bankNum", unit.Owner1.BankAccountNumber1);
+            XElement branncdets= new XElement("branchdets", unit.Owner1.BankBranchDetails1);
+            XElement clearance = new XElement("clearance", unit.Owner1.CollectionClearance1);
+            XElement numofunits = new XElement("numofunits", unit.Owner1.NumOfHostinUnits1);
+            XElement pool = new XElement("pool", unit.hasPool1);
+            XElement garden = new XElement("garden", unit.hasGarden1);
+            XElement childrens = new XElement("childrensAttractions", unit.hasChildrensAttractions1);
+            XElement jac = new XElement("jaccuzzi", unit.hasJaccuzzi1);
+            HUroot.Add("unit", name, key, Area, commission, pool, garden, childrens, jac);
+            FileStream file = new FileStream(HUPath, FileMode.Open);
+            XmlSerializer xmlSer = new XmlSerializer(unit.Diary2.GetType());
+            xmlSer.Serialize(file, unit.Diary2);
+            file.Close();
+            HUroot.Add("owner", ownerPname,ownerLname,ownerLname,phone,hostKey,bankNum,branncdets,clearance,numofunits);
+            HUroot.Save(HUPath);
         }
         /// <summary>
         /// adds an order from a client to the system
@@ -52,17 +105,38 @@ namespace DAL
         {
             order.CreateDate1 = DateTime.Now;
             order.OrderKey1 = Configuration.OrderKey++;
-            DataSource.OrderList.Add(Cloning.Clone(order));
-
+            Order or = Cloning.Clone(order);
+            XElement Cdate = new XElement("Cdate", or.CreateDate1);
+            XElement orderdate = new XElement("orderdate", or.OrderDate1);
+            XElement orderKey = new XElement("orderKey", or.OrderKey1);
+            XElement HUKey = new XElement("HUkey", or.HostingUnitKey1);
+            XElement hostkey = new XElement("hostKey", or.hostKey1);
+            XElement GRKey = new XElement("GRKey", or.OrderKey1);
+            XElement status = new XElement("status", or.Status1);
+            OrderRoot.Add("order", Cdate, orderdate, orderKey, HUKey, hostkey, GRKey, status);
+            OrderRoot.Save(OrderPath);
         }
         /// <summary>
         /// adds a host to the system
         /// </summary>
         /// <param name="host">Host defined in BE</param>
-        public void AddHost(Host host)
+        public void AddHost(Host host,string user,string pass)
         {
             host.HostKey1 = Configuration.HostKey++;
-            DataSource.HostList.Add(Cloning.Clone(host));
+            Host hoe = Cloning.Clone(host);
+            XElement username = new XElement("username",user);
+            XElement password = new XElement("password",pass);
+            XElement key = new XElement("key", host.HostKey1);
+            XElement Pname = new XElement("firstName", hoe.PrivateName1);
+            XElement Fname = new XElement("lastName", hoe.FamilyName1);
+            XElement email = new XElement("Email", hoe.MailAddress1);
+            XElement phone = new XElement("PhoneNumber", hoe.PhoneNumber1);
+            XElement bank = new XElement("BankAccountNumber", hoe.BankAccountNumber1);
+            XElement clearance = new XElement("Clearance",hoe.CollectionClearance1.ToString());
+            XElement num = new XElement("num", host.NumOfHostinUnits1);
+            XElement Host = new XElement("Host", username, password,key, Pname, Fname, email, phone,num, bank, clearance);
+            hostRoot.Add(Host);
+            hostRoot.Save(hostPath);
         }
         #endregion
 
@@ -74,19 +148,36 @@ namespace DAL
         /// <param name="guestRequest"></param>
         public void UpdateGuestRequest(GuestRequest guestRequest)
         {
-            GuestRequest cloned = Cloning.Clone(guestRequest);
+            XElement GRelement;
+            try
+            {
+                GRelement = (from gr in GRroot.Elements()
+                             where int.Parse(gr.Element("guestkey").Value) == guestRequest.GuestRequestKey1
+                             select gr).FirstOrDefault();
+                GRelement.Element("Pname").Value = guestRequest.PrivateName1;
+                GRelement.Element("Fname").Value = guestRequest.FamilyName1;
+                GRelement.Element("entryDate").Value = guestRequest.EntryDate1.ToString();
+                GRelement.Element("releaseDate").Value = guestRequest.ReleaseDate1.ToString();
+                GRelement.Element("registrationDate").Value = guestRequest.RegistrationDate1.ToString();
+                GRelement.Element("mail").Value = guestRequest.MailAddress1;
+                GRelement.Element("status").Value = guestRequest.status1.ToString();
+                GRelement.Element("pool").Value = guestRequest.pool1.ToString();
+                GRelement.Element("jaccuzi").Value = guestRequest.Jacuzzi1.ToString();
+                GRelement.Element("garden").Value = guestRequest.Garden1.ToString();
+                GRelement.Element("childrensAttractions").Value = guestRequest.ChildrensAttractions1.ToString();
+                GRelement.Element("Area").Value = guestRequest.area1.ToString();
+                GRelement.Element("subArea").Value = guestRequest.SubArea1;
+                GRelement.Element("adults").Value = guestRequest.Adults1.ToString();
+                GRelement.Element("kids").Value = guestRequest.Children1.ToString();
+                GRelement.Element("numppl").Value = guestRequest.TotalGuests1.ToString();
+                GRroot.Save(GRPath);
+            }
+            catch (Exception)
+            {
 
-            var v = from item in DataSource.GuestRequestList
-                    where item.GuestRequestKey1 == cloned.GuestRequestKey1
-                    select item;
+                throw new NoItemsFound("no reuquest with this key");
+            }
 
-            if (v.Count() == 0)
-                throw new KeyNotFoundException("GuestRequest key does not exist");
-
-            foreach (var item in v.ToList())
-            { DataSource.GuestRequestList.Remove(item); }
-            //DataSource.GuestRequestList.Remove(guestRequest);
-            DataSource.GuestRequestList.Add(Cloning.Clone(guestRequest));
         }
         /// <summary>
         /// updates the information on an existing hosting unit|throws error if unit doesnt exist
@@ -95,17 +186,40 @@ namespace DAL
         /// <param name="hostingUnit">hosting unit defined in BE</param>
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            var v = from item in DataSource.HostingUnitList
-                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
-                    select item;
+            XElement HUelement;
+            try
+            {
+                HUelement = (from gr in HUroot.Elements()
+                             where int.Parse(gr.Element("key").Value) == hostingUnit.HostingUnitKey1
+                             select gr).FirstOrDefault();
+                HUelement.Element("name").Value = hostingUnit.HostingUnitName1;
+                HUelement.Element("key").Value = hostingUnit.HostingUnitKey1.ToString();
+                HUelement.Element("Area").Value = hostingUnit.AreaOfHostingUnit.ToString();
+                HUelement.Element("commission").Value = hostingUnit.Commission1.ToString();
+                HUelement.Element("ownerPname").Value = hostingUnit.Owner1.PrivateName1;
+                HUelement.Element("ownerLname").Value = hostingUnit.Owner1.FamilyName1;
+                HUelement.Element("mail").Value = hostingUnit.Owner1.MailAddress1;
+                HUelement.Element("phone").Value = hostingUnit.Owner1.PhoneNumber1.ToString();
+                HUelement.Element("hostKey").Value = hostingUnit.Owner1.HostKey1.ToString();
+                HUelement.Element("bankNum").Value = hostingUnit.Owner1.BankAccountNumber1.ToString();
+                HUelement.Element("branchdets").Value = hostingUnit.Owner1.BankBranchDetails1.ToString();
+                HUelement.Element("clearance").Value = hostingUnit.Owner1.CollectionClearance1.ToString();
+                HUelement.Element("numofunits").Value = hostingUnit.Owner1.NumOfHostinUnits1.ToString();
+                HUelement.Element("pool").Value = hostingUnit.hasPool1.ToString();
+                HUelement.Element("garden").Value = hostingUnit.hasGarden1.ToString();
+                HUelement.Element("childrensAttractions").Value = hostingUnit.hasChildrensAttractions1.ToString();
+                HUelement.Element("jaccuzzi").Value = hostingUnit.hasJaccuzzi1.ToString();
+                FileStream file = new FileStream(HUPath, FileMode.Open);
+                XmlSerializer xmlSer = new XmlSerializer(hostingUnit.Diary2.GetType());
+                xmlSer.Serialize(file, hostingUnit.Diary2);
+                file.Close();
+                HUroot.Save(HUPath);
+            }
+            catch (Exception)
+            {
 
-            if (v.Count() == 0)
-                throw new NoItemsFound("hosting unit  does not exist");
-
-            foreach (var item in v.ToList())
-            { DataSource.HostingUnitList.Remove(item); }
-            //DataSource.HostingUnitList.Remove(hostingUnit);
-            DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
+                throw new NoItemsFound("no unit with this key");
+            }
         }
         /// <summary>
         /// updates the terms of an order from a client|throws error if order already exists
@@ -113,18 +227,26 @@ namespace DAL
         /// <exception cref="NoItemsFound"></exception>
         /// <param name="order">Order defined in BE</param>
         public void UpdateOrder(Order order)
-        {//TODO: need to put try and catch
-            var v = from item in DataSource.OrderList
-                    where item.OrderKey1 == order.OrderKey1
-                    select item;
+        {
+            XElement orderElement;
+            try
+            {
+                orderElement = (from gr in OrderRoot.Elements()
+                             where int.Parse(gr.Element("orderKey").Value) == order.OrderKey1
+                             select gr).FirstOrDefault();
+                orderElement.Element("Cdate").Value = order.CreateDate1.ToString();
+                orderElement.Element("orderdate").Value = order.OrderDate1.ToString();
+                orderElement.Element("HUkey").Value = order.HostingUnitKey1.ToString();
+                orderElement.Element("hostKey").Value = order.hostKey1.ToString();
+                orderElement.Element("GRKey").Value = order.GuestRequestKey1.ToString();
+                orderElement.Element("status").Value = order.Status1.ToString();
+                HUroot.Save(HUPath);
+            }
+            catch (Exception)
+            {
 
-            if (v.Count() == 0)
-                throw new NoItemsFound("hosting unit  does not exist");
-            foreach (var item in v.ToList())
-            { DataSource.OrderList.Remove(item); }
-            //DataSource.OrderList.Remove(order);
-            DataSource.OrderList.Add(Cloning.Clone(order));
-
+                throw new NoItemsFound("no order with this key");
+            }
         }
         #endregion
 
@@ -135,23 +257,20 @@ namespace DAL
         /// <exception cref="KeyNotFoundException"></exception>
         /// <param name="guestRequest"></param>
         public void DeleteGuestRequest(GuestRequest guestRequest)
-        {//TODO: need to put try and catch
-            var v = from item in DataSource.GuestRequestList
-                    where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
-                    select item;
-            var a = from item in DataSource.OrderList
-                    where item.GuestRequestKey1 == guestRequest.GuestRequestKey1
-                    select item;
-            if (v.Count() == 0)
-                throw new KeyNotFoundException("GuestRequest key not found");
-
-            foreach (var item in v.ToList())
-            { DataSource.GuestRequestList.Remove(item); }
-            //DataSource.GuestRequestList.Remove(guestRequest);
-            if (a.Count() != 0)
+        {
+            XElement GRelement;
+            try
             {
-                foreach (var item in a.ToList())
-                { DataSource.OrderList.Remove(item); }
+                GRelement = (from gr in GRroot.Elements()
+                             where int.Parse(gr.Element("guestkey").Value) == guestRequest.GuestRequestKey1
+                             select gr).FirstOrDefault();
+                GRelement.Remove();
+                GRroot.Save(GRPath);
+            }
+            catch (Exception)
+            {
+
+                throw new NoItemsFound("no reuquest with this key");
             }
         }
 
@@ -161,24 +280,20 @@ namespace DAL
         /// <exception cref="KeyNotFoundException"></exception>
         /// <param name="hostingUnit">hosting unit defined in BE</param>
         public void DeleteHostingUnit(HostingUnit hostingUnit)
-        {//TODO: need to put try and catch
-            var v = from item in DataSource.HostingUnitList
-                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
-                    select item;
-            var a = from item in DataSource.OrderList
-                    where item.HostingUnitKey1 == hostingUnit.HostingUnitKey1
-                    select item;
-
-            if (v.Count() == 0)
-                throw new KeyNotFoundException("hosting unit  key does not exist");
-
-            foreach (var item in v.ToList())
-            { DataSource.HostingUnitList.Remove(item); }
-            // DataSource.HostingUnitList.Remove(hostingUnit);
-            if (a.Count() != 0)
+        {
+            XElement HUelement;
+            try
             {
-                foreach (var item in a.ToList())
-                { DataSource.OrderList.Remove(item); }
+                HUelement = (from gr in HUroot.Elements()
+                             where int.Parse(gr.Element("key").Value) == hostingUnit.HostingUnitKey1
+                             select gr).FirstOrDefault();
+                HUelement.Remove();
+                HUroot.Save(HUPath);
+            }
+            catch (Exception)
+            {
+
+                throw new NoItemsFound("no unit with this key");
             }
         }
         #endregion
@@ -191,12 +306,39 @@ namespace DAL
         /// <returns>all the hosting units in the system</returns>
         public List<HostingUnit> GetAllHostingUnits()
         {
-            List<HostingUnit> L = new List<HostingUnit>();
-            foreach (var item in DataSource.HostingUnitList)
-                L.Add(Cloning.Clone(item));
-            if (L.Count() == 0)
-                throw new NoItemsFound("there are no hosting units in the system.");
-            return L;
+            List<HostingUnit> units = new List<HostingUnit>();
+            try
+            {
+                units = (from unit in HUroot.Elements()
+                         select new HostingUnit()
+                         {
+                             HostingUnitKey1 = long.Parse(unit.Element("key").Value),
+                             HostingUnitName1 = unit.Element("name").Value,
+                             AreaOfHostingUnit = (BEEnum.Area)Enum.Parse(typeof(BEEnum.Area), unit.Element("Area").Value),
+                             Commission1 = int.Parse(unit.Element("commission").Value),
+                             hasChildrensAttractions1 = bool.Parse(unit.Element("childrensAttractions").Value),
+                             hasPool1 = bool.Parse(unit.Element("pool").Value),
+                             hasGarden1 = bool.Parse(unit.Element("garden").Value),
+                             hasJaccuzzi1 = bool.Parse(unit.Element("jaccuzzi").Value),
+                             Owner1 = new Host
+                             {PrivateName1=unit.Element("ownerPname").Value,
+                             FamilyName1=unit.Element("ownerLname").Value,
+                             MailAddress1=unit.Element("mail").Value,
+                             PhoneNumber1=int.Parse(unit.Element("phone").Value),
+                             HostKey1=long.Parse(unit.Element("hostKey").Value),
+                             BankAccountNumber1=int.Parse(unit.Element("bankNum").Value),
+                             //add the bank branch details
+                             NumOfHostinUnits1=int.Parse(unit.Element("numofunits").Value),
+                                CollectionClearance1= bool.Parse(unit.Element("clearance").Value),
+                             }
+                         }).ToList();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            return units;
         }
         /// <summary>
         /// shows all clients currently in the system
@@ -207,10 +349,35 @@ namespace DAL
         {
 
             List<GuestRequest> L = new List<GuestRequest>();
-            foreach (var item in DataSource.GuestRequestList)
-                L.Add(Cloning.Clone(item));
-            if (L.Count() == 0)
-                throw new NoItemsFound("there are no guest requests in the system.");
+            try
+            {
+                L = (from gr in GRroot.Elements()
+                     select new GuestRequest()
+                     {
+                         GuestRequestKey1=long.Parse(gr.Element("guestkey").Value),
+                         PrivateName1= gr.Element("Pname").Value,
+                         FamilyName1 =gr.Element("Fname").Value,
+                         EntryDate1=DateTime.Parse(gr.Element("entryDate").Value),
+                         ReleaseDate1=DateTime.Parse(gr.Element("releaseDate").Value),
+                         RegistrationDate1=DateTime.Parse(gr.Element("registrationDate").Value),
+                         MailAddress1=gr.Element("mail").Value,
+                         status1=(BEEnum.Status)Enum.Parse(typeof(BEEnum.Status),gr.Element("status").Value),
+                         pool1=(BEEnum.Option)Enum.Parse(typeof(BEEnum.Option),gr.Element("pool").Value),
+                         Garden1 = (BEEnum.Option)Enum.Parse(typeof(BEEnum.Option), gr.Element("garden").Value),
+                         ChildrensAttractions1 = (BEEnum.Option)Enum.Parse(typeof(BEEnum.Option), gr.Element("childrensAttractions").Value),
+                         Jacuzzi1 = (BEEnum.Option)Enum.Parse(typeof(BEEnum.Option), gr.Element("jaccuzi").Value),
+                         area1 = (BEEnum.Area)Enum.Parse(typeof(BEEnum.Area), gr.Element("Area").Value),
+                         SubArea1=gr.Element("subArea").Value,
+                         Adults1=int.Parse(gr.Element("adults").Value),
+                         Children1=int.Parse(gr.Element("kids").Value),
+                         TotalGuests1=int.Parse(gr.Element("numppl").Value)
+                     }).ToList();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
             return L;
         }
         /// <summary>
@@ -221,25 +388,51 @@ namespace DAL
         public List<Order> GetAllOrders()
         {
             List<Order> L = new List<Order>();
-            foreach (var item in DataSource.OrderList)
-                L.Add(Cloning.Clone(item));
-            if (L.Count() == 0)
-                throw new NoItemsFound("there are no orders in the system.");
+            try
+            {
+                L = (from order in OrderRoot.Elements()
+                     select new Order()
+                     {
+                         CreateDate1=DateTime.Parse(order.Element("Cdate").Value),
+                         OrderDate1=DateTime.Parse(order.Element("orderdate").Value),
+                         OrderKey1=long.Parse(order.Element("orderKey").Value),
+                         HostingUnitKey1=long.Parse(order.Element("HUkey").Value),
+                         GuestRequestKey1 = long.Parse(order.Element("GRKey").Value),
+                         hostKey1=long.Parse(order.Element("hostKey").Value),
+                         Status1 = (BEEnum.Status)Enum.Parse(typeof(BEEnum.Status),order.Element("status").Value)
+                     }).ToList();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
             return L;
         }
         public List<Order> GetAllOrdersByHostKey(long hostkey)
         {
             List<Order> L = new List<Order>();
-            foreach (var item in DataSource.OrderList)
-                if(hostkey == item.hostKey1)
-                {
-                    L.Add(Cloning.Clone(item));
-                }
-            if (L.Count() == 0)
-                throw new NoItemsFound("there are no orders in the system.");
+            try
+            {
+                L = (from order in OrderRoot.Elements()
+                     where long.Parse(order.Element("hostKey").Value)==hostkey
+                     select new Order()
+                     {
+                         CreateDate1 = DateTime.Parse(order.Element("Cdate").Value),
+                         OrderDate1 = DateTime.Parse(order.Element("orderdate").Value),
+                         OrderKey1 = long.Parse(order.Element("orderKey").Value),
+                         HostingUnitKey1 = long.Parse(order.Element("HUkey").Value),
+                         GuestRequestKey1 = long.Parse(order.Element("GRKey").Value),
+                         Status1 = (BEEnum.Status)Enum.Parse(typeof(BEEnum.Status), order.Element("status").Value)
+                     }).ToList();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
             return L;
         }
-
         /// <summary>
         /// reutrns all the banks
         /// </summary>
@@ -295,24 +488,47 @@ namespace DAL
         public List<Host> GetAllHosts()
         {
             List<Host> L = new List<Host>();
-            foreach (var item in DataSource.HostList)
-                L.Add(Cloning.Clone(item));
-                      return L;
-        }        /// <summary>
-                             /// sets num of hosting units each host has
-                             /// </summary>
-                             /// <returns></returns>
+            try
+            {
+                L = (from host in hostRoot.Elements()
+                     select new Host()
+                     {
+                         HostKey1=long.Parse(host.Element("key").Value),
+                         PrivateName1=host.Element("firstName").Value,
+                         FamilyName1 = host.Element("lastName").Value,
+                         MailAddress1=host.Element("Email").Value,
+                         PhoneNumber1=int.Parse(host.Element("PhoneNumber").Value),
+                         NumOfHostinUnits1=int.Parse(host.Element("num").Value),
+                         BankAccountNumber1=int.Parse(host.Element("BankAccountNumber").Value),
+                         CollectionClearance1=bool.Parse(host.Element("Clearance").Value)
+                     }).ToList();
+                return L;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }       
+     
+        /// <summary>
+       /// sets num of hosting units each host has
+      /// </summary>
+     /// <returns></returns>
             public void CalcNumOfHostingUnits()
         {
-            foreach (var item1 in DataSource.HostList)
+            foreach (var item1 in hostRoot.Elements())
             {
-                item1.NumOfHostinUnits1 = 0;
-                foreach (var item2 in DataSource.HostingUnitList)
+                int num = 0;
+                foreach (var item2 in HUroot.Elements())
                 {
-                    if (item1.HostKey1 == item2.Owner1.HostKey1)
-                        item1.NumOfHostinUnits1++;
+                    if (long.Parse(item1.Element("key").Value) == long.Parse(item2.Element("hostKey").Value))
+                        num++;
+
                 }
-            }
+                item1.Element("num").Value = num.ToString();
+                            }
+            hostRoot.Save(hostPath);
         }
         public HostingUnit GetHostingUnitByName(string name)
         {
@@ -365,7 +581,7 @@ namespace DAL
             }
             throw new Exception("the guest request does not exist");*/
             List<GuestRequest> L = new List<GuestRequest>();
-            foreach (var item in DataSource.GuestRequestList)
+            foreach (var item in GetAllGuestRequest())
             {
                 if (item.PrivateName1 == pname && item.FamilyName1 == fname)
                 {
@@ -411,12 +627,47 @@ namespace DAL
             return host;
         }
 
-       
+
 
 
         #endregion
 
+        private void LoadData()
+        {
+            try
+            {
+                GRroot = XElement.Load(GRPath);
+                HUroot = XElement.Load(HUPath);
+                OrderRoot = XElement.Load(OrderPath);
+                ConfigRoot = XElement.Load(ConfigPath);
+                hostRoot = XElement.Load("@HostXml.xml");
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+
+        }
+
+        public Host getHostByUser(string user)
+        {
+
+            Host host = new Host();
+
+            host = (from use in hostRoot.Elements()
+                    where use.Element("username").Value == user
+                    select new BE.Host()
+                    {
+                        PrivateName1 = use.Element("firstName").Value,
+                        FamilyName1 = use.Element("lastName").Value,
+                        MailAddress1 = use.Element("Email").Value,
+                        PhoneNumber1 = int.Parse(use.Element("PhoneNumber").Value),
+                        BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
+                        CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
+                    }).Single();
+            return host;
+        }
     }
 }
 
