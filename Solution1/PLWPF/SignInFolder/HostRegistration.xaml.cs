@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,26 +24,25 @@ namespace PLWPF
         String hostPath="@HostXml.xml";
         XElement guestRoot = new XElement("guestsInfo");
         XElement hostRoot = new XElement("hostsInfo");
+        IBL bl;
         public HostRegistraion()
         {
             InitializeComponent();
             LoadData();
+            bl =  FactoryBL.getIBL();
         }
         public void saveHost()
         {
-            hostRoot = new XElement("host");
+            BE.Host host = new BE.Host();
+            host.PrivateName1 = privateName1TextBox.Text;
+            host.FamilyName1 = familyName1TextBox.Text;
+            host.MailAddress1 = mailAddress1TextBox.Text;
+            host.PhoneNumber1 = int.Parse(phoneNumber1TextBox.Text);
+            host.BankAccountNumber1 = int.Parse(bankAccountNumber1TextBox.Text);
+            host.CollectionClearance1 = bool.Parse(collectionClearance1CheckBox.IsChecked.ToString());
             XElement username = new XElement("username", textBoxUserName.Text);
             XElement password = new XElement("password", passwordBox1.Password);
-            XElement Pname = new XElement("firstName", privateName1TextBox.Text);
-            XElement Fname = new XElement("lastName", familyName1TextBox.Text);
-            XElement email = new XElement("Email", mailAddress1TextBox.Text);
-            XElement phone = new XElement("PhoneNumber", phoneNumber1TextBox.Text);
-            XElement bank = new XElement("BankAccountNumber", bankAccountNumber1TextBox.Text);
-            XElement clearance = new XElement("Clearance", collectionClearance1CheckBox.IsChecked.ToString());
-            XElement Host = new XElement("Host",username,password,Pname, Fname, email, phone, bank, clearance);
-            hostRoot.Add(Host);
-            hostRoot.Save(hostPath);
-
+            bl.AddHost(host, textBoxUserName.Text, passwordBox1.Password);
             MessageBox.Show("added to the system, Host Key: ");
             SignInPage login = new SignInPage();
             login.Show();

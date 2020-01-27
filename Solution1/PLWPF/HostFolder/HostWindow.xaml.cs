@@ -47,7 +47,7 @@ namespace PLWPF
             LoadData();
             user = username;
             host = new BE.Host();
-            host = getHost();
+            host = bl.getHostByUser(username);
 
         }
         private BE.Host getOldestHostKey()
@@ -89,29 +89,7 @@ namespace PLWPF
             this.Close();
 
         }
-        private BE.Host getHost()
-        {
-            BE.Host host = new BE.Host();
-
-            host = (from use in HostRoot.Elements()
-                    where use.Element("username").Value == user
-                    select new BE.Host()
-                    {
-                        PrivateName1 = use.Element("firstName").Value,
-                        FamilyName1 = use.Element("lastName").Value,
-                        MailAddress1 = use.Element("Email").Value,
-                        PhoneNumber1 = int.Parse(use.Element("PhoneNumber").Value),
-                        BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
-                        CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
-                    }).Single();
-            host.HostKey1 = getHostKey(host);
-            if (host.HostKey1 == 0)
-                bl.AddHost(host);
-
-
-            return host;
-
-        }
+        
         private long getHostKey(BE.Host host)
         {
 

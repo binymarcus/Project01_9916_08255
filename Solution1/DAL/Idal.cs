@@ -27,7 +27,7 @@ namespace DAL
         /// adds Host  to the system
         /// </summary>
         /// <param name="host">Order defined in BE</param>
-        void AddHost(Host host);
+        void AddHost(Host host,string user,string pass);
         #endregion
         #region Update
         /// <summary>
@@ -80,6 +80,7 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
      List<BankBranch> GetAllBanks();
+        Host getHostByUser(string user);
         List<Host> GetAllHosts();
         Order GetOrderByKey(long key);
         GuestRequest GetGuestRequestByKey(long key);
@@ -91,8 +92,6 @@ namespace DAL
         #endregion
         HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
         List<Order> GetAllOrdersByHostKey(long hostkey);
-
-
      /// <summary>
      /// reutrns num of hosting units each host has
      /// </summary>

@@ -78,7 +78,7 @@ namespace BL
                 else j = 0;
                 for (; j < end.Day; j++)
                 {
-                    if (host.Diary1[i, j] == true)
+                    if (host.Diary1[i,j] == true)
                         return false;
 
                 }
@@ -222,11 +222,11 @@ namespace BL
             }
         }
 
-        public void AddHost(Host host)
+        public void AddHost(Host host,string user,string pass)
         {
             try
             {
-                dal.AddHost(host);
+                dal.AddHost(host,user,pass);
             }
             catch (Exception e)
             {
@@ -718,6 +718,19 @@ namespace BL
             try
             {
                 return dal.GetAllHostingUnitsByHostKey(key1);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        public Host getHostByUser(string user)
+        {
+            try
+            {
+               return dal.getHostByUser(user);
             }
             catch (Exception e)
             {

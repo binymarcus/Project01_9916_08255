@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace BE
 {
@@ -10,6 +11,7 @@ namespace BE
         long HostingUnitKey;
         Host Owner; // the owner of the hosting unit
         string HostingUnitName; // hosting unit
+        [XmlIgnore]
         bool[,] Diary = new bool[12,31];  //matrix, repersent if occupied or vacant
         bool hasPool;
         bool hasJaccuzzi;
@@ -21,13 +23,14 @@ namespace BE
         public long HostingUnitKey1 { get => HostingUnitKey; set => HostingUnitKey = value; }
         public Host Owner1 { get => Owner; set => Owner = value; }
         public string HostingUnitName1 { get => HostingUnitName; set => HostingUnitName = value; }
-        public bool[,] Diary1 { get => Diary; set => Diary = value; }
+        public bool[] Diary2 { get => Diary1.Flatten();  set => Diary1 = value.Expand(12); }
         public BEEnum.Area AreaOfHostingUnit { get => areaOfHOstingUnit; set => areaOfHOstingUnit = value;}
         public bool hasPool1 { get => hasPool; set => hasPool = value; }
         public bool hasJaccuzzi1 { get => hasJaccuzzi; set => hasJaccuzzi = value; }
         public bool hasGarden1 { get => hasGarden; set => hasGarden = value; }
         public bool hasChildrensAttractions1 { get => hasChildrensAttractions; set => hasChildrensAttractions = value; }
         public int Commission1 { get => commission; set => commission = value; }
+        public bool[,] Diary1 { get => Diary; set => Diary = value; }
         #endregion
         public override string ToString()
         {
@@ -53,7 +56,7 @@ namespace BE
             {
                 for (int j = 0; j < 31; j++)
                 {
-                    if (Diary[i, j] != occupied)
+                    if (Diary1[i, j] != occupied)
                     {
                         Dates.Add(i + 1);
                         Dates.Add(j + 1);

@@ -30,7 +30,7 @@ namespace BL
         /// adds a hostto the system
         /// </summary>
         /// <param name="host"> the host from BE</param>
-        void AddHost(Host host);
+        void AddHost(Host host,string user,string pass);
         #endregion 
         #region Update
         /// <summary>
@@ -89,6 +89,8 @@ namespace BL
         /// <returns></returns>
         void CalcNumOfHostingUnits();
         List<Host> GetAllHosts();
+        Host getHostByUser(string user);
+
         HostingUnit GetHostingUnitByName(string name);
         GuestRequest GetGuestRequestByKey(long key);
         HostingUnit GetHostingUnitByKey(long key);
