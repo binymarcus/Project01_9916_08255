@@ -65,7 +65,7 @@ namespace PLWPF
                 MessageBox.Show("order added, order key:" + order.OrderKey1);
                 //sending mail
                 MailMessage mail = new MailMessage();
-                mail.To.Add("moshesspam@gmail.com");
+                mail.To.Add(gr.MailAddress1);
                 mail.From = new MailAddress("moshesspam@gmail.com");
                 mail.Subject = "order added";
                 mail.Body = "<p>your guest request has been added to an order</p>";

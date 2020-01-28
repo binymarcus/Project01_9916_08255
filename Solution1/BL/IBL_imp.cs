@@ -895,7 +895,6 @@ namespace BL
                 throw e;
             }
         }
-
         public Host getHostByUser(string user)
         {
             try
