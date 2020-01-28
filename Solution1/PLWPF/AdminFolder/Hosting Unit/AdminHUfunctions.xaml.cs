@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PLWPF.AdminFolder.Hosting_Unit;
+using BL;
+
 
 namespace PLWPF
 {
@@ -21,6 +23,8 @@ namespace PLWPF
     /// </summary>
     public partial class AdminHUfunctions : Window
     {
+        IBL bl = FactoryBL.getIBL();
+        List<BE.HostingUnit> unitList = new List<BE.HostingUnit>();
         public AdminHUfunctions()
         {
             InitializeComponent();
@@ -46,6 +50,22 @@ namespace PLWPF
             Window hu = new HUbyCritiriaForAdmin();
             hu.Show();
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<BE.HostingUnit> L = new List<BE.HostingUnit>();
+            int amount = 0;
+            try
+            {
+                L = bl.GetAllHostingUnits();
+                amount = L.Count();
+                MessageBox.Show("number of guest requests in the system:" + amount);
+            }
+            catch
+            {
+                MessageBox.Show("error!");
+            }
         }
     }
 }

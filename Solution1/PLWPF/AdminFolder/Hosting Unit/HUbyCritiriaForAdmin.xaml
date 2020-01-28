@@ -6,22 +6,32 @@
         xmlns:local="clr-namespace:PLWPF.AdminFolder.Hosting_Unit"
         mc:Ignorable="d"
         Title="HUbyCritiriaForAdmin" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowBackgroundBrush">
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Gray"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="WindowBackgroundBrush1">
+            <GradientStop Offset="0" Color="gray"/>
+            <GradientStop Offset="1" Color="silver"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid Background="{StaticResource WindowBackgroundBrush1}">
         <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="404,10,0,0" VerticalAlignment="Top" Width="389">
             <StackPanel x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
 
             </StackPanel>
         </ScrollViewer>
 
-        <Button Content="allUnitsWithPools" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click"/>
-        <Button Content="allUnitsWithJaccuzzis" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_1"/>
-        <Button Content="allUnitsWithGardens" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_2"/>
-        <Button Content="allUnitsWithchildrensattractions" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_3"/>
-        <Button Content="All Units In The South" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="192" Height="70"/>
-        <Button Content="All Units In The North" HorizontalAlignment="Left" Margin="207,85,0,0" VerticalAlignment="Top" Width="192" Height="70"/>
-        <Button Content="All Units In The Center" HorizontalAlignment="Left" Margin="207,160,0,0" VerticalAlignment="Top" Width="192" Height="70"/>
-        <Button Content="All Units In Jerusalam" HorizontalAlignment="Left" Margin="207,235,0,0" VerticalAlignment="Top" Width="192" Height="70"/>
-        <Button x:Name="BackB" Content="Back" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="BackB_Click"/>
+        <Button Content="allUnitsWithPools" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click"/>
+        <Button Content="allUnitsWithJaccuzzis" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_1"/>
+        <Button Content="allUnitsWithGardens" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_2"/>
+        <Button Content="allUnitsWithchildrensattractions" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_3"/>
+        <Button x:Name="southHU" Content="All Units In The South" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="southHU_Click"/>
+        <Button x:Name="northHU" Content="All Units In The North" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="northHU_Click"/>
+        <Button x:Name="centerHU" Content="All Units In The Center" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="centerHU_Click"/>
+        <Button x:Name="jemHU" Content="All Units In Jerusalam" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="jemHU_Click"/>
+        <Button x:Name="BackB" Content="Back" Background="{StaticResource WindowBackgroundBrush1}" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="BackB_Click"/>
 
     </Grid>
 </Window>
