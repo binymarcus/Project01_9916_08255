@@ -43,7 +43,7 @@ namespace PLWPF
             XElement username = new XElement("username", textBoxUserName.Text);
             XElement password = new XElement("password", passwordBox1.Password);
             bl.AddHost(host, textBoxUserName.Text, passwordBox1.Password);
-            MessageBox.Show("added to the system, Host Key: ");
+            MessageBox.Show("added to the system, Host Key: "+host.HostKey1);
             SignInPage login = new SignInPage();
             login.Show();
             Close();

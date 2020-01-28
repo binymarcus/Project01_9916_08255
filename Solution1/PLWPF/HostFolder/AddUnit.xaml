@@ -8,47 +8,50 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddUnit"
         mc:Ignorable="d"
         Title="AddUnit" Height="544.866" Width="800" Loaded="Window_Loaded_1"
-    Background="Wheat">
+    Background="Crimson">
     <Window.Resources>
         <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
     </Window.Resources>
-    <Grid x:Name="addunit" Background="Wheat" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="0,0,0,51.667" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
+    <Border Background="Aqua" CornerRadius="45" Margin="25">
+        <Grid x:Name="addunit" Background="Wheat" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="20" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Name:" Height="26" Width="156" Grid.ColumnSpan="2"/>
-            <xctk:WatermarkTextBox x:Name="hostingUnitNameTextBox" Width="632" VerticalAlignment="Center" Watermark="Please enter the units name." Text="{Binding HostingUnitName1,Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="2.333,4,-487.667,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-        
+            <xctk:WatermarkTextBox x:Name="hostingUnitNameTextBox" Width="592" VerticalAlignment="Center" Watermark="Please enter the units name." Text="{Binding HostingUnitName1,Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="2.333,14,0,14" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
             <Label Content="Commission :" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="56" Width="159"/>
-        <xctk:WatermarkTextBox Background="Aquamarine" x:Name="commission1TextBox" HorizontalAlignment="Left" Height="46" Margin="159,10,-480.333,0" Grid.Row="1" Watermark="Please enter your commission" Text="{Binding Commission1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="634" Grid.ColumnSpan="3" TextChanged="commission1TextBox_TextChanged"/>
+            <xctk:WatermarkTextBox Background="Aquamarine" x:Name="commission1TextBox" HorizontalAlignment="Left" Height="46" Margin="10.333,8,0,50" Grid.Row="1" Watermark="Please enter your commission" Text="{Binding Commission1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="584" TextChanged="commission1TextBox_TextChanged" Grid.Column="1" Grid.RowSpan="2"/>
             <Label Content="Area of hosting unit: :" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="56" Width="159" Margin="0,56,0,-56"/>
 
-        <ComboBox x:Name="Area1" IsEditable="True" IsReadOnly="True" Text="Please Select" Grid.Column="1" Margin="0.333,0.667,0.333,0" Grid.Row="2" Height="52" VerticalAlignment="Center" SelectionChanged="Area1_SelectionChanged" >
-            <ComboBoxItem Content="North" />
-            <ComboBoxItem Content="South" />
-            <ComboBoxItem Content="Center" />
-            <ComboBoxItem Content="Jerusalem" />
-        </ComboBox>
-        <Label Content="has Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,1,0,-17" Grid.Row="3" VerticalAlignment="Top" Height="44"/>
+            <ComboBox x:Name="Area1" IsEditable="True" IsReadOnly="True" Text="Please Select" Grid.Column="1" Margin="0.333,0.667,0.333,0" Grid.Row="2" Height="52" VerticalAlignment="Center" SelectionChanged="Area1_SelectionChanged" >
+                <ComboBoxItem Content="North" />
+                <ComboBoxItem Content="South" />
+                <ComboBoxItem Content="Center" />
+                <ComboBoxItem Content="Jerusalem" />
+            </ComboBox>
+            <Label Content="has Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,1,0,-17" Grid.Row="3" VerticalAlignment="Top" Height="44"/>
             <CheckBox x:Name="hasChildrensAttractions1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="20.667,15,-11.667,-0.333" Grid.Row="3" VerticalAlignment="Center" RenderTransformOrigin="-1.29,0.528"/>
-           <Label Content="has Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,3" Grid.Row="4" VerticalAlignment="Center" Height="29" Width="148"/>
+            <Label Content="has Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,3" Grid.Row="4" VerticalAlignment="Center" Height="29" Width="148"/>
             <CheckBox x:Name="hasGarden1CheckBox" Content="" HorizontalAlignment="Left" IsChecked="{Binding hasGarden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="9.667,6,0,10" Grid.Row="4" VerticalAlignment="Center" Height="16" Width="21" Grid.Column="1"/>
             <Label Content="has Pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="5" VerticalAlignment="Center" Height="26" Width="67"/>
             <CheckBox x:Name="hasPool1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,6,0,10" Grid.Row="5" VerticalAlignment="Center" Height="16" Width="20"/>
             <Label Content="has Jaccuzzi:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="6" VerticalAlignment="Center" Height="26" Width="85"/>
             <CheckBox x:Name="hasJaccuzzi1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding hasJaccuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,10,0,6" Grid.Row="6" VerticalAlignment="Center" Height="16" Width="21"/>
             <Button x:Name="Add" Background="SandyBrown" Content="Add" FontSize="25" Click="addButton_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="257.333,0,0,-0.333" Grid.Row="7" VerticalAlignment="Top" Width="377" Height="53"/>
-           <Button x:Name="Cancel" Background="PaleGreen" Content="Cancel" FontSize="25" Click="cancelButton_Click" HorizontalAlignment="Left" Margin="0,1,0,-0.333" Grid.Row="7" VerticalAlignment="Top" Width="416" Height="52" Grid.ColumnSpan="2"/>
-    </Grid>
+            <Button x:Name="Cancel" Background="PaleGreen" Content="Cancel" FontSize="25" Click="cancelButton_Click" HorizontalAlignment="Left" Margin="0,1,0,-0.333" Grid.Row="7" VerticalAlignment="Top" Width="416" Height="52" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Border>
+
 </Window>

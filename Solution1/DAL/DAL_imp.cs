@@ -35,7 +35,9 @@ namespace DAL
         /// <param name="guestRequest"></param>
         public void AddGuestRequest(GuestRequest guest)
         {//TODO: need to put try and catch
-            guest.GuestRequestKey1 = Configuration.GuestRequestKey++;
+            guest.GuestRequestKey1 = long.Parse(ConfigRoot.Element("GRkey").Value)+1;
+            ConfigRoot.Element("GRkey").Value = guest.GuestRequestKey1.ToString();
+            ConfigRoot.Save(ConfigPath);
             guest.RegistrationDate1 = DateTime.Now;
             GuestRequest guestRequest = Cloning.Clone(guest);
             XElement guestkey = new XElement("guestkey", guestRequest.GuestRequestKey1);
@@ -55,7 +57,8 @@ namespace DAL
             XElement adults = new XElement("adults", guestRequest.Adults1);
             XElement kids = new XElement("kids", guestRequest.Children1);
             XElement totalppl = new XElement("numppl", guestRequest.TotalGuests1);
-            GRroot.Add("GR", guestkey, pname, Fname, entryDate, ReleaseDate, registrationDate, mail, status, pool, jaccuzi, garden, childrenAttractions, Area, sub, adults, kids, totalppl);
+            XElement GR = new XElement("GR", guestkey, pname, Fname, entryDate, ReleaseDate, registrationDate, mail, status, pool, jaccuzi, garden, childrenAttractions, Area, sub, adults, kids, totalppl);
+            GRroot.Add(GR);
             GRroot.Save(GRPath);
         }
         /// <summary>
@@ -69,7 +72,9 @@ namespace DAL
                     if (item.HostingUnitName1 == hostingUnit.HostingUnitName1)
                         throw new UnexceptableDetailsException("cannot enter two hosting units with the same name");
                 }                 
-            hostingUnit.HostingUnitKey1 = Configuration.HostingUnitKey++;
+            hostingUnit.HostingUnitKey1 = long.Parse(ConfigRoot.Element("HUkey").Value)+1;
+            ConfigRoot.Element("HUkey").Value = hostingUnit.HostingUnitKey1.ToString();
+            ConfigRoot.Save(ConfigPath);
             HostingUnit unit = Cloning.Clone(hostingUnit);
             HUroot= new XElement("UNIT");
             XElement name = new XElement("name", unit.HostingUnitName1);
@@ -104,7 +109,9 @@ namespace DAL
         public void AddOrder(Order order)
         {
             order.CreateDate1 = DateTime.Now;
-            order.OrderKey1 = Configuration.OrderKey++;
+            order.OrderKey1 = long.Parse(ConfigRoot.Element("orderkey").Value) + 1;
+            ConfigRoot.Element("orderkey").Value = order.OrderKey1.ToString();
+            ConfigRoot.Save(ConfigPath);
             Order or = Cloning.Clone(order);
             XElement Cdate = new XElement("Cdate", or.CreateDate1);
             XElement orderdate = new XElement("orderdate", or.OrderDate1);
@@ -122,7 +129,9 @@ namespace DAL
         /// <param name="host">Host defined in BE</param>
         public void AddHost(Host host,string user,string pass)
         {
-            host.HostKey1 = Configuration.HostKey++;
+            host.HostKey1 = long.Parse(ConfigRoot.Element("hostkey").Value)+1;
+            ConfigRoot.Element("hostkey").Value = host.HostKey1.ToString();
+            ConfigRoot.Save(ConfigPath);
             Host hoe = Cloning.Clone(host);
             XElement username = new XElement("username",user);
             XElement password = new XElement("password",pass);
@@ -209,10 +218,7 @@ namespace DAL
                 HUelement.Element("garden").Value = hostingUnit.hasGarden1.ToString();
                 HUelement.Element("childrensAttractions").Value = hostingUnit.hasChildrensAttractions1.ToString();
                 HUelement.Element("jaccuzzi").Value = hostingUnit.hasJaccuzzi1.ToString();
-                FileStream file = new FileStream(HUPath, FileMode.Open);
-                XmlSerializer xmlSer = new XmlSerializer(hostingUnit.Diary2.GetType());
-                xmlSer.Serialize(file, hostingUnit.Diary2);
-                file.Close();
+                SaveToXML(hostingUnit.Diary2, HUPath);
                 HUroot.Save(HUPath);
             }
             catch (Exception)
@@ -251,7 +257,7 @@ namespace DAL
         #endregion
 
         #region delete
-        /// <summary>
+        /// <summary> 
         /// deletes an existing guest request
         /// </summary>
         /// <exception cref="KeyNotFoundException"></exception>
@@ -262,7 +268,7 @@ namespace DAL
             try
             {
                 GRelement = (from gr in GRroot.Elements()
-                             where int.Parse(gr.Element("guestkey").Value) == guestRequest.GuestRequestKey1
+                             where long.Parse(gr.Element("guestkey").Value) == guestRequest.GuestRequestKey1
                              select gr).FirstOrDefault();
                 GRelement.Remove();
                 GRroot.Save(GRPath);
@@ -320,17 +326,19 @@ namespace DAL
                              hasPool1 = bool.Parse(unit.Element("pool").Value),
                              hasGarden1 = bool.Parse(unit.Element("garden").Value),
                              hasJaccuzzi1 = bool.Parse(unit.Element("jaccuzzi").Value),
+                             Diary2 = LoadFromXML<bool[]>(HUPath),
                              Owner1 = new Host
-                             {PrivateName1=unit.Element("ownerPname").Value,
-                             FamilyName1=unit.Element("ownerLname").Value,
-                             MailAddress1=unit.Element("mail").Value,
-                             PhoneNumber1=int.Parse(unit.Element("phone").Value),
-                             HostKey1=long.Parse(unit.Element("hostKey").Value),
-                             BankAccountNumber1=int.Parse(unit.Element("bankNum").Value),
-                             //add the bank branch details
-                             NumOfHostinUnits1=int.Parse(unit.Element("numofunits").Value),
-                                CollectionClearance1= bool.Parse(unit.Element("clearance").Value),
+                             { PrivateName1 = unit.Element("ownerPname").Value,
+                                 FamilyName1 = unit.Element("ownerLname").Value,
+                                 MailAddress1 = unit.Element("mail").Value,
+                                 PhoneNumber1 = int.Parse(unit.Element("phone").Value),
+                                 HostKey1 = long.Parse(unit.Element("hostKey").Value),
+                                 BankAccountNumber1 = int.Parse(unit.Element("bankNum").Value),
+                                 //add the bank branch details
+                                 NumOfHostinUnits1 = int.Parse(unit.Element("numofunits").Value),
+                                 CollectionClearance1 = bool.Parse(unit.Element("clearance").Value),
                              }
+
                          }).ToList();
             }
             catch (Exception e)
@@ -354,30 +362,31 @@ namespace DAL
                 L = (from gr in GRroot.Elements()
                      select new GuestRequest()
                      {
-                         GuestRequestKey1=long.Parse(gr.Element("guestkey").Value),
-                         PrivateName1= gr.Element("Pname").Value,
-                         FamilyName1 =gr.Element("Fname").Value,
-                         EntryDate1=DateTime.Parse(gr.Element("entryDate").Value),
-                         ReleaseDate1=DateTime.Parse(gr.Element("releaseDate").Value),
-                         RegistrationDate1=DateTime.Parse(gr.Element("registrationDate").Value),
-                         MailAddress1=gr.Element("mail").Value,
-                         status1=(BEEnum.Status)Enum.Parse(typeof(BEEnum.Status),gr.Element("status").Value),
-                         pool1=(BEEnum.Option)Enum.Parse(typeof(BEEnum.Option),gr.Element("pool").Value),
+                         GuestRequestKey1 = long.Parse(gr.Element("guestkey").Value),
+                         PrivateName1 = gr.Element("Pname").Value,
+                         FamilyName1 = gr.Element("Fname").Value,
+                         EntryDate1 = DateTime.Parse(gr.Element("entryDate").Value),
+                         ReleaseDate1 = DateTime.Parse(gr.Element("releaseDate").Value),
+                         RegistrationDate1 = DateTime.Parse(gr.Element("registrationDate").Value),
+                         MailAddress1 = gr.Element("mail").Value,
+                         status1 = (BEEnum.Status)Enum.Parse(typeof(BEEnum.Status), gr.Element("status").Value),
+                         pool1 = (BEEnum.Option)Enum.Parse(typeof(BEEnum.Option), gr.Element("pool").Value),
                          Garden1 = (BEEnum.Option)Enum.Parse(typeof(BEEnum.Option), gr.Element("garden").Value),
                          ChildrensAttractions1 = (BEEnum.Option)Enum.Parse(typeof(BEEnum.Option), gr.Element("childrensAttractions").Value),
                          Jacuzzi1 = (BEEnum.Option)Enum.Parse(typeof(BEEnum.Option), gr.Element("jaccuzi").Value),
                          area1 = (BEEnum.Area)Enum.Parse(typeof(BEEnum.Area), gr.Element("Area").Value),
-                         SubArea1=gr.Element("subArea").Value,
-                         Adults1=int.Parse(gr.Element("adults").Value),
-                         Children1=int.Parse(gr.Element("kids").Value),
-                         TotalGuests1=int.Parse(gr.Element("numppl").Value)
+                         SubArea1 = gr.Element("subArea").Value,
+                         Adults1 = int.Parse(gr.Element("adults").Value),
+                         Children1 = int.Parse(gr.Element("kids").Value),
+                         TotalGuests1 = int.Parse(gr.Element("numppl").Value)
+
                      }).ToList();
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-
                 throw e;
             }
+            
             return L;
         }
         /// <summary>
@@ -642,10 +651,10 @@ namespace DAL
                 ConfigRoot = XElement.Load(ConfigPath);
                 hostRoot = XElement.Load("@HostXml.xml");
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
 
         }
@@ -667,7 +676,23 @@ namespace DAL
                         CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
                     }).Single();
             return host;
-        }
+}
+        public static void SaveToXML<T>(T source, string path)
+{
+    FileStream file = new FileStream(path, FileMode.Create);
+    XmlSerializer xmlSer = new XmlSerializer(source.GetType());
+    xmlSer.Serialize(file, source);
+    file.Close();
+}
+        public static T LoadFromXML<T>(string path)
+{
+    FileStream file = new FileStream(path, FileMode.Open);
+    XmlSerializer xmlSer = new XmlSerializer(typeof(T));
+    T result = (T)xmlSer.Deserialize(file);
+    file.Close();
+    return result;
+}
     }
 }
+
 
