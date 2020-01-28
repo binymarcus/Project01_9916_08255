@@ -47,7 +47,14 @@ namespace DAL
         }
         private void CreateConfigFiles()
         {
+            int key = 10000000;
             ConfigRoot = new XElement("Configinfo");
+            ConfigRoot.Save(ConfigPath);
+            XElement hostkey = new XElement("hostkey", key);
+            XElement GRkey = new XElement("GRkey", key);
+            XElement HUkey = new XElement("HUkey", key);
+            XElement orderkey = new XElement("orderkey", key);
+            ConfigRoot.Add(hostkey, GRkey, HUkey, orderkey);
             ConfigRoot.Save(ConfigPath);
         }
         #endregion
