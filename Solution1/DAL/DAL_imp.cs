@@ -98,7 +98,8 @@ namespace DAL
             XElement hostkey = new XElement("hostKey", or.hostKey1);
             XElement GRKey = new XElement("GRKey", or.OrderKey1);
             XElement status = new XElement("status", or.Status1);
-            OrderRoot.Add("order", Cdate, orderdate, orderKey, HUKey, hostkey, GRKey, status);
+            XElement operate = new XElement("order", Cdate, orderdate, orderdate, HUKey, hostkey, GRKey, status);
+            OrderRoot.Add();
             OrderRoot.Save(OrderPath);
         }
         /// <summary>
@@ -307,13 +308,13 @@ namespace DAL
                 L = (from order in OrderRoot.Elements()
                      select new Order()
                      {
-                         CreateDate1=DateTime.Parse(order.Element("Cdate").Value),
-                         OrderDate1=DateTime.Parse(order.Element("orderdate").Value),
-                         OrderKey1=long.Parse(order.Element("orderKey").Value),
-                         HostingUnitKey1=long.Parse(order.Element("HUkey").Value),
+                         CreateDate1 = DateTime.Parse(order.Element("Cdate").Value),
+                         OrderDate1 = DateTime.Parse(order.Element("orderdate").Value),
+                         OrderKey1 = long.Parse(order.Element("orderKey").Value),
+                         HostingUnitKey1 = long.Parse(order.Element("HUkey").Value),
                          GuestRequestKey1 = long.Parse(order.Element("GRKey").Value),
-                         hostKey1=long.Parse(order.Element("hostKey").Value),
-                         Status1 = (BEEnum.Status)Enum.Parse(typeof(BEEnum.Status),order.Element("status").Value)
+                         hostKey1 = long.Parse(order.Element("hostKey").Value),
+                         Status1 = (BEEnum.Status)Enum.Parse(typeof(BEEnum.Status), order.Element("status").Value)
                      }).ToList();
             }
             catch (Exception e)
