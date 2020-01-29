@@ -486,6 +486,15 @@ namespace DAL
             throw new Exception("the hosting unit does not exist");
 
         }
+        public Host getHostByKey(long key1)
+        {
+            foreach (var item in GetAllHosts())
+            {
+                if (key1 == item.HostKey1)
+                    return item;
+            }
+            throw new Exception("the Host does not exist");
+        }
         public List<GuestRequest> GetallGuestRequestByName(string pname, string fname)
         {
             /*foreach (var item in GetAllGuestRequest())

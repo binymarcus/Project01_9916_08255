@@ -89,6 +89,9 @@
     <Compile Include="AdminFolder\GuestRequest\ShowAllGR.xaml.cs">
       <DependentUpon>ShowAllGR.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminFolder\Host\numOfHUforEachHostForAdmin.xaml.cs">
+      <DependentUpon>numOfHUforEachHostForAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminFolder\Host\ShowAllHosts.xaml.cs">
       <DependentUpon>ShowAllHosts.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminFolder\GuestRequest\ShowAllGR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminFolder\Host\numOfHUforEachHostForAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

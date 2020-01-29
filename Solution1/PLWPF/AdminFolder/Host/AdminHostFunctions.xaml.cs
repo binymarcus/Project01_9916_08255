@@ -12,6 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
+using PLWPF.AdminFolder.Host;
 
 namespace PLWPF
 {
@@ -20,6 +23,8 @@ namespace PLWPF
     /// </summary>
     public partial class AdminHostFunctions : Window
     {
+        IBL bl = FactoryBL.getIBL();
+        List<BE.GuestRequest> grList = new List<BE.GuestRequest>();
         public AdminHostFunctions()
         {
             InitializeComponent();
@@ -37,6 +42,37 @@ namespace PLWPF
         {
             Window adminMainWindow = new AdminMainWindow();
             adminMainWindow.Show();
+            this.Close();
+        }
+
+        private void FindHostMost_Click(object sender, RoutedEventArgs e)
+        {
+            Host hosty = null;
+            int max = -1;
+            List<Host> L = new List<Host>();           
+            L = bl.GetAllHosts();
+
+            if (L.Count() != 0)
+            {
+                foreach (var host in L)
+                {
+                    if (host.NumOfHostinUnits1 >= max)
+                    {
+                        max = host.NumOfHostinUnits1;
+                        hosty = host;
+                    }
+                }
+                MessageBox.Show("the host with most hosting unit:" + hosty.HostKey1 + "/n" +
+                    "num of hosting units:" + hosty.NumOfHostinUnits1);
+            }
+            else
+                MessageBox.Show("there are no hosts in the system!");
+        }
+
+        private void somthing_Click(object sender, RoutedEventArgs e)
+        {
+            Window win = new numOfHUforEachHostForAdmin();
+            win.Show();
             this.Close();
         }
     }

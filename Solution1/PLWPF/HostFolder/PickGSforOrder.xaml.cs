@@ -22,7 +22,7 @@ namespace PLWPF
     public partial class PickGSforOrder : Window
     {
         IBL bl = FactoryBL.getIBL();
-        List<BE.GuestRequest> guestList = new List<BE.GuestRequest>();
+        List<BE.GuestRequest> grList = new List<BE.GuestRequest>();
         long key1;
         long hostkey1;
 
@@ -39,16 +39,6 @@ namespace PLWPF
             HostingUnit hoeunit;
             hoeunit = bl.GetHostingUnitByKey(hoeunitkey);
             grid2.DataContext = hoeunit;
-            guestList = bl.GetAllGuestRequest();
-            scrollview1 = new ScrollViewer();
-
-            foreach (BE.GuestRequest item in guestList)
-            {
-                GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item,key1,hostkey1);
-                b.Children.Add(gruc);
-            }
-
-            scrollview1.Content = b;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -62,6 +52,188 @@ namespace PLWPF
         private void BackB_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void childrenGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsWithchildrensattractions();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void gardenGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsWithGardens();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void jaccuzziGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsWithJaccuzzis();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void poolGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsWithPools();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void southGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsInSouth();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void northGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsInNorth();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void centerGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsInCenter();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void jemGR_Click(object sender, RoutedEventArgs e)
+        {
+            scrollview1 = new ScrollViewer();
+            try
+            {
+                grList = bl.allGRsInJem();
+
+                foreach (BE.GuestRequest item in grList)
+                {
+                    GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                    b.Children.Add(gruc);
+                }
+
+                scrollview1.Content = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("no guest requests fit critiria");
+            }
+        }
+
+        private void allGR_Click(object sender, RoutedEventArgs e)
+        {
+            grList = bl.allAvailableGR();
+            scrollview1 = new ScrollViewer();
+
+            foreach (BE.GuestRequest item in grList)
+            {
+                GRuserControlForAddOrder gruc = new GRuserControlForAddOrder(item, key1, hostkey1);
+                b.Children.Add(gruc);
+            }
+
+            scrollview1.Content = b;
         }
     }
 }

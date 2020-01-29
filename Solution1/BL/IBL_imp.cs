@@ -434,6 +434,18 @@ namespace BL
                 throw e;
             }
         }
+        public Host getHostByKey(long key1)
+        {
+            try
+            {
+                return dal.getHostByKey(key1);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
 
         #endregion
         #region calc
@@ -760,6 +772,20 @@ namespace BL
 
             return L;
         }
+        public List<GuestRequest> allAvailableGR()
+        {
+            List<GuestRequest> L = new List<GuestRequest>();
+            var v = from item in dal.GetAllGuestRequest()
+                    where item.status1 == BEEnum.Status.pending
+                    select item;
+            foreach (var item in v)
+            {
+                L.Add(item);
+
+            }
+
+            return L;
+        }
         #endregion
         public HostingUnit findFirstBestUnitInArea(GuestRequest guest)
         {
@@ -895,7 +921,6 @@ namespace BL
                 throw e;
             }
         }
-
         public Host getHostByUser(string user)
         {
             try
@@ -905,6 +930,31 @@ namespace BL
             catch (Exception e)
             {
 
+                throw e;
+            }
+        }
+        public int getallbusydays()
+        {
+            try
+            {
+                List<HostingUnit> units = new List<HostingUnit>();
+                units = dal.GetAllHostingUnits();
+                int amount = 0;
+                foreach (var item in units)
+                {
+                    for (int i = 0; i < 12; i++)
+                    {
+                        for (int j = 0; j < 31; j++)
+                        {
+                            if (item.Diary1[i, j] == true)
+                                amount++;
+                        }
+                    }
+                }
+                return amount;
+            }
+            catch (Exception e)
+            {
                 throw e;
             }
         }

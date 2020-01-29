@@ -89,6 +89,7 @@ namespace DAL
 
         List<GuestRequest> GetallGuestRequestByName(string pname, string fname);
         List<HostingUnit> GetAllHostingUnitsByHostKey(long key1);
+        Host getHostByKey(long key1);
         #endregion
         HostingUnit updateDiary(HostingUnit host, GuestRequest guest);
         List<Order> GetAllOrdersByHostKey(long hostkey);

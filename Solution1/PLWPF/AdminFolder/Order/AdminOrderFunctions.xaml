@@ -9,7 +9,7 @@
         Title="AdminOrderFunctions" Height="450" Width="800">
     <Grid Background="AntiqueWhite">
         <Button x:Name="GetAllOrders" FontSize="25" Background="Aqua" Content="Get All Orders" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllOrders_Click"/>
-        <Button Content="Remove Old Orders" Click="removerOldOrdersButton" FontSize="25" Background="Aqua" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
+        <Button x:Name="removeOld" Content="Remove Old Orders" Visibility="Visible" Click="removerOldOrdersButton" FontSize="25" Background="Aqua" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
         <Button x:Name="Remove" Click="Remove_Click" Visibility="Hidden" Content="Remove" Background="Aqua" Margin="423,10,203.333,310.667"/>
         <Button x:Name="BackButton" FontSize="25" Background="BlueViolet" Content="Back" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
         <xctk:WatermarkTextBox x:Name="textBox" Visibility="Hidden"  HorizontalAlignment="Left" Height="100" Margin="590,10,0,0" TextWrapping="Wrap" Watermark="Please enter number of days" VerticalAlignment="Top" Width="193"/>

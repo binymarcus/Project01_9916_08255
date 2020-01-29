@@ -43,6 +43,7 @@ namespace PLWPF
 
         private void removerOldOrdersButton(object sender, RoutedEventArgs e)
         {
+            removeOld.Visibility = Visibility.Hidden;
             Remove.Visibility = Visibility.Visible;
             textBox.Visibility = Visibility.Visible;
         }

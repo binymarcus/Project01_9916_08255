@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:PLWPF"
              xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.GRuserControlForAddOrder"
              mc:Ignorable="d" 
-             d:DesignHeight="650" Loaded="UserControl_Loaded_1" Width="400">
+             d:DesignHeight="650" Loaded="UserControl_Loaded_1" Width="400"
+    Background="AliceBlue">
     <UserControl.Resources>
         <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
     </UserControl.Resources>
@@ -40,14 +41,8 @@
             </Grid.ColumnDefinitions>
             <Label Content="Adults:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,24,0,2" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="56" Grid.RowSpan="2"/>
             <TextBox x:Name="adults1TextBox" HorizontalAlignment="Left" Height="25" Margin="1,1.333,0,1.667" Grid.Row="5" Text="{Binding Adults1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="200" Grid.Column="1"/>
-            <Label Content="area:" Grid.Column="0" HorizontalAlignment="Left" Margin="2,22.333,0,5.667" Grid.Row="7" VerticalAlignment="Center" Height="26" Width="95"/>
-            <ComboBox x:Name="area1TextBox" HorizontalAlignment="Left" Height="28" Margin="1,24.667,0,0" Grid.Row="7" Text="{Binding area1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="200" Grid.Column="1">
-                <ComboBoxItem Content="All" />
-                <ComboBoxItem Content="North" />
-                <ComboBoxItem Content="South" />
-                <ComboBoxItem Content="Center" />
-                <ComboBoxItem Content="Jerusalem" />
-            </ComboBox>
+            <Label Content="area:" Grid.Column="0" HorizontalAlignment="Left" Margin="2,27,0,1.667" Grid.Row="7" VerticalAlignment="Center" Height="26" Width="95"/>
+
             <Label Content="Children:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,21.667" Grid.Row="6" VerticalAlignment="Center" Height="26" Width="67" Grid.RowSpan="2"/>
             <TextBox x:Name="children1TextBox"  HorizontalAlignment="Left" Height="26" Margin="1,0.667,0,26.667" Grid.Row="6" Text="{Binding Children1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="200" Grid.RowSpan="2" Grid.Column="1"/>
             <Label Content="Childrens Attractions:" HorizontalAlignment="Left" Margin="3,41,0,32.333" Grid.Row="13" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
@@ -109,6 +104,7 @@
             <TextBlock HorizontalAlignment="Left" Grid.Row="16" TextWrapping="Wrap" Text="------------------------------------------------------------------------------------------" VerticalAlignment="Top" Height="26" Width="435" Margin="10,69,-23,-61" Grid.ColumnSpan="2"/>
 
         </Grid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="135,236,0,0" TextWrapping="Wrap" Text="{Binding area1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="196"/>
 
     </Grid>
 </UserControl>

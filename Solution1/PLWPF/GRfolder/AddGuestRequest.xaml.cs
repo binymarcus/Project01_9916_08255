@@ -26,8 +26,6 @@ namespace PLWPF
             InitializeComponent();
             guest = new BE.GuestRequest();
             this.GuestRequestDetailsGrid.DataContext = guest;
-            //guest.FamilyName1 = this.familyName1TextBox.Text;
-            //need to finsih adding all the properties
             bl = BL.FactoryBL.getIBL();
             
         }

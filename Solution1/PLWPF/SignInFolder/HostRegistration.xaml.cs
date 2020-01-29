@@ -25,6 +25,18 @@ namespace PLWPF
         XElement guestRoot = new XElement("guestsInfo");
         XElement hostRoot = new XElement("hostsInfo");
         IBL bl;
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public HostRegistraion()
         {
             InitializeComponent();
@@ -77,11 +89,6 @@ namespace PLWPF
                 MessageBox.Show("enter your family name.");
                 familyName1TextBox.Focus();
             }
-            else if (mailAddress1TextBox.Text.Length == 0)
-            {
-                MessageBox.Show("enter your email address.");
-                mailAddress1TextBox.Focus();
-            }
             else if (phoneNumber1TextBox.Text.Length == 0)
             {
                 MessageBox.Show("enter your phone number.");
@@ -97,6 +104,12 @@ namespace PLWPF
                 MessageBox.Show("bank account number has to ba a number.");
                 bankAccountNumber1TextBox.Clear();
                 bankAccountNumber1TextBox.Focus();
+            }
+            else if (!(IsValidEmail(mailAddress1TextBox.Text)) || mailAddress1TextBox.Text == "")
+            {
+                MessageBox.Show("Enter a valid email address");
+                mailAddress1TextBox.Clear();
+                mailAddress1TextBox.Focus();
             }
             else if (!(int.TryParse(phoneNumber1TextBox.Text, out int1)))
             {
