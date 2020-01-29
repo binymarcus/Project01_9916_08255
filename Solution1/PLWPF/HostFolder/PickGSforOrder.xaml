@@ -10,7 +10,11 @@
     Background="Beige">
     <Window.Resources>
         <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
-    </Window.Resources>
+            <LinearGradientBrush x:Key="WindowBackgroundBrush">
+                <GradientStop Offset="0" Color="Silver"/>
+                <GradientStop Offset="1" Color="Cornsilk"/>
+            </LinearGradientBrush>
+        </Window.Resources>
     <Grid>
 
         <Grid x:Name="grid2" VerticalAlignment="Top" Margin="503,74,0,0" HorizontalAlignment="Left" DataContext="{StaticResource hostingUnitViewSource}">
@@ -51,10 +55,23 @@
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hosting Unit Name:"/>
             <TextBox x:Name="hostingUnitName1TextBox" Width="120" VerticalAlignment="Center" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
-        <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="434">
+        
+        <ScrollViewer x:Name="scrollview1" Visibility="Visible" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="434">
             <StackPanel x:Name="b" HorizontalAlignment="Stretch" Height="auto" VerticalAlignment="Stretch" Width="auto"/>
         </ScrollViewer>
+        
         <Button x:Name="BackB" Content="Back" HorizontalAlignment="Left" Margin="608,378,0,9.667" Width="171" Click="BackB_Click"/>
         <Label Content="your chosen hosting unit:" FontSize="20" HorizontalAlignment="Left" Margin="506,23,0,0" VerticalAlignment="Top" Height="46" Width="273"/>
+
+        <Button x:Name="poolGR" Background="{StaticResource WindowBackgroundBrush}" Content="allGRsWithPools" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="poolGR_Click"/>
+        <Button x:Name="jaccuzziGR" Background="{StaticResource WindowBackgroundBrush}" Content="allGRsWithJaccuzzis" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="jaccuzziGR_Click"/>
+        <Button x:Name="gardenGR" Background="{StaticResource WindowBackgroundBrush}" Content="allGRsWithGardens" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="gardenGR_Click"/>
+        <Button x:Name="childrenGR" Background="{StaticResource WindowBackgroundBrush}" Content="allGRsWithchildrensattractions" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="childrenGR_Click"/>
+        <Button x:Name="southGR" Background="{StaticResource WindowBackgroundBrush}" Content="All GRs In The South" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="southGR_Click"/>
+        <Button x:Name="northGR" Background="{StaticResource WindowBackgroundBrush}" Content="All GRs In The North" HorizontalAlignment="Left" Margin="207,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="northGR_Click"/>
+        <Button x:Name="centerGR" Background="{StaticResource WindowBackgroundBrush}" Content="All GRs In The Center" HorizontalAlignment="Left" Margin="207,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="centerGR_Click"/>
+        <Button x:Name="jemGR" Background="{StaticResource WindowBackgroundBrush}" Content="All GRs In Jerusalam" HorizontalAlignment="Left" Margin="207,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="jemGR_Click"/>
+        <Button x:Name="allGR" Content="all available guest requests" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="allGR_Click"/>
+
     </Grid>
 </Window>

@@ -18,8 +18,8 @@
     </Window.Resources>
     <Grid Background="{StaticResource WindowBackgroundBrush}">
         <Button x:Name="GetAllHostsButton" Background="{StaticResource WindowBackgroundBrush1}" FontSize="25" Content="Get All Hosts" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllHostsButton_Click"/>
-        <Button x:Name="DoSomthing" Background="{StaticResource WindowBackgroundBrush1}" FontSize="25" Content="Do Somthing" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100"/>
-        <Button x:Name="BackButton" Background="Red" FontSize="25" Content="Back" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
+        <Button x:Name="somthing" Background="{StaticResource WindowBackgroundBrush1}" FontSize="19" Content="get host request by num of hosting units" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="somthing_Click"/>
+        <Button x:Name="BackButton" Background="Red" FontSize="25" Content="Back" HorizontalAlignment="Left" Margin="10,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
         <Button x:Name="FindHostMost" Background="{StaticResource WindowBackgroundBrush1}" Content="find host with most hosting units" FontSize="24" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="FindHostMost_Click"/>
 
     </Grid>

@@ -95,6 +95,8 @@ namespace BL
         GuestRequest GetGuestRequestByKey(long key);
         HostingUnit GetHostingUnitByKey(long key);
         List<HostingUnit> GetAllHostingUnitsByHostKey(long key1);
+        Host getHostByKey(long key1);
+
         List<Order> GetAllOrdersByHostKey(long hostkey);
         List<GuestRequest> GetallGuestRequestByName(string pname ,string fname);
         #endregion
@@ -179,6 +181,9 @@ namespace BL
         List<GuestRequest> allGRsInNorth();
         List<GuestRequest> allGRsInCenter();
         List<GuestRequest> allGRsInJem();
+        List<GuestRequest> allAvailableGR();
+
+        int getallbusydays();
         HostingUnit findFirstBestUnitInArea(GuestRequest guest);
 
         Order findLongestOrderPending();

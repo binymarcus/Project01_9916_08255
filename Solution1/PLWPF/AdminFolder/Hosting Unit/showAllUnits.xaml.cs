@@ -49,7 +49,7 @@ namespace PLWPF.AdminFolder
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Window GRMain = new AdminHostFunctions();
+            Window GRMain = new AdminHUfunctions();
             GRMain.Show();
             this.Close();
         }

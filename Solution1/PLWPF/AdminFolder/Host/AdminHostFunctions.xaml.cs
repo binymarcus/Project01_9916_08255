@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using PLWPF.AdminFolder.Host;
 
 namespace PLWPF
 {
@@ -66,6 +67,13 @@ namespace PLWPF
             }
             else
                 MessageBox.Show("there are no hosts in the system!");
+        }
+
+        private void somthing_Click(object sender, RoutedEventArgs e)
+        {
+            Window win = new numOfHUforEachHostForAdmin();
+            win.Show();
+            this.Close();
         }
     }
 }
