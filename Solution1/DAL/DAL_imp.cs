@@ -580,7 +580,7 @@ namespace DAL
             host = (from use in hostRoot.Elements()
                     where use.Element("username").Value == user
                     select new BE.Host()
-                    {
+                    {   HostKey1 = long.Parse(use.Element("key").Value),
                         PrivateName1 = use.Element("firstName").Value,
                         FamilyName1 = use.Element("lastName").Value,
                         MailAddress1 = use.Element("Email").Value,
