@@ -37,7 +37,7 @@ namespace PLWPF
             hostkey1 = hostkey;
             gr = guesty;
             hu = bl.GetHostingUnitByKey(key2);
-            ho = bl.getHostByKey(hostkey);
+           // ho = bl.getHostByKey(hostkey);
             grid1.DataContext = guesty;
             order = new BE.Order();
         }
@@ -68,7 +68,7 @@ namespace PLWPF
                 //sending mail
                 MailMessage mail = new MailMessage();
                 mail.To.Add(gr.MailAddress1);
-                mail.From = new MailAddress(ho.MailAddress1);
+                mail.From = new MailAddress("n@m.com");
                 mail.Subject = "order added";
                 mail.Body = "<p>your guest request has been added to an order</p>";
                 mail.IsBodyHtml = true;
