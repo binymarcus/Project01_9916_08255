@@ -26,6 +26,18 @@ namespace PLWPF
         long key1;
         long hostkey1;
 
+        private void hide()
+        {
+            poolGR.Visibility =
+              jaccuzziGR.Visibility =
+              gardenGR.Visibility =
+              childrenGR.Visibility =
+              centerGR.Visibility =
+              southGR.Visibility =
+              northGR.Visibility =
+              jemGR.Visibility =
+              allGR.Visibility = Visibility.Hidden;
+        }
         public PickGSforOrder()
         {
             InitializeComponent();
@@ -56,6 +68,7 @@ namespace PLWPF
 
         private void childrenGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             scrollview1 = new ScrollViewer();
             try
             {
@@ -77,6 +90,7 @@ namespace PLWPF
 
         private void gardenGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             scrollview1 = new ScrollViewer();
             try
             {
@@ -98,6 +112,7 @@ namespace PLWPF
 
         private void jaccuzziGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             scrollview1 = new ScrollViewer();
             try
             {
@@ -119,6 +134,8 @@ namespace PLWPF
 
         private void poolGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
+
             scrollview1 = new ScrollViewer();
             try
             {
@@ -140,6 +157,7 @@ namespace PLWPF
 
         private void southGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             scrollview1 = new ScrollViewer();
             try
             {
@@ -161,6 +179,7 @@ namespace PLWPF
 
         private void northGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             scrollview1 = new ScrollViewer();
             try
             {
@@ -182,6 +201,7 @@ namespace PLWPF
 
         private void centerGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             scrollview1 = new ScrollViewer();
             try
             {
@@ -203,6 +223,7 @@ namespace PLWPF
 
         private void jemGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             scrollview1 = new ScrollViewer();
             try
             {
@@ -224,6 +245,7 @@ namespace PLWPF
 
         private void allGR_Click(object sender, RoutedEventArgs e)
         {
+            hide();
             grList = bl.allAvailableGR();
             scrollview1 = new ScrollViewer();
 
