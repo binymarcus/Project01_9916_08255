@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
+
 namespace BE
 {
     public class HostingUnit
@@ -11,7 +12,6 @@ namespace BE
         long HostingUnitKey;
         Host Owner; // the owner of the hosting unit
         string HostingUnitName; // hosting unit
-        [XmlIgnore]
         bool[,] Diary = new bool[12,31];  //matrix, repersent if occupied or vacant
         bool hasPool;
         bool hasJaccuzzi;
@@ -22,15 +22,18 @@ namespace BE
         #region properties
         public long HostingUnitKey1 { get => HostingUnitKey; set => HostingUnitKey = value; }
         public Host Owner1 { get => Owner; set => Owner = value; }
+        [XmlIgnore]
+        public bool[,] Diary1 { get => Diary; set => Diary = value; }
         public string HostingUnitName1 { get => HostingUnitName; set => HostingUnitName = value; }
-        public bool[] Diary2 { get => Diary1.Flatten();  set => Diary1 = value.Expand(12); }
+        [XmlArray("Diary1")]
+        public bool[] Diary2 { get => Flatten(Diary1);  set => Diary1 =Expand(Diary2,12); }
         public BEEnum.Area AreaOfHostingUnit { get => areaOfHOstingUnit; set => areaOfHOstingUnit = value;}
         public bool hasPool1 { get => hasPool; set => hasPool = value; }
         public bool hasJaccuzzi1 { get => hasJaccuzzi; set => hasJaccuzzi = value; }
         public bool hasGarden1 { get => hasGarden; set => hasGarden = value; }
         public bool hasChildrensAttractions1 { get => hasChildrensAttractions; set => hasChildrensAttractions = value; }
         public int Commission1 { get => commission; set => commission = value; }
-        public bool[,] Diary1 { get => Diary; set => Diary = value; }
+       
         #endregion
         public override string ToString()
         {
@@ -66,6 +69,34 @@ namespace BE
             }
             return Dates;
         }
-
+        private  T[] Flatten<T>(T[,] arr)
+        {
+            int rows = arr.GetLength(0);
+            int columns = arr.GetLength(1);
+            T[] arrFlattened = new T[rows * columns];
+            for (int j = 0; j < rows; j++)
+            {
+                for (int i = 0; i < columns; i++)
+                {
+                    var test = arr[j, i];
+                    arrFlattened[i * rows + j] = arr[j, i];
+                }
+            }
+            return arrFlattened;
+        }
+        private  T[,] Expand<T>(T[] arr, int rows)
+        {
+            int length = arr.GetLength(0);
+            int columns = length / rows;
+            T[,] arrExpanded = new T[rows, columns];
+            for (int j = 0; j < rows; j++)
+            {
+                for (int i = 0; i < columns; i++)
+                {
+                    arrExpanded[j, i] = arr[j * rows + i];
+                }
+            }
+            return arrExpanded;
+        }
     }
 }

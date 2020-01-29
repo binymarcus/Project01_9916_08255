@@ -24,16 +24,17 @@ namespace PLWPF.HostFolder
     {
         IBL bl = FactoryBL.getIBL();
         Order or;
+        string username;
         public UpdateOrderUC()
         {
             InitializeComponent();
         }
-        public UpdateOrderUC(BE.Order orderuc)
+        public UpdateOrderUC(BE.Order orderuc,string user)
         {
             InitializeComponent();
             or = orderuc;
             grid1.DataContext = orderuc;
-
+            username = user;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -51,7 +52,7 @@ namespace PLWPF.HostFolder
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bl.UpdateOrder(or);
-            Window HostWindow = new HostWindow();
+            Window HostWindow = new HostWindow(username);
             HostWindow.Show();
         }
 

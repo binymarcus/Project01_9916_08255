@@ -24,18 +24,20 @@ namespace PLWPF
         BE.HostingUnit unit;
          IBL bl = BL.FactoryBL.getIBL();
         BE.Host owner;
+        string username;
         public AddUnit()
         {
             InitializeComponent();
             unit = new BE.HostingUnit();
         }
 
-        public AddUnit(BE.Host host)
+        public AddUnit(BE.Host host,string user)
         {
             InitializeComponent();
             owner = host;
             unit = new BE.HostingUnit();
             this.addunit.DataContext = unit;
+            username = user;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -67,7 +69,7 @@ namespace PLWPF
                     bl.AddHostingUnit(unit);
                     MessageBox.Show("Hosting Unit Added, Key:" + unit.HostingUnitKey1);
                     this.DataContext = unit;
-                    Window HostingUnitWindow = new HostWindow();
+                    Window HostingUnitWindow = new HostWindow(username);
                     HostingUnitWindow.Show();
                     this.Close();
                 }
@@ -100,7 +102,7 @@ namespace PLWPF
         }
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Window HostingUnitWindow = new HostWindow();
+            Window HostingUnitWindow = new HostWindow(username);
             HostingUnitWindow.Show();
             this.Close();
         }

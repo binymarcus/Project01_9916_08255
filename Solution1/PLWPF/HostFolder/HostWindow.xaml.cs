@@ -25,22 +25,22 @@ namespace PLWPF
         BE.Host host;
         XElement HostRoot = new XElement("hostsInfo");
         IBL bl = FactoryBL.getIBL();
-        public HostWindow()
-        {
-            InitializeComponent();
-            LoadData();
-            host = new BE.Host();
-            try
-            {
-                host = getOldestHostKey();
+        //public HostWindow()
+        //{
+        //    InitializeComponent();
+        //    LoadData();
+        //    host = new BE.Host();
+        //    try
+        //    {
+        //        host = getOldestHostKey();
 
-            }
-            catch
-            {
+        //    }
+        //    catch
+        //    {
 
 
-            }
-        }
+        //    }
+        //}
         public HostWindow(string username)
         {
             InitializeComponent();
@@ -68,15 +68,14 @@ namespace PLWPF
         }
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadData();
-            Window addUnitWindow = new AddUnit(host);
+            Window addUnitWindow = new AddUnit(host,user);
             addUnitWindow.Show();
             this.Close();
 
         }
         private void updateUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            Window updateUnitWindow = new updeletebyunit();
+            Window updateUnitWindow = new updeletebyunit(user);
             updateUnitWindow.Show();
             this.Close();
 
@@ -127,7 +126,7 @@ namespace PLWPF
         {
             try
             {
-                Window addWindow = new AddOrder(Convert.ToInt64(host.HostKey1));
+                Window addWindow = new AddOrder(Convert.ToInt64(host.HostKey1),user);
                 addWindow.Show();
                 this.Close();
             }
@@ -141,7 +140,7 @@ namespace PLWPF
         {
             try
             {
-                Window updateOrderwindow = new HostFolder.updateOrderWindow(Convert.ToInt64(host.HostKey1));
+                Window updateOrderwindow = new HostFolder.updateOrderWindow(Convert.ToInt64(host.HostKey1),user);
                 updateOrderwindow.Show();
                 this.Close();
             }
@@ -155,7 +154,7 @@ namespace PLWPF
         {
             try
             {
-                Window showallwindow = new showAllHUWindow(Convert.ToInt64(host.HostKey1));
+                Window showallwindow = new showAllHUWindow(Convert.ToInt64(host.HostKey1),user);
                 showallwindow.Show();
                 this.Close();
             }

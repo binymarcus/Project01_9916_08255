@@ -15,7 +15,6 @@ namespace DAL
         string GRPath = "@GR_XML.xml";
         XElement GRroot = new XElement("GRinfo");
         string HUPath = "@HU_XML.xml";
-        XElement HUroot = new XElement("HUinfo");
         string OrderPath = "@Order_XML.xml";
         XElement OrderRoot = new XElement("Orderinfo");
         string ConfigPath = "@Config_XML.xml";
@@ -23,10 +22,12 @@ namespace DAL
         String hostPath = "@HostXml.xml";
         XElement hostRoot = new XElement("hostsInfo");
         Dal_XML_imp imp;
+        static List<HostingUnit> huList = new List<HostingUnit>();
         public DAL_imp()
         {
             imp = new Dal_XML_imp();
             LoadData();
+            huList=LoadFromXML<List<HostingUnit>>( HUPath,huList);
         }
         #region add
         /// <summary>
@@ -71,36 +72,13 @@ namespace DAL
                {
                     if (item.HostingUnitName1 == hostingUnit.HostingUnitName1)
                         throw new UnexceptableDetailsException("cannot enter two hosting units with the same name");
-                }                 
-            hostingUnit.HostingUnitKey1 = long.Parse(ConfigRoot.Element("HUkey").Value)+1;
-            ConfigRoot.Element("HUkey").Value = hostingUnit.HostingUnitKey1.ToString();
+                }
+            hostingUnit.HostingUnitKey1 = long.Parse(ConfigRoot.Element("HUkey").Value);
+            ConfigRoot.Element("HUkey").Value =( hostingUnit.HostingUnitKey1 + 1).ToString();
             ConfigRoot.Save(ConfigPath);
-            HostingUnit unit = Cloning.Clone(hostingUnit);
-            HUroot= new XElement("UNIT");
-            XElement name = new XElement("name", unit.HostingUnitName1);
-            XElement key = new XElement("key", unit.HostingUnitKey1);
-            XElement Area = new XElement("Area", unit.AreaOfHostingUnit);
-            XElement commission = new XElement("commission", unit.Commission1);
-            XElement ownerPname = new XElement("ownerPname", unit.Owner1.PrivateName1);
-            XElement ownerLname = new XElement("ownerLname", unit.Owner1.FamilyName1);
-            XElement mail = new XElement("mail", unit.Owner1.MailAddress1);
-            XElement phone = new XElement("phone", unit.Owner1.PhoneNumber1);
-            XElement hostKey = new XElement("hostKey", unit.Owner1.HostKey1);
-            XElement bankNum = new XElement("bankNum", unit.Owner1.BankAccountNumber1);
-            XElement branncdets= new XElement("branchdets", unit.Owner1.BankBranchDetails1);
-            XElement clearance = new XElement("clearance", unit.Owner1.CollectionClearance1);
-            XElement numofunits = new XElement("numofunits", unit.Owner1.NumOfHostinUnits1);
-            XElement pool = new XElement("pool", unit.hasPool1);
-            XElement garden = new XElement("garden", unit.hasGarden1);
-            XElement childrens = new XElement("childrensAttractions", unit.hasChildrensAttractions1);
-            XElement jac = new XElement("jaccuzzi", unit.hasJaccuzzi1);
-            HUroot.Add("unit", name, key, Area, commission, pool, garden, childrens, jac);
-            FileStream file = new FileStream(HUPath, FileMode.Open);
-            XmlSerializer xmlSer = new XmlSerializer(unit.Diary2.GetType());
-            xmlSer.Serialize(file, unit.Diary2);
-            file.Close();
-            HUroot.Add("owner", ownerPname,ownerLname,ownerLname,phone,hostKey,bankNum,branncdets,clearance,numofunits);
-            HUroot.Save(HUPath);
+            huList.Add(hostingUnit);
+            SaveToXML(huList, HUPath);
+
         }
         /// <summary>
         /// adds an order from a client to the system
@@ -195,37 +173,9 @@ namespace DAL
         /// <param name="hostingUnit">hosting unit defined in BE</param>
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            XElement HUelement;
-            try
-            {
-                HUelement = (from gr in HUroot.Elements()
-                             where int.Parse(gr.Element("key").Value) == hostingUnit.HostingUnitKey1
-                             select gr).FirstOrDefault();
-                HUelement.Element("name").Value = hostingUnit.HostingUnitName1;
-                HUelement.Element("key").Value = hostingUnit.HostingUnitKey1.ToString();
-                HUelement.Element("Area").Value = hostingUnit.AreaOfHostingUnit.ToString();
-                HUelement.Element("commission").Value = hostingUnit.Commission1.ToString();
-                HUelement.Element("ownerPname").Value = hostingUnit.Owner1.PrivateName1;
-                HUelement.Element("ownerLname").Value = hostingUnit.Owner1.FamilyName1;
-                HUelement.Element("mail").Value = hostingUnit.Owner1.MailAddress1;
-                HUelement.Element("phone").Value = hostingUnit.Owner1.PhoneNumber1.ToString();
-                HUelement.Element("hostKey").Value = hostingUnit.Owner1.HostKey1.ToString();
-                HUelement.Element("bankNum").Value = hostingUnit.Owner1.BankAccountNumber1.ToString();
-                HUelement.Element("branchdets").Value = hostingUnit.Owner1.BankBranchDetails1.ToString();
-                HUelement.Element("clearance").Value = hostingUnit.Owner1.CollectionClearance1.ToString();
-                HUelement.Element("numofunits").Value = hostingUnit.Owner1.NumOfHostinUnits1.ToString();
-                HUelement.Element("pool").Value = hostingUnit.hasPool1.ToString();
-                HUelement.Element("garden").Value = hostingUnit.hasGarden1.ToString();
-                HUelement.Element("childrensAttractions").Value = hostingUnit.hasChildrensAttractions1.ToString();
-                HUelement.Element("jaccuzzi").Value = hostingUnit.hasJaccuzzi1.ToString();
-                SaveToXML(hostingUnit.Diary2, HUPath);
-                HUroot.Save(HUPath);
-            }
-            catch (Exception)
-            {
-
-                throw new NoItemsFound("no unit with this key");
-            }
+            huList.RemoveAll(x => x.HostingUnitKey1 == hostingUnit.HostingUnitKey1);
+            huList.Add(hostingUnit);
+            SaveToXML(huList, HUPath);
         }
         /// <summary>
         /// updates the terms of an order from a client|throws error if order already exists
@@ -246,7 +196,7 @@ namespace DAL
                 orderElement.Element("hostKey").Value = order.hostKey1.ToString();
                 orderElement.Element("GRKey").Value = order.GuestRequestKey1.ToString();
                 orderElement.Element("status").Value = order.Status1.ToString();
-                HUroot.Save(HUPath);
+                OrderRoot.Save(OrderPath);
             }
             catch (Exception)
             {
@@ -287,20 +237,8 @@ namespace DAL
         /// <param name="hostingUnit">hosting unit defined in BE</param>
         public void DeleteHostingUnit(HostingUnit hostingUnit)
         {
-            XElement HUelement;
-            try
-            {
-                HUelement = (from gr in HUroot.Elements()
-                             where int.Parse(gr.Element("key").Value) == hostingUnit.HostingUnitKey1
-                             select gr).FirstOrDefault();
-                HUelement.Remove();
-                HUroot.Save(HUPath);
-            }
-            catch (Exception)
-            {
-
-                throw new NoItemsFound("no unit with this key");
-            }
+            huList.RemoveAll(x => x.HostingUnitKey1 == hostingUnit.HostingUnitKey1);
+            SaveToXML(huList, HUPath);
         }
         #endregion
 
@@ -312,41 +250,8 @@ namespace DAL
         /// <returns>all the hosting units in the system</returns>
         public List<HostingUnit> GetAllHostingUnits()
         {
-            List<HostingUnit> units = new List<HostingUnit>();
-            try
-            {
-                units = (from unit in HUroot.Elements()
-                         select new HostingUnit()
-                         {
-                             HostingUnitKey1 = long.Parse(unit.Element("key").Value),
-                             HostingUnitName1 = unit.Element("name").Value,
-                             AreaOfHostingUnit = (BEEnum.Area)Enum.Parse(typeof(BEEnum.Area), unit.Element("Area").Value),
-                             Commission1 = int.Parse(unit.Element("commission").Value),
-                             hasChildrensAttractions1 = bool.Parse(unit.Element("childrensAttractions").Value),
-                             hasPool1 = bool.Parse(unit.Element("pool").Value),
-                             hasGarden1 = bool.Parse(unit.Element("garden").Value),
-                             hasJaccuzzi1 = bool.Parse(unit.Element("jaccuzzi").Value),
-                             Diary2 = LoadFromXML<bool[]>(HUPath),
-                             Owner1 = new Host
-                             { PrivateName1 = unit.Element("ownerPname").Value,
-                                 FamilyName1 = unit.Element("ownerLname").Value,
-                                 MailAddress1 = unit.Element("mail").Value,
-                                 PhoneNumber1 = int.Parse(unit.Element("phone").Value),
-                                 HostKey1 = long.Parse(unit.Element("hostKey").Value),
-                                 BankAccountNumber1 = int.Parse(unit.Element("bankNum").Value),
-                                 //add the bank branch details
-                                 NumOfHostinUnits1 = int.Parse(unit.Element("numofunits").Value),
-                                 CollectionClearance1 = bool.Parse(unit.Element("clearance").Value),
-                             }
 
-                         }).ToList();
-            }
-            catch (Exception e)
-            {
-
-                throw e;
-            }
-            return units;
+            return huList;          
         }
         /// <summary>
         /// shows all clients currently in the system
@@ -529,9 +434,9 @@ namespace DAL
             foreach (var item1 in hostRoot.Elements())
             {
                 int num = 0;
-                foreach (var item2 in HUroot.Elements())
+                foreach (var item2 in huList)
                 {
-                    if (long.Parse(item1.Element("key").Value) == long.Parse(item2.Element("hostKey").Value))
+                    if (long.Parse(item1.Element("key").Value) == item2.HostingUnitKey1)
                         num++;
 
                 }
@@ -646,7 +551,6 @@ namespace DAL
             try
             {
                 GRroot = XElement.Load(GRPath);
-                HUroot = XElement.Load(HUPath);
                 OrderRoot = XElement.Load(OrderPath);
                 ConfigRoot = XElement.Load(ConfigPath);
                 hostRoot = XElement.Load("@HostXml.xml");
@@ -684,14 +588,25 @@ namespace DAL
     xmlSer.Serialize(file, source);
     file.Close();
 }
-        public static T LoadFromXML<T>(string path)
+        public static T LoadFromXML<T>(string path,T temp)
 {
     FileStream file = new FileStream(path, FileMode.Open);
     XmlSerializer xmlSer = new XmlSerializer(typeof(T));
-    T result = (T)xmlSer.Deserialize(file);
-    file.Close();
-    return result;
-}
+           
+            try
+            {
+                 temp = (T)xmlSer.Deserialize(file);
+            }
+            catch
+            {
+               
+            }
+            finally
+            {
+                file.Close();
+            }
+            return temp;
+        }
     }
 }
 

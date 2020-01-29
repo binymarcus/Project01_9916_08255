@@ -23,11 +23,12 @@ namespace PLWPF
     {
         IBL bl = FactoryBL.getIBL();
         List<BE.HostingUnit> hostingList = new List<BE.HostingUnit>();
-        public AddOrder(long hostkey)
+        string username;
+        public AddOrder(long hostkey,string user)
         {
             InitializeComponent();
             hostingList = bl.GetAllHostingUnitsByHostKey(hostkey);
-
+            username = user;
             scrollview1 = new ScrollViewer();
 
             foreach (BE.HostingUnit item in hostingList)
@@ -40,7 +41,7 @@ namespace PLWPF
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Window hostwin = new HostWindow();
+            Window hostwin = new HostWindow(username);
             hostwin.Show();
             this.Close();
         }

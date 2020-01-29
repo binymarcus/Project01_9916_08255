@@ -37,8 +37,8 @@ namespace DAL
         }
         private void CreateHUFiles()
         {
-            HUroot = new XElement("HUinfo");
-            HUroot.Save(HUPath);
+            FileStream HU_XML = new FileStream(HUPath, FileMode.Create);
+            HU_XML.Close();
         }
         private void CreateOrderFiles()
         {

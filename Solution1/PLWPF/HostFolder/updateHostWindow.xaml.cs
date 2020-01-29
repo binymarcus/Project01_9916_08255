@@ -22,16 +22,18 @@ namespace PLWPF
     {
         private BE.HostingUnit unit;
         IBL bl = FactoryBL.getIBL();
+        string username;
         public updateHostWindow()
         {
             InitializeComponent();     
         }
 
-        public updateHostWindow(BE.HostingUnit uni)
+        public updateHostWindow(BE.HostingUnit uni,string user)
         {
             InitializeComponent();
             unit = uni;
             this.grid1.DataContext = uni;
+            username = user;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -72,7 +74,7 @@ namespace PLWPF
                 {
                     bl.UpdateHostingUnit(unit);
                     MessageBox.Show("Guest Request updated, Key: " + unit.HostingUnitKey1);
-                    Window hWindow = new HostWindow();
+                    Window hWindow = new HostWindow(username);
                     hWindow.Show();
                     this.Close();
                 }
@@ -93,7 +95,7 @@ namespace PLWPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Window hostwindow = new HostWindow();
+            Window hostwindow = new HostWindow(username);
             hostwindow.Show();
             this.Close();
         }

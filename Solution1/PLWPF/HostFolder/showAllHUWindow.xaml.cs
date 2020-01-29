@@ -24,10 +24,12 @@ namespace PLWPF
         IBL bl = FactoryBL.getIBL();
         List<HostingUnit> L = new List<HostingUnit>();
         long hostkey;
-        public showAllHUWindow(long key1)
+        string username;
+        public showAllHUWindow(long key1,string user)
         {
             InitializeComponent();
             //gets a guest request and uses function to get a list with all HU by Host name and then shows all of them
+            username = user;
             try
             {
                 L = bl.GetAllHostingUnitsByHostKey(key1);
@@ -50,7 +52,7 @@ namespace PLWPF
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Window hosty = new HostWindow();
+            Window hosty = new HostWindow(username);
             hosty.Show();
             this.Close();
         }

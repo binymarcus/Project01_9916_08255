@@ -23,15 +23,17 @@ namespace PLWPF.HostFolder
     {
         IBL bl = FactoryBL.getIBL();
         List<BE.Order> orderList = new List<BE.Order>();
+        string username;
 
         public updateOrderWindow()
         {
             InitializeComponent();
         }
-        public updateOrderWindow(long hostkey)
+        public updateOrderWindow(long hostkey,string user)
         {         
                 InitializeComponent();
                 scrollview1 = new ScrollViewer();
+            username = user;
 
                 try
                 {
@@ -39,7 +41,7 @@ namespace PLWPF.HostFolder
 
                     foreach (BE.Order item in orderList)
                     {
-                    UpdateOrderUC gruc = new UpdateOrderUC(item);
+                    UpdateOrderUC gruc = new UpdateOrderUC(item, user);
                         b.Children.Add(gruc);
                     }
 
@@ -54,7 +56,7 @@ namespace PLWPF.HostFolder
 
             private void BackButton_Click(object sender, RoutedEventArgs e)
             {
-                Window GRMain = new AdminOrderFunctions();
+                Window GRMain = new HostWindow(username);
                 GRMain.Show();
                 this.Close();
             }

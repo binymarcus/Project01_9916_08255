@@ -23,9 +23,11 @@ namespace PLWPF
         BE.HostingUnit unit;
         //BL.IBL bl;
         IBL bl = FactoryBL.getIBL();
-        public updeletebyunit()
+        string username;
+        public updeletebyunit(string user)
         {
             InitializeComponent();
+            username = user;
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -33,7 +35,7 @@ namespace PLWPF
             if (this.UpdatePrivateNameTextBox.Text != ""  && this.UpdateKey.Text != "")
             {
                 MessageBox.Show("please enter only one field, by name or by key.");
-                Window UpdateDeleteByWindow = new UpdateDeleteBy();
+                Window UpdateDeleteByWindow = new updeletebyunit(username);
                 UpdateDeleteByWindow.Show();
                 this.Close();
             }
@@ -42,7 +44,7 @@ namespace PLWPF
                 try
                 {
                     //sends to a window with a scroll box and then the user updates the gs he wants to update
-                    Window UpdateByNameChooseWindow = new updateHostWindow(bl.GetHostingUnitByName(this.UpdatePrivateNameTextBox.Text));
+                    Window UpdateByNameChooseWindow = new updateHostWindow(bl.GetHostingUnitByName(this.UpdatePrivateNameTextBox.Text),username);
                     UpdateByNameChooseWindow.Show();
                     this.Close();
                 }
@@ -55,7 +57,7 @@ namespace PLWPF
             {
                 try
                 {
-                    Window UpdateHostWindow = new updateHostWindow(bl.GetHostingUnitByKey(long.Parse(this.UpdateKey.Text)));
+                    Window UpdateHostWindow = new updateHostWindow(bl.GetHostingUnitByKey(long.Parse(this.UpdateKey.Text)),username);
                     UpdateHostWindow.Show();
                     this.Close();
                 }
@@ -77,7 +79,7 @@ namespace PLWPF
             if (this.DeletePrivateNameTextBox.Text != "" && this.DeleteKeyTextBox.Text != "")
             {
                 MessageBox.Show("please enter only one field, byname or by key.");
-                Window UpdateDeleteByWindow = new updeletebyunit();
+                Window UpdateDeleteByWindow = new updeletebyunit(username);
                 UpdateDeleteByWindow.Show();
                 this.Close();
             }
@@ -90,14 +92,14 @@ namespace PLWPF
                      long tempkey = unit.HostingUnitKey1;
                      bl.DeleteHostingUnit(unit);
                      MessageBox.Show("Unit deleted, Key: " + tempkey);
-                     Window GuestRequestWindow = new HostWindow();
+                     Window GuestRequestWindow = new HostWindow(username);
                      GuestRequestWindow.Show();
                      this.Close();
                  }
                  catch(Exception)
                  {
                      MessageBox.Show("unit does not exist");
-                     Window GuestRequestWindow = new HostWindow();
+                     Window GuestRequestWindow = new HostWindow(username);
                      GuestRequestWindow.Show();
                      this.Close();
                  }               
@@ -111,14 +113,14 @@ namespace PLWPF
                     long tempkey = unit.HostingUnitKey1;
                     bl.DeleteHostingUnit(unit);
                     MessageBox.Show("unit deleted, Key: " + tempkey);
-                    Window hostWindow = new HostWindow();
+                    Window hostWindow = new HostWindow(username);
                     hostWindow.Show();
                     this.Close();
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("unit does not exist");
-                    Window GuestRequestWindow = new HostWindow();
+                    Window GuestRequestWindow = new HostWindow(username);
                     GuestRequestWindow.Show();
                     this.Close();
                 }
@@ -133,7 +135,7 @@ namespace PLWPF
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Window hosttWindow = new HostWindow();
+            Window hosttWindow = new HostWindow(username);
             hosttWindow.Show();
             this.Close();
         }
