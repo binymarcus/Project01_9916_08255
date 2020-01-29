@@ -20,10 +20,22 @@ namespace PLWPF
     /// </summary>
     public partial class GRUserControl : UserControl
     {
+        private BE.GuestRequest gr;
         public GRUserControl(BE.GuestRequest gruc)
         {
             InitializeComponent();
             this.ByNameUpdateDetailsGrid.DataContext = gruc;
+            gr = gruc;
+        }
+
+        private void entryDate1TextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            entryDate1TextBox.Text = gr.EntryDate1.ToString("dd/MM/yyyy");
+        }
+
+        private void releaseDate1TextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            releaseDate1TextBox.Text = gr.ReleaseDate1.ToString("dd/MM/yyyy");
         }
     }
 }
