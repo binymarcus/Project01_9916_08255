@@ -30,7 +30,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Content="Area Of Hosting Unit:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,14" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="127" Grid.ColumnSpan="3"/>
-        <ComboBox x:Name="areaOfHostingUnitComboBox" Grid.Column="3" DisplayMemberPath="AreaOfHostingUnit" HorizontalAlignment="Left" Height="22" ItemsSource="{Binding}" Margin="6,6,0,16" Grid.Row="0" VerticalAlignment="Center" Width="124">
+        <ComboBox x:Name="areaOfHostingUnitComboBox" Grid.Column="3" HorizontalAlignment="Left" Height="22"  IsEditable="True" IsReadOnly="True" Text="{Binding AreaOfHostingUnit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="6,6,0,16" Grid.Row="0" VerticalAlignment="Center" Width="124">
             <ComboBoxItem Content="North" />
             <ComboBoxItem Content="South" />
             <ComboBoxItem Content="Center" />

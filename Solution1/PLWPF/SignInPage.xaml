@@ -23,7 +23,7 @@
             <Label Content="Username" Foreground="White"/>
             <TextBox Name="txtUsername" Background="Gray" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White"/>
-            <PasswordBox Name="txtPassword" Background="Gray" Foreground="White" FontSize="18" PasswordChar="*"/>
+            <PasswordBox Name="txtPassword" Background="Gray" Foreground="White" FontSize="18" PasswordChar="♪"/>
             <Button Name="submit" Content="Submit" Margin="60 10" Background="Gray" Foreground="White" FontSize="18" Click="Submit_Click"/>
             <Button Name="register" Content="Register" Margin="60 10" Background="Gray" Foreground="White" FontSize="18" Click="Register_Click"/>
 
