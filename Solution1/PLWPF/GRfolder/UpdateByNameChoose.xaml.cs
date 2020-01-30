@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
+using PLWPF.GRfolder;
 
 namespace PLWPF
 {
@@ -31,7 +32,7 @@ namespace PLWPF
 
             foreach (BE.GuestRequest item in guestList)
             {
-                GRUserControl gruc = new GRUserControl(item);
+                GRUCforUpdate gruc = new GRUCforUpdate(item);
                 b.Children.Add(gruc);
             }
 

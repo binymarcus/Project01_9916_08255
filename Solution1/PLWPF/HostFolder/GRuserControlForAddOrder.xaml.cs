@@ -78,15 +78,15 @@ namespace PLWPF
             mail.To.Add(gr.MailAddress1);//the guest email
             mail.From = new MailAddress(hu.Owner1.MailAddress1);//the HU owners email
             mail.Subject = "order added";
-            mail.Body = "your guest request has been added to an order, hosting unit name:" + hu.HostingUnitName1 + "/n" +
-                "hosting unit info:" + "/n" +
-                "hostin unit owner's name:" + hu.Owner1.PrivateName1 + " " + hu.Owner1.FamilyName1 + "/n" +
-                "location:" + hu.AreaOfHostingUnit.ToString() + "/n" +
-                "has pool:" + hu.hasPool1.ToString() + "/n" +
-                "has Garden:" + hu.hasGarden1.ToString() + "/n" +
-                "has Jaccuzzi:" + hu.hasJaccuzzi1.ToString() + "/n" +
-                "has Childrens Attractions:" + hu.hasChildrensAttractions1.ToString() + "/n" +
-                "commission:" + hu.Commission1 + "/n" +
+            mail.Body = "your guest request has been added to an order, hosting unit name:" + hu.HostingUnitName1 + "\n" +
+                "hosting unit info:" + "\n" +
+                "hostin unit owner's name:" + hu.Owner1.PrivateName1 + " " + hu.Owner1.FamilyName1 + "\n" +
+                "location:" + hu.AreaOfHostingUnit.ToString() + "\n" +
+                "has pool:" + hu.hasPool1.ToString() + "\n" +
+                "has Garden:" + hu.hasGarden1.ToString() + "\n" +
+                "has Jaccuzzi:" + hu.hasJaccuzzi1.ToString() + "\n" +
+                "has Childrens Attractions:" + hu.hasChildrensAttractions1.ToString() + "\n" +
+                "commission:" + hu.Commission1 + "\n" +
                 "have a good day!";
             mail.IsBodyHtml = false;
             SmtpClient smtp = new SmtpClient();
