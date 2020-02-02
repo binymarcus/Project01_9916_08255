@@ -83,7 +83,7 @@ namespace PLWPF
             host.PrivateName1 = privateName1TextBox.Text;
             host.FamilyName1 = familyName1TextBox.Text;
             host.MailAddress1 = mailAddress1TextBox.Text;
-            host.PhoneNumber1 = int.Parse(phoneNumber1TextBox.Text);
+            host.PhoneNumber1 =phoneNumber1TextBox.Text;
             host.BankAccountNumber1 = int.Parse(bankAccountNumber1TextBox.Text);
             host.CollectionClearance1 = bool.Parse(collectionClearance1CheckBox.IsChecked.ToString());
             XElement username = new XElement("username", textBoxUserName.Text);
@@ -145,9 +145,9 @@ namespace PLWPF
                 mailAddress1TextBox.Clear();
                 mailAddress1TextBox.Focus();
             }
-            else if (!(int.TryParse(phoneNumber1TextBox.Text, out int1)))
+            else if (!(IsPhoneNumber(phoneNumber1TextBox.Text, "000-000-0000") || IsPhoneNumber(phoneNumber1TextBox.Text, "(000) 000-0000")))////////////////////////////////////////////////////////////////////////////////
             {
-                MessageBox.Show("phone number has to ba a number.");
+                MessageBox.Show("phone number has to ba a valid phone number.");
                 phoneNumber1TextBox.Clear();
                 phoneNumber1TextBox.Focus();
             }
@@ -235,6 +235,22 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource hostViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // hostViewSource.Source = [generic data source]
+        }
+        bool IsPhoneNumber(string input, string pattern)
+        {
+            if (input.Length != pattern.Length) return false;
+
+            for (int i = 0; i < input.Length; ++i)
+            {
+                bool ith_character_ok;
+                if (Char.IsDigit(pattern, i))
+                    ith_character_ok = Char.IsDigit(input, i);
+                else
+                    ith_character_ok = (input[i] == pattern[i]);
+
+                if (!ith_character_ok) return false;
+            }
+            return true;
         }
     }
 }

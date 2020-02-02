@@ -68,8 +68,6 @@ namespace PLWPF
                 //sending mail
                 Thread mailThread= new Thread(()=>SendMail());
                 mailThread.Start();
-                bl.UpdateGuestRequest(gr);
-
             }
         }
 
@@ -99,6 +97,7 @@ namespace PLWPF
                 smtp.Send(mail);
                 //changing the gr status to mail sent
                 gr.status1 = mailsent1;
+                bl.UpdateGuestRequest(gr);
             }
             catch (Exception ex)
             {

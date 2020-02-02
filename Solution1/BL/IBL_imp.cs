@@ -180,6 +180,8 @@ namespace BL
         {
             if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
                 throw new UnexceptableDetailsException("Entry date must be at least one day before exit date.");
+            else if (guestRequest.EntryDate1 < DateTime.Now )
+                throw new UnexceptableDetailsException("Entry date can't be in the past.");
             try
             {
                 dal.AddGuestRequest(guestRequest);

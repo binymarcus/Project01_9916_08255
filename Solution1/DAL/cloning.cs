@@ -66,6 +66,7 @@ public static class Cloning
     public static Order Clone(this Order original)
      {
         Order target = new Order();
+        target.hostKey1 = original.hostKey1;
         target.HostingUnitKey1 = original.HostingUnitKey1;
         target.GuestRequestKey1 = original.GuestRequestKey1;
         target.OrderKey1 = original.OrderKey1;

@@ -412,7 +412,7 @@ namespace DAL
                          PrivateName1=host.Element("firstName").Value,
                          FamilyName1 = host.Element("lastName").Value,
                          MailAddress1=host.Element("Email").Value,
-                         PhoneNumber1=int.Parse(host.Element("PhoneNumber").Value),
+                         PhoneNumber1=host.Element("PhoneNumber").Value,
                          NumOfHostinUnits1=int.Parse(host.Element("num").Value),
                          BankAccountNumber1=int.Parse(host.Element("BankAccountNumber").Value),
                          CollectionClearance1=bool.Parse(host.Element("Clearance").Value)
@@ -585,7 +585,7 @@ namespace DAL
                         PrivateName1 = use.Element("firstName").Value,
                         FamilyName1 = use.Element("lastName").Value,
                         MailAddress1 = use.Element("Email").Value,
-                        PhoneNumber1 = int.Parse(use.Element("PhoneNumber").Value),
+                        PhoneNumber1 = use.Element("PhoneNumber").Value,
                         BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
                         CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
                     }).Single();

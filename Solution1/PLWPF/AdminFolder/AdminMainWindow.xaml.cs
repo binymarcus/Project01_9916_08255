@@ -69,7 +69,8 @@ namespace PLWPF
         private void calcmoney_Click(object sender, RoutedEventArgs e)
         {
             int amount = bl.getallbusydays();
-            MessageBox.Show("amount of money:" + amount * commission);
+            MessageBox.Show("amount of busy days: "+amount+" * "+"commision "+commission+
+                "\n"+"amount of money:" + amount * commission);
             commish.Visibility = Visibility.Hidden;
             calcmoney.Visibility = Visibility.Hidden;
             money.Visibility = Visibility.Visible;
