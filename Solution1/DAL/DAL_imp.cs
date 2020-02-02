@@ -98,7 +98,7 @@ namespace DAL
             XElement hostkey = new XElement("hostKey", or.hostKey1);
             XElement GRKey = new XElement("GRKey", or.OrderKey1);
             XElement status = new XElement("status", or.Status1);
-            XElement operate = new XElement("order", Cdate, orderdate, orderdate, HUKey, hostkey, GRKey, status);
+            XElement operate = new XElement("order", Cdate, orderdate,orderKey, orderdate, HUKey, hostkey, GRKey, status);
             OrderRoot.Add(operate);
             OrderRoot.Save(OrderPath);
         }
