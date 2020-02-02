@@ -30,6 +30,7 @@ namespace PLWPF
         BE.HostingUnit hu;
         BE.GuestRequest gr;
         IBL bl = FactoryBL.getIBL();
+        BE.BEEnum.Status mailsent1 = BE.BEEnum.Status.mailSent;
         public GRuserControlForAddOrder(BE.GuestRequest guesty, long key1,long hostkey)
         {
             InitializeComponent();
@@ -97,7 +98,7 @@ namespace PLWPF
             {
                 smtp.Send(mail);
                 //changing the gr status to mail sent
-                gr.status1 = BEEnum.Status.mailSent;
+                gr.status1 = mailsent1;
             }
             catch (Exception ex)
             {

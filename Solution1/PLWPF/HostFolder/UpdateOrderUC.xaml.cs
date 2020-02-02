@@ -33,7 +33,7 @@ namespace PLWPF.HostFolder
         {
             InitializeComponent();
             or = orderuc;
-            grid1.DataContext = orderuc;
+            grid1.DataContext = or;
             username = user;
         }
 

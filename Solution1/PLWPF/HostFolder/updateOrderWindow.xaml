@@ -8,10 +8,11 @@
         Title="updateOrderWindow" Height="450" Width="800">
     <Grid>
         <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="434">
-            <StackPanel x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
-
+            <StackPanel 
+                x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
             </StackPanel>
         </ScrollViewer>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="449,364,0,0" VerticalAlignment="Top" Width="334" Height="47"/>
 
     </Grid>
 </Window>

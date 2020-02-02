@@ -33,7 +33,7 @@ namespace PLWPF.HostFolder
         {         
                 InitializeComponent();
                 scrollview1 = new ScrollViewer();
-            username = user;
+                username = user;
 
                 try
                 {
@@ -41,7 +41,7 @@ namespace PLWPF.HostFolder
 
                     foreach (BE.Order item in orderList)
                     {
-                    UpdateOrderUC gruc = new UpdateOrderUC(item, user);
+                        UpdateOrderUC gruc = new UpdateOrderUC(item, username);
                         b.Children.Add(gruc);
                     }
 

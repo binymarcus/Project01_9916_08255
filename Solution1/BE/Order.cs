@@ -16,7 +16,7 @@ namespace BE
         #region properties
         public long HostingUnitKey1 { get => HostingUnitKey; set => HostingUnitKey = value; }
         public long GuestRequestKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
-        public long hostKey1 { get => GuestRequestKey; set => GuestRequestKey = value; }
+        public long hostKey1 { get => hostkey; set => hostkey = value; }
         public long OrderKey1 { get => OrderKey; set => OrderKey = value; }
         public DateTime CreateDate1 { get => CreateDate; set => CreateDate = value; }
         public DateTime OrderDate1 { get => OrderDate; set => OrderDate = value; }
