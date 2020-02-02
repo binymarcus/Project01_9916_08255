@@ -52,6 +52,12 @@ namespace PLWPF.HostFolder
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bl.UpdateOrder(or);
+            if (status1ComboBox.SelectedItem.ToString() == "dealMade")
+            {
+                BE.GuestRequest guesty = bl.GetGuestRequestByKey(Convert.ToInt64(guestRequestKey1Label.Content));
+                guesty.status1 = BEEnum.Status.dealMade;
+                bl.UpdateGuestRequest(guesty);
+            }
             Window HostWindow = new HostWindow(username);
             HostWindow.Show();
         }
