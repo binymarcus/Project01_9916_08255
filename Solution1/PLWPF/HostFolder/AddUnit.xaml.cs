@@ -43,6 +43,7 @@ namespace PLWPF
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             int commish;
+            int numVal = Int32.Parse(commission1TextBox.Text);
             try
             {
                 unit.Owner1 = new BE.Host();
@@ -53,13 +54,13 @@ namespace PLWPF
                     hostingUnitNameTextBox.Clear();
                     hostingUnitNameTextBox.Focus();
                 }
-                else if (commission1TextBox.Text == "" || (!(int.TryParse(commission1TextBox.Text, out commish))))
+                else if (commission1TextBox.Text == "" || (!(int.TryParse(commission1TextBox.Text, out commish)))||(numVal<=0))
                 {
                     MessageBox.Show("must enter HostingUnit Commision!");
                     commission1TextBox.Clear();
                     commission1TextBox.Focus();
                 }
-                else if(Area1.SelectedItem.ToString() == "Please Select")
+                else if(Area1.Text == "Please Select")
                 {
                     MessageBox.Show("must enter HostingUnit Area!");
                     Area1.Focus();

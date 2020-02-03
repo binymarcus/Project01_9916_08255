@@ -56,5 +56,10 @@ namespace PLWPF
             hosty.Show();
             this.Close();
         }
+
+        private void hostingUnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

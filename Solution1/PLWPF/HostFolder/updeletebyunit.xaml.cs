@@ -79,9 +79,13 @@ namespace PLWPF
             if (this.DeletePrivateNameTextBox.Text != "" && this.DeleteKeyTextBox.Text != "")
             {
                 MessageBox.Show("please enter only one field, byname or by key.");
-                Window UpdateDeleteByWindow = new updeletebyunit(username);
-                UpdateDeleteByWindow.Show();
-                this.Close();
+                UpdateKey.Clear();
+                UpdatePrivateNameTextBox.Clear();
+                DeleteKeyTextBox.Clear();
+                DeletePrivateNameTextBox.Clear();
+                //Window UpdateDeleteByWindow = new updeletebyunit(username);
+                //UpdateDeleteByWindow.Show();
+                //this.Close();
             }
 
             else if (this.DeletePrivateNameTextBox.Text != "")
@@ -96,10 +100,13 @@ namespace PLWPF
                      GuestRequestWindow.Show();
                      this.Close();
                  }
-                 catch(Exception)
+                 catch(Exception exx)
                  {
-                     MessageBox.Show("unit does not exist");
-                     Window GuestRequestWindow = new HostWindow(username);
+                    if (exx.Message.Contains(':'))
+                        MessageBox.Show("unit does not exist or " + exx.Message.Substring(exx.Message.IndexOf(':')));
+                    else
+                        MessageBox.Show("unit does not exist or " + exx.Message);
+                    Window GuestRequestWindow = new HostWindow(username);
                      GuestRequestWindow.Show();
                      this.Close();
                  }               

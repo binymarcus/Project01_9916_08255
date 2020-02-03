@@ -14,15 +14,15 @@
                     <MenuItem.Icon>
                         <Image Source="C:\Users\binya\Downloads\languageButton.jpg"  Height="25" Width="16"/>
                     </MenuItem.Icon>
-                    <MenuItem Header="עברית" Background="#04c582" Foreground="Black"/>
-                    <MenuItem Header="English" Background="#04c582" Foreground="Black"/>
+                    <MenuItem Header="עברית" Background="#04c582" Foreground="Black" Click="MenuItem_Click"/>
+                    <MenuItem Header="English" Background="#04c582" Foreground="Black" Click="MenuItem_Click_1"/>
                 </MenuItem>
             </Menu>
-            <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="logintext" Text="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator/>
-            <Label Content="Username" Foreground="White"/>
+            <TextBlock x:Name="usernametext" Text="Username" Foreground="White"/>
             <TextBox Name="txtUsername" Background="Gray" Foreground="White" FontSize="18"/>
-            <Label Content="Password" Foreground="White"/>
+            <TextBlock x:Name="passwordtext" Text="Password" Foreground="White"/>
             <PasswordBox Name="txtPassword" Background="Gray" Foreground="White" FontSize="18" PasswordChar="♪"/>
             <Button Name="submit" Content="Submit" Margin="60 10" Background="Gray" Foreground="White" FontSize="18" Click="Submit_Click"/>
             <Button Name="register" Content="Register" Margin="60 10" Background="Gray" Foreground="White" FontSize="18" Click="Register_Click"/>

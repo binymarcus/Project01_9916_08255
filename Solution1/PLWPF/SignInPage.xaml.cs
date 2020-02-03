@@ -125,5 +125,23 @@ namespace PLWPF   {
                 return true;
             else return false;
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            logintext.Text = "כניסה";
+            usernametext.Text = "שם משתמש";
+            passwordtext.Text = "סיסמא";
+            submit.Content = "הכנס";
+            register.Content = "הרשם";
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            logintext.Text = "Login";
+            usernametext.Text = "username";
+            passwordtext.Text = "password";
+            submit.Content = "submit";
+            register.Content = "register";
+        }
     }
 }
