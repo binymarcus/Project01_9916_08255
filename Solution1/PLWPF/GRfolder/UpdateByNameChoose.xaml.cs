@@ -26,6 +26,8 @@ namespace PLWPF
         public UpdateByNameChoose(string pname, string fname)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             guestList = bl.GetallGuestRequestByName( pname, fname);
 
             scrollview1 = new ScrollViewer();
@@ -37,6 +39,11 @@ namespace PLWPF
             }
 
             scrollview1.Content = b;
+        }
+        private void hebChange()
+        {
+            updatebyNameupdateButton.Content = "עדכן";
+            BackButton.Content = "חזור";
         }
       
         private void updatebyNameupdateButton_Click(object sender, RoutedEventArgs e)

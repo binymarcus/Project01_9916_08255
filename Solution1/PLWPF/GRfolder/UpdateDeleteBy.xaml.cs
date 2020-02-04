@@ -27,8 +27,26 @@ namespace PLWPF
         public UpdateDeleteBy()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "מחקועדכן";
+            upkey.Content = "עדכן לפי מספר";
+            UpdateKey.Watermark = "נא להכניס מספר מזהה";
+            upname.Content = "עדכן לפי שם";
+            UpdatePrivateNameTextBox.Watermark = "שם פרטי";
+            UpdatefamilyNameTextBox.Watermark = "שם משפחה";
+            delkey.Content = "מחיקה על פי מספר";
+            DeleteKeyTextBox.Watermark = "נא להכניס מספר מזהה";
+            delname.Content = "מחיקה על פי שם";
+            DeletePrivateNameTextBox.Watermark = "שם פרטי";
+            DeleteFamilyNameTextBox.Watermark = "שם משפחה";
+            UpdateButton.Content = "עדכן";
+            DeleteButton.Content = "מחק";
+            backButton.Content = "חזור";
+        }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if ((this.UpdatePrivateNameTextBox.Text != "" || this.UpdatefamilyNameTextBox.Text != "" ) && this.UpdateKey.Text != "")
