@@ -80,6 +80,8 @@ namespace PLWPF
         public HostRegistraion()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             LoadData();
             comboBoxBanks.ItemsSource = null;
             bg.DoWork += Bg_DoWork;
@@ -87,6 +89,26 @@ namespace PLWPF
             bg.ProgressChanged += Bg_ProgressChanged;
             bg.WorkerReportsProgress = true;
             bl =  FactoryBL.getIBL();
+        }
+        private void hebChange()
+        {
+            textBoxUserName.Text = "שם משתמש";
+            textBlockPassword.Text = "סיסמה";
+            textBlockConfirmPwd.Text = "אישור סיסמה";
+            Title = "הרשמה למערכת כמארח";
+            textBlockHeading.Text= "הרשמה כמארח";
+            banknumber.Content = "מספר חשבון";
+            mail.Content = "אימייל";
+            collection.Content = "אישור גבייה";
+            pname.Content = "שם פרטי";
+            lname.Content = "שם משפחה";
+            phone.Content = "מספר פלאפון";
+            Submit.Content = "שלח";
+            button2.Content = "נקה";
+            button3.Content = "בטל";
+            populateBanksBtn.Content = "הבא בנקים";
+            login.Content = "כניסה";
+
         }
         private void Bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -157,6 +179,8 @@ namespace PLWPF
             bl.AddHost(host, textBoxUserName.Text, passwordBox1.Password);
             MessageBox.Show("added to the system, Host Key: "+host.HostKey1);
             SignInPage login = new SignInPage();
+
+            
             login.Show();
             Close();
         }
@@ -262,6 +286,8 @@ namespace PLWPF
         }
         private void button3_Click(object sender, RoutedEventArgs e)
         {
+            Window reg = new Registration();
+            reg.Show();
             Close();
         }
         private bool checkInputGuest()
@@ -318,5 +344,7 @@ namespace PLWPF
             }
             return true;
         }
+
+
     }
 }

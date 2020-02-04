@@ -39,12 +39,25 @@ namespace PLWPF
         public Registration()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             if (!File.Exists("@GuestXml.xml"))
                 CreateFilesGuest();
             if (!File.Exists("@HostXml.xml"))
                 CreateFilesHost();
             else
                 LoadData();
+        }
+        private void hebChange()
+        {
+            textBlockFirstname.Text = " שם משתמש";
+            textBlockPassword.Text = "סיסמה";
+            textBlockConfirmPwd.Text = "אישור סיסמה";
+            Host.Content = "הירשם כמארח";
+            Submit.Content = "הירשם";
+            button2.Content = "נקה";
+            login.Content = "כניסה";
+            Title = "הרשמה למערכת כמתארח";
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {

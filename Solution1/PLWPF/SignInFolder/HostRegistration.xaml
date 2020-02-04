@@ -15,7 +15,7 @@
     <Grid Background="CornflowerBlue" Margin="38,10,28.333,35.667">
         <TextBlock Height="23" HorizontalAlignment="Left"  Margin="10,5,0,0" x:Name="textBlockHeading" Text="Registration for Host:" VerticalAlignment="Top" Width="165"  FontSize="17" FontStretch="ExtraCondensed"/>
         <!--Button as a Link button using style-->
-        <Button Margin="451,5,12,288" Content="Login" HorizontalAlignment="Right" Cursor="Hand" Click="Login_Click">
+        <Button x:Name="login"  Margin="451,5,12,288" Content="Login" HorizontalAlignment="Right" Cursor="Hand" Click="Login_Click">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <TextBlock TextDecorations="Underline"><InlineUIContainer>  
@@ -45,12 +45,16 @@
                 <!--   <RowDefinition Height="12*" />-->
             </Grid.RowDefinitions>
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="699*"/>
+                    <ColumnDefinition Width="11*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="179*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <DataGrid x:Name="banksDatagrid" HorizontalAlignment="Left" Height="232"
- Margin="274,10,0,0" VerticalAlignment="Top" Width="362" ItemsSource="{Binding}"/>
+ Margin="274,10,0,0" VerticalAlignment="Top" Width="362"  ItemsSource="{Binding BE.BankBranch}"/>
                 <Button x:Name="populateBanksBtn" Content="Populate Banks" HorizontalAlignment="Left"
  Margin="274,242,0,0" VerticalAlignment="Top" Width="131" Height="40"
  Click="populateBanksBtn_Click" FontSize="16" FontWeight="Bold"/>
@@ -58,7 +62,7 @@
  VerticalAlignment="Top" Width="231" Maximum="100"/>
                 <ComboBox x:Name="comboBoxBanks" HorizontalAlignment="Left" Margin="274,282,0,0"
  VerticalAlignment="Top" Width="362" ItemsSource="{Binding}"
- SelectionChanged="comboBoxBanks_SelectionChanged"/>
+ SelectionChanged="comboBoxBanks_SelectionChanged" Height="15"/>
             </Grid>
             <TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
             <TextBlock Height="23" HorizontalAlignment="Left" x:Name="txtUsername" Text="Username:" VerticalAlignment="Top" Width="110" />
@@ -70,7 +74,7 @@
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="115,43,0,0" x:Name="passwordBoxConfirm" VerticalAlignment="Top" Width="138" />
             <Button Background="RosyBrown" Content="Submit" Height="23" HorizontalAlignment="Left" Margin="1,299,0,0" x:Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" />
             <Button Background="RosyBrown" Content="Reset" Height="23" HorizontalAlignment="Left" Margin="76,299,0,0" x:Name="button2" VerticalAlignment="Top" Width="70" Click="button2_Click" />
-            <Button Background="RosyBrown" Content="Cancel" Height="23" HorizontalAlignment="Right" Margin="0,299,0.333,0" x:Name="button3" VerticalAlignment="Top" Width="70" Click="button3_Click" />
+            <Button Background="RosyBrown" Content="Cancel" HorizontalAlignment="Right" Margin="0,299,0.333,0" x:Name="button3" Width="70" Click="button3_Click" Height="23" VerticalAlignment="Top" />
             <Grid x:Name="grid1" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="1,176,0,0" VerticalAlignment="Top" Width="252" Height="32">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="101.333"/>
@@ -79,7 +83,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Family Name:" HorizontalAlignment="Left" Margin="0,0,0,6" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="91"/>
+                <Label Name="lname" Content="Family Name:" HorizontalAlignment="Left" Margin="0,0,0,6" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="91"/>
                 <TextBox x:Name="familyName1TextBox" HorizontalAlignment="Left" Height="24" Margin="101,2,0,6" Grid.Row="0" Text="{Binding FamilyName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="141" Grid.ColumnSpan="2"/>
             </Grid>
             <Grid x:Name="grid2" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="0,71,0,0" VerticalAlignment="Top" Width="228" Height="32">
@@ -90,7 +94,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Mail Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,4,0,3" Grid.Row="0" VerticalAlignment="Center" Width="84" Height="25"/>
+                <Label Name="mail" Content="Mail Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,4,0,3" Grid.Row="0" VerticalAlignment="Center" Width="84" Height="25"/>
                 <TextBox x:Name="mailAddress1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="1.667,4,0,4" Grid.Row="0" Text="{Binding MailAddress1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="122"/>
             </Grid>
             <Grid x:Name="grid3" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="243" Height="32">
@@ -102,7 +106,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Private Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="-5,0,0,6" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="93"/>
+                <Label Name="pname" Content="Private Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="-5,0,0,6" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="93"/>
                 <TextBox x:Name="privateName1TextBox" HorizontalAlignment="Left" Height="24" Margin="93,4,0,4" Grid.Row="0" Text="{Binding PrivateName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="143" Grid.ColumnSpan="3"/>
             </Grid>
             <Grid x:Name="grid4" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Width="252" Height="32">
@@ -114,7 +118,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label Name="phone" Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center"/>
                 <xctk:WatermarkTextBox x:Name="phoneNumber1TextBox" Watermark="(000) 000-0000 or 000-000-0000" FontSize="9" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="11.333,3,-0.333,6" Grid.Row="0" Text="{Binding PhoneNumber1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="141" Grid.ColumnSpan="2"/>
             </Grid>
             <Grid x:Name="grid5" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="16" Width="141">
@@ -125,7 +129,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Collection Clearance :" Grid.Column="0" Margin="-4,-2,-32.333,0" Grid.Row="0" VerticalAlignment="Center" Height="34" Grid.ColumnSpan="2" RenderTransformOrigin="0.712,1.235"/>
+                <Label Name="collection" Content="Collection Clearance :" Grid.Column="0" Margin="-4,-2,-32.333,0" Grid.Row="0" VerticalAlignment="Center" Height="34" Grid.ColumnSpan="2" RenderTransformOrigin="0.712,1.235"/>
                 <CheckBox x:Name="collectionClearance1CheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding CollectionClearance1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="101.333,0,-66.667,0" Grid.Row="0" VerticalAlignment="Center" Height="32" RenderTransformOrigin="0.57,0.807"/>
             </Grid>
             <Grid x:Name="grid6" DataContext="{StaticResource hostViewSource}" HorizontalAlignment="Left" Margin="1,250,0,0" VerticalAlignment="Top" Width="261" Height="32">
@@ -136,7 +140,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Bank Account Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label Name="banknumber" Content="Bank Account Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <TextBox x:Name="bankAccountNumber1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3.333,4,-19.667,4" Grid.Row="0" Text="{Binding BankAccountNumber1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="143"/>
             </Grid>
         </Grid>

@@ -24,6 +24,17 @@ namespace PLWPF
         public GuestRequest()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
+        }
+        private void hebChange()
+        {
+            AddRequestButton.Content = "הוסף בקשת אורח";
+            UpdateRequestButton.Content = "עדכן בקשת אורח";
+            DeleteRequestButton.Content = "מחק בקשת אורח";
+            ShowAllButton.Content = "הצג הכל";
+            SignOutButton.Content = "התנתק";
+            Title = "אורח";
         }
         private void addRequestButton_Click(object sender, RoutedEventArgs e)
         {

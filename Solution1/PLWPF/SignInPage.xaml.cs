@@ -28,6 +28,8 @@ namespace PLWPF   {
         public SignInPage()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             if (!File.Exists("@GuestXml.xml"))
                 CreateFilesGuest();
             if (!File.Exists("@HostXml.xml"))
@@ -45,7 +47,6 @@ namespace PLWPF   {
             HostRoot = new XElement("hostsInfo");
             HostRoot.Save("@HostXml.xml");
         }
-        Registration registration = new Registration();
         Welcome welcome = new Welcome();
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
@@ -90,6 +91,8 @@ namespace PLWPF   {
         }
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            Registration registration = new Registration();
+
             registration.Show();
             Close();
         }
@@ -128,20 +131,27 @@ namespace PLWPF   {
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            logintext.Text = "כניסה";
-            usernametext.Text = "שם משתמש";
-            passwordtext.Text = "סיסמא";
-            submit.Content = "הכנס";
-            register.Content = "הרשם";
+            hebEnglish.hebrew = true;
+            hebChange();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
+            hebEnglish.hebrew = false;
+
             logintext.Text = "Login";
             usernametext.Text = "username";
             passwordtext.Text = "password";
             submit.Content = "submit";
             register.Content = "register";
+        }
+        private void hebChange()
+        {
+            logintext.Text = "כניסה";
+            usernametext.Text = "שם משתמש";
+            passwordtext.Text = "סיסמא";
+            submit.Content = "הכנס";
+            register.Content = "הרשם";
         }
     }
 }

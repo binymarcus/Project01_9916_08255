@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800"
+        Title="guestRequest" Height="500" Width="800"
         Background="Beige">
     <Window.Resources>
         <SolidColorBrush x:Key="MyBrush" Color="LimeGreen"/>

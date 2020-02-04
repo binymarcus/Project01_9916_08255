@@ -26,10 +26,42 @@ namespace PLWPF
         public AddGuestRequest()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             guest = new BE.GuestRequest();
             this.GuestRequestDetailsGrid.DataContext = guest;
             bl = BL.FactoryBL.getIBL();
             
+        }
+        private void hebChange()
+        {
+            Title = "הוסףבקשתאירוח";
+            header.Content = "הוסף בקשת אירוח חדשה";
+            pname.Content = "שם פרטי";
+            fname.Content = "שם משפחה";
+            mail.Content = "אימייל";
+            edate.Content = "תאריך כניסה";
+            rdate.Content = "תאריך יציאה";
+            adults.Content = "מבוגרים";
+            children.Content = "ילדים";
+            area.Content = "איזור מבוקש";
+            sub.Content = "תת איזור";
+            type.Content = "סוג";
+            pool.Content = "בריכה";
+            garden.Content = "גינה";
+            jac.Content = "גקוזי";
+            child.Content = "אטרקציות לילדים";
+            addButton.Content = "הוסף";
+            cancelButton.Content = "בטל";
+            PrivateName1TextBox.Watermark = "נא להכניס שם פרטי";
+            FamilyName1TextBox.Watermark = "נא להכניס שפ משפחה";
+            mailAddress1TextBox.Watermark = "נא להכניס את האימייל";
+            adults1TextBox.Watermark = "נא להכניס מספר מבוגרים ";
+            children1TextBox.Watermark = "נא להכניס מספר ילדים";
+            subArea1TextBox.Watermark = "נא להכניס תת איזור";
+
+
+
         }
         bool IsValidEmail(string email) // checks if email is valid
         {

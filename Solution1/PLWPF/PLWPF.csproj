@@ -107,6 +107,7 @@
     <Compile Include="GRfolder\GRUCforUpdate.xaml.cs">
       <DependentUpon>GRUCforUpdate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="hebEnglish.cs" />
     <Compile Include="HostFolder\GRuserControlForAddOrder.xaml.cs">
       <DependentUpon>GRuserControlForAddOrder.xaml</DependentUpon>
     </Compile>
