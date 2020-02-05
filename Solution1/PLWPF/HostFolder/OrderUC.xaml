@@ -27,19 +27,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Create Date 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Name="cdate" Content="Create Date 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
             <Label x:Name="createDate1Label" Content="{Binding CreateDate1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <Label Content="Guest Request Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Name="grkey" Content="Guest Request Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
             <Label x:Name="guestRequestKey1Label" Content="{Binding GuestRequestKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <Label Content="Hosting Unit Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Name="hukey" Content="Hosting Unit Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <Label x:Name="hostingUnitKey1Label" Content="{Binding HostingUnitKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <Label Content="host Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Name="hkey" Content="host Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
             <Label x:Name="hostKey1Label" Content="{Binding hostKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <Label Content="Order Date 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Name="odate" Content="Order Date 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
             <Label x:Name="orderDate1Label" Content="{Binding OrderDate1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <Label Content="Order Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Name="okey" Content="Order Key 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
             <Label x:Name="orderKey1Label" Content="{Binding OrderKey1}" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-            <Label Content="Status 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Name="status" Content="Status 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
             <ComboBox x:Name="status1ComboBox" Grid.Column="1" DisplayMemberPath="Status1" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>

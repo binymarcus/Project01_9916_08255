@@ -28,6 +28,20 @@ namespace PLWPF
         public HUuserCuntrol()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
+        }
+        private void hebChange()
+        {
+            hukey.Content = "מספר יחידת אירוח";
+            huname.Content = "שם יחידת אירוח";
+            ahu.Content = "איזור יחידת אירוח";
+            commis.Content = "גבייה";
+            childA.Content = "אטרקציות לילדים";
+            pool.Content = "יש בריכה";
+            jac.Content = "גקוזי";
+            garden.Content = "גינה";
+            HUChoose.Content = "תבחר אותי";
         }
         public HUuserCuntrol(BE.HostingUnit gruc, long hostkey)
         {

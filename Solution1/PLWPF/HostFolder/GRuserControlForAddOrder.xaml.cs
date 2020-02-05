@@ -34,12 +34,34 @@ namespace PLWPF
         public GRuserControlForAddOrder(BE.GuestRequest guesty, long key1,long hostkey)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             key2 = key1;
             hostkey1 = hostkey;
             gr = guesty;
             hu = bl.GetHostingUnitByKey(key2);
             grid1.DataContext = guesty;
             order = new BE.Order();
+        }
+        private void hebChange()
+        {
+            rdate.Content = "תאריך הרשמה";
+            pname.Content = "שם פרטי";
+            sub.Content = "תת איזור";
+            grkey.Content = "מספר לבקשת אירוח";
+            status.Content = "סטטוס";
+            GSpick.Content = "תבחר אותי!";
+            childA.Content = "אטרקציות לילדים";
+            jac.Content = "גקוזי";
+            fname.Content = "שם משפחה";
+            edate.Content = "תאריך כניסה";
+            mail.Content = "מייל";
+            pool.Content = "בריכה";
+            type.Content = "סוג";
+            adults.Content = "מבוגרים";
+            area.Content = "איזור";
+            children.Content = "ילדים";
+            regdate.Content = "תאריך הרשמה";
         }
         private void GSpick_Click(object sender, RoutedEventArgs e)
         {

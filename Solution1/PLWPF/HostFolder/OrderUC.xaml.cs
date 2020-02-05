@@ -23,8 +23,19 @@ namespace PLWPF.HostFolder
         public OrderUC()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            hukey.Content = "מספר יחידת אירוח";
+            grkey.Content = "מספר בקשת אירוח";
+            cdate.Content= "תאריך יצירה";
+            hkey.Content = "מספר מארח";
+            odate.Content = "תאריך הזמנה";
+            okey.Content = "מספר הזמנה";
+            status.Content = "סטטוס";
+        }
         public OrderUC(BE.Order orderuc)
         {
             InitializeComponent();

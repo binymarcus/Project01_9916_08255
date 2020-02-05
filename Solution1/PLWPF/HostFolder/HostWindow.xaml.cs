@@ -44,12 +44,25 @@ namespace PLWPF
         public HostWindow(string username)
         {
             InitializeComponent();
+            if(hebEnglish.hebrew)
+                hebChange();
             LoadData();
             user = username;
             host = new BE.Host();
             host = bl.getHostByUser(username);
 
         }
+        private void hebChange()
+        {
+            Title = "מארח";
+            BackButton.Content = "התנתק";
+            ShowAll_Button.Content = "הראה כל היחידות אירוח";
+            OrderUnitButton.Content = "הזמנה";
+            UpdateUnitButton.Content = "עדכן/מחק יחידה";
+            AddUnitButton.Content = "הוסף יחידה";
+            AddOrder.Content = "הוסף הזמנה";
+            UpdateOrder.Content = "עדכן הזמנה";
+                }
         private BE.Host getOldestHostKey()
         {
             BE.HostingUnit temp = new BE.HostingUnit();

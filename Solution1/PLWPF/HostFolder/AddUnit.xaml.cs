@@ -28,7 +28,22 @@ namespace PLWPF
         public AddUnit()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             unit = new BE.HostingUnit();
+        }
+        private void hebChange()
+        {
+            Title = "הוסףיחידה";
+            Add.Content = "הוסף";
+            Cancel.Content = "בטל";
+            pool.Content = "בריכה";
+            garden.Content = "גינה";
+            jac.Content = "גקוזי";
+            childA.Content = "אטרקציות לילדים";
+            area.Content = "איזור ליחידת אירוח";
+            hostingUnitNameTextBox.Watermark = "נא להכניס שם ליחידת אירוח";
+            commission1TextBox.Watermark = "נא להכניס עמלה";
         }
 
         public AddUnit(BE.Host host,string user)

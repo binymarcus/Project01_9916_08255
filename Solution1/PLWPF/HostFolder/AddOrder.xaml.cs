@@ -27,6 +27,8 @@ namespace PLWPF
         public AddOrder(long hostkey,string user)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             hostingList = bl.GetAllHostingUnitsByHostKey(hostkey);
             username = user;
             scrollview1 = new ScrollViewer();
@@ -38,6 +40,11 @@ namespace PLWPF
             }
 
             scrollview1.Content = b;
+        }
+        private void hebChange()
+        {
+            Back.Content = "חזור";
+            Title = "הוסףהזמנה";
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {

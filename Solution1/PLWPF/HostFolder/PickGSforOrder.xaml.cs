@@ -41,8 +41,32 @@ namespace PLWPF
         public PickGSforOrder()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-        
+        private void hebChange()
+        {
+            poolGR.Content = "כל הבקשות עם בריכה";
+            jaccuzziGR.Content = "כל הבקשות עם גקוזי";
+            southGR.Content = "כל הבקשות דרום";
+            northGR.Content = "כל הבקשות בצפון";
+            centerGR.Content = "כל הבקשות במרכז";
+            jemGR.Content = "כל הבקשות בירושלים";
+            allGR.Content = "כל הבקשות";
+            childrenGR.Content = "כל הבקשות עם אטרקציות לילדים";
+            gardenGR.Content = "כל הבקשות עם גינה";
+            BackB.Content = "חזור";
+            header.Content = "היחידת אירוח שבחרת";
+            hukey.Content = "מספר יחידת אירוח";
+            huname.Content = "שם יחידת אירוח";
+            area.Content = "איזור יחידת האירוח";
+            commis.Content = "גבייה";
+            garden.Content = "יש גינה?";
+            hca.Content = "יש אטרקציות לילדים?";
+            jac.Content = "יש גקוזי?";
+            pool.Content = "יש בריכה?";
+            Title = "תבחרבקשהלהזמנה";
+                }
         public PickGSforOrder(long hoeunitkey,long hostkey)
         {
             InitializeComponent();

@@ -23,10 +23,21 @@ namespace PLWPF.HostFolder
         public HostUC( BE.Host huc)
         {
             InitializeComponent();
-
+            if (hebEnglish.hebrew)
+                hebChange();
             this.hostGrid.DataContext = huc;
         }
-
+        private void hebChange()
+        {
+            pname.Content = "שם פרטי";
+            fname.Content = "שם משפחה";
+            hkey.Content = "מספר מארח";
+            bank.Content = "מספר חשבון בנק";
+            mail.Content = "מייל";
+            phone.Content = "מספר פלאפון";
+            num.Content = "מספר יחידות אירוח";
+            collection.Content = "אישור גבייה";
+        }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
