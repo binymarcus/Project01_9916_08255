@@ -39,7 +39,7 @@
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Order Key:"/>
             <Label x:Name="orderKey1Label" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding OrderKey1}"/>
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Status:"/>
-            <ComboBox x:Name="status1ComboBox" IsEditable="True" IsReadOnly="True" Text="Please Select" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="3"  Height="Auto" HorizontalAlignment="Left" Grid.Column="1" SelectionChanged="status1ComboBox_SelectionChanged">
+            <ComboBox x:Name="status1ComboBox" SelectedIndex="0"  Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="3"  Height="Auto" HorizontalAlignment="Left" Grid.Column="1" SelectionChanged="status1ComboBox_SelectionChanged">
                 <ComboBoxItem Content="mailSent" />
                 <ComboBoxItem Content="dealMade" />
             </ComboBox>

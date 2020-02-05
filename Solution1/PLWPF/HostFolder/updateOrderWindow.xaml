@@ -12,7 +12,7 @@
                 x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
             </StackPanel>
         </ScrollViewer>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="449,364,0,0" VerticalAlignment="Top" Width="334" Height="47"/>
+        <Button Content="Back" Background="DarkKhaki" Foreground="Gainsboro" FontSize="25" HorizontalAlignment="Left" Margin="449,364,0,0" VerticalAlignment="Top" Width="334" Height="47" Click="BackButton_Click"/>
 
     </Grid>
 </Window>

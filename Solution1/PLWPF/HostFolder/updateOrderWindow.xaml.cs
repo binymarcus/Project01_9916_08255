@@ -29,36 +29,39 @@ namespace PLWPF.HostFolder
         {
             InitializeComponent();
         }
-        public updateOrderWindow(long hostkey,string user)
-        {         
-                InitializeComponent();
-                scrollview1 = new ScrollViewer();
-                username = user;
+        public updateOrderWindow(long hostkey, string user)
+        {
+            InitializeComponent();
+            scrollview1 = new ScrollViewer();
+            username = user;
 
-                try
+            try
+            {
+                orderList = bl.GetAllOrdersByHostKey(hostkey);
+
+                foreach (BE.Order item in orderList)
                 {
-                    orderList = bl.GetAllOrdersByHostKey(hostkey);
-
-                    foreach (BE.Order item in orderList)
+                    if (item.Status1 == BE.BEEnum.Status.mailSent)
                     {
                         UpdateOrderUC gruc = new UpdateOrderUC(item, username);
                         b.Children.Add(gruc);
                     }
-
-                    scrollview1.Content = b;
                 }
-                catch (Exception)
-                {
-                 MessageBox.Show("no orders found");
-                 this.Close();
-                }
-        }
 
-            private void BackButton_Click(object sender, RoutedEventArgs e)
+                scrollview1.Content = b;
+            }
+            catch (Exception)
             {
-                Window GRMain = new HostWindow(username);
-                GRMain.Show();
+                MessageBox.Show("no orders found");
                 this.Close();
             }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window HostMain = new HostWindow(username);
+            HostMain.Show();
+            this.Close();
+        }
     }
 }

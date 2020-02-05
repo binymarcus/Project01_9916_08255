@@ -34,6 +34,7 @@ namespace PLWPF.AdminFolder
                 foreach (BE.HostingUnit item in unitList)
                 {
                     HUuserCuntrol gruc = new HUuserCuntrol(item, notreallykey);
+                    gruc.HUChoose.Visibility = Visibility.Hidden;
                     b.Children.Add(gruc);
                 }
 

@@ -89,7 +89,7 @@
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <Label Name="mail" Content="Mail Address 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25,0,0.037" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
+            <Label Name="mail" Content="Mail Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25,0,0.037" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
             <xctk:WatermarkTextBox x:Name="mailAddress1TextBox" TabIndex="3" Watermark="Please insert your email address" HorizontalAlignment="Left" Height="23" Margin="4,1.333,-96.333,4.333" Grid.Row="2" Text="{Binding MailAddress1, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="353" Grid.Column="1"/>
             <Label Name="pool" Content="pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.333,0,3.333" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="47"/>
             <ComboBox x:Name="pool1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,1.667,-91,3.667" Grid.Row="10" Text="{Binding pool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357">

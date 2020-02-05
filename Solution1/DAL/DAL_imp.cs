@@ -188,9 +188,9 @@ namespace DAL
             XElement orderElement;
             try
             {
-                orderElement = (from gr in OrderRoot.Elements()
-                             where int.Parse(gr.Element("orderKey").Value) == order.OrderKey1
-                             select gr).FirstOrDefault();
+                orderElement = (from or in OrderRoot.Elements()
+                             where int.Parse(or.Element("orderKey").Value) == order.OrderKey1
+                             select or).FirstOrDefault();
                 orderElement.Element("Cdate").Value = order.CreateDate1.ToString();
                 orderElement.Element("orderdate").Value = order.OrderDate1.ToString();
                 orderElement.Element("HUkey").Value = order.HostingUnitKey1.ToString();
