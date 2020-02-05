@@ -24,10 +24,28 @@ namespace PLWPF
         public GRUserControl(BE.GuestRequest gruc)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             this.ByNameUpdateDetailsGrid.DataContext = gruc;
             gr = gruc;
         }
-
+        private void hebChange()
+        {
+            pname.Content = "שם פרטי";
+            fname.Content = "שם משפחה";
+            edate.Content = "תאריך כניסה";
+            rdate.Content = "תאריך יציאה";
+            garden.Content = "גינה";
+            jac.Content = "גקוזי";
+            childA.Content = "אטרקציות לילדים";
+            children.Content = "ילדים";
+            adults.Content = "מבוגרים";
+            mail.Content = "מייל";
+            pool.Content = "בריכה";
+            area.Content = "איזור";
+            sub.Content = "תת איזור";
+            type.Content = "סוג";
+        }
         private void entryDate1TextBox_Loaded(object sender, RoutedEventArgs e)
         {
             entryDate1TextBox.Text = gr.EntryDate1.ToString("dd/MM/yyyy");

@@ -11,7 +11,7 @@
         <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
     </Window.Resources>
     <Grid x:Name="updateRequestDetailsGrid" Background="Beige" Margin="0,0,0.333,-1.333" DataContext="{StaticResource guestRequestViewSource}">
-        <Label Content="Update Guest Request" FontSize="25" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="49" Width="773"/>
+        <Label Name="header" Content="Update Guest Request" FontSize="25" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="49" Width="773"/>
 
         <Grid x:Name="UpdateGuestRequestDetailsGrid" DataContext="{StaticResource guestRequestViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="463" Margin="0,45,0,-86" Width="455">
             <Grid.ColumnDefinitions>
@@ -39,9 +39,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Adults:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,23,0,1.667" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="56" Grid.RowSpan="2"/>
+            <Label Name="adults" Content="Adults:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,23,0,1.667" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="56" Grid.RowSpan="2"/>
             <TextBox x:Name="adults1TextBox" HorizontalAlignment="Left" Height="25" Margin="0.667,0.667,-117,0.333" Grid.Row="5" Text="{Binding Adults1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1"/>
-            <Label Content="area:" Grid.Column="0" HorizontalAlignment="Left" Margin="2,2.333,0,23" Grid.Row="7" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
+            <Label Name="area" Content="area:" Grid.Column="0" HorizontalAlignment="Left" Margin="2,2.333,0,23" Grid.Row="7" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
             <ComboBox x:Name="area1TextBox" HorizontalAlignment="Left" Height="28" Margin="0.667,0.667,-117.667,22.667" Grid.Row="7" Text="{Binding area1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.RowSpan="2" Grid.Column="1">
                 <ComboBoxItem Content="All" />
                 <ComboBoxItem Content="North" />
@@ -49,45 +49,45 @@
                 <ComboBoxItem Content="Center" />
                 <ComboBoxItem Content="Jerusalem" />
             </ComboBox>
-            <Label Content="Children:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.333,0,22" Grid.Row="6" VerticalAlignment="Center" Height="26" Width="67" Grid.RowSpan="2"/>
+            <Label Name="children" Content="Children:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.333,0,22" Grid.Row="6" VerticalAlignment="Center" Height="26" Width="67" Grid.RowSpan="2"/>
             <TextBox x:Name="children1TextBox"  HorizontalAlignment="Left" Height="26" Margin="0.667,0.667,-119,24.667" Grid.Row="6" Text="{Binding Children1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.RowSpan="2" Grid.Column="1"/>
-            <Label Content="Childrens Attractions:" HorizontalAlignment="Left" Margin="3,2.333,0,22.334" Grid.Row="13" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
+            <Label Name="childA" Content="Childrens Attractions:" HorizontalAlignment="Left" Margin="3,2.333,0,22.334" Grid.Row="13" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
             <ComboBox x:Name="childrensAttractions1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="0,0,-104.333,22.667" Grid.Row="13" Text="{Binding ChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <Label Content="Entry Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,25.333" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="77" Grid.RowSpan="2"/>
+            <Label Name="edate" Content="Entry Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,25.333" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="77" Grid.RowSpan="2"/>
             <DatePicker x:Name="entryDate1DatePicker"   Grid.Column="1" Margin="1,0,-104,22.667" Grid.Row="3" SelectedDate="{Binding EntryDate1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="28" Grid.RowSpan="2"/>
-            <Label Content="Family Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="6,2,0,22.667" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
+            <Label Name="fname" Content="Family Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="6,2,0,22.667" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
             <TextBox x:Name="FamilyName1TextBox" HorizontalAlignment="Left" Height="29" Margin="0.667,0,-133.667,23" Grid.Row="1" Text="{Binding FamilyName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1" Grid.RowSpan="2"/>
-            <Label Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25.666,0,25" Grid.Row="11" VerticalAlignment="Center" Height="26" Width="61" Grid.RowSpan="3"/>
+            <Label Name="garden"  Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25.666,0,25" Grid.Row="11" VerticalAlignment="Center" Height="26" Width="61" Grid.RowSpan="3"/>
             <ComboBox x:Name="garden1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="1,2.333,-105,20.333" Grid.Row="12" Text="{Binding Garden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="356" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <Label Content="Jacuzzi:" HorizontalAlignment="Left" Margin="2,25.666,0,0.334" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
+            <Label Name="jac" Content="Jacuzzi:" HorizontalAlignment="Left" Margin="2,25.666,0,0.334" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="95" Grid.RowSpan="2"/>
             <ComboBox x:Name="jacuzzi1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="1,25.666,-107.667,0.334" Grid.Row="10" Text="{Binding Jacuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="356" Grid.RowSpan="2">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <Label Content="Mail Address 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25,0,0.037" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
+            <Label Name="mail"  Content="Mail Address 1:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25,0,0.037" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="91" Grid.RowSpan="2"/>
             <TextBox x:Name="mailAddress1TextBox" HorizontalAlignment="Left" Height="26" Margin="0.667,0,-131.667,0" Grid.Row="2" Text="{Binding MailAddress1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1"/>
-            <Label Content="pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.333,0,3.333" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="47"/>
+            <Label Name="pool" Content="pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.333,0,3.333" Grid.Row="10" VerticalAlignment="Center" Height="26" Width="47"/>
             <ComboBox x:Name="pool1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="0,25.333,-111,23" Grid.Row="9" Text="{Binding pool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.RowSpan="3">
                 <ComboBoxItem Content="Optional" />
                 <ComboBoxItem Content="Must" />
                 <ComboBoxItem Content="notInterested" />
             </ComboBox>
-            <Label Content="Private Name:" HorizontalAlignment="Left" Margin="3,6,0,2" VerticalAlignment="Center" Height="26" Width="93"/>
+            <Label Name="pname" Content="Private Name:" HorizontalAlignment="Left" Margin="3,6,0,2" VerticalAlignment="Center" Height="26" Width="93"/>
             <TextBox x:Name="PrivateName1TextBox" HorizontalAlignment="Left" Height="24" Margin="0.667,2,-133,0" Text="{Binding PrivateName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357" Grid.Column="1"/>
-            <Label Content="Release Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,24.667" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="90" Grid.RowSpan="2"/>
+            <Label Name="rdate" Content="Release Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,24.667" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="90" Grid.RowSpan="2"/>
             <DatePicker x:Name="releaseDate1DatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="0.667,0,-116.333,25.333" Grid.Row="4"  SelectedDate="{Binding ReleaseDate1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="26" Width="357" Grid.RowSpan="2"/>
-            <Label Content="Sub Area:" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" Height="26" Width="96"/>
+            <Label Name="sub" Content="Sub Area:" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" Height="26" Width="96"/>
             <TextBox x:Name="subArea1TextBox" HorizontalAlignment="Left" Height="23" Margin="97,3.333,-121,25.667" Grid.Row="8" Text="{Binding SubArea1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="358" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-            <Label Content="type:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,23.333,0,2.667" Grid.Row="8" VerticalAlignment="Center" Height="26" Width="97" Grid.RowSpan="2"/>
+            <Label Name="type" Content="type:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,23.333,0,2.667" Grid.Row="8" VerticalAlignment="Center" Height="26" Width="97" Grid.RowSpan="2"/>
             <ComboBox x:Name="type1TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="1,0.333,-113.333,2.667" Grid.Row="9" Text="{Binding type1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="357">
                 <ComboBoxItem Content="Zimmer" />
                 <ComboBoxItem Content="Hotel" />

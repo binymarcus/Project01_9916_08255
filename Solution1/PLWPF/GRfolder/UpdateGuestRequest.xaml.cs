@@ -27,6 +27,8 @@ namespace PLWPF
         public UpdateGuestRequest(long key)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             try
             {
                 guest = bl.GetGuestRequestByKey(key);
@@ -38,6 +40,27 @@ namespace PLWPF
             this.UpdateGuestRequestDetailsGrid.DataContext = guest;
         }
 
+        private void hebChange()
+        {
+            BackButton.Content = "חזור";
+            UpdateButton.Content = "עדכן";
+            Title = "עדכןבקשתאורח";
+            header.Content = "עדכן בקשת אירוח";
+            pname.Content = "שם פרטי";
+            fname.Content = "שם משפחה";
+            edate.Content = "תאריך כניסה";
+            rdate.Content = "תאריך יציאה";
+            garden.Content="גינה";
+            jac.Content = "גקוזי";
+            childA.Content = "אטרקציות לילדים";
+            children.Content = "ילדים";
+            adults.Content = "מבוגרים";
+            mail.Content = "מייל";
+            pool.Content = "בריכה";
+            area.Content = "איזור";
+            sub.Content = "תת איזור";
+            type.Content = "סוג";
+        }
         bool IsValidEmail(string email)
         {
             try
