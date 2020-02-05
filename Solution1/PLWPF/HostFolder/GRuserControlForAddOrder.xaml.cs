@@ -69,6 +69,8 @@ namespace PLWPF
                 Thread mailThread= new Thread(()=>SendMail());
                 mailThread.Start();
             }
+            var myWindow = Window.GetWindow(this);
+            myWindow.Close();
         }
 
         private void SendMail()

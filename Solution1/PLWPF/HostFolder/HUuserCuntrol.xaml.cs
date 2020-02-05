@@ -41,6 +41,8 @@ namespace PLWPF
             Window pickGS = new PickGSforOrder(Convert.ToInt64(hostingUnitKey1Label.Content),hostkey1);
             pickGS.Show();
             //send the hosting unit info to the window with the list of gr.
+            //var myWindow = Window.GetWindow(this);
+            //myWindow.Close();
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {

@@ -324,8 +324,10 @@ namespace DAL
             }
             return L;
         }
+        
         public List<Order> GetAllOrdersByHostKey(long hostkey)
         {
+            ///////////////////////////////
             List<Order> L = new List<Order>();
             try
             {
@@ -336,6 +338,7 @@ namespace DAL
                          CreateDate1 = DateTime.Parse(order.Element("Cdate").Value),
                          OrderDate1 = DateTime.Parse(order.Element("orderdate").Value),
                          OrderKey1 = long.Parse(order.Element("orderKey").Value),
+                         hostKey1 = long.Parse(order.Element("hostKey").Value),
                          HostingUnitKey1 = long.Parse(order.Element("HUkey").Value),
                          GuestRequestKey1 = long.Parse(order.Element("GRKey").Value),
                          Status1 = (BEEnum.Status)Enum.Parse(typeof(BEEnum.Status), order.Element("status").Value)

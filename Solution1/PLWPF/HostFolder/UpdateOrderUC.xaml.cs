@@ -35,18 +35,11 @@ namespace PLWPF.HostFolder
         {
             InitializeComponent();
             or = orderuc;
+            hostkey = bl.GetHostingUnitByKey(orderuc.HostingUnitKey1).Owner1.HostKey1;
             or.hostKey1 = hostkey;
             grid1.DataContext = or;
-            hostkey = bl.GetHostingUnitByKey(orderuc.HostingUnitKey1).Owner1.HostKey1;
             username = user;
-            selected1 = status1ComboBox.SelectedItem.ToString();
-            if(selected1== "dealMade")
-            {
-                or.Status1 = BEEnum.Status.dealMade;
-                or.OrderDate1 = DateTime.Now;
-                bl.UpdateOrder(or);
-            }
-           
+            
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -63,22 +56,36 @@ namespace PLWPF.HostFolder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            selected1 = status1ComboBox.SelectedItem.ToString();
+            selected1 = selected1.Substring(selected1.IndexOf(' '));
+            if (selected1 == " dealMade")
             {
-                bl.UpdateOrder(or);
-            }
-            catch
-            {
-
-            }
-            if (status1ComboBox.SelectedItem.ToString() == "dealMade")
-            {
+                or.Status1 = BEEnum.Status.dealMade;
+                or.OrderDate1 = DateTime.Now;
+                try
+                {
+                    bl.UpdateOrder(or);
+                }
+                catch
+                {
+                    MessageBox.Show("this should work");
+                }
                 BE.GuestRequest guesty = bl.GetGuestRequestByKey(Convert.ToInt64(guestRequestKey1Label.Content));
                 guesty.status1 = BEEnum.Status.dealMade;
-                bl.UpdateGuestRequest(guesty);
-            }
+                try
+                {
+                    bl.UpdateGuestRequest(guesty);
+
+                }
+                catch
+                {
+                    MessageBox.Show("this should work2");
+                }
+            }          
+            
             Window HostWindow = new HostWindow(username);
             HostWindow.Show();
+           
         }
 
         private void status1ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
