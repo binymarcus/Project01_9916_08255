@@ -98,6 +98,8 @@ namespace PLWPF
                 //changing the gr status to mail sent
                 gr.status1 = mailsent1;
                 bl.UpdateGuestRequest(gr);
+                order.Status1 = BE.BEEnum.Status.mailSent;
+                bl.UpdateOrder(order);
             }
             catch (Exception ex)
             {

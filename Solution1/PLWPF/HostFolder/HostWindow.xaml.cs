@@ -120,6 +120,7 @@ namespace PLWPF
             this.OrderUnitButton.Visibility = Visibility.Hidden;
             this.AddOrder.Visibility = Visibility.Visible;
             this.UpdateOrder.Visibility = Visibility.Visible;
+            this.showallorders.Visibility = Visibility.Visible;
         }
 
         private void AddOrder_Click(object sender, RoutedEventArgs e)
@@ -162,6 +163,11 @@ namespace PLWPF
             {
                 MessageBox.Show("you have no hosting units!");
             }
+        }
+
+        private void showallorders_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -180,7 +180,7 @@ namespace BL
         {
             if (guestRequest.EntryDate1 >= guestRequest.ReleaseDate1)
                 throw new UnexceptableDetailsException("Entry date must be at least one day before exit date.");
-            else if (guestRequest.EntryDate1 < DateTime.Now )
+            else if (guestRequest.EntryDate1 < DateTime.Today )
                 throw new UnexceptableDetailsException("Entry date can't be in the past.");
             try
             {
@@ -255,38 +255,42 @@ namespace BL
         }
         public void UpdateOrder(Order order)
         {         //if closed then closed, doesnt matter how 
-            if (dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.dealMade || dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
-            {
-                throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
-            }
+            //if (dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.dealMade || dal.GetOrderByKey(order.OrderKey1).Status1 == BEEnum.Status.closedByClientsLackOfResponse)//may need to change it from mail sent
+            //{
+            //    throw new UnexceptableDetailsException("order cannot be changed once deal is closed.");
+            //}
             try
             {
 
                 if (order.Status1 == BEEnum.Status.dealMade)
                 {
-                    GuestRequest temp = dal.GetGuestRequestByKey(order.GuestRequestKey1);
-                    HostingUnit hosting = dal.GetHostingUnitByKey(order.HostingUnitKey1);
+                    GuestRequest temp = dal.GetGuestRequestByKey(order.GuestRequestKey1);//a guest request
+                    HostingUnit hosting = dal.GetHostingUnitByKey(order.HostingUnitKey1);//a hosting unit
                     hosting.Commission1= Configuration.commmission * calcNumOfDaysBetween(temp.EntryDate1, temp.ReleaseDate1);//dont knwo what to do with this
-                    UpdateHostingUnit(dal.updateDiary(hosting, dal.GetGuestRequestByKey(order.GuestRequestKey1)));
-                    temp.status1 = order.Status1;
-                    UpdateGuestRequest(temp);
-                    foreach (var item in dal.GetAllOrders())
+                    UpdateHostingUnit(dal.updateDiary(hosting, dal.GetGuestRequestByKey(order.GuestRequestKey1)));//update the HU diary
+                    temp.status1 = BEEnum.Status.dealMade;//order.Status1;//changing the GR status to deal made
+                    UpdateGuestRequest(temp);//updating the GR
+                    foreach (var item in dal.GetAllOrders())//a list of all the orders in the system
                     {
-                        if (item.GuestRequestKey1 == order.GuestRequestKey1)
-                            item.Status1 = order.Status1;
+                        if (item.GuestRequestKey1 == order.GuestRequestKey1)//find the order associated with the GR
+                            item.Status1 = BEEnum.Status.dealMade;//order.Status1;//changing the orders status
+                            order.OrderDate1 = DateTime.Now;//update the order date once the deal is made
                     }
+                    dal.UpdateOrder(order);//this is where we acctually change the orders status
+                    // the orders status is the only thing we are able to update in the order
                 }
-                if (order.Status1 == BEEnum.Status.mailSent && dal.GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
-                    throw new UnexceptableDetailsException("you can't send a mail, until you have signed a permission to charge the bank");
-
-                //temporary till we learn how to send an email
-                if (order.Status1 == BEEnum.Status.mailSent)
+                if (order.Status1 == BEEnum.Status.mailSent) //comes here after the mail is sent
                 {
-                    order.OrderDate1 = DateTime.Now;
-                    Console.WriteLine(" since there is no email we print the information\n" +order.ToString());
+                    foreach (var item in dal.GetAllOrders())//a list of all the orders in the system
+                    {
+                        if (item.GuestRequestKey1 == order.GuestRequestKey1)//find the order associated with the GR
+                            item.Status1 = BEEnum.Status.mailSent;//changing the orders status
+                    }
+                    dal.UpdateOrder(order);//this is where we acctually change the orders status
                 }
-                dal.UpdateOrder(order);
-
+                //uneccesery
+                //if (order.Status1 == BEEnum.Status.mailSent && dal.GetHostingUnitByKey(order.HostingUnitKey1).Owner1.CollectionClearance1 == false)
+                //    throw new UnexceptableDetailsException("you can't send a mail, until you have signed a permission to charge the bank");
             }
             catch (Exception)
             {

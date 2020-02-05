@@ -25,6 +25,8 @@ namespace PLWPF.HostFolder
         IBL bl = FactoryBL.getIBL();
         Order or;
         string username;
+        long hostkey;
+        string selected1;
         public UpdateOrderUC()
         {
             InitializeComponent();
@@ -33,8 +35,18 @@ namespace PLWPF.HostFolder
         {
             InitializeComponent();
             or = orderuc;
+            or.hostKey1 = hostkey;
             grid1.DataContext = or;
+            hostkey = bl.GetHostingUnitByKey(orderuc.HostingUnitKey1).Owner1.HostKey1;
             username = user;
+            selected1 = status1ComboBox.SelectedItem.ToString();
+            if(selected1== "dealMade")
+            {
+                or.Status1 = BEEnum.Status.dealMade;
+                or.OrderDate1 = DateTime.Now;
+                bl.UpdateOrder(or);
+            }
+           
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -51,7 +63,14 @@ namespace PLWPF.HostFolder
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bl.UpdateOrder(or);
+            try
+            {
+                bl.UpdateOrder(or);
+            }
+            catch
+            {
+
+            }
             if (status1ComboBox.SelectedItem.ToString() == "dealMade")
             {
                 BE.GuestRequest guesty = bl.GetGuestRequestByKey(Convert.ToInt64(guestRequestKey1Label.Content));
@@ -64,31 +83,7 @@ namespace PLWPF.HostFolder
 
         private void status1ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(status1ComboBox.ToString() == "mailSent")
-            {
-                or.Status1 = BEEnum.Status.mailSent;
-                try
-                {
-                    bl.UpdateOrder(or);
-                }
-                catch
-                {
-                    MessageBox.Show("cannot update order");
-                }
-            }
-            if (status1ComboBox.ToString() == "dealMade")
-            {
-                or.Status1 = BEEnum.Status.dealMade;
-                or.OrderDate1 = DateTime.Now;
-                try
-                {
-                    bl.UpdateOrder(or);
-                }
-                catch
-                {
-                    MessageBox.Show("cannot update order");
-                }
-            }
+            
         }
     }
 }
