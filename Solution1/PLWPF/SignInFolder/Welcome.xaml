@@ -8,17 +8,18 @@
 
     <Grid Background="{x:Null}" Visibility="Visible">
 
-        <TextBox Height="53" HorizontalAlignment="Left" FontSize="28" BorderThickness="0" TextDecorations="Strikethrough" Foreground="Red" FontStyle="Italic" FontWeight="Heavy" Margin="55,109,0,0" Name="textBox1" VerticalAlignment="Top" Width="200" Background="{x:Null}" FontStretch="UltraCondensed" RenderTransformOrigin="0.505,0.547">
-            <TextBox.RenderTransform>
+        <Label TextBlock.FontFamily="Comic Sans MS"
+            Height="53" HorizontalAlignment="Left" FontSize="28" BorderThickness="0" Foreground="Red" FontStyle="Italic" FontWeight="Heavy" Margin="55,109,0,0" Name="textBox1" VerticalAlignment="Top" Width="200" Background="{x:Null}" FontStretch="UltraCondensed" RenderTransformOrigin="0.505,0.547">
+            <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="9"/>
+                    <RotateTransform Angle="6.876"/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-
+            </Label.RenderTransform>
+        </Label>
+        
         <Button Content="Regenarate" Height="31" HorizontalAlignment="Left" Margin="44,193,0,0" Name="button1" VerticalAlignment="Top" Width="161" Click="button1_Click" />
         <TextBox Height="53" HorizontalAlignment="Left" FontSize="15" Foreground="PapayaWhip" FontWeight="Medium" Margin="293,104,0,0" Name="textBox2" VerticalAlignment="Top" Width="200" Background="{x:Null}" FontStretch="UltraCondensed"></TextBox>
         <Button x:Name="CuntinueBtton" Content="Continue" HorizontalAlignment="Left" Margin="317,193,0,0" VerticalAlignment="Top" Width="161" Height="31" Click="CuntinueBtton_Click"/>

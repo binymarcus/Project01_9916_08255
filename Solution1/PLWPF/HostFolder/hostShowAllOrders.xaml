@@ -1,0 +1,71 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.HostFolder"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.HostFolder.hostShowAllOrders"
+        mc:Ignorable="d"
+        Title="hostShowAllOrders" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="orderViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Order}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource orderViewSource}">
+
+        <DataGrid x:Name="orderDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,10,10.333,71.667" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionChanged="orderDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn x:Name="createDate1Column" Width="SizeToHeader" Header="Create Date                ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding CreateDate1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="guestRequestKey1Column" Width="SizeToHeader" Header="Guest Request Key">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding GuestRequestKey1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="hostingUnitKey1Column" Width="SizeToHeader" Header="Hosting Unit Key">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding HostingUnitKey1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="hostKey1Column" Width="SizeToHeader" Header="host Key        ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding hostKey1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="orderDate1Column" Width="SizeToHeader" Header="Order Date             ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding OrderDate1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="orderKey1Column" Width="SizeToHeader" Header="Order Key">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding OrderKey1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="status1Column" Width="SizeToHeader" Header="Status          ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Status1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="backbutton" Content="Back" FontSize="25" Background="Gold" Foreground="Silver" Click="backbutton_Click" HorizontalAlignment="Left" Margin="428,354,0,0" VerticalAlignment="Top" Width="355" Height="63"/>
+
+    </Grid>
+</Window>

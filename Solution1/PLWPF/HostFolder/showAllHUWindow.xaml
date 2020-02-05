@@ -20,49 +20,49 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="areaOfHostingUnitColumn" Header="Area Of Hosting Unit" Width="80">
+                    <GridViewColumn x:Name="areaOfHostingUnitColumn" Header="Area" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox IsReadOnly="True" Text="{Binding AreaOfHostingUnit}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="commission1Column" Header="Commission 1" Width="80">
+                    <GridViewColumn x:Name="commission1Column" Header="Commission" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Margin="-6,-1" IsReadOnly="True" Text="{Binding Commission1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="hasChildrensAttractions1Column" Header="has Childrens Attractions 1" Width="80">
+                    <GridViewColumn x:Name="hasChildrensAttractions1Column" Header="Childrens Attractions" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsEnabled="False" IsChecked="{Binding hasChildrensAttractions1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="-6,-1"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="hasGarden1Column" Header="has Garden 1" Width="80">
+                    <GridViewColumn x:Name="hasGarden1Column" Header="has Garden" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsEnabled="False" IsChecked="{Binding hasGarden1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="-6,-1"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="hasJaccuzzi1Column" Header="has Jaccuzzi 1" Width="80">
+                    <GridViewColumn x:Name="hasJaccuzzi1Column" Header="has Jaccuzzi" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsEnabled="False" IsChecked="{Binding hasJaccuzzi1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="-6,-1"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="hasPool1Column" Header="has Pool 1" Width="80">
+                    <GridViewColumn x:Name="hasPool1Column" Header="has Pool" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsEnabled="False" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="-6,-1"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="hostingUnitName1Column" Header="Hosting Unit Name 1" Width="80">
+                    <GridViewColumn x:Name="hostingUnitName1Column" Header="Hosting Unit Name" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Margin="-6,-1" IsReadOnly="True" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>

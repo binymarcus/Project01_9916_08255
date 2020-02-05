@@ -123,6 +123,9 @@
     <Compile Include="GRfolder\GRUserControl.xaml.cs">
       <DependentUpon>GRUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HostFolder\hostShowAllOrders.xaml.cs">
+      <DependentUpon>hostShowAllOrders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HostFolder\HostUC.xaml.cs">
       <DependentUpon>HostUC.xaml</DependentUpon>
     </Compile>
@@ -240,6 +243,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GRfolder\GuestRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostFolder\hostShowAllOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

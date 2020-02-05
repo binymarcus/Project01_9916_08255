@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using PLWPF.HostFolder;
 
 namespace PLWPF
 {
@@ -180,7 +181,9 @@ namespace PLWPF
 
         private void showallorders_Click(object sender, RoutedEventArgs e)
         {
-
+            var showallorderswindow = new hostShowAllOrders(Convert.ToInt64(host.HostKey1), user);
+            showallorderswindow.Show();
+            this.Close();
         }
     }
 }

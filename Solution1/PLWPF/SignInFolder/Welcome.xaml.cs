@@ -44,7 +44,7 @@ namespace PLWPF
                 pwd += temp;
             }
 
-            textBox1.Text = pwd;
+            textBox1.Content = pwd;
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace PLWPF
 
         private void CuntinueBtton_Click(object sender, RoutedEventArgs e)
         {
-            if((textBox1.Text==textBox2.Text && textBox1.Text !="")||textBox2.Text=="aaa")
+            if ((textBox1.Content.ToString() == textBox2.Text && textBox1.Content.ToString() !="")||textBox2.Text=="aaa")
             {
                 GuestRequest gu = new GuestRequest();
                 gu.Show();
