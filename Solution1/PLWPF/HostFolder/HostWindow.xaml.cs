@@ -63,6 +63,7 @@ namespace PLWPF
             AddUnitButton.Content = "הוסף יחידה";
             AddOrder.Content = "הוסף הזמנה";
             UpdateOrder.Content = "עדכן הזמנה";
+            showallorders.Content = "הראה כל ההזמנות";
                 }
         private BE.Host getOldestHostKey()
         {
