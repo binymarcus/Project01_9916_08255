@@ -34,6 +34,8 @@ namespace PLWPF.HostFolder
         public UpdateOrderUC(BE.Order orderuc,string user)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             or = orderuc;
             hostkey = bl.GetHostingUnitByKey(orderuc.HostingUnitKey1).Owner1.HostKey1;
             or.hostKey1 = hostkey;
@@ -41,7 +43,17 @@ namespace PLWPF.HostFolder
             username = user;
             
         }
-
+        private void hebChange()
+        {
+            up.Content = "עדכן אותי";
+            cdate.Content = "תאריך יצירה";
+            odate.Content = "תאריך הזמנה";
+            hkey.Content = "מספר מארח";
+            hukey.Content = "מספר יחידת אירוח";
+            okey.Content = "מספר הזמנה";
+            status.Content = "סטטוס";
+            grkey.Content = "מספר בקשה";
+        }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 

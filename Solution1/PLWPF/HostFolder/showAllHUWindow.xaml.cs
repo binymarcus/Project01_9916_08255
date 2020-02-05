@@ -28,6 +28,8 @@ namespace PLWPF
         public showAllHUWindow(long key1,string user)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             //gets a guest request and uses function to get a list with all HU by Host name and then shows all of them
             username = user;
             try
@@ -41,7 +43,18 @@ namespace PLWPF
                 throw;
             }
         }
-
+        private void hebChange()
+        {
+            Title = "הראהכליחידותאירוח";
+            BackButton.Content = "חזור";
+            areaOfHostingUnitColumn.Header = "איזור יחידת האירוח";
+            commission1Column.Header = "גבייה";
+            hasChildrensAttractions1Column.Header = "יש אטרקציות לילדים";
+            hasGarden1Column.Header = "יש גינה";
+            hasJaccuzzi1Column.Header = "יש גקוזי";
+            hasPool1Column.Header = "יש בריכה";
+            hostingUnitName1Column.Header = "שם יחידת האירוח";
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 

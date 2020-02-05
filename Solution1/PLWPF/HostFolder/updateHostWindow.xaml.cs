@@ -25,9 +25,23 @@ namespace PLWPF
         string username;
         public updateHostWindow()
         {
-            InitializeComponent();     
+            InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "עדכןמארח";
+            hun.Content = "שם יחידת האירוח";
+            area.Content = "איזור יחידת האירוח";
+            commission.Content = "גבייה";
+            childA.Content = "יש אטרקציות לילדים";
+            garden.Content = "גינה";
+            pool.Content = "בריכה";
+            jac.Content = "גקוזי";
+            back.Content = "חזור";
+            update.Content = "עדכן";
+        }
         public updateHostWindow(BE.HostingUnit uni,string user)
         {
             InitializeComponent();

@@ -32,6 +32,11 @@ namespace PLWPF.HostFolder
         public updateOrderWindow(long hostkey, string user)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+            {
+                Title = "עדכןהמזנה";
+                back.Content = "חזור";
+            }
             scrollview1 = new ScrollViewer();
             username = user;
 

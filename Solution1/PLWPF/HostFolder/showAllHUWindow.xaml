@@ -14,7 +14,7 @@
         <ListView Background="Wheat" x:Name="hostingUnitListView" ItemsSource="{Binding}" Margin="10,10,122.333,88.667" SelectionMode="Single" SelectionChanged="hostingUnitListView_SelectionChanged">
             <ListView.ItemContainerStyle>
                 <Style>
-                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter  Property="Control.HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListView.ItemContainerStyle>
