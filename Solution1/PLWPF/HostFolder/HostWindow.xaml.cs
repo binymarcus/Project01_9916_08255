@@ -131,7 +131,6 @@ namespace PLWPF
 
         private void OrderUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowAll_Button.Visibility = Visibility.Hidden;
             this.OrderUnitButton.Visibility = Visibility.Hidden;
             this.AddOrder.Visibility = Visibility.Visible;
             this.UpdateOrder.Visibility = Visibility.Visible;

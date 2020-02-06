@@ -56,7 +56,7 @@ namespace PLWPF
 
         private void CuntinueBtton_Click(object sender, RoutedEventArgs e)
         {
-            if ((textBox1.Content.ToString() == textBox2.Text && textBox1.Content.ToString() !="")||textBox2.Text=="aaa")
+            if ((textBox1.Content.ToString() == textBox2.Text && textBox1.Content.ToString() != "") || textBox2.Text == "aaa")
             {
                 GuestRequest gu = new GuestRequest();
                 gu.Show();
@@ -70,6 +70,7 @@ namespace PLWPF
                 putrand();
             }
         }
+
     }
 
 }

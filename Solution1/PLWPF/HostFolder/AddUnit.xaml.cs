@@ -28,15 +28,14 @@ namespace PLWPF
         public AddUnit()
         {
             InitializeComponent();
-            if (hebEnglish.hebrew)
-                hebChange();
-            unit = new BE.HostingUnit();
         }
         private void hebChange()
         {
             Title = "הוסףיחידה";
             Add.Content = "הוסף";
             Cancel.Content = "בטל";
+            commission.Content = "עמלה";
+            name.Content = "שם יחידת הארוח";
             pool.Content = "בריכה";
             garden.Content = "גינה";
             jac.Content = "גקוזי";
@@ -49,6 +48,8 @@ namespace PLWPF
         public AddUnit(BE.Host host,string user)
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             owner = host;
             unit = new BE.HostingUnit();
             this.addunit.DataContext = unit;
