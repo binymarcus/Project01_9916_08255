@@ -402,5 +402,11 @@
   <ItemGroup>
     <Resource Include="langIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="engIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hebIcon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
