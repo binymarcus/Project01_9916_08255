@@ -30,6 +30,7 @@ namespace PLWPF
         String hostPath = "@HostXml.xml";
         XElement guestRoot = new XElement("guestsInfo");
         XElement hostRoot = new XElement("hostsInfo");
+        BE.BankBranch banky = new BE.BankBranch();
         IBL bl;
         BackgroundWorker bg = new BackgroundWorker();
         HttpWebRequest httpRequest;
@@ -80,6 +81,8 @@ namespace PLWPF
         public HostRegistraion()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             LoadData();
             comboBoxBanks.ItemsSource = null;
             bg.DoWork += Bg_DoWork;
@@ -87,6 +90,24 @@ namespace PLWPF
             bg.ProgressChanged += Bg_ProgressChanged;
             bg.WorkerReportsProgress = true;
             bl = FactoryBL.getIBL();
+        }
+        private void hebChange()
+        {
+            Title = "רישוםכאורח";
+            txtUsername.Text = "שם משתמש";
+            textBlockPassword.Text = "סיסמה";
+            textBlockConfirmPwd.Text = "אימות סיסמה";
+            mail.Content = "מייל";
+            coll.Content = "אישור גבייה";
+            pname.Content = "שם פרטי";
+            fname.Content = "שם משפחה";
+            phone.Content = "מספר מפלאפון";
+            bak.Content = "מספר חשבון בנק";
+            Submit.Content = "הירשם";
+            button2.Content = "מחק"; 
+            button3.Content = "בטל";
+            login.Content = "כניסה";
+            populateBanksBtn.Content = "מלאבנקים";
         }
         private void Bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -152,6 +173,7 @@ namespace PLWPF
             host.PhoneNumber1 = phoneNumber1TextBox.Text;
             host.BankAccountNumber1 = int.Parse(bankAccountNumber1TextBox.Text);
             host.CollectionClearance1 = bool.Parse(collectionClearance1CheckBox.IsChecked.ToString());
+            host.BankBranchDetails1 = banky;
             XElement username = new XElement("username", textBoxUserName.Text);
             XElement password = new XElement("password", passwordBox1.Password);
             bl.AddHost(host, textBoxUserName.Text, passwordBox1.Password);
@@ -319,6 +341,14 @@ namespace PLWPF
                 if (!ith_character_ok) return false;
             }
             return true;
+        }
+        private void getBankDetails(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView rowView = banksDatagrid.SelectedItem as DataRowView;
+            banky.BankName1 = rowView["Bank_Name"].ToString();
+            banky.BranchCity1 = rowView["City"].ToString();
+            banky.BranchNumbner1 = int.Parse(rowView["Branch_Code"].ToString());
+            banky.BranchAddress1=rowView["Address"].ToString();
         }
     }
 }

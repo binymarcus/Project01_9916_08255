@@ -119,10 +119,15 @@ namespace DAL
             XElement Fname = new XElement("lastName", hoe.FamilyName1);
             XElement email = new XElement("Email", hoe.MailAddress1);
             XElement phone = new XElement("PhoneNumber", hoe.PhoneNumber1);
-            XElement bank = new XElement("BankAccountNumber", hoe.BankAccountNumber1);
+            XElement bankAnum = new XElement("BankAccountNumber", hoe.BankAccountNumber1);
             XElement clearance = new XElement("Clearance",hoe.CollectionClearance1.ToString());
             XElement num = new XElement("num", host.NumOfHostinUnits1);
-            XElement Host = new XElement("Host", username, password,key, Pname, Fname, email, phone,num, bank, clearance);
+            XElement bankname = new XElement("bankName",host.BankBranchDetails1.BankName1);
+            XElement bankcity = new XElement("bankCity",host.BankBranchDetails1.BranchCity1); 
+            XElement banknum = new XElement("bankNumber",host.BankBranchDetails1.BankNumber1);
+            XElement branchNum = new XElement("branchNumber", host.BankBranchDetails1.BranchNumbner1);
+            XElement bankAdress = new XElement("bankAddress",host.BankBranchDetails1.BranchAddress1);
+            XElement Host = new XElement("Host", username, password,key, Pname, Fname, email, phone,num, bankAdress,bankAnum,bankcity,bankname,banknum,branchNum, clearance);
             hostRoot.Add(Host);
             hostRoot.Save(hostPath);
         }
@@ -411,14 +416,23 @@ namespace DAL
                 L = (from host in hostRoot.Elements()
                      select new Host()
                      {
-                         HostKey1=long.Parse(host.Element("key").Value),
-                         PrivateName1=host.Element("firstName").Value,
+                         HostKey1 = long.Parse(host.Element("key").Value),
+                         PrivateName1 = host.Element("firstName").Value,
                          FamilyName1 = host.Element("lastName").Value,
-                         MailAddress1=host.Element("Email").Value,
-                         PhoneNumber1=host.Element("PhoneNumber").Value,
-                         NumOfHostinUnits1=int.Parse(host.Element("num").Value),
-                         BankAccountNumber1=int.Parse(host.Element("BankAccountNumber").Value),
-                         CollectionClearance1=bool.Parse(host.Element("Clearance").Value)
+                         MailAddress1 = host.Element("Email").Value,
+                         PhoneNumber1 = host.Element("PhoneNumber").Value,
+                         NumOfHostinUnits1 = int.Parse(host.Element("num").Value),
+                         BankAccountNumber1 = int.Parse(host.Element("BankAccountNumber").Value),
+                         CollectionClearance1 = bool.Parse(host.Element("Clearance").Value),
+                         BankBranchDetails1 = new BankBranch()
+                         {
+                             BranchAddress1 = host.Element("bankAddress").Value,
+                             BankName1 = host.Element("bankName").Value,
+                             BankNumber1 = int.Parse(host.Element("bankNumber").Value),
+                             BranchCity1 = host.Element("bankCity").Value,
+                             BranchNumbner1 = int.Parse(host.Element("branchNumber").Value)                             
+                         }
+
                      }).ToList();
                 return L;
             }
@@ -590,7 +604,15 @@ namespace DAL
                         MailAddress1 = use.Element("Email").Value,
                         PhoneNumber1 = use.Element("PhoneNumber").Value,
                         BankAccountNumber1 = int.Parse(use.Element("BankAccountNumber").Value),
-                        CollectionClearance1 = bool.Parse(use.Element("Clearance").Value)
+                        CollectionClearance1 = bool.Parse(use.Element("Clearance").Value),
+                                BankBranchDetails1 = new BankBranch()
+                                {
+                                    BranchAddress1 = use.Element("bankAddress").Value,
+                                    BankName1 = use.Element("bankName").Value,
+                                    BankNumber1 = int.Parse(use.Element("bankNumber").Value),
+                                    BranchCity1 = use.Element("bankCity").Value,
+                                    BranchNumbner1 = int.Parse(use.Element("branchNumber").Value)
+                                }
                     }).Single();
             return host;
 }
