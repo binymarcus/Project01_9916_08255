@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using BE;
 using DAL;
 using DS;
@@ -11,6 +12,12 @@ namespace BL
     public class IBL_imp : IBL
     {
         Idal dal = FactoryDAL.getDAL();
+
+        public IBL_imp()
+        {
+            Thread thready = new Thread(run);
+            thready.Start();
+        }
 
         ///<summary>
         /// geta a method of checking the GuestRequests and returns all the GuestRequests that fit that method
@@ -33,6 +40,7 @@ namespace BL
             }
             return L;
         }
+        
         /// <summary>
         /// checks for free units a a spacifec time ???(is this correct?)
         /// </summary>
@@ -111,12 +119,20 @@ namespace BL
             
 
         }
-        /// <summary>
-        /// the function recieves a guest request and returns the number of orders sent to it.
-        /// </summary>
-        /// <param name="guest"></param>
-        /// <returns>returns the number of orders sent</returns>
-        public int GuestOrderSuggestions(GuestRequest guest)
+     private void run()
+        {
+            while (true)
+            {
+                OlderOrders(30);
+                Thread.Sleep(new TimeSpan(24,0,0));
+            }
+        }
+            /// <summary>
+            /// the function recieves a guest request and returns the number of orders sent to it.
+            /// </summary>
+            /// <param name="guest"></param>
+            /// <returns>returns the number of orders sent</returns>
+            public int GuestOrderSuggestions(GuestRequest guest)
         {
             int sum = 0;
             foreach (var item in dal.GetAllOrders())

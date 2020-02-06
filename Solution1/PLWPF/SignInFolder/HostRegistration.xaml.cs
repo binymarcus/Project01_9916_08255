@@ -349,6 +349,7 @@ namespace PLWPF
             banky.BranchCity1 = rowView["City"].ToString();
             banky.BranchNumbner1 = int.Parse(rowView["Branch_Code"].ToString());
             banky.BranchAddress1=rowView["Address"].ToString();
+            banky.BankNumber1 = int.Parse(rowView["Bank_Code"].ToString());
         }
     }
 }

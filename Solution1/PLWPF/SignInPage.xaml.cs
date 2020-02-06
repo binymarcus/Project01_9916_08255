@@ -25,6 +25,7 @@ namespace PLWPF   {
     {
         XElement guestRoot;
         XElement HostRoot;
+
         public SignInPage()
         {
             InitializeComponent();
