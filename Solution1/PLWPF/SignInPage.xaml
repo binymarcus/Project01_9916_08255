@@ -11,9 +11,7 @@
         <StackPanel Margin="20">
                         <Menu x:Name="Language"  Background="Black">
                 <MenuItem RenderTransformOrigin="0.712,0.55" Height="25" Width="25" Background="White">
-                    <MenuItem.Icon>
-                        <Image Source="C:\Users\binya\Downloads\languageButton.jpg"  Height="25" Width="16"/>
-                    </MenuItem.Icon>
+                    
                     <MenuItem Header="עברית" Background="#04c582" Foreground="Black" Click="MenuItem_Click"/>
                     <MenuItem Header="English" Background="#04c582" Foreground="Black" Click="MenuItem_Click_1"/>
                 </MenuItem>
