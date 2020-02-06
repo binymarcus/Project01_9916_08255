@@ -28,8 +28,17 @@ namespace PLWPF
         public AdminHostFunctions()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "אדמיןמארח";
+            GetAllHostsButton.Content = "הבא כל המארחים";
+            somthing.Content = "הבא מארחים על פי מספר יחידות";
+            FindHostMost.Content = "הבא מארח עם הכי הרבה יחידות";
+            BackButton.Content = "חזור";
+        }
         private void GetAllHostsButton_Click(object sender, RoutedEventArgs e)
         {
             Window host = new ShowAllHosts();

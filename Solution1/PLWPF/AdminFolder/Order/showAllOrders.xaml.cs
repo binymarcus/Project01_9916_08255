@@ -27,6 +27,8 @@ namespace PLWPF.AdminFolder.Order
         public showAllOrders()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             scrollview1 = new ScrollViewer();
 
             try
@@ -49,7 +51,11 @@ namespace PLWPF.AdminFolder.Order
 
             }
         }
-
+        private void hebChange()
+        {
+            Title = "הראהכלההזמנות";
+            BackButton.Content = "חזור";
+        }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Window GRMain = new AdminOrderFunctions();

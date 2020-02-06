@@ -29,8 +29,22 @@ namespace PLWPF
         public AdminMainWindow()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "אדמין";
+            GRfunctions.Content = "פונקציות לבקשת אירוח";
+            HostFunctions.Content = "פונקציות למארח";
+            HUFunctions.Content = "פונקציות ליחידות אירוח";
+            OrderFunctions.Content = "פונקציות להזמנות";
+            money.Content = "טפל בכסף";
+            SignOut.Content = "התנתק";
+            calcmoney.Content = "חשב כסף";
+            commish.Content = "גבייה";
+            newCommish.Watermark = "נא להכניס גבייה חדשה";
+        }
         private void GRfunctions_Click(object sender, RoutedEventArgs e)
         {
             Window adminGRfunctions = new AdminGRfunctions();

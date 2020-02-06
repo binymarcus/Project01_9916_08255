@@ -25,8 +25,17 @@ namespace PLWPF
         public AdminOrderFunctions()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "אדמיןהזמנות";
+            GetAllOrders.Content = "הבא כל ההזמנות";
+            removeOld.Content = "הסר הזמנות ישנות";
+            BackButton.Content = "חזור";
+            Remove.Content = "הסר";
+        }
         private void GetAllOrders_Click(object sender, RoutedEventArgs e)
         {
             Window or = new showAllOrders();

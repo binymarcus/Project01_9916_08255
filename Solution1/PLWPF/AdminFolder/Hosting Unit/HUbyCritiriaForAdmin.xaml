@@ -23,10 +23,10 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Button Content="allUnitsWithPools" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click"/>
-        <Button Content="allUnitsWithJaccuzzis" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_1"/>
-        <Button Content="allUnitsWithGardens" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_2"/>
-        <Button Content="allUnitsWithchildrensattractions" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_3"/>
+        <Button x:Name="pool" Content="allUnitsWithPools" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click"/>
+        <Button x:Name="jac" Content="allUnitsWithJaccuzzis" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_1"/>
+        <Button x:Name="gardens" Content="allUnitsWithGardens" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_2"/>
+        <Button x:Name="childA" Content="allUnitsWithchildrensattractions" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="Button_Click_3"/>
         <Button x:Name="southHU" Content="All Units In The South" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="southHU_Click"/>
         <Button x:Name="northHU" Content="All Units In The North" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="northHU_Click"/>
         <Button x:Name="centerHU" Content="All Units In The Center" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="centerHU_Click"/>

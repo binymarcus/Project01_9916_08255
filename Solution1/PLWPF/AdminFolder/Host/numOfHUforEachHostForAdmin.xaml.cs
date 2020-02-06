@@ -26,8 +26,16 @@ namespace PLWPF.AdminFolder.Host
         public numOfHUforEachHostForAdmin()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "מספר יחידות אירוח לכל מאחר";
+            head.Watermark = "הכנס מספר יחידות אירוח למציאה";
+            showB.Content = "הראה";
+            backB.Content = "חזור";
+        }
         private void backB_Click(object sender, RoutedEventArgs e)
         {
 

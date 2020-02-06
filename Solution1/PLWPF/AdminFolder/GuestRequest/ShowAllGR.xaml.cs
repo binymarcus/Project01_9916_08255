@@ -25,6 +25,8 @@ namespace PLWPF.AdminFolder
         public ShowAllGR()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             scrollview1 = new ScrollViewer();
 
             try
@@ -47,7 +49,11 @@ namespace PLWPF.AdminFolder
 
             }
         }
-
+        private void hebChange()
+        {
+            Title = "הראהכלהבקשות";
+            BackButton.Content = "חזור";
+        }
         
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

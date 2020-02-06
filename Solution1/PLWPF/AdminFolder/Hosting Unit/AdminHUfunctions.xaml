@@ -10,7 +10,7 @@
         <Button x:Name="GetAllHU" Background="Aqua" Content="Get All Hosting Units" FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllHU_Click"/>
         <Button x:Name="getcritiria" Background="Aqua" Content="Get All Hosting Units By Critiria" FontSize="25" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="getcritiria_Click"/>
         <Button x:Name="BackButton" Background="BlueViolet" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="423,355,0,0" VerticalAlignment="Top" Width="360" Height="56" Click="BackButton_Click"/>
-        <Button Content="calc number of hosting units" Background="Aqua" FontSize="25" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="Button_Click"/>
+        <Button x:Name="calc" Content="calc number of hosting units" Background="Aqua" FontSize="25" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="Button_Click"/>
 
     </Grid>
 </Window>

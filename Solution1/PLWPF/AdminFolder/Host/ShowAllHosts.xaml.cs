@@ -26,6 +26,8 @@ namespace PLWPF.AdminFolder
         public ShowAllHosts()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             scrollview1 = new ScrollViewer();
 
             try
@@ -49,7 +51,11 @@ namespace PLWPF.AdminFolder
             }
         }
 
-
+        private void hebChange()
+        {
+            Title = "הראהכלהמארחים";
+            BackButton.Content = "חזור";
+        }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Window GRMain = new AdminHostFunctions();

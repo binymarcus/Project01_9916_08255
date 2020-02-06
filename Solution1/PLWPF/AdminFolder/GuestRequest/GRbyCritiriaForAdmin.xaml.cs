@@ -27,8 +27,22 @@ namespace PLWPF.AdminFolder.GuestRequest
         public GRbyCritiriaForAdmin()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "בקשותעלפיקריטריון";
+            poolGR.Content = "כל הבקשות עם בריכה";
+            southGR.Content = "הבקשות בדרום";
+            jaccuzziGR.Content = "כל הבקשות עם גקוזי";
+            northGR.Content = "כל הבקשות בדרום";
+            gardenGR.Content = "כל הבקשות עם גינה";
+            centerGR.Content = "כל הבקשות במרכז";
+            childrenGR.Content = "כל הבקשות עם אטרקציות לילדים";
+            jemGR.Content = "כל הבקשות בירושלים";
+            BackB.Content = "חזור";
+        }
         private void BackB_Click(object sender, RoutedEventArgs e)
         {
             Window win = new AdminGRfunctions();

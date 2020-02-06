@@ -28,8 +28,17 @@ namespace PLWPF
         public AdminGRfunctions()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "אדמיןבקשותאירוח";
+            GetAllGR.Content = "הבא כל בקשות אירוח";
+            FindGRcriteria.Content = "מצא בקשות על פי קרטריון";
+            calc.Content = "חשב מספר בקשות אירוח";
+            BackButton.Content = "חזור";
+        }
         private void GetAllGR_Click(object sender, RoutedEventArgs e)
         {
             Window get = new ShowAllGR();

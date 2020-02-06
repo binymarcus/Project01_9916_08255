@@ -28,8 +28,17 @@ namespace PLWPF
         public AdminHUfunctions()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            GetAllHU.Content = "הבא כל יחידות האירוח";
+            Title = "אדמיןיחידותאירוח";
+            getcritiria.Content = "הבא על פי קרטיריה";
+            calc.Content = "חשב מספר יחידות אירוח";
+            BackButton.Content = "חזור";
+        }
         private void GetAllHU_Click(object sender, RoutedEventArgs e)
         {
             Window hu = new showAllUnits();

@@ -25,6 +25,8 @@ namespace PLWPF.AdminFolder
         public showAllUnits()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
             scrollview1 = new ScrollViewer();
             long notreallykey = 0;
             try
@@ -46,7 +48,11 @@ namespace PLWPF.AdminFolder
 
             }
         }
-
+        private void hebChange()
+        {
+            BackButton.Content = "חזור";
+            Title = "הראהכלהיחידות";
+        }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

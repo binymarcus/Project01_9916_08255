@@ -27,7 +27,7 @@ namespace PLWPF
     /// </summary>
     public partial class HostRegistraion : Window
     {
-        String hostPath="@HostXml.xml";
+        String hostPath = "@HostXml.xml";
         XElement guestRoot = new XElement("guestsInfo");
         XElement hostRoot = new XElement("hostsInfo");
         IBL bl;
@@ -88,15 +88,15 @@ namespace PLWPF
             bg.RunWorkerCompleted += Bg_RunWorkerCompleted;
             bg.ProgressChanged += Bg_ProgressChanged;
             bg.WorkerReportsProgress = true;
-            bl =  FactoryBL.getIBL();
+            bl = FactoryBL.getIBL();
         }
         private void hebChange()
         {
-            textBoxUserName.Text = "שם משתמש";
+            txtUsername.Text = "שם משתמש";
             textBlockPassword.Text = "סיסמה";
             textBlockConfirmPwd.Text = "אישור סיסמה";
             Title = "הרשמה למערכת כמארח";
-            textBlockHeading.Text= "הרשמה כמארח";
+            textBlockHeading.Text = "הרשמה כמארח";
             banknumber.Content = "מספר חשבון";
             mail.Content = "אימייל";
             collection.Content = "אישור גבייה";
@@ -171,16 +171,16 @@ namespace PLWPF
             host.PrivateName1 = privateName1TextBox.Text;
             host.FamilyName1 = familyName1TextBox.Text;
             host.MailAddress1 = mailAddress1TextBox.Text;
-            host.PhoneNumber1 =phoneNumber1TextBox.Text;
+            host.PhoneNumber1 = phoneNumber1TextBox.Text;
             host.BankAccountNumber1 = int.Parse(bankAccountNumber1TextBox.Text);
             host.CollectionClearance1 = bool.Parse(collectionClearance1CheckBox.IsChecked.ToString());
             XElement username = new XElement("username", textBoxUserName.Text);
             XElement password = new XElement("password", passwordBox1.Password);
             bl.AddHost(host, textBoxUserName.Text, passwordBox1.Password);
-            MessageBox.Show("added to the system, Host Key: "+host.HostKey1);
+            MessageBox.Show("added to the system, Host Key: " + host.HostKey1);
             SignInPage login = new SignInPage();
 
-            
+
             login.Show();
             Close();
         }
@@ -197,8 +197,8 @@ namespace PLWPF
                 MessageBox.Show("Enter a password.");
                 passwordBox1.Focus();
             }
-            
-                else if (passwordBoxConfirm.Password.Length == 0)
+
+            else if (passwordBoxConfirm.Password.Length == 0)
             {
                 MessageBox.Show("confirm your password.");
                 passwordBoxConfirm.Focus();
@@ -223,7 +223,7 @@ namespace PLWPF
                 MessageBox.Show("enter your bank account number.");
                 bankAccountNumber1TextBox.Focus();
             }
-            else if(!(int.TryParse(bankAccountNumber1TextBox.Text, out int1)))
+            else if (!(int.TryParse(bankAccountNumber1TextBox.Text, out int1)))
             {
                 MessageBox.Show("bank account number has to ba a number.");
                 bankAccountNumber1TextBox.Clear();
@@ -249,15 +249,17 @@ namespace PLWPF
                     passwordBoxConfirm.Clear();
                     passwordBoxConfirm.Focus();
                 }
-                else {
-                    if(checkInputGuest()||checkInputHost())
+                else
+                {
+                    if (checkInputGuest() || checkInputHost())
                     {
                         MessageBox.Show("user already exists, try again");
                     }
-                   else {
+                    else
+                    {
                         saveHost();
-                        
-                    } 
+
+                    }
                 }
 
             }

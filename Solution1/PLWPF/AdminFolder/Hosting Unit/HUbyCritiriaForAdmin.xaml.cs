@@ -26,8 +26,22 @@ namespace PLWPF.AdminFolder.Hosting_Unit
         public HUbyCritiriaForAdmin()
         {
             InitializeComponent();
+            if (hebEnglish.hebrew)
+                hebChange();
         }
-
+        private void hebChange()
+        {
+            Title = "יחידותאירוחעלפיקריטריון";
+            southHU.Content = "יחידות אירוח בדרום";
+            northHU.Content = "יחידות אירוח בצפון";
+            centerHU.Content = "יחידות אירוח במכרז";
+            jemHU.Content = "יחידות אירוח בירושלים";
+            BackB.Content = "חזור";
+            childA.Content = "כל היחידות עם אטרקציות";
+            gardens.Content = "כל היחידות עם גינה";
+            jac.Content = "כל היחידות עם גקוזי";
+            pool.Content = "כל היחידות עם בריכה";
+        }
         private void Button_Click(object sender, RoutedEventArgs e)//pools
         {
             scrollview1 = new ScrollViewer();
