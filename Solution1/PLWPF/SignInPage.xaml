@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
            Title="Sign In Page" FontSize="14" Height="385" Width="350" Background="#04c582" >
-        
+
     <Border Background="Black" CornerRadius="20" Margin="20">
         <StackPanel Margin="20">
-                        <Menu x:Name="Language"  Background="Black">
+            <Menu x:Name="Language"  Background="Black">
                 <MenuItem RenderTransformOrigin="0.712,0.55" Height="25" Width="25" Background="White">
-                    
+                    <MenuItem.Icon>
+                        <Image x:Name="langicon" Height="auto" Width="auto" Source="langIcon.png" Stretch="Fill" RenderTransformOrigin="-2.608,0.633"/>
+                    </MenuItem.Icon>
                     <MenuItem Header="עברית" Background="#04c582" Foreground="Black" Click="MenuItem_Click"/>
                     <MenuItem Header="English" Background="#04c582" Foreground="Black" Click="MenuItem_Click_1"/>
                 </MenuItem>

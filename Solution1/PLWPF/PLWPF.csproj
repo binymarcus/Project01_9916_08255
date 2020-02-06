@@ -399,5 +399,8 @@
   <ItemGroup>
     <Resource Include="Strings.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="langIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
