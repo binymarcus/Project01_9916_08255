@@ -60,7 +60,13 @@
             <StackPanel x:Name="b" HorizontalAlignment="Stretch" Height="auto" VerticalAlignment="Stretch" Width="auto"/>
         </ScrollViewer>
         
-        <Button x:Name="BackB" Content="Back" HorizontalAlignment="Left" Margin="608,378,0,9.667" Width="171" Click="BackB_Click"/>
+        <Button x:Name="BackB" Content="Back" HorizontalAlignment="Left" Margin="608,378,0,9.667" Width="171" Click="BackB_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Label Name="header" Content="your chosen hosting unit:" FontSize="20" HorizontalAlignment="Left" Margin="506,23,0,0" VerticalAlignment="Top" Height="46" Width="273"/>
 
         <Button x:Name="poolGR" Visibility="Visible" Background="{StaticResource WindowBackgroundBrush}" Content="allGRsWithPools" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="poolGR_Click"/>

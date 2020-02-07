@@ -31,7 +31,13 @@
         <Button x:Name="northGR" Background="{StaticResource WindowBackgroundBrush}" Content="All GRs In The North" HorizontalAlignment="Left" Margin="207,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="northGR_Click"/>
         <Button x:Name="centerGR" Background="{StaticResource WindowBackgroundBrush}" Content="All GRs In The Center" HorizontalAlignment="Left" Margin="207,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="centerGR_Click"/>
         <Button x:Name="jemGR" Background="{StaticResource WindowBackgroundBrush}" Content="All GRs In Jerusalam" HorizontalAlignment="Left" Margin="207,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="jemGR_Click"/>
-        <Button x:Name="BackB" Background="{StaticResource WindowBackgroundBrush}" Content="Back" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="BackB_Click"/>
+        <Button x:Name="BackB" Background="{StaticResource WindowBackgroundBrush}" Content="Back" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="BackB_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
 

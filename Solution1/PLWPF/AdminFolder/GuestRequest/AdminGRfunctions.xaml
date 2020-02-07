@@ -7,10 +7,34 @@
         mc:Ignorable="d"
         Title="AdminGRfunctions" Height="450" Width="800">
     <Grid Background="AntiqueWhite">
-        <Button x:Name="GetAllGR" Background="Aqua" Content="Get All Guest Requests" FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllGR_Click"/>
-        <Button x:Name="FindGRcriteria" Background="Aqua" Content="Find Guest Request by criteria" FontSize="25" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="FindGRcriteria_Click"/>
-        <Button x:Name="BackButton" Background="BlueViolet" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click"/>
-        <Button x:Name="calc" Background="Aqua" Content="calc num of guest requests" FontSize="25" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="calc_Click"/>
+        <Button x:Name="GetAllGR" Background="Aqua" Content="Get All Guest Requests" FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GetAllGR_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="FindGRcriteria" Background="Aqua" Content="Find Guest Request by criteria" FontSize="25" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="FindGRcriteria_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="BackButton" Background="BlueViolet" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="423,351,0,0" VerticalAlignment="Top" Width="360" Height="60" Click="BackButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="calc" Background="Aqua" Content="calc num of guest requests" FontSize="25" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="calc_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

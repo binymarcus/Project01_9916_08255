@@ -83,6 +83,26 @@ namespace PLWPF
                 }
                 else
                 {
+                    string selected1 = Area1.SelectedItem.ToString();
+                    selected1 = selected1.Substring(selected1.IndexOf(' ')); 
+                    
+                    if (selected1 == " North")
+                    {
+                        unit.AreaOfHostingUnit = BEEnum.Area.North;
+                    }
+                    else if (selected1 == " South")
+                    {
+                        unit.AreaOfHostingUnit = BEEnum.Area.South;
+                    }
+                    else if (selected1 == " Center")
+                    {
+                        unit.AreaOfHostingUnit = BEEnum.Area.Center;
+                    }
+                    else if (selected1 == " Jerusalem")
+                    {
+                        unit.AreaOfHostingUnit = BEEnum.Area.Jerusalem;
+                    }
+
                     bl.AddHostingUnit(unit);
                     MessageBox.Show("Hosting Unit Added, Key:" + unit.HostingUnitKey1);
                     this.DataContext = unit;

@@ -10,7 +10,7 @@
         Background="Beige">
     <Window.Resources>
         <SolidColorBrush x:Key="MyBrush" Color="LimeGreen"/>
- 
+
         <Style x:Key = "TriggerStyle" TargetType = "Button">
             <Setter Property = "Foreground" Value = "Black" />
             <Style.Triggers>
@@ -29,11 +29,41 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <Button x:Name="AddRequestButton" Background="{StaticResource MyBrush}" Content ="Add Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click" Style = "{StaticResource TriggerStyle}" />
-        <Button x:Name="UpdateRequestButton" Background="{StaticResource MyBrush}" Content ="Update Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click" Style = "{StaticResource TriggerStyle}"/>
-        <Button x:Name="DeleteRequestButton" Background="{StaticResource MyBrush}" Content ="Delete Request" Visibility="Visible" Margin="10,10.,10.333,10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click" Style = "{StaticResource TriggerStyle}"/>
-        <Button x:Name="ShowAllButton" Background="{StaticResource MyBrush}" Content="Show All My Guests Requests" Visibility="Visible" FontSize="30" HorizontalAlignment="Left" Margin="10,10,10.333,10" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="81" Click="ShowAllButton_Click" Style = "{StaticResource TriggerStyle}"/>
-        <Button  x:Name="SignOutButton" Background="IndianRed" Click="backButton_Click" Content="Sign Out" Visibility="Visible" HorizontalAlignment="Left" FontSize="30" Margin="10,10,10.333,10" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="85" Style = "{StaticResource TriggerStyle}"/>
+        <Button x:Name="AddRequestButton" Background="{StaticResource MyBrush}" Content ="Add Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="0" Click="addRequestButton_Click" Style = "{StaticResource TriggerStyle}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="UpdateRequestButton" Background="{StaticResource MyBrush}" Content ="Update Request" Visibility="Visible" Margin="10,10,10.333,10" FontSize="30" Grid.Row="1" Click="updateRequestButton_Click" Style = "{StaticResource TriggerStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="DeleteRequestButton" Background="{StaticResource MyBrush}" Content ="Delete Request" Visibility="Visible" Margin="10,10.,10.333,10" FontSize="30" Grid.Row="2" Click="deleteRequestButton_Click" Style = "{StaticResource TriggerStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ShowAllButton" Background="{StaticResource MyBrush}" Content="Show All My Guests Requests" Visibility="Visible" FontSize="30" HorizontalAlignment="Left" Margin="10,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="773" Height="74" Click="ShowAllButton_Click" Style = "{StaticResource TriggerStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button  x:Name="SignOutButton" Background="IndianRed" Click="backButton_Click" Content="Sign Out" Visibility="Visible" HorizontalAlignment="Left" FontSize="30" Margin="10,10.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="773" Height="74" Style = "{StaticResource TriggerStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <xctk:WatermarkTextBox Watermark="Private Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="privatenameinput" Margin="0,0.333,407.333,93.667" Grid.RowSpan="2" />
         <xctk:WatermarkTextBox Watermark="Family Name" FontSize="30" Grid.Row="3" Visibility="Hidden" x:Name="familyenameinput" Margin="386,0.333,0.333,93.667" Grid.RowSpan="2"/>
         <Button x:Name="showbutton" Content="Show" FontSize="30" Visibility="Hidden" HorizontalAlignment="Left" Margin="386,17.333,0,0" Grid.Row="4" VerticalAlignment="Top" Width="407" Height="67" Click="showbutton_Click" Style = "{StaticResource TriggerStyle}"/>

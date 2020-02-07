@@ -8,10 +8,22 @@
         Title="UpdateByNameChoose" Height="450" Width="800">
     <Grid Background="Beige">
         <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="434">
-           <StackPanel x:Name="b" HorizontalAlignment="Stretch" Height="auto" VerticalAlignment="Stretch" Width="auto"/>
+            <StackPanel x:Name="b" HorizontalAlignment="Stretch" Height="auto" VerticalAlignment="Stretch" Width="auto"/>
         </ScrollViewer>
-        <Button x:Name="updatebyNameupdateButton" Background="LightCoral" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="449,281,0,0" VerticalAlignment="Top" Width="334" Height="59" Click="updatebyNameupdateButton_Click" />
-        <Button x:Name="BackButton" Background="IndianRed" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="449,345,0,0" VerticalAlignment="Top" Width="334" Height="66" Click="BackButton_Click"/>
+        <Button x:Name="updatebyNameupdateButton" Background="LightCoral" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="449,273,0,0" VerticalAlignment="Top" Width="334" Height="67" Click="updatebyNameupdateButton_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="BackButton" Background="IndianRed" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="449,345,0,0" VerticalAlignment="Top" Width="334" Height="66" Click="BackButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Image Margin="481,54,29.333,189.667" Source="/PLWPF;component/ThumbsUp.jpg" Stretch="Fill"/>
 
     </Grid>

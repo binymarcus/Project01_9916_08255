@@ -31,7 +31,13 @@
         <Button x:Name="northHU" Content="All Units In The North" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,85,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="northHU_Click"/>
         <Button x:Name="centerHU" Content="All Units In The Center" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,160,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="centerHU_Click"/>
         <Button x:Name="jemHU" Content="All Units In Jerusalam" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="207,235,0,0" VerticalAlignment="Top" Width="192" Height="70" Click="jemHU_Click"/>
-        <Button x:Name="BackB" Content="Back" Background="{StaticResource WindowBackgroundBrush1}" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="BackB_Click"/>
+        <Button x:Name="BackB" Content="Back" Background="{StaticResource WindowBackgroundBrush1}" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="BackB_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

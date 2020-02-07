@@ -8,9 +8,21 @@
         mc:Ignorable="d"
         Title="numOfHUforEachHostForAdmin" Height="450" Width="800">
     <Grid>
-        <Button x:Name="showB" Content="Show" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="318" Height="40" Click="showB_Click"/>
+        <Button x:Name="showB" Content="Show" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="318" Height="40" Click="showB_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <xctk:WatermarkTextBox x:Name="head" HorizontalAlignment="Left" Height="49" Margin="10,10,0,0" TextWrapping="Wrap" FontSize="20" Watermark="enter num of hosting units to find:" VerticalAlignment="Top" Width="318"/>
-        <Button x:Name="backB" Content="Back" HorizontalAlignment="Left" Margin="10,379,0,0" VerticalAlignment="Top" Width="318" Height="32" Click="backB_Click"/>
+        <Button x:Name="backB" Content="Back" HorizontalAlignment="Left" Margin="10,379,0,0" VerticalAlignment="Top" Width="318" Height="32" Click="backB_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <ScrollViewer x:Name="scrollview1" HorizontalAlignment="Left" Height="401" Margin="333,10,0,0" VerticalAlignment="Top" Width="450">
             <StackPanel
                 x:Name="b" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">

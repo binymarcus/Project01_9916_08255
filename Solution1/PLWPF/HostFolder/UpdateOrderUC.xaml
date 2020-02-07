@@ -45,7 +45,13 @@
             </ComboBox>
            
             <Label Content="------------------------------------------------" HorizontalAlignment="Left" Margin="0,90,0,-55.333" Grid.Row="6" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="240"/>
-            <Button x:Name="up" Content="Update Me" HorizontalAlignment="Left" Margin="10,66,0,-0.333" Grid.Row="6" Width="223" Grid.ColumnSpan="2" Click="Button_Click"/>
+            <Button x:Name="up" Content="Update Me" HorizontalAlignment="Left" Margin="10,66,0,-0.333" Grid.Row="6" Width="223" Grid.ColumnSpan="2" Click="Button_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="6"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
 
     </Grid>

@@ -71,6 +71,12 @@ namespace PLWPF
             }
         }
 
+        private void backB_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new SignInPage();
+            win.Show();
+            this.Close();
+        }
     }
 
 }

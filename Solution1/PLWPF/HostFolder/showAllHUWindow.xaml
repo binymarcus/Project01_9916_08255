@@ -72,6 +72,12 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="583,355,0,0" VerticalAlignment="Top" Width="200" Height="56" Click="BackButton_Click"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="583,355,0,0" VerticalAlignment="Top" Width="200" Height="56" Click="BackButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

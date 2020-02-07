@@ -48,7 +48,19 @@
         <CheckBox x:Name="hasPool1CheckBox" Content="" Grid.Column="3" HorizontalAlignment="Left" IsChecked="{Binding hasPool1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="6,10.333,0,16.333" Grid.Row="5" VerticalAlignment="Center" Height="16" Width="22"/>
         <Label Name="hun" Content="Hosting Unit Name:" HorizontalAlignment="Left" Margin="3,-34,0,53" VerticalAlignment="Center" Height="27" Width="124" Grid.ColumnSpan="3"/>
         <TextBox x:Name="hostingUnitName1TextBox" HorizontalAlignment="Left" Height="28" Margin="5.667,-35,-22.667,53" Text="{Binding HostingUnitName1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="151" Grid.Column="3"/>
-        <Button x:Name="update" Content="Update" Background="SandyBrown" FontSize="25" Grid.Column="3" HorizontalAlignment="Left" Margin="71.667,56,-126,-44" Grid.Row="6" VerticalAlignment="Top" Width="195" Height="34" Click="Button_Click"/>
-        <Button x:Name="back" Background="PaleGreen" Grid.ColumnSpan="4" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="3,55,0,-44.667" Grid.Row="6" VerticalAlignment="Top" Width="191" Height="35" Click="Button_Click_1"/>
+        <Button x:Name="update" Content="Update" Background="SandyBrown" FontSize="25" Grid.Column="3" HorizontalAlignment="Left" Margin="71.667,56,-126,-44" Grid.Row="6" VerticalAlignment="Top" Width="195" Height="34" Click="Button_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="back" Background="PaleGreen" Grid.ColumnSpan="4" Content="Back" FontSize="25" HorizontalAlignment="Left" Margin="3,55,0,-44.667" Grid.Row="6" VerticalAlignment="Top" Width="191" Height="35" Click="Button_Click_1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

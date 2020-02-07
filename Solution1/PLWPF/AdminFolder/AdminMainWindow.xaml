@@ -15,16 +15,70 @@
     </Window.Resources>
 
     <Grid Background="AntiqueWhite">
-        <Button x:Name="GRfunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Guest Request Functions" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GRfunctions_Click" />
-        <Button x:Name="HostFunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Host Functions" HorizontalAlignment="Left" Margin="422,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="HostFunctions_Click"/>
-        <Button x:Name="HUFunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Hosting Unit Functions" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="HUFunctions_Click"/>
-        <Button x:Name="OrderFunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Order Functions" HorizontalAlignment="Left" Margin="422,113,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="OrderFunctions_Click"/>
-        <Button x:Name="SignOut" Background="BlueViolet" Content="Sign Out" HorizontalAlignment="Left" Margin="422,359,0,0" VerticalAlignment="Top" Width="361" Height="50" Click="SignOut_Click"/>
-        <Button x:Name="calcmoney" Content="calc money" Background="{StaticResource WindowBackgroundBrush}" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="179" Height="50" Click="calcmoney_Click"/>
-        <Button x:Name="commish" Content="change commision" Background="{StaticResource WindowBackgroundBrush}" Visibility="Hidden" HorizontalAlignment="Left" Margin="201,359,0,0" VerticalAlignment="Top" Width="179" Height="50" Click="commish_Click"/>
-        <Button x:Name="money" Content="manage money" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="360" Height="52" Click="money_Click"/>
+        <Button x:Name="GRfunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Guest Request Functions" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="GRfunctions_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="HostFunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Host Functions" HorizontalAlignment="Left" Margin="422,10,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="HostFunctions_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="HUFunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Hosting Unit Functions" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="HUFunctions_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="OrderFunctions" Background="{StaticResource WindowBackgroundBrush}" Content="Order Functions" HorizontalAlignment="Left" Margin="422,113,0,0" VerticalAlignment="Top" Width="360" Height="100" Click="OrderFunctions_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="SignOut" Background="BlueViolet" Content="Sign Out" HorizontalAlignment="Left" Margin="422,359,0,0" VerticalAlignment="Top" Width="361" Height="50" Click="SignOut_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="calcmoney" Content="calc money" Background="{StaticResource WindowBackgroundBrush}" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="179" Height="50" Click="calcmoney_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="commish" Content="change commision" Background="{StaticResource WindowBackgroundBrush}" Visibility="Hidden" HorizontalAlignment="Left" Margin="201,359,0,0" VerticalAlignment="Top" Width="179" Height="50" Click="commish_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="money" Content="manage money" Background="{StaticResource WindowBackgroundBrush}" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="360" Height="52" Click="money_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <xctk:WatermarkTextBox x:Name="newCommish" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="10,325,0,0" TextWrapping="Wrap" Watermark="enter new commission" VerticalAlignment="Top" Width="179"/>
-        <Button x:Name="okbutton" Content="OK" Background="{StaticResource WindowBackgroundBrush}" Visibility="Hidden" HorizontalAlignment="Left" Margin="201,326,0,0" VerticalAlignment="Top" Width="179" Height="29" Click="okbutton_Click"/>
+        <Button x:Name="okbutton" Content="OK" Background="{StaticResource WindowBackgroundBrush}" Visibility="Hidden" HorizontalAlignment="Left" Margin="201,326,0,0" VerticalAlignment="Top" Width="179" Height="29" Click="okbutton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

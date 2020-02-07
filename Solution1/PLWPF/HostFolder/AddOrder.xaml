@@ -12,7 +12,13 @@
 
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="Back" Content="Back" Margin="538,361,10.333,9.667" Click="Back_Click"/>
+        <Button x:Name="Back" Content="Back" Background="Crimson" FontSize="25" Margin="538,361,10.333,9.667" Click="Back_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Image Source="/PLWPF;component/checkbox.png" Stretch="Fill" Margin="583,83,48.333,169.667"/>
 
 

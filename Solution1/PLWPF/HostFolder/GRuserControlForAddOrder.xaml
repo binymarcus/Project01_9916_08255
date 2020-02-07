@@ -100,7 +100,13 @@
             <Label Name="grkey" VerticalAlignment="Center" Grid.Row="16" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Guest Request Key:"/>
             <Label x:Name="guestRequestKey1Label" VerticalAlignment="Center" Grid.Row="16" Margin="3.333,3.333,0,3.333" HorizontalAlignment="Left" Grid.Column="1" Content="{Binding GuestRequestKey1}" Width="115"/>
 
-            <Button x:Name="GSpick" Content="Pick Me!" HorizontalAlignment="Left" Margin="89,0.333,0,-33.667" VerticalAlignment="Top" Width="200" Height="34" Click="GSpick_Click" Grid.ColumnSpan="2" Grid.Row="17"/>
+            <Button x:Name="GSpick" Content="Pick Me!" HorizontalAlignment="Left" Margin="89,0.333,0,-33.667" VerticalAlignment="Top" Width="200" Height="34" Click="GSpick_Click" Grid.ColumnSpan="2" Grid.Row="17">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <TextBlock HorizontalAlignment="Left" Grid.Row="16" TextWrapping="Wrap" Text="------------------------------------------------------------------------------------------" VerticalAlignment="Top" Height="26" Width="435" Margin="10,69,-23,-61" Grid.ColumnSpan="2"/>
 
         </Grid>

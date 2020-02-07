@@ -65,7 +65,13 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="backbutton" Content="Back" FontSize="25" Background="Gold" Foreground="Silver" Click="backbutton_Click" HorizontalAlignment="Left" Margin="428,354,0,0" VerticalAlignment="Top" Width="355" Height="63"/>
+        <Button x:Name="backbutton" Content="Back" FontSize="25" Background="Gold" Foreground="Firebrick" Click="backbutton_Click" HorizontalAlignment="Left" Margin="428,354,0,0" VerticalAlignment="Top" Width="355" Height="63">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

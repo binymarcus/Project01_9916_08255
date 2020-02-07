@@ -95,8 +95,20 @@
                 <ComboBoxItem Content="BAndB" />
             </ComboBox>
         </Grid>
-        <Button x:Name="UpdateButton"  Background="LightCoral" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,273,0,0" VerticalAlignment="Top" Width="323" Height="66" Click="UpdateButton_Click"/>
-        <Button x:Name="BackButton"  Background="IndianRed" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="323" Height="68" Click="BackButton_Click"/>
+        <Button x:Name="UpdateButton"  Background="LightCoral" FontSize="30" Content="Update" HorizontalAlignment="Left" Margin="460,273,0,0" VerticalAlignment="Top" Width="323" Height="66" Click="UpdateButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="BackButton"  Background="IndianRed" FontSize="30" Content="Back" HorizontalAlignment="Left" Margin="460,344,0,0" VerticalAlignment="Top" Width="323" Height="68" Click="BackButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
     </Grid>

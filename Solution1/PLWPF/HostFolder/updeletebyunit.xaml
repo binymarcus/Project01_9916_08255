@@ -19,9 +19,27 @@
         <xctk:WatermarkTextBox Background="Aquamarine" x:Name="DeletePrivateNameTextBox" FontSize="30" HorizontalAlignment="Left" Height="49" Margin="267,195,0,0" TextWrapping="Wrap" Watermark="unit name" VerticalAlignment="Top" Width="472"/>
 
 
-        <Button x:Name="UpdateButton" Background="SandyBrown" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="386" Height="70" Click="UpdateButton_Click"/>
-        <Button x:Name="backButton" Background="PaleGreen" Content="Back" FontSize="30" HorizontalAlignment="Left" Margin="0,341,0,0" VerticalAlignment="Top" Width="783" Height="70" Click="backButton_Click"/>
-        <Button x:Name="DeleteButton" Background="SandyBrown" Content="Delete" FontSize="30" HorizontalAlignment="Left" Margin="391,266,0,0" VerticalAlignment="Top" Width="392" Height="70" Click="DeleteButton_Click"/>
+        <Button x:Name="UpdateButton" Background="SandyBrown" Content="Update" FontSize="30" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="386" Height="70" Click="UpdateButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="backButton" Background="PaleGreen" Content="Back" FontSize="30" HorizontalAlignment="Left" Margin="0,341,0,0" VerticalAlignment="Top" Width="783" Height="70" Click="backButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="DeleteButton" Background="SandyBrown" Content="Delete" FontSize="30" HorizontalAlignment="Left" Margin="391,266,0,0" VerticalAlignment="Top" Width="392" Height="70" Click="DeleteButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>
