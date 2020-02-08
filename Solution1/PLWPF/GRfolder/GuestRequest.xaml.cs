@@ -33,6 +33,12 @@ namespace PLWPF
             UpdateRequestButton.Content = "עדכן בקשת אורח";
             DeleteRequestButton.Content = "מחק בקשת אורח";
             ShowAllButton.Content = "הצג הכל";
+            alllabal.Content="אנא הכנם שם כדי לראות את כל בקשות הארוח שלך";
+            privatenameinput.Watermark = "שם פרטי";
+            familyenameinput.Watermark = "שם משפחה";
+            showbutton.Content = "הראה";
+            cancelbutton.Content = "חזור";
+            BackButton2.Content = "חזור";
             SignOutButton.Content = "התנתק";
             Title = "אורח";
         }

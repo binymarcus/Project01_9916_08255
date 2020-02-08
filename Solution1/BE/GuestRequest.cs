@@ -37,8 +37,8 @@ namespace BE
         public DateTime ReleaseDate1 { get => ReleaseDate; set => ReleaseDate = value; }
         public string SubArea1 { get => SubArea; set => SubArea = value; }
         public int Adults1 { get => Adults; set => Adults = value; }
-       public int Children1 { get => Children; set => Children = value; }
-        public int TotalGuests1 { get => (Children+Adults) ; set => TotalGuests = value; }
+        public int Children1 { get => Children; set => Children = value; }
+        public int TotalGuests1 { get => (/*Children+Adults*/5) ; set => TotalGuests = value; }
         public BEEnum.Option pool1 { get => pool; set => pool = value;}
         public BEEnum.Option Jacuzzi1 { get => Jacuzzi; set => Jacuzzi = value;}
         public BEEnum.Option Garden1 { get => Garden; set => Garden = value;}
