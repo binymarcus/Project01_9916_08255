@@ -41,6 +41,15 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text,ElementName=textBoxFirstName}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            
+                        </Style.Triggers>
+                    </Style>
                 </Button.Resources>
             </Button>
             <Button Background="RosyBrown" Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" Name="button2" VerticalAlignment="Top" Width="70" Click="button2_Click">

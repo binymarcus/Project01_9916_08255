@@ -49,7 +49,7 @@
                     <RowDefinition Height="179*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Grid>
+                <Grid Margin="0,0,0.333,-19" Grid.RowSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="179*"/>
                         <RowDefinition Height="3*"/>
@@ -78,6 +78,32 @@
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text,ElementName= textBoxUserName}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text,ElementName=mailAddress1TextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text,ElementName=privateName1TextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text,ElementName=familyName1TextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text,ElementName=phoneNumber1TextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text,ElementName=bankAccountNumber1TextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=collectionClearance1CheckBox}" Value="">
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </DataTrigger>
+                        </Style.Triggers>
                     </Style>
                 </Button.Resources>
             </Button>

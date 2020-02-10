@@ -54,6 +54,17 @@
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text,ElementName=hostingUnitNameTextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text,ElementName=commission1TextBox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
                 </Button.Resources>
             </Button>
             <Button x:Name="Cancel" Background="PaleGreen" Content="Cancel" FontSize="25" Click="cancelButton_Click" HorizontalAlignment="Left" Margin="0,1,0,0" Grid.Row="7" VerticalAlignment="Top" Width="344" Height="52" Grid.ColumnSpan="2">

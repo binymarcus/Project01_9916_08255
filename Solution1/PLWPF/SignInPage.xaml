@@ -37,6 +37,16 @@
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+
+                            <DataTrigger Binding="{Binding Text,ElementName=txtUsername}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+
                 </Button.Resources>
             </Button>
             <Button Name="register" Content="Register" Margin="60 10" Background="Gray" Foreground="White" FontSize="18" Click="Register_Click">
@@ -44,6 +54,7 @@
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
+
                 </Button.Resources>
             </Button>
 

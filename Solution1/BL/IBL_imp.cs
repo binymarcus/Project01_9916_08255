@@ -113,8 +113,8 @@ namespace BL
                     item.Status1 = BEEnum.Status.closedByClientsLackOfResponse;
                     UpdateOrder(item);
                 }
-                if (L.Count() == 0)
-                    throw new NoItemsFound("There are no orders older then the number of days sent.");
+              //  if (L.Count() == 0)
+              //      throw new NoItemsFound("There are no orders older then the number of days sent.");
                 return L;
             
 

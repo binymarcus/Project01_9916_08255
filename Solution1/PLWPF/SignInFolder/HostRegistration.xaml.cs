@@ -286,6 +286,8 @@ namespace PLWPF
         }
         private void button3_Click(object sender, RoutedEventArgs e)
         {
+            Window reg = new Registration();
+            reg.Show();
             Close();
         }
         private bool checkInputGuest()
