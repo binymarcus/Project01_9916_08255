@@ -14,7 +14,8 @@ namespace DAL
         public static Idal getDAL()
         {
             if(instence == null)
-                instence = new DAL_imp();
+                instence = new Dal_XML_imp();
+            //                instence = new DAL_imp();
             return instence;
         }
 

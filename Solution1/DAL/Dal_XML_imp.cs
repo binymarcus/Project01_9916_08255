@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace DAL
 {
-    class Dal_XML_imp:Idal
+    class Dal_XML_imp:  Idal
     {
         #region paths and roots
         string GRPath = "@GR_XML.xml";

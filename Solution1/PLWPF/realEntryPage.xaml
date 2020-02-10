@@ -1,0 +1,28 @@
+﻿<Window x:Class="PLWPF.realEntryPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="realEntryPage" Height="450" Width="800">
+    <Grid Background="Green">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="315*" />
+            <RowDefinition Height="106*" />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txtbx" Background="Transparent" BorderThickness="0" KeyDown="txtbx_KeyDown" Margin="397,176,396.333,122.667"/>
+        <Label Content="press any key to continue..." FontSize="25" HorizontalAlignment="Left" Margin="235,46.333,0,0" VerticalAlignment="Top" Width="368" Height="50" Grid.Row="1"/>
+        <MediaElement x:Name="vid" Source="C:\Users\moshe z\Source\Repos\binymarcus\Project01_9916_08255\Solution1\PLWPF\pictures\Nature Beautiful short video 720p HD.mp4" Margin="65,10,88.333,9.667" Stretch="Fill"  />
+        <StackPanel Grid.Row="1" Margin="0,2.333,0.333,51.667">
+            <WrapPanel HorizontalAlignment="Center">
+                <Button x:Name="btnPlay" Click="btnPlay_Click" Content="Play"/>
+                <Button x:Name="btnPause" Margin="5,0" Click="btnPause_Click" Content="Pause"/>
+                <Button x:Name="btnStop" Click="btnStop_Click" Content="Stop"/>
+            </WrapPanel>
+        </StackPanel>
+        <Label x:Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" Margin="156,22.333,144.333,51.667" Grid.Row="1" />
+
+
+    </Grid>
+</Window>

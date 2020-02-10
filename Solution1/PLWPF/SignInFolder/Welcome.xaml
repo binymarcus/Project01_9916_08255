@@ -38,7 +38,7 @@
         <Label Content="              I Am Not A Robot" Foreground="White" FontSize="25" HorizontalAlignment="Left" Margin="44,25,0,0" VerticalAlignment="Top" Height="46" Width="434"/>
         <Label x:Name="enterlabale" Content="       plese enter the code:" FontSize="14" Foreground="White" HorizontalAlignment="Left" Margin="293,76,0,0" VerticalAlignment="Top" Width="202"/>
         <Border BorderBrush="Black" Background="Transparent" BorderThickness="1" HorizontalAlignment="Left" Margin="418,229,0,0" VerticalAlignment="Top" Height="82" Width="77"/>
-        <Image Margin="418,229,23.667,9.667" Source="/PLWPF;component/recaptchLogo.png" Stretch="Fill"/>
+        <Image Margin="418,229,23.667,9.667" Source="/PLWPF;component/pictures/recaptchLogo.png" Stretch="Fill"/>
         <Rectangle Fill="Red" StrokeThickness="0" HorizontalAlignment="Left" Height="3" Margin="62,131,0,0" Stroke="Black" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>

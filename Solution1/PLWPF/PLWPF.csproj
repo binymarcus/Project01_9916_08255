@@ -147,13 +147,16 @@
     <Compile Include="HostFolder\updateOrderWindow.xaml.cs">
       <DependentUpon>updateOrderWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="realEntryPage.xaml.cs">
+      <DependentUpon>realEntryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SignInFolder\HostRegistration.xaml.cs">
       <DependentUpon>HostRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="SignInFolder\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SignInPage.xaml.cs">
+    <Compile Include="SignInFolder\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GRfolder\UpdateByNameChoose.xaml.cs">
@@ -282,6 +285,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="realEntryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SignInFolder\HostRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -307,7 +314,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SignInPage.xaml">
+    <Page Include="SignInFolder\SignInPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -385,28 +392,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="recaptchLogo.png" />
+    <Resource Include="pictures\recaptchLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="addGR.jpg" />
+    <Resource Include="pictures\addGR.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ThumbsUp.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="checkbox.png" />
+    <Resource Include="pictures\checkbox.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Strings.xml" />
+    <Resource Include="pictures\langIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="langIcon.png" />
+    <Resource Include="pictures\engIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="engIcon.jpg" />
+    <Resource Include="pictures\hebIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="hebIcon.jpg" />
+    <Content Include="pictures\Nature Beautiful short video 720p HD.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

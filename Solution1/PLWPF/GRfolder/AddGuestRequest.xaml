@@ -111,7 +111,7 @@
                 <ComboBoxItem Content="BAndB" />
             </ComboBox>
         </Grid>
-        <Image Margin="495,45,38,515" Source="/PLWPF;component/addGR.jpg" Stretch="Fill"/>
+        <Image Margin="495,45,38,515" Source="/PLWPF;component/pictures/addGR.jpg" Stretch="Fill"/>
         <Button x:Name="addButton" Background="LightCoral" Content=" Add" FontSize="40"  Margin="495,356,10,404" Click="addButton_Click" Height="60">
             <Button.Resources>
                 <Style TargetType="Border">

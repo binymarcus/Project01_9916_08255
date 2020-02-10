@@ -214,8 +214,8 @@ namespace DAL
             List<Order> L = new List<Order>();
             foreach (var item in DataSource.OrderList)
                 L.Add(Cloning.Clone(item));
-            if (L.Count() == 0)
-                throw new NoItemsFound("there are no orders in the system.");
+           // if (L.Count() == 0)
+             //   throw new NoItemsFound("there are no orders in the system.");
             return L;
         }
         /// <summary>

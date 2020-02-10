@@ -12,16 +12,16 @@
             <Menu x:Name="Language"  Background="Black">
                 <MenuItem RenderTransformOrigin="0.712,0.55" Height="25" Width="25" Background="White">
                     <MenuItem.Icon>
-                        <Image x:Name="langicon" Height="auto" Width="auto" Source="langIcon.png" Stretch="Fill" RenderTransformOrigin="-2.608,0.633"/>
+                        <Image x:Name="langicon" Height="auto" Width="auto" Source="/PLWPF;component/pictures/langIcon.png" Stretch="Fill" RenderTransformOrigin="-2.608,0.633"/>
                     </MenuItem.Icon>
                     <MenuItem Header="עברית" Background="#04c582" Foreground="Black" Click="MenuItem_Click">
                         <MenuItem.Icon>
-                            <Image Height="auto" Width="auto" Source="hebIcon.jpg" />
+                            <Image Height="16" Width="auto" Source="/PLWPF;component/pictures/hebIcon.jpg" VerticalAlignment="Top" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="English" Background="#04c582" Foreground="Black" Click="MenuItem_Click_1">
                         <MenuItem.Icon>
-                            <Image Height="auto" Width="auto" Source="engIcon.jpg" />
+                            <Image Height="auto" Width="auto" Source="/PLWPF;component/pictures/engIcon.jpg" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>

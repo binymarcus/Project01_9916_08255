@@ -19,7 +19,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Image Source="/PLWPF;component/checkbox.png" Stretch="Fill" Margin="583,83,48.333,169.667"/>
+        <Image Source="/PLWPF;component/pictures/checkbox.png" Stretch="Fill" Margin="583,83,48.333,169.667"/>
 
 
     </Grid>
