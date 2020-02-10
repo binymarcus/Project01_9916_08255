@@ -44,6 +44,12 @@ namespace DAL
                 DataSource.HostingUnitList.Add(Cloning.Clone(hostingUnit));
             }
         }
+
+        public void AddHost(Host host, string user, string pass)
+        {
+            host.HostKey1 = Configuration.HostKey++;
+            DataSource.HostList.Add(Cloning.Clone(host));
+        }
         /// <summary>
         /// adds an order from a client to the system
         /// </summary>
@@ -382,6 +388,31 @@ namespace DAL
             }
             return host;
         }
+
+        public Host getHostByUser(string user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Host getHostByKey(long key1)
+        {
+            foreach (var item in GetAllHosts())
+            {
+                if (item.HostKey1 == key1)
+                    return item;
+            }
+            return null;
+        }
+
+        public List<Order> GetAllOrdersByHostKey(long hostkey)
+        {
+            List<Order> L = new List<Order>();
+            L = (from item in GetAllOrders()
+                 where item.hostKey1 == hostkey
+                 select item).ToList();
+            return L;
+        }
+
 
 
 
